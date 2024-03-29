@@ -3,6 +3,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native'
 import WalletName from '../Components/WalletName';
+import Legal from '../Components/Legal';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,11 +27,20 @@ screenOptions={{
     }
 }}>
 
-        <Stack.Screen
+
+<Stack.Screen
+                    name='Legal'
+                    component={Legal}
+                    // options={{ headerShown: false }}
+                />
+
+
+
+        {/* <Stack.Screen
                     name='walletname'
                     component={WalletName}
                     // options={{ headerShown: false }}
-                />
+                /> */}
 
 
 

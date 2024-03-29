@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     btn: {
         height: 50,
         width: "auto",
-        marginHorizontal: 24,
+        // marginHorizontal: 24,
         backgroundColor: colors.background,
         borderRadius: 12,
 

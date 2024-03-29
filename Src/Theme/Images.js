@@ -1,4 +1,4 @@
-const images = {
+export const images = {
   appLogo: require('../../assets/images/appLogo.png'),
   appLogo1: require('../../assets/images/appLogo1.png'),
   appBg: require('../../assets/images/appBg.png'),
@@ -241,5 +241,6 @@ const images = {
   setAmount: require("../../assets/images/setAmount.png"),
   copyColored: require("../../assets/images/copyColored.png"),
   providerIcon: require("../../assets/images/providerIcon.png"),
+  greaterthan:require("../../assets/images/greater_than.png"),
 };
-export default images;
+// export default images;

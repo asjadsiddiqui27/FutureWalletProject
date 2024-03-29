@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Button from './Src/Screens/Common/CustomButton'
+import Legal from './Src/Screens/Components/Legal'
+import StackNavigation from './Src/Screens/Navigation/StackNavigation'
 
 const App = () => {
   return (
-  <Button/>
+   <StackNavigation/>
   )
 }
 
