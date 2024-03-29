@@ -16,7 +16,7 @@ import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import Button from '../Common/CustomButton';
 import fonts from '../../Theme/Fonts';
 
-const Onboarding = () => {
+const Onboarding = (props) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={{flex: 0.8}}>
@@ -32,7 +32,7 @@ const Onboarding = () => {
       </View>
 
       <View style={styles.footer}>
-        <Button name={'Create a new wallet'} />
+        <Button onPress={()=>{ props.navigation.navigate('walletname');}} name={'Create a new wallet'} />
         <TouchableOpacity style={styles.alreadyAcc}>
           <Text style={styles.alreadyAccText}>I already have a wallet</Text>
         </TouchableOpacity>
@@ -77,9 +77,8 @@ const styles = StyleSheet.create({
   },
   alreadyAccText:{
     color:colors.lightBlue,
-    fontWeight:'700',
     fontSize:16,
-    fontFamily:fonts.mulish 
+    fontFamily:fonts.PoppinsMedium,
 
   }
 });
