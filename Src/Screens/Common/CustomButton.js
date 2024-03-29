@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-
 import colors from "../../Theme/Colors";
 
 
@@ -8,7 +7,8 @@ import colors from "../../Theme/Colors";
 
 function Button({
     onPress = () => { onPressFunc() },
-    name = 'Click me',
+
+    name ,
     buttonStyle = styles.btn,
     textColor = styles.button,
 
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     btn: {
         height: 50,
         width: "auto",
-        marginHorizontal: 24,
         backgroundColor: colors.background,
         borderRadius: 12,
 

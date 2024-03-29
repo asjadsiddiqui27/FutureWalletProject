@@ -1,6 +1,8 @@
 const colors = {
   // our 
    subText:'#56828E',
+   lightBlue:'#00BEF2',
+
   // end 
   newColor: '#1C1D21',
   newHeader: '#1A202E',
