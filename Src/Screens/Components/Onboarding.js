@@ -6,7 +6,6 @@ import {
   SafeAreaView,
   Platform,
   StatusBar,
-  Touchable,
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
@@ -15,36 +14,41 @@ import colors from '../../Theme/Colors';
 import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import Button from '../Common/CustomButton';
 import fonts from '../../Theme/Fonts';
+import { Strings } from '../../Theme/Strings';
 
 const Onboarding = (props) => {
   return (
     <SafeAreaView style={styles.safeArea}>
+        <View style={{flex:1,marginHorizontal: 14, }}>
       <View style={{flex: 0.8}}>
         <View style={styles.imgContainer}>
           <Image style={styles.groupImg} source={images.group} />
         </View>
         <View style={styles.imgContainerText}>
-          <Text style={styles.imgTextFirst}>Safe and Protected</Text>
+          <Text style={styles.imgTextFirst}>{Strings.English.onboarding.safe}</Text>
           <Text style={styles.imgTextSecond}>
-            Trust our crypto wallet for security and protection.{' '}
+         {Strings.English.onboarding.aboutOur}
           </Text>
         </View>
       </View>
 
       <View style={styles.footer}>
-        <Button onPress={()=>{ props.navigation.navigate('walletname');}} name={'Create a new wallet'} />
+      <View style={styles.insideFooter}>
+        <Button onPress={()=>props.navigation.navigate("walletname")} name={'Create a new wallet'} />
         <TouchableOpacity style={styles.alreadyAcc}>
           <Text style={styles.alreadyAccText}>I already have a wallet</Text>
         </TouchableOpacity>
+      </View>
+      </View>
       </View>
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   safeArea: {
+    backgroundColor:colors.White,
     flex: 1,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-    marginHorizontal: 14,
   },
   groupImg: {
     width: dimen(278.14),
@@ -62,24 +66,27 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     color: colors.Black,
-
   },
   imgTextSecond: {
     fontSize: 16,
     color: colors.subText,
   },
-  footer:{
+  footer: {
     flex: 0.2,
-    gap:24.65
+    justifyContent: 'flex-end',
   },
-  alreadyAcc:{
-    alignItems:'center'
+  alreadyAcc: {
+    alignItems: 'center',
   },
   alreadyAccText:{
     color:colors.lightBlue,
+    fontWeight:'700',
     fontSize:16,
-    fontFamily:fonts.PoppinsMedium,
-
-  }
+    fontFamily:fonts.mulish 
+  },
+  insideFooter: {
+    gap: 24.65,
+    marginBottom: 80,
+  },
 });
 export default Onboarding;

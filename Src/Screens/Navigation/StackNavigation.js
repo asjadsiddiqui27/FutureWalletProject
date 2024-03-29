@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import { StyleSheet, Text, View,StatusBar } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native'
+=======
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+>>>>>>> origin/Branch_Three
 import WalletName from '../Components/WalletName';
 import Onboarding from '../Components/Onboarding';
 import colors from '../../Theme/Colors';
@@ -9,9 +16,6 @@ import fonts from '../../Theme/Fonts';
 
 
 const Stack = createNativeStackNavigator();
-
-
-
 
 const StackNavigation = () => {
   return (
@@ -89,9 +93,9 @@ const StackNavigation = () => {
 
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default StackNavigation
+export default StackNavigation;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
