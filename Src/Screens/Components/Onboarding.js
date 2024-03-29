@@ -6,7 +6,6 @@ import {
   SafeAreaView,
   Platform,
   StatusBar,
-  Touchable,
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
@@ -15,6 +14,7 @@ import colors from '../../Theme/Colors';
 import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import Button from '../Common/CustomButton';
 import fonts from '../../Theme/Fonts';
+import { Strings } from '../../Theme/Strings';
 
 const Onboarding = () => {
   return (
@@ -24,18 +24,20 @@ const Onboarding = () => {
           <Image style={styles.groupImg} source={images.group} />
         </View>
         <View style={styles.imgContainerText}>
-          <Text style={styles.imgTextFirst}>Safe and Protected</Text>
+          <Text style={styles.imgTextFirst}>{Strings.English.onboarding.safe}</Text>
           <Text style={styles.imgTextSecond}>
-            Trust our crypto wallet for security and protection.{' '}
+         {Strings.English.onboarding.aboutOur}
           </Text>
         </View>
       </View>
 
       <View style={styles.footer}>
-        <Button name={'Create a new wallet'} />
-        <TouchableOpacity style={styles.alreadyAcc}>
-          <Text style={styles.alreadyAccText}>I already have a wallet</Text>
-        </TouchableOpacity>
+        <View style={styles.insideFooter}>
+          <Button name={Strings.English.onboarding.btnText} />
+          <TouchableOpacity style={styles.alreadyAcc}>
+            <Text style={styles.alreadyAccText}>{Strings.English.onboarding.alreadyWallet}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -62,25 +64,27 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     color: colors.Black,
-
   },
   imgTextSecond: {
     fontSize: 16,
     color: colors.subText,
   },
-  footer:{
+  footer: {
     flex: 0.2,
-    gap:24.65
+    justifyContent: 'flex-end',
   },
-  alreadyAcc:{
-    alignItems:'center'
+  alreadyAcc: {
+    alignItems: 'center',
   },
-  alreadyAccText:{
-    color:colors.lightBlue,
-    fontWeight:'700',
-    fontSize:16,
-    fontFamily:fonts.mulish 
-
-  }
+  alreadyAccText: {
+    color: colors.lightBlue,
+    fontWeight: '700',
+    fontSize: 16,
+    fontFamily: fonts.PoppinsMedium
+  },
+  insideFooter: {
+    gap: 24.65,
+    marginBottom: 80,
+  },
 });
 export default Onboarding;

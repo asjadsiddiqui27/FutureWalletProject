@@ -3,6 +3,12 @@ import LocalizedStrings from 'react-native-localization';
 export const Strings = {
 
     English: {
+        onboarding:{
+          safe:"Safe and Protected",
+          aboutOur:"Trust our crypto wallet for security and protection.",
+          btnText:"Create a new wallet",
+          alreadyWallet:"I already have a wallet"
+        },
 
         walletName: {
             walletName: "Wallet Name",
