@@ -50,26 +50,5 @@ function onPressFunc() {
     console.log("Presseddd")
 }
 
-const styles = StyleSheet.create({
-    button: {
-        padding: 16,
-        borderRadius: 15,
-        backgroundColor: colors.darkestBlue,
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "center"
-    },
-    btnText: {
-        color: "white",
-        fontSize: 16,
-        fontWeight: "normal",
-        alignSelf: "center",
-        marginLeft: 7.5,
-    },
-    imgStyle: {
-        width: 12.9,
-        height: 18.15
-    },
-})
 
 export default CustomBtnWIthIcon;
