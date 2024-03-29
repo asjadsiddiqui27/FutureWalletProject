@@ -5,6 +5,7 @@ import { Strings } from '../../Theme/Strings'
 import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import InputText from '../Common/Input'
 import Button from '../Common/CustomButton'
+import fonts from '../../Theme/Fonts'
 
 
 const WalletName = () => {
@@ -27,7 +28,7 @@ const WalletName = () => {
 
 
             <View style={styles.footer_container}>
-                <Button buttonStyle={styles.btn} />
+                <Button name={"Continue"} buttonStyle={styles.btn} />
             </View>
 
         </View>

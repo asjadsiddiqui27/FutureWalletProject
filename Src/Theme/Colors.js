@@ -58,9 +58,10 @@ const colors = {
   bg4: '#FFDAA2',
   viewBg: '#F1F5F9',
   bgView: "#F4F9FA",
-  background: "#00BEF2"
-
- 
+  background: "#00BEF2",
+  topText:"#56828E",
+  textcolor: "#000000",
+borderColor:"#BEDFE8"
 
 };
 export default colors;
