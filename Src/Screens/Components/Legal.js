@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        // elevation: 5,
+       
 
 
     },
@@ -117,7 +117,7 @@ width:dimen(20)
         borderWidth: 0.5,
         top: dimen(40),
         borderColor: colors.borderColor,
-        // marginHorizontal:dimen(15)
+       
     },
     main_view2: {
         flex: 0.28,
