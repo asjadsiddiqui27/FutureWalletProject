@@ -1,4 +1,7 @@
 const colors = {
+  // our 
+   subText:'#56828E',
+  // end 
   newColor: '#1C1D21',
   newHeader: '#1A202E',
   newSafe: '#0C0C0D',

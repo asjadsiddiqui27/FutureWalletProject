@@ -1,4 +1,7 @@
 const images = {
+  // our project 
+  group: require('../../assets/images/Group.png'),
+  // end 
   appLogo: require('../../assets/images/appLogo.png'),
   appLogo1: require('../../assets/images/appLogo1.png'),
   appBg: require('../../assets/images/appBg.png'),
