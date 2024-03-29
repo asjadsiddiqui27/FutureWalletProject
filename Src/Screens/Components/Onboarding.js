@@ -19,6 +19,7 @@ import { Strings } from '../../Theme/Strings';
 const Onboarding = (props) => {
   return (
     <SafeAreaView style={styles.safeArea}>
+        <View style={{flex:1,marginHorizontal: 14, }}>
       <View style={{flex: 0.8}}>
         <View style={styles.imgContainer}>
           <Image style={styles.groupImg} source={images.group} />
@@ -39,14 +40,15 @@ const Onboarding = (props) => {
         </TouchableOpacity>
       </View>
       </View>
+      </View>
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   safeArea: {
+    backgroundColor:colors.White,
     flex: 1,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-    marginHorizontal: 14,
   },
   groupImg: {
     width: dimen(278.14),
