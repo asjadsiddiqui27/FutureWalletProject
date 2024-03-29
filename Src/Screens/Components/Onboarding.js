@@ -32,10 +32,12 @@ const Onboarding = (props) => {
       </View>
 
       <View style={styles.footer}>
-        <Button name={'Create a new wallet'} />
+      <View style={styles.insideFooter}>
+        <Button onPress={()=>props.navigation.navigate("walletname")} name={'Create a new wallet'} />
         <TouchableOpacity style={styles.alreadyAcc}>
           <Text style={styles.alreadyAccText}>I already have a wallet</Text>
         </TouchableOpacity>
+      </View>
       </View>
     </SafeAreaView>
   );
@@ -79,7 +81,10 @@ const styles = StyleSheet.create({
     fontWeight:'700',
     fontSize:16,
     fontFamily:fonts.mulish 
-
-  }
+  },
+  insideFooter: {
+    gap: 24.65,
+    marginBottom: 80,
+  },
 });
 export default Onboarding;
