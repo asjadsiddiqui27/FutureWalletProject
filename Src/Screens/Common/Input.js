@@ -1,6 +1,8 @@
-import PropTypes, { any } from 'prop-types'
-import colors from '../Theme/Colors';
+// import PropTypes, { any } from 'prop-types'
+// import colors from '../Theme/Colors';
 import {StyleSheet, TextInput ,View } from 'react-native'
+import colors from '../../Theme/Colors';
+import { getDimensionPercentage } from '../../Utils/Utils';
 
 // type CustomKeyboardType = 'default' | 'numeric' | 'email-address' | 'phone-pad'; // Define the custom keyboard type
 
@@ -50,9 +52,12 @@ return (
  const styles = StyleSheet.create({
     input: {
         fontSize: 16,
-        borderColor: colors.addressInputPlaceholder,
-        borderBottomWidth: 0.7,
-        flex: 1,
+        fontWeight:"500",
+        color:colors.Black,
+        borderColor: colors.background,
+        borderWidth: 1,
+        borderRadius:12,
+        paddingLeft:getDimensionPercentage(16.32),
     },
     input_Container:{},
  })

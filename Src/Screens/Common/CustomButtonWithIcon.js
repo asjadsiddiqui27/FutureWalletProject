@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
+// import colors from "../Theme/Colors";
+// import { images } from "../Theme/Images";
 
 
 function CustomBtnWIthIcon({
@@ -10,7 +12,7 @@ function CustomBtnWIthIcon({
     buttonStyle = styles.button,
     textColor = styles.btnText,
     LogoStyle = styles.imgStyle,
-    ImgSrc = images.SendArrow,
+    ImgSrc,
     text_show = true,
     img_show = true
 
@@ -36,12 +38,12 @@ function CustomBtnWIthIcon({
 }
 
 
-CustomBtnWIthIcon.propTypes = {
-    onPress: PropTypes.func,
-    label: PropTypes.any,
-    buttonStyle: PropTypes.any,
-    textColor: PropTypes.any,
-}
+// CustomBtnWIthIcon.propTypes = {
+//     onPress: PropTypes.func,
+//     label: PropTypes.any,
+//     buttonStyle: PropTypes.any,
+//     textColor: PropTypes.any,
+// }
 
 
 function onPressFunc() {

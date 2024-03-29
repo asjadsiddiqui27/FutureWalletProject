@@ -17,6 +17,5 @@ export const Strings = {
             maxLimit: "Max Limit:",
             nameWallet: "Name your wallet",
         },
-
     }
 }

@@ -3,6 +3,8 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import WalletName from '../Components/WalletName';
+import Onboarding from '../Components/Onboarding';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -11,17 +13,65 @@ const StackNavigation = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerStyle: {},
+          headerStyle: {
+          },
           headerShadowVisible: false,
           headerTitleStyle: {
-            // fontWeight: "400",
-          },
+          }
         }}>
+
+
         <Stack.Screen
-          name="walletname"
-          component={WalletName}
-          // options={{ headerShown: false }}
+          name='onboarding'
+          component={Onboarding}
+        // options={{ headerShown: false }}
         />
+
+        <Stack.Screen
+          name='walletname'
+          component={WalletName}
+        // options={{ headerShown: false }}
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

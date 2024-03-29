@@ -16,7 +16,7 @@ import Button from '../Common/CustomButton';
 import fonts from '../../Theme/Fonts';
 import { Strings } from '../../Theme/Strings';
 
-const Onboarding = () => {
+const Onboarding = (props) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={{flex: 0.8}}>
@@ -32,12 +32,10 @@ const Onboarding = () => {
       </View>
 
       <View style={styles.footer}>
-        <View style={styles.insideFooter}>
-          <Button name={Strings.English.onboarding.btnText} />
-          <TouchableOpacity style={styles.alreadyAcc}>
-            <Text style={styles.alreadyAccText}>{Strings.English.onboarding.alreadyWallet}</Text>
-          </TouchableOpacity>
-        </View>
+        <Button name={'Create a new wallet'} />
+        <TouchableOpacity style={styles.alreadyAcc}>
+          <Text style={styles.alreadyAccText}>I already have a wallet</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -76,15 +74,12 @@ const styles = StyleSheet.create({
   alreadyAcc: {
     alignItems: 'center',
   },
-  alreadyAccText: {
-    color: colors.lightBlue,
-    fontWeight: '700',
-    fontSize: 16,
-    fontFamily: fonts.PoppinsMedium
-  },
-  insideFooter: {
-    gap: 24.65,
-    marginBottom: 80,
-  },
+  alreadyAccText:{
+    color:colors.lightBlue,
+    fontWeight:'700',
+    fontSize:16,
+    fontFamily:fonts.mulish 
+
+  }
 });
 export default Onboarding;
