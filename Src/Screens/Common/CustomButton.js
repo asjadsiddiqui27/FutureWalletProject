@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import colors from "../../Theme/Colors";
 import { getDimensionPercentage as dimen } from "../../Utils/Utils";
+import fonts from "../../Theme/Fonts";
 
 
 
@@ -31,10 +32,12 @@ const styles = StyleSheet.create({
 
     button: {
         fontSize: 16,
-        fontWeight: "700",
+        // fontWeight: "700",
         textAlign: "center",
         margin: dimen(15),
         color: colors.White,
+    fontFamily:fonts.PoppinsBold ,
+    
     },
 
     btn: {

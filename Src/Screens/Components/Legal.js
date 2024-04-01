@@ -5,6 +5,7 @@ import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import colors from '../../Theme/Colors'
 import CheckBox from '@react-native-community/checkbox';
 import { images } from '../../Theme/Images'
+import fonts from '../../Theme/Fonts'
 
 
 const Legal = (props) => {
@@ -18,29 +19,30 @@ const Legal = (props) => {
 
                 <View style={styles.middle_view}>
 
-                    <View style={{ top: dimen(26) ,flexDirection:"row",justifyContent:"space-between"}}>
+                    <View style={{ top: dimen(26), flexDirection: "row", justifyContent: "space-between" }}>
                         <Text style={{ color: colors.textcolor, fontSize: 16, fontWeight: "500" }}>Privacy Policy</Text>
                         <TouchableOpacity>
-                        <Image source={images.greaterthan} style={styles.img}/>
+                            <Image source={images.greaterthan} style={styles.img} />
 
                         </TouchableOpacity>
                     </View>
 
                     <View style={styles.Line} />
 
-                    <View style={{ top: dimen(60) ,flexDirection:"row",justifyContent:"space-between" }}>
+                    <View style={{ top: dimen(60), flexDirection: "row", justifyContent: "space-between" }}>
                         <Text style={{ color: colors.textcolor, fontSize: 16, fontWeight: "500" }}>Terms of Service</Text>
                         <TouchableOpacity>
-                        <Image source={images.greaterthan} style={styles.img}/>
+                            <Image source={images.greaterthan} style={styles.img} />
 
                         </TouchableOpacity>
-                  
+
                     </View>
 
                 </View>
 
 
             </View>
+           
             <View style={styles.main_view2}>
                 <View style={styles.bottom_text_View}>
 
@@ -54,7 +56,7 @@ const Legal = (props) => {
                 </View>
 
                 <View style={styles.bottom_btn_View}>
-                    <Button onPress={()=>{props.navigation.navigate("walletname")}} name='Continue'/>
+                    <Button onPress={() => { props.navigation.navigate("walletname") }} name='Continue' />
                 </View>
 
             </View>
@@ -69,18 +71,18 @@ export default Legal
 const styles = StyleSheet.create({
     main_Container: {
         flex: 1,
-        backgroundColor:colors.White
+        backgroundColor: colors.White
 
     },
     main_view1: {
         flex: 0.72,
         marginHorizontal: dimen(24),
-
-
     },
     top_text_View: {
         height: dimen(48),
         top: dimen(16),
+        // marginTop: dimen(16),
+
 
     },
     top_text: {
@@ -109,16 +111,16 @@ const styles = StyleSheet.create({
 
 
     },
-    img:{
-height:dimen(20),
-width:dimen(20)
+    img: {
+        height: dimen(20),
+        width: dimen(20)
     },
     Line: {
         borderWidth: 0.5,
         top: dimen(40),
         borderColor: colors.borderColor,
-        // marginHorizontal:dimen(15)
     },
+
     main_view2: {
         flex: 0.28,
         marginHorizontal: dimen(24),
@@ -137,13 +139,12 @@ width:dimen(20)
     },
     bottom_text: {
         fontSize: 16,
-        fontWeight: "500",
+        // fontWeight: "500",
+        fontFamily:fonts.PoppinsMedium,
         color: colors.textcolor,
         lineHeight: dimen(24)
     },
     bottom_btn_View: {
-        top: dimen(36),
-        bottom: dimen(60),
-
+        marginTop: dimen(40),
     }
 })
