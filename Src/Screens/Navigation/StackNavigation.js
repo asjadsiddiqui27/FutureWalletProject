@@ -1,8 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native'
 import WalletName from '../Components/WalletName';
+import Onboarding from '../Components/Onboarding';
+import colors from '../../Theme/Colors';
+import fonts from '../../Theme/Fonts';
 import Legal from '../Components/Legal';
 
 
@@ -14,50 +17,48 @@ const Stack = createNativeStackNavigator();
 const StackNavigation = () => {
   return (
     <NavigationContainer>
-        <Stack.Navigator
-
-screenOptions={{
-    headerStyle: {
-        
-    },
-    headerShadowVisible: false,
-    headerTitleStyle: {
-        
-        // fontWeight: "400",                    
-    }
-}}>
-
-
-<Stack.Screen
-                    name='Legal'
-                    component={Legal}
-                    // options={{ headerShown: false }}
-                />
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            // backgroundColor:"yellow"
+          },
+          headerShadowVisible: false,
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: colors.Black,
+            fontFamily: fonts.PoppinsBold
+          }
+        }}>
 
 
+        <Stack.Screen
+          name='onboarding'
+          component={Onboarding}
+          options={{
 
-        {/* <Stack.Screen
-                    name='walletname'
-                    component={WalletName}
-                    // options={{ headerShown: false }}
-                /> */}
-
-
-
-
+            headerShown: false
+          }}
+        />
 
 
-
+        <Stack.Screen
+          name='legal'
+          component={Legal}
+          options={{
+            title: "Legal"
+          }}
+        />
 
 
 
-
-
-
-
-
-
-
+        <Stack.Screen
+          name='walletname'
+          component={WalletName}
+          options={{
+            title: "Wallet Name"
+          }}
+        />
 
 
 
@@ -79,7 +80,26 @@ screenOptions={{
 
 
 
-        </Stack.Navigator>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }

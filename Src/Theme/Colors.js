@@ -1,4 +1,9 @@
 const colors = {
+  // our 
+   subText:'#56828E',
+   lightBlue:'#00BEF2',
+
+  // end 
   newColor: '#1C1D21',
   newHeader: '#1A202E',
   newSafe: '#0C0C0D',
@@ -56,7 +61,10 @@ const colors = {
   background: "#00BEF2",
   topText:"#56828E",
   textcolor: "#000000",
-borderColor:"#BEDFE8"
 
+// label
+
+greaterThanSign:"#56828E",
+borderLineColor:"#BEDFE8"
 };
 export default colors;

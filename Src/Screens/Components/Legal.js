@@ -5,36 +5,37 @@ import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import colors from '../../Theme/Colors'
 import CheckBox from '@react-native-community/checkbox';
 import { images } from '../../Theme/Images'
+import { Strings } from '../../Theme/Strings'
 
 
-const Legal = () => {
+const Legal = (props) => {
     const [isSelected, setSelection] = useState(false);
     return (
         <View style={styles.main_Container}>
             <View style={styles.main_view1}>
                 <View style={styles.top_text_View}>
-                    <Text style={styles.top_text}>Please review the Future Wallet terms of service and privacy policy</Text>
+                    <Text style={styles.top_text}>{Strings.English.label.topLabel}</Text>
                 </View>
 
-                <View style={styles.middle_view}>
+                <View style={styles.middle_main_view}>
 
-                    <View style={{ top: dimen(26) ,flexDirection:"row",justifyContent:"space-between"}}>
-                        <Text style={{ color: colors.textcolor, fontSize: 16, fontWeight: "500" }}>Privacy Policy</Text>
+                <View style={[styles.middle_data_view,{top:dimen(23)}]}>
+                        <Text style={styles.middle_Label_text}>{Strings.English.label.privacyPolicy}</Text>
                         <TouchableOpacity>
-                        <Image source={images.greaterthan} style={styles.img}/>
+                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greaterThanSign }]} />
 
                         </TouchableOpacity>
                     </View>
 
                     <View style={styles.Line} />
 
-                    <View style={{ top: dimen(60) ,flexDirection:"row",justifyContent:"space-between" }}>
-                        <Text style={{ color: colors.textcolor, fontSize: 16, fontWeight: "500" }}>Terms of Service</Text>
+                    <View style={styles.middle_data_view}>
+                        <Text style={styles.middle_Label_text}>{Strings.English.label.termsOfService}</Text>
                         <TouchableOpacity>
-                        <Image source={images.greaterthan} style={styles.img}/>
+                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greaterThanSign }]} />
 
                         </TouchableOpacity>
-                  
+
                     </View>
 
                 </View>
@@ -50,11 +51,11 @@ const Legal = () => {
                         style={styles.checkbox}
                         tintColors={{ true: '#00BEF2', false: '#00BEF2' }}
                     />
-                    <Text style={styles.bottom_text}>I've read and accept the terms of service and privacy policy </Text>
+                    <Text style={styles.bottom_text}>{Strings.English.label.bottomText} </Text>
                 </View>
 
                 <View style={styles.bottom_btn_View}>
-                    <Button name='Continue'/>
+                    <Button onPress={() => { props.navigation.navigate("walletname") }} name='Continue' />
                 </View>
 
             </View>
@@ -69,7 +70,7 @@ export default Legal
 const styles = StyleSheet.create({
     main_Container: {
         flex: 1,
-        backgroundColor:colors.White
+        backgroundColor: colors.White
 
     },
     main_view1: {
@@ -80,11 +81,10 @@ const styles = StyleSheet.create({
     },
     top_text_View: {
         height: dimen(48),
-        top: dimen(32),
+        top: dimen(16),
 
     },
     top_text: {
-
         fontSize: 16,
         lineHeight: dimen(24),
         color: colors.topText,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
 
-    middle_view: {
+    middle_main_view: {
         top: dimen(60),
         height: dimen(123),
         borderColor: colors.borderColor,
@@ -105,19 +105,27 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-       
-
 
     },
-    img:{
-height:dimen(20),
-width:dimen(20)
+    middle_data_view:{
+        top: dimen(60),
+         flexDirection: "row", 
+         justifyContent: "space-between" 
+    },
+    middle_Label_text:{
+        color: colors.textcolor,
+         fontSize: 16,
+          fontWeight: "500"  
+    },
+    img: {
+        height: dimen(12),
+        width: dimen(7)
     },
     Line: {
         borderWidth: 0.5,
         top: dimen(40),
-        borderColor: colors.borderColor,
-       
+        borderColor: colors.borderLineColor,
+
     },
     main_view2: {
         flex: 0.28,
@@ -128,11 +136,6 @@ width:dimen(20)
     bottom_text_View: {
         height: dimen(48),
         flexDirection: "row",
-
-    },
-
-    checkbox: {
-
 
     },
     bottom_text: {

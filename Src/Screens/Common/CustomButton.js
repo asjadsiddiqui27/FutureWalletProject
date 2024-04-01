@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-
 import colors from "../../Theme/Colors";
+import { getDimensionPercentage as dimen } from "../../Utils/Utils";
+
 
 
 
 
 function Button({
-    onPress = () => { onPressFunc() },
+    onPress = () => { console.log("Btn pressed")},
     name = 'Click me',
     buttonStyle = styles.btn,
     textColor = styles.button,
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "700",
         textAlign: "center",
-        margin: 15,
+        margin: dimen(15),
         color: colors.White,
     },
 
