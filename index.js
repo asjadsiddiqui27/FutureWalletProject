@@ -7,5 +7,6 @@ import App from './App';
 import {name as appName} from './app.json';
 // import Onboarding from './Src/Screens/Components/Onboarding';
 import StackNavigation from './Src/Screens/Navigation/StackNavigation';
+import AfterTakingScreenshot from './Src/Screens/Components/AfterTakingScreenshot';
 
-AppRegistry.registerComponent(appName, () => StackNavigation);
+AppRegistry.registerComponent(appName, () => AfterTakingScreenshot);
