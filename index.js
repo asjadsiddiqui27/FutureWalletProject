@@ -8,4 +8,4 @@ import {name as appName} from './app.json';
 import StackNavigation from './Src/Screens/Navigation/StackNavigation';
 import AfterTakingScreenshot from './Src/Screens/Components/AfterTakingScreenshot';
 
-AppRegistry.registerComponent(appName, () => AfterTakingScreenshot);
+AppRegistry.registerComponent(appName, () => StackNavigation);
