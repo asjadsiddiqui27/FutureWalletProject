@@ -9,12 +9,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
-import images from '../../Theme/Images';
+// import images from '../../Theme/Images';
 import colors from '../../Theme/Colors';
 import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import Button from '../Common/CustomButton';
 import fonts from '../../Theme/Fonts';
 import { Strings } from '../../Theme/Strings';
+import { images } from '../../Theme/Images';
 
 const Onboarding = (props) => {
   return (
@@ -22,7 +23,7 @@ const Onboarding = (props) => {
         <View style={{flex:1,marginHorizontal: 14, }}>
       <View style={{flex: 0.8}}>
         <View style={styles.imgContainer}>
-          <Image style={styles.groupImg} source={images.group} />
+          <Image style={styles.groupImg} source={images.telegram} />
         </View>
         <View style={styles.imgContainerText}>
           <Text style={styles.imgTextFirst}>{Strings.English.onboarding.safe}</Text>
@@ -34,7 +35,7 @@ const Onboarding = (props) => {
 
       <View style={styles.footer}>
       <View style={styles.insideFooter}>
-        <Button onPress={()=>props.navigation.navigate("walletname")} name={'Create a new wallet'} />
+        <Button onPress={()=>props.navigation.navigate("legal")} name={'Create a new wallet'} />
         <TouchableOpacity style={styles.alreadyAcc}>
           <Text style={styles.alreadyAccText}>I already have a wallet</Text>
         </TouchableOpacity>
