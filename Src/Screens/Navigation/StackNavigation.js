@@ -10,6 +10,7 @@ import Legal from '../Components/Legal';
 import SecretPhrase from '../Components/SecretPhrase';
 import VerifySecretPhrase from '../Components/VerifySecretPhrase';
 import { Strings } from '../../Theme/Strings';
+import SetPasscode from '../Components/SetPasscode';
 
 
 const Stack = createNativeStackNavigator();
@@ -34,7 +35,6 @@ const StackNavigation = () => {
           }
         }}>
 
-
         <Stack.Screen
           name='onboarding'
           component={Onboarding}
@@ -44,7 +44,6 @@ const StackNavigation = () => {
           }}
         />
 
-
         <Stack.Screen
           name='legal'
           component={Legal}
@@ -52,8 +51,6 @@ const StackNavigation = () => {
             title: "Legal"
           }}
         />
-
-
 
         <Stack.Screen
           name='walletname'
@@ -72,12 +69,19 @@ const StackNavigation = () => {
           }}
         />
 
-
         <Stack.Screen
           name='verifysecretphrase'
           component={VerifySecretPhrase}
           options={{
             title: "Verify Secret Phrase"
+          }}
+        />
+
+        <Stack.Screen
+          name='setpasscode'
+          component={SetPasscode}
+          options={{
+            title: "Set Passcode"
           }}
         />
 

@@ -45,6 +45,13 @@ export const Strings = {
             verifySecretPhrase: "Verify Secret Phrase",
             taptheWord: "Tap the words to put them next to each other in the correct order. ",
         },
+        Passcode:{
+            setpasscode:"Set passcode",
+            ConfirmPasscode:"Confirm Passcode",
+            CreatePasscode:"Create Passcode",
+            passcodeAddsSecurity:"Adds an extra layer of security when using the app",
+
+        },
         manageWallet: {
             manageWallet: "Manage Wallet",
             addnewWallet: "Add New Wallet",

@@ -216,7 +216,7 @@ export const images = {
   theme: require("../../assets/images/Theme.png"),
   light: require("../../assets/images/light.png"),
   dark: require("../../assets/images/dark.png"),
-  welcomelogo: require("../../assets/images/welcomelogo.png"),
+  welcomelogo: require("../../assets/images/main_WelcomeLogo.png"),
   safeIcon: require("../../assets/images/safeIcon.png"),
   checked: require("../../assets/images/checked.png"),
   blackBack: require("../../assets/images/blackBack.png"),

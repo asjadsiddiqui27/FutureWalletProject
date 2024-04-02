@@ -8,7 +8,7 @@ import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import fonts from '../../Theme/Fonts'
 
 
-const VerifySecretPhrase = () => {
+const VerifySecretPhrase = (props) => {
 
     const [dataArray, setMainArray] = useState(wordsArray)
     const [newArray, setNewArray] = useState([])
@@ -40,7 +40,7 @@ const VerifySecretPhrase = () => {
                 <View style={styles.main_body_container}>
                  
                     <View style={styles.text_heading_container}>
-                        <Text style={styles.text_main_heading}>{Strings.English.verifyPhrase.taptheWord}</Text>
+                        <Text onPress={()=>{props.navigation.navigate("setpasscode")}} style={styles.text_main_heading}>{Strings.English.verifyPhrase.taptheWord}</Text>
                     </View>
 
                     <View style={styles.body_main_container}>
@@ -58,23 +58,6 @@ const VerifySecretPhrase = () => {
                             </View>
                         ))}
                     </View>
-{/* 
-
-                    <View style={styles.body_items_container}>
-                        {dataArray.map((item, index) => (
-                            <Button key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={styles.btn_txt_2} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => { console.log(item) }} />
-
-                        ))}
-                    </View> */}
-
-
-
-
-
-
-
-
-
                 </View>
 
 
