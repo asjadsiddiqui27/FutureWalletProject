@@ -20,12 +20,16 @@ import { Strings } from '../../Theme/Strings';
 const height = Dimensions.get('window').height;
 
 export default function AfterTakingScreenshot(props) {
+  
   return (
     <BottomSheet
       ref={props.panelRef}
-    //   isOpen={false}
+      isOpen={false}
       sliderMinHeight={0}
-      sliderMaxHeight={height*0.8}
+      sliderMaxHeight={height/1.18}
+      onOpen={props.onOpen}
+      onClose={props.onClose}
+    
       >
         <ScrollView>
       <View style={styles.main}>
@@ -129,6 +133,7 @@ export default function AfterTakingScreenshot(props) {
       <View style={styles.mainfooter}>
         <Button
           name="Continue"
+          onPress={()=>props.navigation.navigate("verifysecretphrase")}
           buttonStyl={styles.btn}
           textColor={styles.btnText}
         />

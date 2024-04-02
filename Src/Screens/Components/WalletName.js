@@ -9,9 +9,8 @@ import fonts from '../../Theme/Fonts';
 import BottomSheet from 'react-native-simple-bottom-sheet';
 import AfterTakingScreenshot from './AfterTakingScreenshot';
 
-const WalletName = () => {
+const WalletName = (props) => {
   const [name, setName] = useState('');
-  const panelRef = useRef(null);
 
   return (
     <View style={styles.main_container}>
@@ -35,14 +34,10 @@ const WalletName = () => {
         <Button
           name={'Continue'}
           
-          onPress={() => panelRef.current.togglePanel()}
+         onPress={()=>props.navigation.navigate("secretphrase")}
           buttonStyle={styles.btn}
         />
       </View>
-      {/* <BottomSheet ref={panelRef}>
-        <Text style={{paddingVertical: 20}}>Some random content</Text>
-      </BottomSheet> */}
-      <AfterTakingScreenshot panelRef={panelRef}/>
     </View>
   );
 };
