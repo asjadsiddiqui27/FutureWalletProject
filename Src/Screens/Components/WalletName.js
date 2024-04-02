@@ -6,17 +6,19 @@ import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import InputText from '../Common/Input'
 import Button from '../Common/CustomButton'
 import fonts from '../../Theme/Fonts'
+import CustomHeader from '../Common/CustomHeader'
 
-
-const WalletName = () => {
+const WalletName = (props) => {
     const [name, setName] = useState('')
 
 
     return (
         <View style={styles.main_container}>
+             
 
             <View style={styles.heading_container}>
-                <Text style={styles.heading_text_style}>{Strings.English.walletName.youCanlable}</Text>
+            <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name'/>
+                <Text onPress={()=>{props.navigation.navigate("secretphrase")}} style={styles.heading_text_style}>{Strings.English.walletName.youCanlable}</Text>
             </View>
 
 
@@ -43,13 +45,15 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     heading_container: {
-        marginHorizontal: dimen(54.5),
+        marginHorizontal: dimen(24),
         marginTop:dimen(16)
     },
     heading_text_style: {
-        fontSize: 15,
+        fontSize: 16,
         lineHeight: dimen(24),
-        textAlign: "center"
+        textAlign: "center",
+        fontFamily:fonts.PoppinsMedium,
+        color:colors.topText
 
     },
     Input_main_container: {
@@ -58,13 +62,17 @@ const styles = StyleSheet.create({
         marginHorizontal: dimen(24),
     },
     name_label_name: {
-        marginBottom: dimen(12.33)
+        marginBottom: dimen(12.33),
+        fontFamily:fonts.PoppinsMedium,
+        color:colors.topText
+
     },
     max_limit_txt_style: {
         fontSize: 14,
         marginTop: dimen(12.86),
         textAlign: "right",
-        color: colors.background
+        color: colors.background,
+        fontFamily:fonts.PoppinsMedium
     },
     footer_container: {
         flex: 0.2,
@@ -74,10 +82,9 @@ const styles = StyleSheet.create({
     btn: {
         height: 50,
         width: "auto",
-        // marginHorizontal: 24,
         backgroundColor: colors.background,
         borderRadius: 12,
-        marginBottom: dimen(66.88)
+        marginBottom: dimen(66.88),
     },
 
 })

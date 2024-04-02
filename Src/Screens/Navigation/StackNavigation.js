@@ -7,6 +7,11 @@ import Onboarding from '../Components/Onboarding';
 import colors from '../../Theme/Colors';
 import fonts from '../../Theme/Fonts';
 import Legal from '../Components/Legal';
+import SecretPhrase from '../Components/SecretPhrase';
+import VerifySecretPhrase from '../Components/VerifySecretPhrase';
+import { Strings } from '../../Theme/Strings';
+import ImportWallet from '../Components/ImportWallet';
+import ConfirmPasscode from '../Components/ConfirmPasscode';
 
 
 const Stack = createNativeStackNavigator();
@@ -24,11 +29,11 @@ const StackNavigation = () => {
             // backgroundColor:"yellow"
           },
           headerShadowVisible: false,
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: colors.Black,
-            fontFamily: fonts.PoppinsBold
-          }
+          // headerTitleAlign: 'center',
+          // headerTitleStyle: {
+          //   color: colors.Black,
+          //   fontFamily: fonts.PoppinsBold
+          // }
         }}>
 
 
@@ -46,7 +51,8 @@ const StackNavigation = () => {
           name='legal'
           component={Legal}
           options={{
-            title: "Legal"
+
+            headerShown: false
           }}
         />
 
@@ -56,10 +62,47 @@ const StackNavigation = () => {
           name='walletname'
           component={WalletName}
           options={{
-            title: "Wallet Name"
+
+            headerShown: false
           }}
         />
 
+        <Stack.Screen
+          name='secretphrase'
+          component={SecretPhrase}
+          options={{
+
+            headerShown: false
+          }}
+        />
+
+
+        <Stack.Screen
+          name='verifysecretphrase'
+          component={VerifySecretPhrase}
+          options={{
+
+            headerShown: false
+          }}
+        />
+
+        <Stack.Screen
+          name='ImportWallet'
+          component={ImportWallet}
+          options={{
+
+            headerShown: false
+          }}
+        />
+
+<Stack.Screen
+          name='ConfirmPasscode'
+          component={ConfirmPasscode}
+          options={{
+
+            headerShown: false
+          }}
+        />
 
 
 

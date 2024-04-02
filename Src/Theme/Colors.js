@@ -66,8 +66,8 @@ const colors = {
 background: "#00BEF2",
 greenText:"#56828E",
 textcolor: "#000000",
-borderLineColor:"#BEDFE8"
-
-
+greaterThanSign:"#56828E",
+borderLineColor:"#BEDFE8",
+lightCardBg:"#F0F9FC",
 };
 export default colors;

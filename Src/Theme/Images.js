@@ -1,4 +1,10 @@
 export const images = {
+  //our //
+
+  group: require('../../assets/images/Group.png'),
+
+
+  // end 
   appLogo: require('../../assets/images/appLogo.png'),
   appLogo1: require('../../assets/images/appLogo1.png'),
   appBg: require('../../assets/images/appBg.png'),
@@ -242,6 +248,6 @@ export const images = {
   copyColored: require("../../assets/images/copyColored.png"),
   providerIcon: require("../../assets/images/providerIcon.png"),
   greaterthan:require("../../assets/images/greater_than.png"),
-  
+  headerIcon:require("../../assets/images/VectorLess.png")
 };
 // export default images;
