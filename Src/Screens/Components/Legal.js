@@ -1,8 +1,8 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
-import Button from '../Common/CustomButton'
-import { getDimensionPercentage as dimen } from '../../Utils/Utils'
-import colors from '../../Theme/Colors'
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import Button from '../Common/CustomButton';
+import {getDimensionPercentage as dimen} from '../../Utils/Utils';
+import colors from '../../Theme/Colors';
 import CheckBox from '@react-native-community/checkbox';
 import { images } from '../../Theme/Images'
 import { Strings } from '../../Theme/Strings'
@@ -28,7 +28,7 @@ const Legal = (props) => {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={styles.Line} />
+          <View style={styles.Line} />
 
                     <View style={styles.middle_data_view}>
                         <Text style={styles.middle_Label_text}>{Strings.English.label.termsOfService}</Text>
@@ -66,10 +66,12 @@ const Legal = (props) => {
 
 
         </View>
-    )
-}
+      </View>
+    </View>
+  );
+};
 
-export default Legal
+export default Legal;
 
 const styles = StyleSheet.create({
     main_Container: {
