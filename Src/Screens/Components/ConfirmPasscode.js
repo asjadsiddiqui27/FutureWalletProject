@@ -6,12 +6,12 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-
+import CustomHeader from '../Common/CustomHeader';
 
 
 const CELL_COUNT = 6;
 
-const ConfirmPasscode = () => {
+const ConfirmPasscode = ({navigation}) => {
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -21,6 +21,7 @@ const ConfirmPasscode = () => {
 
   return (
     <SafeAreaView style={styles.root}>
+         <CustomHeader onPress={()=>{navigation.navigate("verifysecretphrase")}}  header='Import Wallet'/>
       <Text style={styles.title}>Verification</Text>
       <CodeField
         ref={ref}

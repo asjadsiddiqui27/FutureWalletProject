@@ -108,40 +108,6 @@ const StackNavigation = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </Stack.Navigator>
     </NavigationContainer>
   )
