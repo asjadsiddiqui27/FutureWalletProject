@@ -37,7 +37,7 @@ const Onboarding = (props) => {
       <View style={styles.insideFooter}>
         <Button onPress={()=>props.navigation.navigate("legal")} name={'Create a new wallet'} />
         <TouchableOpacity style={styles.alreadyAcc}>
-          <Text style={styles.alreadyAccText}>I already have a wallet</Text>
+          <Text style={styles.alreadyAccText}>{Strings.English.onboarding.alreadyWallet}</Text>
         </TouchableOpacity>
       </View>
       </View>
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
   imgTextSecond: {
     fontSize: 16,
     color: colors.subText,
+    // fontFamily:"Poppins-Medium"\
   },
   footer: {
     flex: 0.2,

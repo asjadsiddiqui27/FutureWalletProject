@@ -5,6 +5,7 @@ import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import colors from '../../Theme/Colors';
 import CheckBox from '@react-native-community/checkbox';
 import {images} from '../../Theme/Images';
+import fonts from '../../Theme/Fonts';
 
 const Legal = props => {
   const [isSelected, setSelection] = useState(false);
@@ -68,9 +69,11 @@ const Legal = props => {
               style={styles.checkbox}
               tintColors={{true: '#00BEF2', false: '#00BEF2'}}
             />
+            
             <Text style={styles.bottom_text}>
-              I've read and accept the terms of service and privacy policy{' '}
+              I've read and accept the terms of service and privacy policy
             </Text>
+            
           </View>
 
           <View>
@@ -137,6 +140,7 @@ const styles = StyleSheet.create({
   },
 
   // footer //
+
   main_view2: {
     flex: 0.28,
     marginHorizontal: dimen(24),
@@ -147,10 +151,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  checkbox: {},
+//   checkbox: {},
   bottom_text: {
     fontSize: 16,
-    fontWeight: '500',
+    // fontWeight: '500',
+    fontFamily:fonts.PoppinsMedium,
     color: colors.textcolor,
     lineHeight: dimen(24),
   },
