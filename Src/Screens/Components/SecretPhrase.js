@@ -16,7 +16,7 @@ import {
   import { wordsArray } from '../../Theme/Const';
   import AfterTakingScreenshot from './AfterTakingScreenshot';
   
-  const SecretPhrase = () => {
+  const SecretPhrase = (props) => {
     const panelRef = useRef(null);
     const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
   
@@ -88,6 +88,7 @@ import {
           onOpen={() => setBottomSheetVisible(true)}
           onClose={() => setBottomSheetVisible(false)}
           panelRef={panelRef}
+          navigation={props.navigation}
         />
       </View>
     );

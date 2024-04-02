@@ -17,10 +17,11 @@ import HorizontalLine from '../Common/HorizontalLine';
 import Button from '../Common/CustomButton';
 import { Strings } from '../../Theme/Strings';
 
+
 const height = Dimensions.get('window').height;
 
 export default function AfterTakingScreenshot(props) {
-  
+  const {navigation} = props;
   return (
     <BottomSheet
       ref={props.panelRef}
@@ -133,7 +134,7 @@ export default function AfterTakingScreenshot(props) {
       <View style={styles.mainfooter}>
         <Button
           name="Continue"
-          onPress={()=>props.navigation.navigate("verifysecretphrase")}
+          onPress={() => navigation.navigate('verifysecretphrase')}
           buttonStyl={styles.btn}
           textColor={styles.btnText}
         />

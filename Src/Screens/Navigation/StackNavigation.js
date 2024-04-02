@@ -15,8 +15,9 @@ import AfterTakingScreenshot from '../Components/AfterTakingScreenshot';
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
+  const navigationRef = React.useRef(null);
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       <Stack.Navigator
         screenOptions={{
