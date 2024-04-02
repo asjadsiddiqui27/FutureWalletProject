@@ -62,6 +62,14 @@ export const Strings = {
             back: 'Back',
             headerText: "This is your seed phrase. Write it down on a paper and keep it in a safe place. You'll be asked to re- enter this phrase(in order) on the next step."
         },
+        importWallet:{
+            enteName:"Enter Name",
+            Wallet1:"Wallet 1",
+            secretPhrase:"Secret Phrase",
+            middleText:"12 words separated by single space",
+            bottomText:"What is Secret Phrase?",
+            Paste:"Paste"
+        }
 
     }
 }

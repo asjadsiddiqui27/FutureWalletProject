@@ -7,13 +7,14 @@ import CheckBox from '@react-native-community/checkbox';
 import { images } from '../../Theme/Images'
 import { Strings } from '../../Theme/Strings'
 import fonts from '../../Theme/Fonts'
-
+import CustomHeader from '../Common/CustomHeader';
 
 const Legal = (props) => {
     const [isSelected, setSelection] = useState(false);
     return (
         <View style={styles.main_Container}>
             <View style={styles.main_view1}>
+            <CustomHeader onPress={()=>{props.navigation.navigate("onboarding")}}  header='Legal'/>
                 <View style={styles.top_text_View}>
                     <Text style={styles.top_text}>{Strings.English.label.topLabel}</Text>
                 </View>
@@ -23,7 +24,7 @@ const Legal = (props) => {
                     <View style={[styles.middle_data_view, { top: dimen(23) }]}>
                         <Text style={styles.middle_Label_text}>{Strings.English.label.privacyPolicy}</Text>
                         <TouchableOpacity>
-                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greaterThanSign }]} />
+                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greenText }]} />
 
                         </TouchableOpacity>
                     </View>
@@ -33,7 +34,7 @@ const Legal = (props) => {
                     <View style={styles.middle_data_view}>
                         <Text style={styles.middle_Label_text}>{Strings.English.label.termsOfService}</Text>
                         <TouchableOpacity>
-                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greaterThanSign }]} />
+                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greenText }]} />
 
                         </TouchableOpacity>
 
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     top_text: {
         fontSize: 15,
         lineHeight: dimen(24),
-        color: colors.topText,
+        color: colors.greenText,
         fontFamily:fonts.PoppinsRegular,
         textAlign: "center",
     },

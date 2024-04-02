@@ -21,6 +21,7 @@ const Onboarding = (props) => {
   return (
     <SafeAreaView style={styles.safeArea}>
         <View style={{flex:1,marginHorizontal: 14, }}>
+      
       <View style={{flex: 0.8}}>
         <View style={styles.imgContainer}>
           <Image style={styles.groupImg} source={images.group} />

@@ -58,12 +58,14 @@ const colors = {
   bg4: '#FFDAA2',
   viewBg: '#F1F5F9',
   bgView: "#F4F9FA",
-  background: "#00BEF2",
-  topText:"#56828E",
-  textcolor: "#000000",
+
+ 
+
 
 // label
-
+background: "#00BEF2",
+greenText:"#56828E",
+textcolor: "#000000",
 greaterThanSign:"#56828E",
 borderLineColor:"#BEDFE8",
 lightCardBg:"#F0F9FC",

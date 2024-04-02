@@ -13,10 +13,11 @@ import {
     useBlurOnFulfill,
     useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
+import CustomHeader from '../Common/CustomHeader'
 const CELL_COUNT = 6;
 
 
-const SetPasscode = () => {
+const SetPasscode = ({navigation}) => {
 
     const [passcode, setPasscode] = useState(["", "", "", "", "", ""])
     const passwordSet = (v, index) => {
@@ -35,6 +36,11 @@ const SetPasscode = () => {
     return (
         <View style={styles.main_View}>
             <View style={styles.main_container}>
+
+                <CustomHeader 
+                header={Strings.English.Passcode.setpasscode} 
+                onPress={()=>{navigation.navigate("ImportWallet")}}
+                />
 
                 <View style={styles.body_container}>
                     <Image source={images.welcomelogo} style={styles.img_style} />
@@ -71,7 +77,7 @@ const SetPasscode = () => {
                     <Text style={styles.txt_style}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
                 </View>
                 <View style={styles.Footer_container}>
-                    <Button btnView={styles.btnView} />
+                    <Button onPress={()=>{navigation.navigate("ConfirmPasscode")}}  btnView={styles.btnView} />
                 </View>
 
             </View>

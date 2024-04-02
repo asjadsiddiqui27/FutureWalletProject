@@ -6,7 +6,7 @@ import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import InputText from '../Common/Input'
 import Button from '../Common/CustomButton'
 import fonts from '../../Theme/Fonts'
-
+import CustomHeader from '../Common/CustomHeader'
 
 const WalletName = (props) => {
     const [name, setName] = useState('')
@@ -14,8 +14,10 @@ const WalletName = (props) => {
 
     return (
         <View style={styles.main_container}>
+             
 
             <View style={styles.heading_container}>
+            <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name'/>
                 <Text onPress={()=>{props.navigation.navigate("secretphrase")}} style={styles.heading_text_style}>{Strings.English.walletName.youCanlable}</Text>
             </View>
 

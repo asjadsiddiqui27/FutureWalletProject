@@ -6,6 +6,7 @@ import { wordsArray } from '../../Theme/Const'
 import { Strings } from '../../Theme/Strings'
 import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import fonts from '../../Theme/Fonts'
+import CustomHeader from '../Common/CustomHeader'
 
 
 const VerifySecretPhrase = (props) => {
@@ -37,6 +38,7 @@ const VerifySecretPhrase = (props) => {
         <View style={styles.container}>
 
             <View style={styles.main_container}>
+            <CustomHeader onPress={()=>{props.navigation.navigate("secretphrase")}}  header='Verify Secret Phrase'/>
                 <View style={styles.main_body_container}>
                  
                     <View style={styles.text_heading_container}>
@@ -53,16 +55,17 @@ const VerifySecretPhrase = (props) => {
                         {dataArray.map((item, index) => (
                             <View style={{}} key={index}>
                                 {item != "" ?
-                                     <Button key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={styles.btn_txt_2} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => { console.log(item), setItem(item, index) }} />
+                                     <Button key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={styles.btn_txt_2} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => {console.log(item), setItem(item, index) }} />
                                   :  <View style={styles.empty_Word} />}
                             </View>
                         ))}
                     </View>
+
                 </View>
 
 
                 <View style={styles.footer_container}>
-                    <Button/>
+                    <Button onPress={()=>{props.navigation.navigate("ImportWallet")}}/>
                 </View>
 
             </View>

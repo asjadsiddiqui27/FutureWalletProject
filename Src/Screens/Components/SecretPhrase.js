@@ -8,13 +8,14 @@ import Button from '../Common/CustomButton'
 import CustomBtnWIthIcon from '../Common/CustomButtonWithIcon'
 import { images } from '../../Theme/Images'
 import { wordsArray } from '../../Theme/Const'
-
+import CustomHeader from '../Common/CustomHeader'
 const SecretPhrase = (props) => {
 
 console.log(wordsArray)
     return (
         <View style={styles.safeArea}>
             <View style={styles.main_container}>
+            <CustomHeader onPress={()=>{props.navigation.navigate("walletname")}}  header='Secret phrase'/>
                 <View style={styles.upper_View}>
 
                     <View style={styles.text_heading_container}>

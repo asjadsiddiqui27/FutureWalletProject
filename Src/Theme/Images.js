@@ -248,6 +248,6 @@ export const images = {
   copyColored: require("../../assets/images/copyColored.png"),
   providerIcon: require("../../assets/images/providerIcon.png"),
   greaterthan:require("../../assets/images/greater_than.png"),
-  
+  headerIcon:require("../../assets/images/VectorLess.png")
 };
 // export default images;

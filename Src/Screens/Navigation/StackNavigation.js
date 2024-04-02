@@ -11,6 +11,9 @@ import SecretPhrase from '../Components/SecretPhrase';
 import VerifySecretPhrase from '../Components/VerifySecretPhrase';
 import { Strings } from '../../Theme/Strings';
 import SetPasscode from '../Components/SetPasscode';
+import ImportWallet from '../Components/ImportWallet';
+import ConfirmPasscode from '../Components/ConfirmPasscode';
+// import ConfirmPasscode from '../Components/ConfirmPasscode';
 
 
 const Stack = createNativeStackNavigator();
@@ -28,11 +31,12 @@ const StackNavigation = () => {
             // backgroundColor:"yellow"
           },
           headerShadowVisible: false,
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: colors.Black,
-            fontFamily: fonts.PoppinsBold
-          }
+          // headerTitleAlign: 'center',
+          // headerTitleStyle: {
+          //   color: colors.Black,
+          //   fontFamily: fonts.PoppinsBold
+          headerShown:false,
+          // }
         }}>
 
         <Stack.Screen
@@ -48,7 +52,8 @@ const StackNavigation = () => {
           name='legal'
           component={Legal}
           options={{
-            title: "Legal"
+
+            headerShown: false
           }}
         />
 
@@ -56,8 +61,8 @@ const StackNavigation = () => {
           name='walletname'
           component={WalletName}
           options={{
-            title: Strings.English.walletName.walletName
 
+            headerShown: false
           }}
         />
 
@@ -65,7 +70,8 @@ const StackNavigation = () => {
           name='secretphrase'
           component={SecretPhrase}
           options={{
-            title: Strings.English.secretPhrase.secretPhrase
+
+            headerShown: false
           }}
         />
 
@@ -73,7 +79,17 @@ const StackNavigation = () => {
           name='verifysecretphrase'
           component={VerifySecretPhrase}
           options={{
-            title: "Verify Secret Phrase"
+
+            headerShown: false
+          }}
+        />
+
+        <Stack.Screen
+          name='ImportWallet'
+          component={ImportWallet}
+          options={{
+
+            headerShown: false
           }}
         />
 
@@ -85,7 +101,12 @@ const StackNavigation = () => {
           }}
         />
 
-
+        <Stack.Screen
+          name='ConfirmPasscode'
+          component={ConfirmPasscode}
+          options={{
+          }}
+        />
 
 
 
