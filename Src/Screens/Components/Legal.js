@@ -22,7 +22,7 @@ const Legal = (props) => {
                 <View style={[styles.middle_data_view,{top:dimen(23)}]}>
                         <Text style={styles.middle_Label_text}>{Strings.English.label.privacyPolicy}</Text>
                         <TouchableOpacity>
-                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greaterThanSign }]} />
+                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greenText }]} />
 
                         </TouchableOpacity>
                     </View>
@@ -32,7 +32,7 @@ const Legal = (props) => {
                     <View style={styles.middle_data_view}>
                         <Text style={styles.middle_Label_text}>{Strings.English.label.termsOfService}</Text>
                         <TouchableOpacity>
-                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greaterThanSign }]} />
+                            <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greenText }]} />
 
                         </TouchableOpacity>
 
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     top_text: {
         fontSize: 16,
         lineHeight: dimen(24),
-        color: colors.topText,
+        color: colors.greenText,
         fontWeight: "500",
         textAlign: "center",
     },

@@ -58,13 +58,16 @@ const colors = {
   bg4: '#FFDAA2',
   viewBg: '#F1F5F9',
   bgView: "#F4F9FA",
-  background: "#00BEF2",
-  topText:"#56828E",
-  textcolor: "#000000",
+
+ 
+
 
 // label
-
-greaterThanSign:"#56828E",
+background: "#00BEF2",
+greenText:"#56828E",
+textcolor: "#000000",
 borderLineColor:"#BEDFE8"
+
+
 };
 export default colors;
