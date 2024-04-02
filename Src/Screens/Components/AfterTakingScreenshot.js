@@ -25,8 +25,9 @@ export default function AfterTakingScreenshot(props) {
       ref={props.panelRef}
     //   isOpen={false}
       sliderMinHeight={0}
-      sliderMaxHeight={height / 1}
+      sliderMaxHeight={height*0.8}
       >
+        <ScrollView>
       <View style={styles.main}>
         <View style={styles.mainHeader}>
           <View style={styles.main_first}>
@@ -123,6 +124,8 @@ export default function AfterTakingScreenshot(props) {
           </View>
         </View>
       </View>
+      
+      </ScrollView>
       <View style={styles.mainfooter}>
         <Button
           name="Continue"
@@ -130,7 +133,6 @@ export default function AfterTakingScreenshot(props) {
           textColor={styles.btnText}
         />
       </View>
-      
     </BottomSheet>
   );
 }
