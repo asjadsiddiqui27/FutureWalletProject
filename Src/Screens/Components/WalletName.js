@@ -5,12 +5,13 @@ import {Strings} from '../../Theme/Strings';
 import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import InputText from '../Common/Input';
 import Button from '../Common/CustomButton';
-import fonts from '../../Theme/Fonts';
-import BottomSheet from 'react-native-simple-bottom-sheet';
-import AfterTakingScreenshot from './AfterTakingScreenshot';
+// import fonts from '../../Theme/Fonts';
+// import BottomSheet from 'react-native-simple-bottom-sheet';
+// import AfterTakingScreenshot from './AfterTakingScreenshot';
 
 const WalletName = (props) => {
   const [name, setName] = useState('');
+  
 
   return (
     <View style={styles.main_container}>
