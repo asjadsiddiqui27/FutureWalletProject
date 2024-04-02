@@ -2,7 +2,7 @@ export const images = {
   //our //
 
   group: require('../../assets/images/Group.png'),
-
+  vector: require('../../assets/images/Vector.png'),
 
   // end 
   appLogo: require('../../assets/images/appLogo.png'),

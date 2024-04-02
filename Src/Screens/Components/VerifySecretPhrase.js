@@ -24,11 +24,9 @@ const VerifySecretPhrase = (props) => {
     const resetItem = (item) => {
 
         const { Item, index } = item
-
         const updatedArray = [...dataArray]
         updatedArray.splice(index, 1, Item)
         setMainArray(updatedArray);
-
         const filtered = newArray.filter((Oneitem) => Oneitem.index !== index);
         setNewArray(filtered);
     }

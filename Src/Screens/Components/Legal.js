@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import Button from '../Common/CustomButton';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
@@ -11,6 +11,18 @@ import CustomHeader from '../Common/CustomHeader';
 
 const Legal = (props) => {
     const [isSelected, setSelection] = useState(false);
+    console.log(isSelected)
+
+    const checkBox=()=>{
+        if(isSelected==true){
+            props.navigation.navigate("walletname")
+            setSelection(false)
+        }
+        else{
+            Alert.alert("Accept the terms and conditions")
+        }
+    }
+
     return (
         <View style={styles.main_Container}>
             <View style={styles.main_view1}>
@@ -60,7 +72,7 @@ const Legal = (props) => {
                     </View>
 
                     <View style={styles.bottom_btn_View}>
-                        <Button onPress={() => { props.navigation.navigate("walletname") }} name='Continue' />
+                        <Button onPress={checkBox} name='Continue' />
                     </View>
                 {/* </View> */}
             </View>
