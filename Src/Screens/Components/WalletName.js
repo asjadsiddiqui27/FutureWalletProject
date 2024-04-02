@@ -8,7 +8,7 @@ import Button from '../Common/CustomButton'
 import fonts from '../../Theme/Fonts'
 
 
-const WalletName = () => {
+const WalletName = (props) => {
     const [name, setName] = useState('')
 
 
@@ -16,7 +16,7 @@ const WalletName = () => {
         <View style={styles.main_container}>
 
             <View style={styles.heading_container}>
-                <Text style={styles.heading_text_style}>{Strings.English.walletName.youCanlable}</Text>
+                <Text onPress={()=>{props.navigation.navigate("secretphrase")}} style={styles.heading_text_style}>{Strings.English.walletName.youCanlable}</Text>
             </View>
 
 
@@ -47,10 +47,11 @@ const styles = StyleSheet.create({
         marginTop:dimen(16)
     },
     heading_text_style: {
-        fontSize: 15,
+        fontSize: 16,
         lineHeight: dimen(24),
         textAlign: "center",
-        fontFamily:fonts.PoppinsMedium
+        fontFamily:fonts.PoppinsMedium,
+        color:colors.topText
 
     },
     Input_main_container: {
@@ -60,7 +61,9 @@ const styles = StyleSheet.create({
     },
     name_label_name: {
         marginBottom: dimen(12.33),
-        fontFamily:fonts.PoppinsMedium
+        fontFamily:fonts.PoppinsMedium,
+        color:colors.topText
+
     },
     max_limit_txt_style: {
         fontSize: 14,

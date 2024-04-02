@@ -7,6 +7,9 @@ import Onboarding from '../Components/Onboarding';
 import colors from '../../Theme/Colors';
 import fonts from '../../Theme/Fonts';
 import Legal from '../Components/Legal';
+import SecretPhrase from '../Components/SecretPhrase';
+import VerifySecretPhrase from '../Components/VerifySecretPhrase';
+import { Strings } from '../../Theme/Strings';
 
 
 const Stack = createNativeStackNavigator();
@@ -56,9 +59,28 @@ const StackNavigation = () => {
           name='walletname'
           component={WalletName}
           options={{
-            title: "Wallet Name"
+            title: Strings.English.walletName.walletName
+
           }}
         />
+
+        <Stack.Screen
+          name='secretphrase'
+          component={SecretPhrase}
+          options={{
+            title: Strings.English.secretPhrase.secretPhrase
+          }}
+        />
+
+
+        <Stack.Screen
+          name='verifysecretphrase'
+          component={VerifySecretPhrase}
+          options={{
+            title: "Verify Secret Phrase"
+          }}
+        />
+
 
 
 

@@ -65,6 +65,7 @@ const colors = {
 // label
 
 greaterThanSign:"#56828E",
-borderLineColor:"#BEDFE8"
+borderLineColor:"#BEDFE8",
+lightCardBg:"#F0F9FC",
 };
 export default colors;

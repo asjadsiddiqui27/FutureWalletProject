@@ -10,15 +10,19 @@ import fonts from "../../Theme/Fonts";
 
 function Button({
     onPress = () => { console.log("Btn pressed")},
-    name = 'Click me',
+    btnView,
+    name = 'Continue',
     buttonStyle = styles.btn,
     textColor = styles.button,
+    name_2,
+    text2_style,
 
 }) {
 
     return (
-        <View style={styles.btnView}>
+        <View style={btnView}>
             <TouchableOpacity onPress={onPress} style={buttonStyle}>
+            {name_2&&<Text style={text2_style}>{name_2}</Text>}
                 <Text style={textColor}>{name}</Text>
             </TouchableOpacity>
         </View>
