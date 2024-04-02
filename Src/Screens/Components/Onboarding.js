@@ -65,11 +65,12 @@ const styles = StyleSheet.create({
   },
   imgTextFirst: {
     fontSize: 24,
-    fontWeight: '700',
+    fontFamily:fonts.PoppinsBold ,
     color: colors.Black,
   },
   imgTextSecond: {
-    fontSize: 16,
+    fontSize: 15.6,
+    fontFamily:fonts.PoppinsMedium ,
     color: colors.subText,
     // fontFamily:"Poppins-Medium"\
   },
@@ -82,9 +83,8 @@ const styles = StyleSheet.create({
   },
   alreadyAccText:{
     color:colors.lightBlue,
-    fontWeight:'700',
     fontSize:16,
-    fontFamily:fonts.mulish 
+    fontFamily:fonts.PoppinsBold ,
   },
   insideFooter: {
     gap: 24.65,
