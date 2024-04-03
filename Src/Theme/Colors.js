@@ -69,5 +69,10 @@ textcolor: "#000000",
 greaterThanSign:"#56828E",
 borderLineColor:"#BEDFE8",
 lightCardBg:"#F0F9FC",
+border_input:"#D0D3DA",
+
+
+// tabscreen
+blueBackground:"##ECFBFF"
 };
 export default colors;

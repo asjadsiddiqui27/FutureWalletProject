@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, StatusBar } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native';
 import WalletName from '../Components/WalletName';
 import Onboarding from '../Components/Onboarding';
 import colors from '../../Theme/Colors';
@@ -10,18 +10,20 @@ import Legal from '../Components/Legal';
 import SecretPhrase from '../Components/SecretPhrase';
 import VerifySecretPhrase from '../Components/VerifySecretPhrase';
 import { Strings } from '../../Theme/Strings';
+import SetPasscode from '../Components/SetPasscode';
 import ImportWallet from '../Components/ImportWallet';
 import ConfirmPasscode from '../Components/ConfirmPasscode';
-
+import AfterTakingScreenshot from '../Components/AfterTakingScreenshot';
+import Main from '../Components/Main';
+import Notification from '../Components/Notification';
+import TabNavigation from './TabNavigation';
 
 const Stack = createNativeStackNavigator();
 
-
-
-
 const StackNavigation = () => {
+  const navigationRef = React.useRef(null);
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       <Stack.Navigator
         screenOptions={{
@@ -33,52 +35,45 @@ const StackNavigation = () => {
           // headerTitleStyle: {
           //   color: colors.Black,
           //   fontFamily: fonts.PoppinsBold
+          headerShown: false,
           // }
         }}>
 
-
         <Stack.Screen
-          name='onboarding'
+          name="onboarding"
           component={Onboarding}
           options={{
-
-            headerShown: false
+            headerShown: false,
           }}
         />
 
-
         <Stack.Screen
-          name='legal'
+          name="legal"
           component={Legal}
           options={{
-
             headerShown: false
           }}
         />
 
-
-
         <Stack.Screen
-          name='walletname'
+          name="walletname"
           component={WalletName}
           options={{
-
             headerShown: false
           }}
         />
 
+
         <Stack.Screen
-          name='secretphrase'
+          name="secretphrase"
           component={SecretPhrase}
           options={{
-
-            headerShown: false
+            title: Strings.English.secretPhrase.secretPhrase,
           }}
         />
 
-
         <Stack.Screen
-          name='verifysecretphrase'
+          name="verifysecretphrase"
           component={VerifySecretPhrase}
           options={{
 
@@ -95,24 +90,38 @@ const StackNavigation = () => {
           }}
         />
 
-<Stack.Screen
-          name='ConfirmPasscode'
-          component={ConfirmPasscode}
+        <Stack.Screen
+          name='setpasscode'
+          component={SetPasscode}
           options={{
-
-            headerShown: false
+            title: "Set Passcode"
           }}
         />
 
-
-
-
+        <Stack.Screen
+          name='ConfirmPasscode'
+          component={ConfirmPasscode}
+          options={{
+          }}
+        />
+        <Stack.Screen
+          name='TabNavigation'
+          component={TabNavigation}
+          options={{
+          }}
+        />
+         <Stack.Screen
+          name='Notification'
+          component={Notification}
+          options={{
+          }}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default StackNavigation
+export default StackNavigation;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

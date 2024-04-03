@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import Button from '../Common/CustomButton';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
@@ -11,6 +11,18 @@ import CustomHeader from '../Common/CustomHeader';
 
 const Legal = (props) => {
     const [isSelected, setSelection] = useState(false);
+    console.log(isSelected)
+
+    const checkBox=()=>{
+        if(isSelected==true){
+            props.navigation.navigate("walletname")
+            setSelection(false)
+        }
+        else{
+            Alert.alert("Accept the terms and conditions")
+        }
+    }
+
     return (
         <View style={styles.main_Container}>
             <View style={styles.main_view1}>
@@ -60,7 +72,7 @@ const Legal = (props) => {
                     </View>
 
                     <View style={styles.bottom_btn_View}>
-                        <Button onPress={() => { props.navigation.navigate("walletname") }} name='Continue' />
+                        <Button onPress={checkBox} name='Continue' />
                     </View>
                 {/* </View> */}
             </View>
@@ -99,16 +111,18 @@ const styles = StyleSheet.create({
     middle_main_view: {
         marginTop:dimen(33),
         height: dimen(123),
-        borderColor: colors.borderColor,
-        borderWidth: dimen(1),
+        // borderColor: colors.borderColor,
+        // borderWidth: dimen(1),
         borderRadius: dimen(12),
         paddingHorizontal: dimen(15),
+        backgroundColor:"white",
         shadowOffset: {
-            width: 0,
-            height: 2,
+            width: 3,
+            height: 4,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
+        elevation:4,
 
     },
     middle_data_view: {

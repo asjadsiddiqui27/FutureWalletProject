@@ -17,7 +17,7 @@ import CustomHeader from '../Common/CustomHeader'
 const CELL_COUNT = 6;
 
 
-const ConfirmPasscode = ({navigation}) => {
+const SetPasscode = ({navigation}) => {
 
     const [passcode, setPasscode] = useState(["", "", "", "", "", ""])
     const passwordSet = (v, index) => {
@@ -38,8 +38,8 @@ const ConfirmPasscode = ({navigation}) => {
             <View style={styles.main_container}>
 
                 <CustomHeader 
-                header="Confirm Passcode"
-                onPress={()=>{navigation.navigate("setpasscode")}}
+                header={Strings.English.Passcode.setpasscode} 
+                onPress={()=>{navigation.navigate("ImportWallet")}}
                 />
 
                 <View style={styles.body_container}>
@@ -77,7 +77,7 @@ const ConfirmPasscode = ({navigation}) => {
                     <Text style={styles.txt_style}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
                 </View>
                 <View style={styles.Footer_container}>
-                    <Button onPress={()=>{navigation.navigate("TabNavigation")}}  btnView={styles.btnView} />
+                    <Button onPress={()=>{navigation.navigate("ConfirmPasscode")}}  btnView={styles.btnView} />
                 </View>
 
             </View>
@@ -85,7 +85,7 @@ const ConfirmPasscode = ({navigation}) => {
     )
 }
 
-export default ConfirmPasscode
+export default SetPasscode
 
 const styles = StyleSheet.create({
     main_View: {

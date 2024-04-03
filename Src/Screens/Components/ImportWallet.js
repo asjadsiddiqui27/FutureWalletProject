@@ -35,7 +35,7 @@ const ImportWallet = (props) => {
             </View>
             <View style={styles.Bottom_main_continer}>
 
-                <Button name='Import'  onPress={()=>{props.navigation.navigate("ConfirmPasscode")}}/>
+                <Button name='Import'  onPress={()=>{props.navigation.navigate("setpasscode")}}/>
                 <Text style={styles.bottom_text}>{Strings.English.importWallet.bottomText}</Text>
 
             </View>
