@@ -139,7 +139,7 @@ export default function AfterTakingScreenshot(props) {
           textColor={styles.btnText}
         />
       </View>
-      <View><Text>hii</Text></View>
+     
     </BottomSheet>
   );
 }
