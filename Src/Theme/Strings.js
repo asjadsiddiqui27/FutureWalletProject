@@ -82,11 +82,64 @@ export const Strings = {
 
         notification: {
             text1: "Your $50,000 to 1.19 BTC order is successful.",
-            time1:"07:55pm, 10/01/2024",
+            time1: "07:55pm, 10/01/2024",
             text2: "Your $50,000 to 1.19 BTC order is successful.",
-            time2:"07:55pm, 10/01/2024",
+            time2: "07:55pm, 10/01/2024",
             text3: "Your $50,000 to 1.19 BTC order is successful.",
-            time3:"07:55pm, 10/01/2024",
+            time3: "07:55pm, 10/01/2024",
+        },
+        main: {
+
+
+            // ...............................HEADER.........................//
+
+            
+            MyWallet2:"My Wallet 2",
+
+            //..............................TOP TEXT.........................//
+
+            totalBalance: "Total Balance",
+            dollarValue: "$18,572.74",
+            // ............................TRANSITION........................//
+            Send: "Send",
+            Receive: "Receive",
+            Buy: "Buy",
+            Sell: "Sell",
+
+
+            Tokens:"Tokens",
+            //.............................BOTTOM IST ROW...........................//
+
+            BNBBeaconChain: "BNB Beacon Chain",
+            dollarValue1: "$305.66",
+            percentagevalue1: "+0.89%",
+            BNB: "1.5 BNB",
+            dollarValueRight1: "$477.38 ",
+
+            //.............................BOTTOM 2nd ROW...........................//
+
+            Bitcoin: "Bitcoin",
+            dollarValue2: "$23,436.20",
+            percentagevalue2: "+1.13%",
+            BTC: "1.5 BTC",
+            dollarValueRight2: "$42,864.30 ",
+
+            //.............................BOTTOM 3rd ROW...........................//
+
+            Ethereum: "Ethereum",
+            dollarValue3: "$2,339.66",
+            percentagevalue3: "+0.89%",
+            ETH: "2 ETH",
+            dollarValueRight3: "$2,326.35 ",
+
+            //.............................BOTTOM 4th ROW...........................//
+
+            Tron: "Tron",
+            dollarValue4: "$0.11",
+            percentagevalue4: "+0.89%",
+            TRX: "500 TRX",
+            dollarValueRight4: "$56.54 ",
+
         }
 
 

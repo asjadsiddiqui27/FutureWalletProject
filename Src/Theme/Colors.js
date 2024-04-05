@@ -70,9 +70,11 @@ greaterThanSign:"#56828E",
 borderLineColor:"#BEDFE8",
 lightCardBg:"#F0F9FC",
 border_input:"#D0D3DA",
-
+parrotGreenText:"#2FC381",
+blueBackground:"#ECFBFF"
 
 // tabscreen
-blueBackground:"##ECFBFF"
+
+
 };
 export default colors;
