@@ -216,7 +216,7 @@ export const images = {
   theme: require("../../assets/images/Theme.png"),
   light: require("../../assets/images/light.png"),
   dark: require("../../assets/images/dark.png"),
-  welcomelogo: require("../../assets/images/welcomelogo.png"),
+  welcomelogo: require("../../assets/images/main_WelcomeLogo.png"),
   safeIcon: require("../../assets/images/safeIcon.png"),
   checked: require("../../assets/images/checked.png"),
   blackBack: require("../../assets/images/blackBack.png"),
@@ -248,6 +248,16 @@ export const images = {
   copyColored: require("../../assets/images/copyColored.png"),
   providerIcon: require("../../assets/images/providerIcon.png"),
   greaterthan:require("../../assets/images/greater_than.png"),
-  
+  headerIcon:require("../../assets/images/VectorLess.png"),
+
+  // notification
+
+  notification1:require("../../assets/images/notificationImg1.png"),
+  notification2:require("../../assets/images/notificationImg2.png"),
+  notification3:require("../../assets/images/notificationImg3.png"),
+  bell:require("../../assets/images/Bell.png"),
+  //Passcode
+  biometric_Blue:require("../../assets/images/bioMetric_blue.png"),
+
 };
 // export default images;

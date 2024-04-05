@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 import WalletName from '../Components/WalletName';
 import Onboarding from '../Components/Onboarding';
 import colors from '../../Theme/Colors';
@@ -9,8 +9,14 @@ import fonts from '../../Theme/Fonts';
 import Legal from '../Components/Legal';
 import SecretPhrase from '../Components/SecretPhrase';
 import VerifySecretPhrase from '../Components/VerifySecretPhrase';
-import {Strings} from '../../Theme/Strings';
+import { Strings } from '../../Theme/Strings';
+import SetPasscode from '../Components/SetPasscode';
+import ImportWallet from '../Components/ImportWallet';
+import ConfirmPasscode from '../Components/ConfirmPasscode';
 import AfterTakingScreenshot from '../Components/AfterTakingScreenshot';
+import Main from '../Components/Main';
+import Notification from '../Components/Notification';
+import TabNavigation from './TabNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,12 +31,14 @@ const StackNavigation = () => {
             // backgroundColor:"yellow"
           },
           headerShadowVisible: false,
-          headerTitleAlign: 'center',
-          headerTitleStyle: {
-            color: colors.Black,
-            fontFamily: fonts.PoppinsBold,
-          },
+          // headerTitleAlign: 'center',
+          // headerTitleStyle: {
+          //   color: colors.Black,
+          //   fontFamily: fonts.PoppinsBold
+          headerShown: false,
+          // }
         }}>
+
         <Stack.Screen
           name="onboarding"
           component={Onboarding}
@@ -43,7 +51,7 @@ const StackNavigation = () => {
           name="legal"
           component={Legal}
           options={{
-            title: 'Legal',
+            headerShown: false
           }}
         />
 
@@ -51,26 +59,11 @@ const StackNavigation = () => {
           name="walletname"
           component={WalletName}
           options={{
-            title: Strings.English.walletName.walletName,
+            headerShown: false
           }}
         />
 
-        <Stack.Screen
-          name="afterTakingScreenshot"
-          component={AfterTakingScreenshot}
-          options={{
-            title: 'AfterTakingScreenshot',
-          }}
-        />
 
-        <Stack.Screen
-          name="verifysecretphrase"
-          component={VerifySecretPhrase}
-          options={{
-            title: 'Verify Secret Phrase',
-          }}
-        />
-        
         <Stack.Screen
           name="secretphrase"
           component={SecretPhrase}
@@ -78,6 +71,52 @@ const StackNavigation = () => {
             title: Strings.English.secretPhrase.secretPhrase,
           }}
         />
+
+        <Stack.Screen
+          name="verifysecretphrase"
+          component={VerifySecretPhrase}
+          options={{
+
+            headerShown: false
+          }}
+        />
+
+        <Stack.Screen
+          name='ImportWallet'
+          component={ImportWallet}
+          options={{
+
+            headerShown: false
+          }}
+        />
+
+        <Stack.Screen
+          name='setpasscode'
+          component={SetPasscode}
+          options={{
+            title: "Set Passcode"
+          }}
+        />
+
+        <Stack.Screen
+          name='ConfirmPasscode'
+          component={ConfirmPasscode}
+          options={{
+          }}
+        />
+        <Stack.Screen
+          name='TabNavigation'
+          component={TabNavigation}
+          options={{
+          }}
+        />
+         <Stack.Screen
+          name='Notification'
+          component={Notification}
+          options={{
+          }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

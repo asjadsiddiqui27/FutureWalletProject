@@ -1,24 +1,24 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState, useRef} from 'react';
-import colors from '../../Theme/Colors';
-import {Strings} from '../../Theme/Strings';
-import {getDimensionPercentage as dimen} from '../../Utils/Utils';
-import InputText from '../Common/Input';
-import Button from '../Common/CustomButton';
-// import fonts from '../../Theme/Fonts';
-// import BottomSheet from 'react-native-simple-bottom-sheet';
-// import AfterTakingScreenshot from './AfterTakingScreenshot';
+import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import colors from '../../Theme/Colors'
+import { Strings } from '../../Theme/Strings'
+import { getDimensionPercentage as dimen } from '../../Utils/Utils'
+import InputText from '../Common/Input'
+import Button from '../Common/CustomButton'
+import fonts from '../../Theme/Fonts'
+import CustomHeader from '../Common/CustomHeader'
 
 const WalletName = (props) => {
-  const [name, setName] = useState('');
-  
+    const [name, setName] = useState('')
 
-  return (
+    return (
+      
+
     <View style={styles.main_container}>
+      <View style={styles.container}>
+      <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name'/>
       <View style={styles.heading_container}>
-        <Text style={styles.heading_text_style}>
-          {Strings.English.walletName.youCanlable}
-        </Text>
+      <Text onPress={()=>{props.navigation.navigate("secretphrase")}} style={styles.heading_text_style}>{Strings.English.walletName.youCanlable}</Text>
       </View>
 
       <View style={styles.Input_main_container}>
@@ -40,6 +40,8 @@ const WalletName = (props) => {
         />
       </View>
     </View>
+    </View>
+
   );
 };
 
@@ -50,8 +52,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.White,
     flex: 1,
   },
+  container:{
+    flex:1,
+    marginHorizontal:dimen(24)
+  },
   heading_container: {
-    marginHorizontal: dimen(54.5),
+    marginHorizontal: dimen(27.5),
     marginTop: dimen(16),
   },
   heading_text_style: {
@@ -62,7 +68,6 @@ const styles = StyleSheet.create({
   Input_main_container: {
     flex: 0.8,
     marginTop: dimen(32.98),
-    marginHorizontal: dimen(24),
   },
   name_label_name: {
     marginBottom: dimen(12.33),
@@ -75,7 +80,6 @@ const styles = StyleSheet.create({
   },
   footer_container: {
     flex: 0.2,
-    marginHorizontal: dimen(24),
     justifyContent: 'flex-end',
   },
   btn: {
