@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import colors from '../../Theme/Colors'
 import { Strings } from '../../Theme/Strings'
 import { getDimensionPercentage as dimen } from '../../Utils/Utils'
@@ -10,7 +10,6 @@ import CustomHeader from '../Common/CustomHeader'
 
 const WalletName = (props) => {
     const [name, setName] = useState('')
-
 
     return (
       

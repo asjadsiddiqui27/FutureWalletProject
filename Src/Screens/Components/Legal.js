@@ -111,16 +111,18 @@ const styles = StyleSheet.create({
     middle_main_view: {
         marginTop:dimen(33),
         height: dimen(123),
-        borderColor: colors.borderColor,
-        borderWidth: dimen(1),
+        // borderColor: colors.borderColor,
+        // borderWidth: dimen(1),
         borderRadius: dimen(12),
         paddingHorizontal: dimen(15),
+        backgroundColor:"white",
         shadowOffset: {
-            width: 0,
-            height: 2,
+            width: 3,
+            height: 4,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
+        elevation:4,
 
     },
     middle_data_view: {

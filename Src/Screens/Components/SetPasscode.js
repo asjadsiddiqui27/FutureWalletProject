@@ -19,13 +19,6 @@ const CELL_COUNT = 6;
 
 const SetPasscode = ({navigation}) => {
 
-    const [passcode, setPasscode] = useState(["", "", "", "", "", ""])
-    const passwordSet = (v, index) => {
-        const updatedPasscode = [...passcode];
-        updatedPasscode[index] = v;
-        setPasscode(updatedPasscode);
-    }
-
     const [value, setValue] = useState('');
     const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -47,9 +40,7 @@ const SetPasscode = ({navigation}) => {
                     <Text style={styles.createPassTxt}>{Strings.English.Passcode.CreatePasscode}</Text>
                     <View style={styles.input_container}>
 
-                        {/* {passcode.map((item, index) => (
-                            <InputText key={index} maximumLength={1} onChngFunction={(v) => { passwordSet(v, index) }} value={item} Inputstyle={styles.pass_input} placeholderText='' />
-                        ))} */}
+                       
 
                         <CodeField
                             ref={ref}

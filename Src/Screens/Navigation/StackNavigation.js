@@ -14,6 +14,9 @@ import SetPasscode from '../Components/SetPasscode';
 import ImportWallet from '../Components/ImportWallet';
 import ConfirmPasscode from '../Components/ConfirmPasscode';
 import AfterTakingScreenshot from '../Components/AfterTakingScreenshot';
+import Main from '../Components/Main';
+import Notification from '../Components/Notification';
+import TabNavigation from './TabNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -101,6 +104,19 @@ const StackNavigation = () => {
           options={{
           }}
         />
+        <Stack.Screen
+          name='TabNavigation'
+          component={TabNavigation}
+          options={{
+          }}
+        />
+         <Stack.Screen
+          name='Notification'
+          component={Notification}
+          options={{
+          }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -45,11 +45,12 @@ export const Strings = {
             verifySecretPhrase: "Verify Secret Phrase",
             taptheWord: "Tap the words to put them next to each other in the correct order. ",
         },
-        Passcode:{
-            setpasscode:"Set passcode",
-            ConfirmPasscode:"Confirm Passcode",
-            CreatePasscode:"Create Passcode",
-            passcodeAddsSecurity:"Adds an extra layer of security when using the app",
+        Passcode: {
+            setpasscode: "Set passcode",
+            ConfirmPasscode: "Confirm Passcode",
+            CreatePasscode: "Create Passcode",
+            passcodeAddsSecurity: "Adds an extra layer of security when using the app",
+            enableBiometric:"Enable Biometric",
 
         },
         manageWallet: {
@@ -62,26 +63,34 @@ export const Strings = {
             back: 'Back',
             headerText: "This is your seed phrase. Write it down on a paper and keep it in a safe place. You'll be asked to re- enter this phrase(in order) on the next step."
         },
-        importWallet:{
-            enteName:"Enter Name",
-            Wallet1:"Wallet 1",
-            secretPhrase:"Secret Phrase",
-            middleText:"12 words separated by single space",
-            bottomText:"What is Secret Phrase?",
-            Paste:"Paste"
+        importWallet: {
+            enteName: "Enter Name",
+            Wallet1: "Wallet 1",
+            secretPhrase: "Secret Phrase",
+            middleText: "12 words separated by single space",
+            bottomText: "What is Secret Phrase?",
+            Paste: "Paste"
         },
 
-        afterTakingScreenshot:{
-            naverShare:"Never share your secret phrase with anyone",
-            line_1:"Your 12 word secret phrase is the master key to your wallet, Anyone that has your secret phrase can accessand take your crypto.",
-            line_2:"Future wallet does not keep a copy of your secret phrase.",
-            line_3:"Unencrypted digital copies of your secret phrase are NOT recommended. Examples include saving copies on computer, in email, om online accounts, or by taking screenshots.",
-            line_4:"Write down your secret phrase, and store it in a secure offline location!",
-            line_5:"You 12 word secret phrase is only way to recover your wallet. Please store it securely!"
+        afterTakingScreenshot: {
+            naverShare: "Never share your secret phrase with anyone",
+            line_1: "Your 12 word secret phrase is the master key to your wallet, Anyone that has your secret phrase can accessand take your crypto.",
+            line_2: "Future wallet does not keep a copy of your secret phrase.",
+            line_3: "Unencrypted digital copies of your secret phrase are NOT recommended. Examples include saving copies on computer, in email, om online accounts, or by taking screenshots.",
+            line_4: "Write down your secret phrase, and store it in a secure offline location!",
+            line_5: "You 12 word secret phrase is only way to recover your wallet. Please store it securely!"
         },
 
-       
+        notification: {
+            text1: "Your $50,000 to 1.19 BTC order is successful.",
+            time1:"07:55pm, 10/01/2024",
+            text2: "Your $50,000 to 1.19 BTC order is successful.",
+            time2:"07:55pm, 10/01/2024",
+            text3: "Your $50,000 to 1.19 BTC order is successful.",
+            time3:"07:55pm, 10/01/2024",
+        }
 
-       
+
+
     }
 }
