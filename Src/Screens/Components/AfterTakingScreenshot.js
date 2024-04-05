@@ -17,7 +17,7 @@ import HorizontalLine from '../Common/HorizontalLine';
 import Button from '../Common/CustomButton';
 import { Strings } from '../../Theme/Strings';
 
-
+//  after taking screenshot //
 const height = Dimensions.get('window').height;
 
 export default function AfterTakingScreenshot(props) {
@@ -139,6 +139,7 @@ export default function AfterTakingScreenshot(props) {
           textColor={styles.btnText}
         />
       </View>
+      <View><Text>hii</Text></View>
     </BottomSheet>
   );
 }
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   text_warn: {
-    fontSize: 17.9,
+    fontSize: dimen(17.9),
     letterSpacing: -dimen(0.2),
     color: colors.Black,
     // fontWeight:"700",
@@ -232,7 +233,7 @@ const styles = StyleSheet.create({
   aboutPharse_text: {
     color: colors.Black,
     lineHeight: 22,
-    fontSize: 14,
+    fontSize: dimen(14),
     letterSpacing: -dimen(0.2),
     fontFamily: fonts.PoppinsMedium,
     maxWidth: dimen(360), //
@@ -242,7 +243,7 @@ const styles = StyleSheet.create({
   aboutPharse_text2: {
     color: colors.lightBlue,
     lineHeight: 22,
-    fontSize: 14,
+    fontSize: dimen(14),
     letterSpacing: -dimen(0.2),
     fontFamily: fonts.PoppinsMedium,
     maxWidth: dimen(355),
