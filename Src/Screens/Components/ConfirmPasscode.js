@@ -39,11 +39,12 @@ const ConfirmPasscode = ({ navigation }) => {
 
   const toggleSwtich = () => {
     setSwitchToggle(!switchToggle);
+    if(!switchToggle){
+    navigation.navigate("TabNavigation")
   }
+}
 
-  useEffect(()=>{
-    console.log("first")
-  },[])
+
 
   return (
     <View style={styles.main_View}>
@@ -55,15 +56,13 @@ const ConfirmPasscode = ({ navigation }) => {
         />
 
         <View style={styles.body_container}>
-          <Image source={images.welcomelogo} style={styles.img_style} />
+ <Image source={images.welcomelogo} style={styles.img_style} />
           <Text style={styles.createPassTxt}>{Strings.English.Passcode.ConfirmPasscode}</Text>
-          <View style={styles.input_container}>
+          <View style={styles.input_container}> 
 
-            {/* {passcode.map((item, index) => (
-                            <InputText key={index} maximumLength={1} onChngFunction={(v) => { passwordSet(v, index) }} value={item} Inputstyle={styles.pass_input} placeholderText='' />
-                        ))} */}
+    
 
-            <CodeField
+    <CodeField
               ref={ref}
               {...props}
               // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
@@ -83,12 +82,12 @@ const ConfirmPasscode = ({ navigation }) => {
                   {symbol || (isFocused ? <Cursor /> : null)}
                 </Text>
               )}
-            />
+            /> 
 
           </View>
           <Text style={styles.txt_style}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
         </View>
-        <View style={styles.Footer_container}>
+    <View style={styles.Footer_container}>
           <Image source={images.biometric_Blue} style={styles.imgBioMetric} />
           <View style={styles.biometricTxt_view}>
             <Text style={styles.biometricTxt}>{Strings.English.Passcode.enableBiometric}</Text>
@@ -101,8 +100,7 @@ const ConfirmPasscode = ({ navigation }) => {
               thumbOffStyle={{backgroundColor:colors.background}}
             />
           </View>
-        </View>
-{ console.log("second") }
+        </View> 
       </View>
     </View>
   )

@@ -8,13 +8,13 @@ import colors from '../../Theme/Colors';
 
 
 
+
 const Tab = createBottomTabNavigator();
 
 function TabNavigation() {
   return (
     <Tab.Navigator screenOptions={{
       headerShown: false,
-      // tabBarShowLabel: false,
       tabBarStyle: { ...styles.tabContainer },
       tabBarLabelStyle: {
         fontSize: 12,
@@ -59,10 +59,7 @@ function TabNavigation() {
       <Tab.Screen name="Dapp" component={Main}
         options={{
           tabBarIcon: ({ color }) => (
-            <Image
-              style={styles.bottomTabIcon}
-              source={images.dapp
-              } />
+            <Image style={styles.bottomTabIcon} source={images.dapp } />
           ),
         }}
       />

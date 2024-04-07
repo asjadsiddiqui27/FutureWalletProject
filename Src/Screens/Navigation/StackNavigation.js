@@ -98,7 +98,7 @@ const StackNavigation = () => {
           }}
         />
 
-        <Stack.Screen
+    <Stack.Screen
           name='ConfirmPasscode'
           component={ConfirmPasscode}
           options={{
