@@ -272,6 +272,8 @@ export const images = {
   dapp:require("../../assets/images/dapp.png"),  
   swap:require("../../assets/images/swap.png"),  
   setting:require("../../assets/images/setting.png"),  
+  //Passcode
+  biometric_Blue:require("../../assets/images/bioMetric_blue.png"),
 
 };
 // export default images;

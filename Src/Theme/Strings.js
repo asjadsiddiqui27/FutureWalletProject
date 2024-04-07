@@ -50,6 +50,7 @@ export const Strings = {
             ConfirmPasscode: "Confirm Passcode",
             CreatePasscode: "Create Passcode",
             passcodeAddsSecurity: "Adds an extra layer of security when using the app",
+            enableBiometric:"Enable Biometric",
 
         },
         manageWallet: {

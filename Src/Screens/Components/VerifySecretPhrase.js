@@ -51,11 +51,10 @@ const VerifySecretPhrase = (props) => {
 
                     <View style={styles.body_items_container}>
                         {dataArray.map((item, index) => (
-                            <View style={{}} key={index}>
-                                {item != "" ?
+                                item != "" ?
                                      <Button key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={styles.btn_txt_2} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => {console.log(item), setItem(item, index) }} />
-                                  :  <View style={styles.empty_Word} />}
-                            </View>
+                                  :  <View key={index} style={styles.empty_Word} />
+                                
                         ))}
                     </View>
 
