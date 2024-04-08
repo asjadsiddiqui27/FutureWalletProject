@@ -275,5 +275,9 @@ export const images = {
   //Passcode
   biometric_Blue:require("../../assets/images/bioMetric_blue.png"),
 
+  // buy&sell
+  usd:require("../../assets/images/usd.png"),
+  whiteTriangle:require("../../assets/images/whiteTriangle.png")
+
 };
 // export default images;

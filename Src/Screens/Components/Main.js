@@ -54,7 +54,7 @@ const Main = (props) => {
                     {/* ............................Buy .....................................*/}
 
                     <View style={{ alignItems: "center" ,marginHorizontal:dimen(10)}}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => { props.navigation.navigate("BuyCrypto") }}>
                             <View style={styles.img_background_view}>
                                 <Image source={images.RecieveSquare} style={styles.images_style} />
                             </View>

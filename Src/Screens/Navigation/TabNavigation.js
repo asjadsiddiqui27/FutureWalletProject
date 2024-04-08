@@ -5,6 +5,10 @@ import { Image, StyleSheet } from 'react-native';
 import { images } from '../../Theme/Images';
 import fonts from '../../Theme/Fonts';
 import colors from '../../Theme/Colors';
+import Legal from '../Components/Legal';
+import Notification from '../Components/Notification';
+import Onboarding from '../Components/Onboarding';
+import SecretPhrase from '../Components/SecretPhrase';
 
 
 
@@ -15,12 +19,16 @@ function TabNavigation() {
   return (
     <Tab.Navigator screenOptions={{
       headerShown: false,
+      tabBarActiveTintColor: colors.lightBlue,
+      tabBarInactiveTintColor:colors.greenText,
       tabBarStyle: { ...styles.tabContainer },
       tabBarLabelStyle: {
+
         fontSize: 12,
         fontFamily: fonts.PoppinsMedium,
         marginBottom: 20,
-        color: colors.lightBlue
+
+
       },
     }}
 
@@ -36,7 +44,7 @@ function TabNavigation() {
           ),
         }}
       />
-      <Tab.Screen name="Swap" component={Main}
+      <Tab.Screen name="Swap" component={Legal}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
@@ -46,7 +54,7 @@ function TabNavigation() {
           ),
         }}
       />
-      <Tab.Screen name="Portfolio" component={Main}
+      <Tab.Screen name="Portfolio" component={Notification}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
@@ -56,14 +64,14 @@ function TabNavigation() {
           ),
         }}
       />
-      <Tab.Screen name="Dapp" component={Main}
+      <Tab.Screen name="Dapp" component={Onboarding}
         options={{
           tabBarIcon: ({ color }) => (
-            <Image style={styles.bottomTabIcon} source={images.dapp } />
+            <Image style={styles.bottomTabIcon} source={images.dapp} />
           ),
         }}
       />
-      <Tab.Screen name="Settings" component={Main}
+      <Tab.Screen name="Settings" component={SecretPhrase}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
