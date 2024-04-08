@@ -17,6 +17,7 @@ import AfterTakingScreenshot from '../Components/AfterTakingScreenshot';
 import Main from '../Components/Main';
 import Notification from '../Components/Notification';
 import TabNavigation from './TabNavigation';
+import BuyCrypto from '../Components/Buy&Sell/BuyCrypto';
 
 const Stack = createNativeStackNavigator();
 
@@ -98,7 +99,7 @@ const StackNavigation = () => {
           }}
         />
 
-    <Stack.Screen
+        <Stack.Screen
           name='ConfirmPasscode'
           component={ConfirmPasscode}
           options={{
@@ -110,13 +111,19 @@ const StackNavigation = () => {
           options={{
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name='Notification'
           component={Notification}
           options={{
           }}
         />
 
+        <Stack.Screen
+          name='BuyCrypto'
+          component={BuyCrypto}
+          options={{
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

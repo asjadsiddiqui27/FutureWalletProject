@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     bottom_text_View: {
         // flex:1,
         flexDirection: 'row',
-        alignItems: "flex-end",
+        // alignItems: "top",
         justifyContent: "center",
         // marginBottom:dimen(36.07),
     },
