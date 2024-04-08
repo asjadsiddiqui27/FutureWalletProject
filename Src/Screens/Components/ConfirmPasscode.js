@@ -29,9 +29,12 @@ const ConfirmPasscode = ({ navigation }) => {
     setValue,
   });
 
-  const toggleSwitch = () => {
+  const toggleSwtich = () => {
     setSwitchToggle(!switchToggle);
-  };
+    if(!switchToggle){
+    navigation.navigate("TabNavigation")
+  }
+}
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -117,7 +120,7 @@ const ConfirmPasscode = ({ navigation }) => {
                 isOn={switchToggle}
                 onColor={colors.background}
                 offColor={colors.White}
-                onToggle={toggleSwitch}
+                onToggle={() => { toggleSwtich() }}
                 trackOffStyle={{ borderWidth: 0.2 }}
                 thumbOffStyle={{ backgroundColor: colors.background }}
               />
