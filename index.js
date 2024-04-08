@@ -7,5 +7,6 @@ import {name as appName} from './app.json';
 import StackNavigation from './Src/Screens/Navigation/StackNavigation';
 import Notification from './Src/Screens/Components/Notification';
 import Main from './Src/Screens/Components/Main';
+import ConfirmPasscode from './Src/Screens/Components/ConfirmPasscode';
 
 AppRegistry.registerComponent(appName, () => StackNavigation);
