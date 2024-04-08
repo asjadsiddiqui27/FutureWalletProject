@@ -98,10 +98,10 @@ const Main = (props) => {
                         {/*............................................... 1st ROW.................................................... */}
 
                         <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
-                            <View style={{ flexDirection: "row",width:dimen(200)}}>
-                                <View>
+                            <View style={{ flexDirection: "row",width:dimen(200),}}>
+                                {/* <View> */}
                                     <Image source={images.notification2} style={styles.imgStyle} />
-                                </View>
+                                {/* </View> */}
                                 <View style={{ marginLeft: 10 }}>
                                     <Text style={styles.uper_text}>{Strings.English.main.BNBBeaconChain}</Text>
                                     <View style={{ flexDirection: "row" }}>
@@ -112,10 +112,10 @@ const Main = (props) => {
                                 </View>
                             </View>
 
-                            <View style={{ alignSelf: "center" }}>
+                            <View style={{ alignSelf: "center", }}>
                                 <Image source={images.bar} />
                             </View>
-                            <View style={{ width: dimen(66) }}>
+                            <View style={{ width: dimen(80), }}>
                                 <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{Strings.English.main.BNB}</Text>
                                 <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{Strings.English.main.dollarValueRight1} </Text>
                             </View>
@@ -130,8 +130,8 @@ const Main = (props) => {
 
                         {/*............................................... 2nd ROW.................................................... */}
 
-                        <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
-                            <View style={{ flexDirection: "row",width:dimen(200)}}>
+                        <View style={{ justifyContent: "space-between", flexDirection: "row",}}>
+                            <View style={{ flexDirection: "row",width:dimen(200), }}>
                                 <View>
                                     <Image source={images.notification1} style={styles.imgStyle} />
                                 </View>
@@ -145,10 +145,10 @@ const Main = (props) => {
                                 </View>
                             </View>
 
-                            <View style={{ alignSelf: "center" }}>
+                            <View style={{ alignSelf: "center",}}>
                                 <Image source={images.bar} />
                             </View>
-                            <View style={{ width: dimen(80) }}>
+                            <View style={{ width: dimen(80),}}>
                                 <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{Strings.English.main.BTC}</Text>
                                 <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{Strings.English.main.dollarValueRight2} </Text>
                             </View>
@@ -164,8 +164,8 @@ const Main = (props) => {
                         {/*............................................... 3rd ROW.................................................... */}
 
 
-                        <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
-                            <View style={{ flexDirection: "row",width:dimen(204)}}>
+                        <View style={{ justifyContent: "space-between", flexDirection: "row", }}>
+                            <View style={{ flexDirection: "row",width:dimen(200), }}>
                                 <View>
                                     <Image source={images.notification3} style={styles.imgStyle} />
                                 </View>
@@ -179,10 +179,10 @@ const Main = (props) => {
                                 </View>
                             </View>
 
-                            <View style={{ alignSelf: "center" }}>
-                                <Image source={images.bar} style={{marginRight:20}}/>
+                            <View style={{ alignSelf: "center",}}>
+                                <Image source={images.bar} />
                             </View>
-                            <View style={{ width: dimen(70) }}>
+                            <View style={{ width: dimen(80),  }}>
                                 <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{Strings.English.main.ETH}</Text>
                                 <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{Strings.English.main.dollarValueRight3} </Text>
                             </View>
@@ -200,7 +200,7 @@ const Main = (props) => {
 
 
                         <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
-                            <View style={{ flexDirection: "row",width:dimen(200)}}>
+                            <View style={{ flexDirection: "row",width:dimen(200), }}>
                                 <View>
                                     <Image source={images.tron} style={styles.imgStyle} />
                                 </View>
@@ -214,10 +214,10 @@ const Main = (props) => {
                                 </View>
                             </View>
 
-                            <View style={{ alignSelf: "center" }}>
+                            <View style={{ alignSelf: "center", }}>
                                 <Image source={images.bar} />
                             </View>
-                            <View style={{ width: dimen(70) }}>
+                            <View style={{ width: dimen(80) , }}>
                                 <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{Strings.English.main.TRX}</Text>
                                 <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{Strings.English.main.dollarValueRight4} </Text>
                             </View>
