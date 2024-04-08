@@ -13,12 +13,12 @@ const Legal = (props) => {
     const [isSelected, setSelection] = useState(false);
     console.log(isSelected)
 
-    const checkBox=()=>{
-        if(isSelected==true){
+    const checkBox = () => {
+        if (isSelected == true) {
             props.navigation.navigate("walletname")
             setSelection(false)
         }
-        else{
+        else {
             Alert.alert("Accept the terms and conditions")
         }
     }
@@ -26,7 +26,7 @@ const Legal = (props) => {
     return (
         <View style={styles.main_Container}>
             <View style={styles.main_view1}>
-            <CustomHeader onPress={()=>{props.navigation.navigate("onboarding")}}  header='Legal'/>
+                <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }} header='Legal' />
                 <View style={styles.top_text_View}>
                     <Text style={styles.top_text}>{Strings.English.label.topLabel}</Text>
                 </View>
@@ -58,7 +58,8 @@ const Legal = (props) => {
             </View>
 
             <View style={styles.main_view2}>
-                {/* <View style={styles.insideMain_View2}> */}
+
+                <View style={styles.insideMain_View2}>
                     <View style={styles.bottom_text_View}>
                         <CheckBox
                             value={isSelected}
@@ -66,21 +67,23 @@ const Legal = (props) => {
                             style={styles.checkbox}
                             tintColors={{ true: '#00BEF2', false: '#00BEF2' }}
                         />
+                        <View>
+                            <Text style={styles.bottom_text}>{Strings.English.label.bottomText} </Text>
 
-                        <Text style={styles.bottom_text}>{Strings.English.label.bottomText} </Text>
-                    
+                        </View>
+
                     </View>
 
                     <View style={styles.bottom_btn_View}>
                         <Button onPress={checkBox} name='Continue' />
                     </View>
-                {/* </View> */}
+                </View>
             </View>
 
 
         </View>
-    
-  );
+
+    );
 };
 
 export default Legal;
@@ -104,37 +107,37 @@ const styles = StyleSheet.create({
         fontSize: 15,
         lineHeight: dimen(24),
         color: colors.greenText,
-        fontFamily:fonts.PoppinsRegular,
+        fontFamily: fonts.PoppinsRegular,
         textAlign: "center",
     },
 
     middle_main_view: {
-        marginTop:dimen(33),
+        marginTop: dimen(33),
         height: dimen(123),
         // borderColor: colors.borderColor,
         // borderWidth: dimen(1),
         borderRadius: dimen(12),
         paddingHorizontal: dimen(15),
-        backgroundColor:"white",
+        backgroundColor: "white",
         shadowOffset: {
             width: 3,
             height: 4,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation:4,
+        elevation: 4,
 
     },
     middle_data_view: {
         top: dimen(60),
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems:"center",
+        alignItems: "center",
     },
     middle_Label_text: {
         color: colors.textcolor,
         fontSize: 16,
-        fontFamily:fonts.PoppinsMedium
+        fontFamily: fonts.PoppinsMedium
     },
     img: {
         height: dimen(12),
@@ -150,30 +153,38 @@ const styles = StyleSheet.create({
         flex: 0.28,
         marginHorizontal: dimen(24),
         justifyContent: 'flex-end',
-      },
-      bottom_text_View: {
-        flex:2,
+
+    },
+    bottom_text_View: {
+        // flex:1,
         flexDirection: 'row',
-        alignItems:"flex-end",
-        justifyContent:"center",
-        marginBottom:dimen(36.07),
-      },
-      checkbox:{
-        marginBottom:dimen(15)
-        
-      },
-      bottom_text: {
-        flexShrink:1,
+        alignItems: "flex-end",
+        justifyContent: "center",
+        // marginBottom:dimen(36.07),
+    },
+    checkbox: {
+        marginBottom: dimen(13)
+
+    },
+    bottom_text: {
+        // flexShrink:1,
         fontSize: 14,
         color: colors.textcolor,
         lineHeight: dimen(24),
-        fontFamily:fonts.PoppinsMedium,
-        
-      },
-      bottom_btn_View:{
-        flex: 1,
-        marginBottom:dimen(66.88),
-        justifyContent:"flex-end"
+        fontFamily: fonts.PoppinsMedium,
+        marginBottom: dimen(21),
+
+
+
     },
-      
+    //   bottom_btn_View:{
+    //     // flex: 1,
+    //     // marginBottom:dimen(66.88),
+    //     // justifyContent:"flex-end"
+    // },
+    insideMain_View2: {
+
+        marginBottom: 66.88,
+        gap: 36.07
+    }
 })

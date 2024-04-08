@@ -255,7 +255,23 @@ export const images = {
   notification1:require("../../assets/images/notificationImg1.png"),
   notification2:require("../../assets/images/notificationImg2.png"),
   notification3:require("../../assets/images/notificationImg3.png"),
+
+  // mainpage
   bell:require("../../assets/images/Bell.png"),
+  MinimizeSquare:require("../../assets/images/MinimizeSquare.png"),
+  RecieveSquare:require("../../assets/images/ReciveSquare.png"),
+  sell:require("../../assets/images/sell.png"),
+  send:require("../../assets/images/send.png"),  
+  mainTokenImg1:require("../../assets/images/mainTokenImg1.png"),
+  mainTokenImg2:require("../../assets/images/mainTokenImg2.png"),
+  mainTokenImg3:require("../../assets/images/mainTokenImg3.png"),
+  mainTokenImg4:require("../../assets/images/mainTokenImg4.png"),  
+  bar:require("../../assets/images/bar.png"),
+  dashboard:require("../../assets/images/dashboard.png"),  
+  portfolioTab:require("../../assets/images/portfolioTab.png"),  
+  dapp:require("../../assets/images/dapp.png"),  
+  swap:require("../../assets/images/swap.png"),  
+  setting:require("../../assets/images/setting.png"),  
   //Passcode
   biometric_Blue:require("../../assets/images/bioMetric_blue.png"),
 

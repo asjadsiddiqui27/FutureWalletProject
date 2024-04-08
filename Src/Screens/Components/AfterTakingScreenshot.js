@@ -43,6 +43,7 @@ export default function AfterTakingScreenshot(props) {
           </View>
 
           <View style={styles.pharse}>
+            
             <View style={styles.aboutPharse_1}>
               <View style={styles.inside_aboutPharse}>
                 <View style={styles.ellipse} />
@@ -54,6 +55,7 @@ export default function AfterTakingScreenshot(props) {
                 </Text>
               </View>
             </View>
+
             <HorizontalLine
               color={colors.Black}
               width={0.5}
