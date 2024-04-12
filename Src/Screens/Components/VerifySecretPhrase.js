@@ -45,14 +45,14 @@ const VerifySecretPhrase = (props) => {
 
                     <View style={styles.body_main_container}>
                         {newArray.map((item, index) => (
-                            <Button key={index} textColor={styles.btn_txt} text2_style={styles.btn_txt_2} buttonStyle={styles.btn_style_upper} name_2={item.index + 1 + "."} name={item.Item} onPress={() => { console.log(item), resetItem(item) }} />
+                            <Button key={index} textColor={styles.btn_txt} text2_style={[styles.btn_txt_2,{color: colors.greenText}]} buttonStyle={styles.btn_style_upper} name_2={item.index + 1 + "."} name={item.Item} onPress={() => { console.log(item), resetItem(item) }} />
                         ))}
                     </View>
 
                     <View style={styles.body_items_container}>
                         {dataArray.map((item, index) => (
                                 item != "" ?
-                                     <Button key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={styles.btn_txt_2} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => {console.log(item), setItem(item, index) }} />
+                                     <Button key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={[styles.btn_txt_2,{ color:colors.greenText        }]} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => {console.log(item), setItem(item, index) }} />
                                   :  <View key={index} style={styles.empty_Word} />
                                 
                         ))}
@@ -90,10 +90,10 @@ const styles = StyleSheet.create({
     },
 
     text_main_heading: {
-        fontSize: 15,
+        fontSize: dimen(16),
         textAlign: "center",
         fontFamily: fonts.PoppinsMedium,
-        color: colors.topText,
+        color: colors.greenText,
         lineHeight: 24,
         marginHorizontal: dimen(10),
         marginTop: dimen(16)
@@ -155,7 +155,6 @@ const styles = StyleSheet.create({
     },
     btn_txt_2: {
         fontSize: 13,
-        color: colors.topText,
         fontFamily: fonts.PoppinsMedium
     },
 

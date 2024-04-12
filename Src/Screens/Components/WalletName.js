@@ -61,9 +61,10 @@ const styles = StyleSheet.create({
     marginTop: dimen(16),
   },
   heading_text_style: {
-    fontSize: 15,
+    fontSize: dimen(16),
     lineHeight: dimen(24),
     textAlign: 'center',
+    color:colors.greenText
   },
   Input_main_container: {
     flex: 0.8,

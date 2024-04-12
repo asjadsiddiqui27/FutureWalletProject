@@ -11,26 +11,26 @@ const CustomHeader = ({
     onPress,
     onPress2,
     header_style,
-    imgLeft=images.headerIcon,
-    headerimg=styles.header_img,
+    imgLeft = images.headerIcon,
+    headerimg = styles.header_img,
     imgRight
 }) => {
 
     return (
-        <View style={[styles.header_view,header_style]}>
-          
-            <TouchableOpacity onPress={onPress}>
+        <View style={[styles.header_view, header_style]}>
+
+            <TouchableOpacity  onPress={onPress}>
                 <Image source={imgLeft} style={headerimg} />
             </TouchableOpacity>
             <View style={styles.header_Text_View}>
                 <Text style={styles.header_Text}>{header}</Text>
             </View>
 
-{imgRight&&
-            <TouchableOpacity onPress={onPress2}>
-                <Image source={imgRight} style={headerimg} />
-            </TouchableOpacity>
-}
+            {imgRight &&
+                <TouchableOpacity onPress={onPress2}>
+                    <Image source={imgRight} style={headerimg} />
+                </TouchableOpacity>
+            }
 
 
         </View>
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
         marginTop: dimen(29),
         marginBottom: dimen(32),
         alignItems: "center",
-        // backgroundColor:"red",
-        
+        // backgroundColor:"yellow",
+
     },
     header_img: {
         width: dimen(10),

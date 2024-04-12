@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     color: colors.Black,
   },
   imgTextSecond: {
-    fontSize: 15.6,
+    fontSize: dimen(16),
     fontFamily:fonts.PoppinsMedium ,
     color: colors.subText,
     // fontFamily:"Poppins-Medium"\

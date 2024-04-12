@@ -1,4 +1,4 @@
-import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import colors from '../../Theme/Colors'
 import CustomHeader from '../Common/CustomHeader'
@@ -7,7 +7,44 @@ import { images } from '../../Theme/Images';
 import fonts from '../../Theme/Fonts';
 import { Strings } from '../../Theme/Strings';
 
+const tokenData = [{
+    image: images.notification2,
+    coinName: Strings.English.main.BNBBeaconChain,
+    yourPrice: Strings.English.main.dollarValue1,
+    profitPercantage: Strings.English.main.percentagevalue1,
+    howMuch: Strings.English.main.BNB,
+    curntPrice: Strings.English.main.dollarValueRight1,
+    image_2: images.bar,
+},
+{
+    image: images.notification1,
+    coinName: Strings.English.main.Bitcoin,
+    yourPrice: Strings.English.main.dollarValue2,
+    profitPercantage: Strings.English.main.percentagevalue2,
+    howMuch: Strings.English.main.BTC,
+    curntPrice: Strings.English.main.dollarValueRight2,
+    image_2: images.bar,
+},
+{
+    image: images.notification3,
+    coinName: Strings.English.main.Ethereum,
+    yourPrice: Strings.English.main.dollarValue3,
+    profitPercantage: Strings.English.main.percentagevalue3,
+    howMuch: Strings.English.main.ETH,
+    curntPrice: Strings.English.main.dollarValueRight3,
+    image_2: images.bar,
+},
+{
+    image: images.tron,
+    coinName: Strings.English.main.Tron,
+    yourPrice: Strings.English.main.dollarValue4,
+    profitPercantage: Strings.English.main.percentagevalue4,
+    howMuch: Strings.English.main.TRX ,
+    curntPrice: Strings.English.main.dollarValueRight4,
+    image_2: images.bar,
+},
 
+]
 
 
 const Main = (props) => {
@@ -26,10 +63,10 @@ const Main = (props) => {
                 </View>
 
 
-                <View style={{ flexDirection: "row",justifyContent:"center",  marginTop: dimen(28) }}>
+                <View style={{ flexDirection: "row", justifyContent: "center", marginTop: dimen(28) }}>
 
                     {/* ............................Send .....................................*/}
-                    <View style={{ alignItems: "center" ,marginHorizontal:dimen(10)}}>
+                    <View style={{ alignItems: "center", marginHorizontal: dimen(10) }}>
                         <TouchableOpacity>
                             <View style={styles.img_background_view}>
                                 <Image source={images.send} style={styles.images_style} />
@@ -41,7 +78,7 @@ const Main = (props) => {
 
                     {/* ............................Receive .....................................*/}
 
-                    <View style={{ alignItems: "center" ,marginHorizontal:dimen(10)}}>
+                    <View style={{ alignItems: "center", marginHorizontal: dimen(10) }}>
                         <TouchableOpacity>
                             <View style={styles.img_background_view}>
                                 <Image source={images.MinimizeSquare} style={styles.images_style} />
@@ -53,7 +90,7 @@ const Main = (props) => {
 
                     {/* ............................Buy .....................................*/}
 
-                    <View style={{ alignItems: "center" ,marginHorizontal:dimen(10)}}>
+                    <View style={{ alignItems: "center", marginHorizontal: dimen(10) }}>
                         <TouchableOpacity onPress={() => { props.navigation.navigate("BuyCrypto") }}>
                             <View style={styles.img_background_view}>
                                 <Image source={images.RecieveSquare} style={styles.images_style} />
@@ -64,7 +101,7 @@ const Main = (props) => {
                     </View>
                     {/* ............................Sell .....................................*/}
 
-                    <View style={{ alignItems: "center" ,marginHorizontal:dimen(10)}}>
+                    <View style={{ alignItems: "center", marginHorizontal: dimen(10) }}>
                         <TouchableOpacity>
 
                             <View style={styles.img_background_view}>
@@ -95,133 +132,64 @@ const Main = (props) => {
                 <View style={styles.bottom_2nt_view}>
                     <View>
 
-                        {/*............................................... 1st ROW.................................................... */}
 
-                        <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
-                            <View style={{ flexDirection: "row",width:dimen(200),}}>
-                                {/* <View> */}
-                                    <Image source={images.notification2} style={styles.imgStyle} />
-                                {/* </View> */}
-                                <View style={{ marginLeft: 10 }}>
-                                    <Text style={styles.uper_text}>{Strings.English.main.BNBBeaconChain}</Text>
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text style={styles.bottom_text}>{Strings.English.main.dollarValue1}</Text>
-                                        <Text style={[styles.bottom_text, { color: colors.parrotGreenText }]}>{Strings.English.main.percentagevalue1}</Text>
+                        {/* flatlist start here  */}
+
+                        <FlatList
+                            data={tokenData}
+                            renderItem={({ item }) => (
+                                <View>
+                                    <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
+                                        <View style={{ flexDirection: "row", width: dimen(200), }}>
+                                            {/* <View > */}
+                                            <Image source={item.image} style={styles.imgStyle} />
+                                            {/* </View> */}
+                                            <View style={{ marginLeft: 10 }}>
+                                                <Text style={styles.uper_text}>{item.coinName}</Text>
+                                                <View style={{ flexDirection: "row" }}>
+                                                    <Text style={styles.bottom_text}>{item.yourPrice}</Text>
+                                                    <Text style={[styles.bottom_text, { color: colors.parrotGreenText }]}>{item.profitPercantage}</Text>
+                                                </View>
+
+                                            </View>
+                                        </View>
+
+                                        <View style={{ alignSelf: "center" }}>
+                                            <Image style={{resizeMode:'contain',}} source={images.bar} />
+                                        </View>
+                                        <View style={{ width: dimen(80), }}>
+                                            <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{item.howMuch}</Text>
+                                            <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{item.curntPrice} </Text>
+                                        </View>
                                     </View>
 
+                                    <View style={{
+
+                                        borderColor: "#BEDFE8",
+                                        borderWidth: 0.8,
+                                        marginVertical: dimen(16)
+                                    }} />
                                 </View>
-                            </View>
 
-                            <View style={{ alignSelf: "center", }}>
-                                <Image source={images.bar} />
-                            </View>
-                            <View style={{ width: dimen(80), }}>
-                                <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{Strings.English.main.BNB}</Text>
-                                <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{Strings.English.main.dollarValueRight1} </Text>
-                            </View>
-                        </View>
+                            )}
+                        />
+                        {/* end here  */}
 
-                        <View style={{
 
-                            borderColor: "#BEDFE8",
-                            borderWidth: 0.8,
-                            marginVertical: dimen(16)
-                        }} />
+                        {/*............................................... 1st ROW.................................................... */}
+
+                       
 
                         {/*............................................... 2nd ROW.................................................... */}
 
-                        <View style={{ justifyContent: "space-between", flexDirection: "row",}}>
-                            <View style={{ flexDirection: "row",width:dimen(200), }}>
-                                <View>
-                                    <Image source={images.notification1} style={styles.imgStyle} />
-                                </View>
-                                <View style={{ marginLeft: 10 }}>
-                                    <Text style={styles.uper_text}>{Strings.English.main.Bitcoin}</Text>
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text style={styles.bottom_text}>{Strings.English.main.dollarValue2}</Text>
-                                        <Text style={[styles.bottom_text, { color: colors.parrotGreenText }]}>{Strings.English.main.percentagevalue2}</Text>
-                                    </View>
-
-                                </View>
-                            </View>
-
-                            <View style={{ alignSelf: "center",}}>
-                                <Image source={images.bar} />
-                            </View>
-                            <View style={{ width: dimen(80),}}>
-                                <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{Strings.English.main.BTC}</Text>
-                                <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{Strings.English.main.dollarValueRight2} </Text>
-                            </View>
-                        </View>
-
-                        <View style={{
-
-                            borderColor: "#BEDFE8",
-                            borderWidth: 0.8,
-                            marginVertical: dimen(16)
-                        }} />
-
+             
                         {/*............................................... 3rd ROW.................................................... */}
-
-
-                        <View style={{ justifyContent: "space-between", flexDirection: "row", }}>
-                            <View style={{ flexDirection: "row",width:dimen(200), }}>
-                                <View>
-                                    <Image source={images.notification3} style={styles.imgStyle} />
-                                </View>
-                                <View style={{ marginLeft: 10 }}>
-                                    <Text style={styles.uper_text}>{Strings.English.main.Ethereum}</Text>
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text style={styles.bottom_text}>{Strings.English.main.dollarValue3}</Text>
-                                        <Text style={[styles.bottom_text, { color: colors.parrotGreenText }]}>{Strings.English.main.percentagevalue3}</Text>
-                                    </View>
-
-                                </View>
-                            </View>
-
-                            <View style={{ alignSelf: "center",}}>
-                                <Image source={images.bar} />
-                            </View>
-                            <View style={{ width: dimen(80),  }}>
-                                <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{Strings.English.main.ETH}</Text>
-                                <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{Strings.English.main.dollarValueRight3} </Text>
-                            </View>
-                        </View>
-
-                        <View style={{
-
-                            borderColor: "#BEDFE8",
-                            borderWidth: 0.8,
-                            marginVertical: dimen(16)
-                        }} />
 
 
                         {/*............................................... 4th ROW.................................................... */}
 
 
-                        <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
-                            <View style={{ flexDirection: "row",width:dimen(200), }}>
-                                <View>
-                                    <Image source={images.tron} style={styles.imgStyle} />
-                                </View>
-                                <View style={{ marginLeft: 10 }}>
-                                    <Text style={styles.uper_text}>{Strings.English.main.Tron}</Text>
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text style={styles.bottom_text}>{Strings.English.main.dollarValue1}</Text>
-                                        <Text style={[styles.bottom_text, { color: colors.parrotGreenText }]}>{Strings.English.main.percentagevalue1}</Text>
-                                    </View>
-
-                                </View>
-                            </View>
-
-                            <View style={{ alignSelf: "center", }}>
-                                <Image source={images.bar} />
-                            </View>
-                            <View style={{ width: dimen(80) , }}>
-                                <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{Strings.English.main.TRX}</Text>
-                                <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{Strings.English.main.dollarValueRight4} </Text>
-                            </View>
-                        </View>
+                 
                     </View>
                 </View>
 
@@ -276,7 +244,7 @@ const styles = StyleSheet.create({
         width: dimen(30)
     },
     transfer_text: {
-        fontSize: 14,
+        fontSize: dimen(14),
         color: colors.Black,
         fontFamily: fonts.PoppinsMedium,
         padding: dimen(8)
@@ -286,7 +254,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 26,
         borderTopLeftRadius: 26,
         flex: 1,
-        marginTop:dimen(32)
+        marginTop: dimen(32)
 
     },
     bottom_ist_view: {
@@ -303,7 +271,7 @@ const styles = StyleSheet.create({
 
     },
     token_text: {
-        fontSize: 18,
+        fontSize: dimen(18),
         fontFamily: fonts.PoppinsBold,
         color: colors.Black,
         lineHeight: dimen(22)
@@ -327,6 +295,7 @@ const styles = StyleSheet.create({
     imgStyle: {
         height: dimen(44),
         width: dimen(44),
+        resizeMode:"contain"
 
     },
     uper_text: {
