@@ -1,10 +1,11 @@
-import { Platform, StatusBar, StyleSheet, TextInput, View } from 'react-native'
+import { Platform, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import CustomHeader from '../../Common/CustomHeader'
 import SeperateLine from '../../Common/SeperateLine'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Button from '../../Common/CustomButton'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils'
+import colors from '../../../Theme/Colors'
 
 const SendBTC = () => {
     return (
@@ -17,12 +18,14 @@ const SendBTC = () => {
             </View>
             <SeperateLine />
 
-            <View style={{ flex: 1, marginHorizontal: 24 }}>
-                <View style={{ flex: 0.8 }}>
+            <View style={{ flex: 1, margin:dimen(24)}}>
+                <View style={{ flex: 0.8,gap:dimen(12.33)}}>
+                    <Text style={styles.Address}>Address</Text>
                     <TextInput
                         style={styles.input}
                         placeholder="Enter"
                         keyboardType="numeric"
+                        placeholderTextColor={colors.subText}
                     />
                 </View>
 
@@ -49,10 +52,18 @@ const styles = StyleSheet.create({
         marginBottom: dimen(66.83)
     },
     input: {
-        height: 40,
-        margin: 12,
+        height: 50,
+       
         borderWidth: 1,
         padding: 10,
-        borderRadius:10
+        borderRadius:10,
+        borderColor:colors.borderLineColor,
+        fontSize:dimen(16),
+        paddingLeft:dimen(16.34)
+
+    },
+    Address:{
+        fontSize:dimen(14),
+        fontWeight:"500",
     }
 })
