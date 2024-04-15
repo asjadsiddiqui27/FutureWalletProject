@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 
         flexDirection: "row",
         marginTop: dimen(29),
-        marginBottom: dimen(32),
+        marginBottom: dimen(20),
         alignItems: "center",
         // backgroundColor:"red",
         

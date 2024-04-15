@@ -9,6 +9,10 @@ import Legal from '../Components/Legal';
 import Notification from '../Components/Notification';
 import Onboarding from '../Components/Onboarding';
 import SecretPhrase from '../Components/SecretPhrase';
+import Settings from '../Components/Settings/Settings';
+import { getDimensionPercentage as dimen } from '../../Utils/Utils';
+import Dapp from '../Components/Dapp/Dapp';
+import Transactions from '../Components/Transactions/Transactions';
 
 
 
@@ -24,12 +28,11 @@ function TabNavigation() {
       tabBarStyle: { ...styles.tabContainer },
       tabBarLabelStyle: {
 
-        fontSize: 12,
+        fontSize: dimen(12),
         fontFamily: fonts.PoppinsMedium,
-        marginBottom: 20,
-
-
+        marginBottom: dimen(20),
       },
+     
     }}
 
 
@@ -54,7 +57,7 @@ function TabNavigation() {
           ),
         }}
       />
-      <Tab.Screen name="Portfolio" component={Notification}
+      <Tab.Screen name="Portfolio" component={Transactions}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
@@ -64,14 +67,14 @@ function TabNavigation() {
           ),
         }}
       />
-      <Tab.Screen name="Dapp" component={Onboarding}
+      <Tab.Screen name="Dapp" component={Dapp}
         options={{
           tabBarIcon: ({ color }) => (
             <Image style={styles.bottomTabIcon} source={images.dapp} />
           ),
         }}
       />
-      <Tab.Screen name="Settings" component={SecretPhrase}
+      <Tab.Screen name="Settings" component={Settings}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
@@ -79,6 +82,7 @@ function TabNavigation() {
               source={images.setting
               } />
           ),
+          
         }}
       />
 
@@ -97,6 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FCFDFF',
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
+    
 
 
   },

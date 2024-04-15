@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   aboutPharse_text: {
     color: colors.Black,
     lineHeight: 22,
-    fontSize: 14,
+    fontSize: dimen(14),
     letterSpacing: -dimen(0.2),
     fontFamily: fonts.PoppinsMedium,
     maxWidth: dimen(360), //

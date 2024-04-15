@@ -277,7 +277,38 @@ export const images = {
 
   // buy&sell
   usd:require("../../assets/images/usd.png"),
-  whiteTriangle:require("../../assets/images/whiteTriangle.png")
+  whiteTriangle:require("../../assets/images/whiteTriangle.png"),
+  deleteLogo:require("../../assets/images/deleteLogo.png"),
+  DangerCircle:require("../../assets/images/DangerCircle.png"),
+  settingGreater:require("../../assets/images/settingGreater.png"),
+  swapBitcoin:require("../../assets/images/swapBitcoin.png"),
+  transferBitcoin:require("../../assets/images/transferBitcoin.png"),
+  topTransferBitcoin:require("../../assets/images/topTransferBitcoin.png"),
+  downTransferBitcoin:require("../../assets/images/downTransferBitcoin.png"),
+  smartContact:require("../../assets/images/smartContact.png"),
 
+  dappLogo:require("../../assets/images/dappLogo.png"),
+  compoundLogo:require("../../assets/images/compound-comp-logo.png"),
+  rightBlueArrow:require("../../assets/images/rightBlueArrow.png"),
+
+
+  // .......................... setting ............................//
+  blueManageWallet:require("../../assets/images/blueManageWallet.png"),
+  blueSecurity:require("../../assets/images/blueSecurity.png"),
+  bluePrepaidCards:require("../../assets/images/bluePrepaidCards.png"),
+  blueNativeCurrency:require("../../assets/images/blueNativeCurrency.png"),
+  blueAddressBook:require("../../assets/images/blueAddressBook.png"),
+  blueFutureWallet:require("../../assets/images/blueFutureWallet.png"),
+  bluePreferences:require("../../assets/images/bluePreferences.png"),
+  bluePrivacyPolicy:require("../../assets/images/bluePrivacyPolicy.png"),
+  blueRewards:require("../../assets/images/blueRewards.png"),
+  blueTelegram:require("../../assets/images/blueTelegram.png"),
+  blueFacebook:require("../../assets/images/blueFacebook.png"),
+  blueInstagram:require("../../assets/images/blueInstagram.png"),
+  blueContactUs:require("../../assets/images/blueContactUs.png"),
+  blueAboutUs:require("../../assets/images/blueAboutUs.png"),
+  blueLogout:require("../../assets/images/blueLogout.png"),
 };
+
+
 // export default images;

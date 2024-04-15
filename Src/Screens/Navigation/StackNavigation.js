@@ -18,6 +18,15 @@ import Main from '../Components/Main';
 import Notification from '../Components/Notification';
 import TabNavigation from './TabNavigation';
 import BuyCrypto from '../Components/Buy&Sell/BuyCrypto';
+import SellCrypto from '../Components/Buy&Sell/SellCrypto';
+import Checkout from '../Components/Buy&Sell/Checkout';
+import ManageWallets from '../Components/Buy&Sell/ManageWallets';
+import Settings from '../Components/Settings/Settings';
+import Receive from '../Components/Receive/Receive';
+import Send from '../Components/Send/Send';
+import Bitcoin from '../Components/Send/Bitcoin';
+import SendBtc from '../Components/Send/SendBtc';
+import Transfer from '../Components/Send/Transfer';
 
 const Stack = createNativeStackNavigator();
 
@@ -124,6 +133,62 @@ const StackNavigation = () => {
           options={{
           }}
         />
+
+        <Stack.Screen
+          name='SellCrypto'
+          component={SellCrypto}
+          options={{
+          }}
+        />
+
+        <Stack.Screen
+          name='Checkout'
+          component={Checkout}
+          options={{
+          }}
+        />
+        <Stack.Screen
+          name='ManageWallets'
+          component={ManageWallets}
+          options={{
+          }}
+        />
+        <Stack.Screen
+          name='Receive'
+          component={Receive}
+          options={{
+          }}
+        />
+        <Stack.Screen
+          name='Send'
+          component={Send}
+          options={{
+          }}
+        />
+
+
+        <Stack.Screen
+          name='Bitcoin'
+          component={Bitcoin}
+          options={{
+          }}
+        />
+        <Stack.Screen
+          name='SendBtc'
+          component={SendBtc}
+          options={{
+          }}
+        />
+
+<Stack.Screen
+          name='Transfer'
+          component={Transfer}
+          options={{
+          }}
+        />
+
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
