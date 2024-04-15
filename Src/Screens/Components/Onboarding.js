@@ -16,18 +16,22 @@ import Button from '../Common/CustomButton';
 import fonts from '../../Theme/Fonts';
 import { Strings } from '../../Theme/Strings';
 import { images } from '../../Theme/Images';
+import { useTheme } from '@react-navigation/native';
+
 
 const Onboarding = (props) => {
+  const {colors: themeColor} = useTheme()
+
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea,{backgroundColor:themeColor.background}]}>
         <View style={{flex:1,marginHorizontal: 14, }}>
       
-      <View style={{flex: 0.8}}>
+      <View style={{flex: 0.8,gap:dimen(10)}}>
         <View style={styles.imgContainer}>
           <Image style={styles.groupImg} source={images.group} />
         </View>
         <View style={styles.imgContainerText}>
-          <Text style={styles.imgTextFirst}>{Strings.English.onboarding.safe}</Text>
+          <Text style={[styles.imgTextFirst,{color:themeColor.imgTextFirst}]}>{Strings.English.onboarding.safe}</Text>
           <Text style={styles.imgTextSecond}>
          {Strings.English.onboarding.aboutOur}
           </Text>
