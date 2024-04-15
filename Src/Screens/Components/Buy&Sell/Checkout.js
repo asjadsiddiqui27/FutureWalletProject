@@ -1,70 +1,65 @@
-import { Image, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Image, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import CustomHeader from '../../Common/CustomHeader'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
 import colors from '../../../Theme/Colors';
 import fonts from '../../../Theme/Fonts';
 import { images } from '../../../Theme/Images';
-const Checkout = () => {
+import Button from '../../Common/CustomButton';
+import { Strings } from '../../../Theme/Strings';
+import CardRow from '../Send/CardRow';
+import SeperateLine from '../../Common/SeperateLine';
+const Checkout = (props) => {
     return (
-        <View style={styles.main_container}>
+        <SafeAreaView style={styles.main_container}>
             <StatusBar backgroundColor="white" barStyle="dark-content" />
-            <CustomHeader header="checkout" header_style={styles.header} />
+            <CustomHeader header={Strings.English.checkout.checkout} header_style={styles.header} onPress={() => { props.navigation.navigate("SellCrypto") }} />
             {/* ................................................................. */}
+            <SeperateLine />
 
-
-            <View style={styles.top_line} />
-
-            <View style={{ marginHorizontal: dimen(24) }}>
+            <View style={styles.top_container}>
                 <View style={styles.top_view}>
                     <Image source={images.whiteTriangle} style={styles.centre_imgStyle} />
-                    <Text style={styles.ethereum_text}>ETHEREUM</Text>
-                    <Text style={styles.top_value_text}>4.6875345</Text>
+                    <Text style={styles.ethereum_text}>{Strings.English.checkout.Ethereum_text}</Text>
+                    <Text style={styles.top_value_text}>{Strings.English.checkout.Ethereum_value}</Text>
                 </View>
-                <View style={{ justifyContent: "center", alignItems: "center", marginHorizontal: dimen(25), marginTop: dimen(20) }}>
-                    <Text style={{ fontSize: 16, fontFamily: fonts.PoppinsBold, color: colors.Black }}>$334.84 PER ETH</Text>
-                    <Text style={{ fontSize: 14, fontFamily: fonts.PoppinsMedium, textAlign: "center", color: colors.greenText }}>Due to market volatility, the quantity you receive may deviate slightly from your order.</Text>
+                <View style={styles.IIndText_view}>
+                    <Text style={styles.dollarValueETH}>{Strings.English.checkout.dollarValueETH}</Text>
+                    <Text style={styles.longText}>{Strings.English.checkout.longText}</Text>
                 </View>
 
-                <View style={styles.top_2nd_line} />
 
+                <SeperateLine top_line={styles.Seperate_line} />
                 {/* .............................................................. */}
 
 
 
-                <View style={{justifyContent:"space-between",flexDirection:"row",alignItems:"center"}}>
-                    <View style={{flexDirection:"row",alignItems:"center",gap:10}}>
-                        <Image source={images.whiteTriangle} style={{height:dimen(20),width:dimen(20)}}/>
-                        <Text style={{color:colors.Black ,fontFamily:fonts.PoppinsMedium}}>Alchemy</Text>
+                <View style={styles.first_caredRow_view}>
+                    <View style={styles.text_img_view}>
+                        <Image source={images.whiteTriangle} style={styles.IInd_img} />
+                        <Text style={styles.alchemy_text}>{Strings.English.checkout.alchemy}</Text>
                     </View>
                     <View>
-                        <Text style={{ color:colors.greenText,fontSize:14,fontFamily:fonts.PoppinsMedium}}>Payment Gateway</Text>
+                        <Text style={styles.Payment_Gateway_text}>{Strings.English.checkout.payment_Gateway}</Text>
                     </View>
                 </View>
 
-                {/* ............................................................... */}
-
-
-                <View style={{marginTop:dimen(20)}}>
-                    {/* .............. */}
-                    <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-                        <Text style={{fontSize:16,color:colors.Black,fontFamily:fonts.PoppinsMedium}}>Network fee</Text>
-                        <Text style={{fontSize:14,color:colors.greenText,fontFamily:fonts.PoppinsMedium}}>$56.16 (5%)</Text>
-                    </View>
-                    <View style={{flexDirection:"row",justifyContent:"space-between",marginTop:dimen(15)}}>
-                        <Text style={{fontSize:16,color:colors.Black,fontFamily:fonts.PoppinsMedium}}>Platform fee</Text>
-                        <Text style={{fontSize:14,color:colors.greenText,fontFamily:fonts.PoppinsMedium}}>$0.02 (2%)</Text>
-                    </View>
-                    <View style={styles.top_2nd_line} />
-                    <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-                        <Text style={{fontSize:16,color:colors.Black,fontFamily:fonts.PoppinsMedium}}>Total Amount</Text>
-                        <Text style={{fontSize:14,color:colors.greenText,fontFamily:fonts.PoppinsMedium}}>$1000.73 (7%)</Text>
-                    </View>
+                <View style={styles.CardRow_view}>
+                    <CardRow text1={Strings.English.checkout.NetworkFee} text2={Strings.English.checkout.dollarValue1} />
+                    <CardRow text1={Strings.English.checkout.PlatformFee} text2={Strings.English.checkout.dollarValue2} />
+                    <SeperateLine top_line={styles.Seperate_line2} />
+                    <CardRow text1={Strings.English.checkout.TotalAmount} text2={Strings.English.checkout.TotalValue} />
                 </View>
+
+
             </View>
 
+            <View style={styles.bottom_view}>
+                <Text style={styles.bottom_text}>{Strings.English.checkout.bottom_text}</Text>
+                <Button name={Strings.English.checkout.button_text} onPress={() => { props.navigation.navigate("ManageWallets") }} />
+            </View>
 
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -80,9 +75,13 @@ const styles = StyleSheet.create({
         marginHorizontal: dimen(21)
     },
     top_line: {
-        borderWidth: 0.2,
+        borderWidth: 0.195,
         width: "100%",
         borderColor: colors.greenText,
+    },
+    top_container: {
+        marginHorizontal: dimen(24),
+        flex: 0.85
     },
     top_view: {
         // width:dimen(382),
@@ -110,10 +109,73 @@ const styles = StyleSheet.create({
         fontFamily: fonts.PoppinsBold,
         color: colors.Black
     },
-    top_2nd_line: {
+
+    IIndText_view: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginHorizontal: dimen(25),
+        marginTop: dimen(20)
+    },
+    dollarValueETH: {
+        fontSize: 16,
+        fontFamily: fonts.PoppinsBold,
+        color: colors.Black
+    },
+    longText: {
+        fontSize: 14,
+        fontFamily: fonts.PoppinsMedium,
+        textAlign: "center",
+        color: colors.greenText
+    },
+    Seperate_line: {
         borderWidth: 0.2,
         marginVertical: dimen(16),
         width: "100%",
-        borderColor: "#D8E2EC",
+        borderColor: colors.seperateLine,
+    },
+    first_caredRow_view: {
+        justifyContent: "space-between",
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    text_img_view: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10
+
+    },
+    IInd_img: {
+        height: dimen(20),
+        width: dimen(20)
+    },
+    alchemy_text: {
+        color: colors.Black,
+        fontFamily: fonts.PoppinsMedium
+    },
+    Payment_Gateway_text: {
+        color: colors.greenText,
+        fontSize: 14,
+        fontFamily: fonts.PoppinsMedium
+    },
+    Seperate_line2: {
+        borderWidth: 0.2,
+        marginTop: dimen(16),
+        width: "100%",
+        borderColor: colors.seperateLine,
+    },
+    CardRow_view: {
+        marginTop: dimen(20)
+
+    },
+    bottom_text: {
+        fontSize: 14,
+        fontFamily: fonts.PoppinsMedium,
+        textAlign: "center",
+        marginBottom: dimen(30)
+    },
+    bottom_view: {
+        marginBottom: 80,
+        flex: 0.15,
+        marginHorizontal: dimen(24)
     }
 })

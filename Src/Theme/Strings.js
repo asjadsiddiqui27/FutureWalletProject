@@ -50,7 +50,7 @@ export const Strings = {
             ConfirmPasscode: "Confirm Passcode",
             CreatePasscode: "Create Passcode",
             passcodeAddsSecurity: "Adds an extra layer of security when using the app",
-            enableBiometric:"Enable Biometric",
+            enableBiometric: "Enable Biometric",
 
         },
         manageWallet: {
@@ -90,57 +90,140 @@ export const Strings = {
             time3: "07:55pm, 10/01/2024",
         },
         main: {
-
-
-            // ...............................HEADER.........................//
-
-            
-            MyWallet2:"My Wallet 2",
-
-            //..............................TOP TEXT.........................//
-
+            MyWallet2: "My Wallet 2",
             totalBalance: "Total Balance",
             dollarValue: "$18,572.74",
-            // ............................TRANSITION........................//
             Send: "Send",
             Receive: "Receive",
             Buy: "Buy",
             Sell: "Sell",
-
-
-            Tokens:"Tokens",
-            //.............................BOTTOM IST ROW...........................//
-
+            Tokens: "Tokens",
             BNBBeaconChain: "BNB Beacon Chain",
             dollarValue1: "$305.66",
             percentagevalue1: "+0.89%",
             BNB: "1.5 BNB",
             dollarValueRight1: "$477.38 ",
-
-            //.............................BOTTOM 2nd ROW...........................//
-
             Bitcoin: "Bitcoin",
             dollarValue2: "$23,436.20",
             percentagevalue2: "+1.13%",
             BTC: "1.5 BTC",
-            dollarValueRight2: "$42,864.30 ",
-
-            //.............................BOTTOM 3rd ROW...........................//
-
+            dollarValueRight2: "$42,864.3",
             Ethereum: "Ethereum",
             dollarValue3: "$2,339.66",
             percentagevalue3: "+0.89%",
             ETH: "2 ETH",
             dollarValueRight3: "$2,326.35 ",
-
-            //.............................BOTTOM 4th ROW...........................//
-
             Tron: "Tron",
             dollarValue4: "$0.11",
             percentagevalue4: "+0.89%",
             TRX: "500 TRX",
             dollarValueRight4: "$56.54 ",
 
+        },
+        buyCrypto: {
+
+            BuyCrypto: "Buy Crypto",
+            Payment: "Payment",
+            value: "$1800.00",
+            USD: "USD",
+            Receive: "Receive",
+            value2: "0.9070 (ETH)",
+            ETH: "ETH",
+            Balance: "Balance:",
+            value3: "0.00469743 ETH",
+            Buy: " Buy",
+            Sell: "Sell",
+            SellCrypto: "Sell Crypto"
+
+        },
+
+        checkout: {
+            checkout: "Checkout",
+            Ethereum_text: "ETHEREUM",
+            Ethereum_value: "4.6875345",
+            bottom_text: "Confirm to enter a secure payment gateway to complete the purchase",
+            button_text: "Confirm Purchase",
+            NetworkFee: "Network fee",
+            dollarValue1: "$56.16 (5%)",
+            PlatformFee: "Platform fee",
+            dollarValue2: "$0.02 (2%)",
+            TotalAmount: "Total Amount",
+            TotalValue: "$1000.73 (7%)",
+            dollarValueETH: "$334.84 PER ETH",
+            longText: "Due to market volatility, the quantity you receive may deviate slightly from your order.",
+            alchemy: "Alchemy",
+            payment_Gateway: "Payment Gateway",
+        },
+
+        ManageWallets: {
+            manageWallets: "Manage Wallets",
+            Wallet02: "Wallet02",
+            walletType2: "Multicoin Wallet",
+            Basic: "Basic",
+            walletType1: "Default Wallet",
+            button_text: "+ Add New Wallet",
+        },
+        Settings: {
+
+            settings: "Settings",
+            ManageWallets: "Manage Wallets",
+            myWallet: "My Wallet",
+            security: "Security",
+            preferences: "Preferences",
+            referralRewards: "Referral & Rewards",
+            nativeCurrency: "Native Currency",
+            addressBook: "Address Book",
+            contactUs: "Contact Us",
+            aboutUs: "About Us",
+            privacyPolicy: "Privacy Policy",
+            prepaidCards: "Prepaid Cards",
+            facebook: "Facebook",
+            instagram: "Instagram",
+            telegram: "Telegram",
+            futurewalletcom: "Futurewallet.com",
+            logout: "Logout"
+
+        },
+
+        Bitcoin: {
+            Bitcoin: "Bitcoin",
+            Coin: "Coin",
+            dollarValue: "$23,436.20",
+            percentagevalue: "+1.13%",
+            ValueBTC: "1.97 BTC",
+            amount: "$50,000",
+            Send: "Send",
+            Receive: "Receive",
+            Swap: "Swap",
+            Transactions: "Transactions"
+
+        },
+        Transfer: {
+            Transfer: "Transfer",
+            BtcValue: "0.0003 BTC",
+            amount: "$12.63",
+            DateTxt: "Date",
+            dateOrTime: "01-02-2024 at 5:55PM",
+            Status: "Status",
+            StatusData: "Completed",
+            Recipient: "Recipient",
+            key: "bnb1fwfhpk...vz9jsusdgfd",
+            NetworkFeeTxt: "Network Fee",
+            NetworkFee: "0.11111 USD",
+
+        },
+        Transactions: {
+
+            WrappedBNB: "Wrapped BNB",
+            heading: "BEP20 BNB Smart Chain",
+            WBNB: "0.01276837 WBNB",
+            dollarValue: "$5.19",
+            Send: "Send",
+            Receive: "Receive",
+            Swap: "Swap",
+            Buy: "Buy",
+            Sell: "Sell",
+            Transactions: "Transactions"
         }
 
 

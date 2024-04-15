@@ -9,7 +9,8 @@ import Button from '../../Common/CustomButton';
 import { Strings } from '../../../Theme/Strings';
 import SeperateLine from '../../Common/SeperateLine';
 import CustomCrypto from './CustomBuyCrypto';
-const BuyCrypto = (props) => {
+
+const SellCrypto = (props) => {
     const data = [
         { id: '1', value: '1' },
         { id: '2', value: '2' },
@@ -50,24 +51,26 @@ const BuyCrypto = (props) => {
 
             {/* ............................header..................................... */}
 
-            <CustomHeader header={Strings.English.buyCrypto.BuyCrypto} header_style={styles.header_view} onPress={() => { props.navigation.navigate("TabNavigation") }} />
-            <SeperateLine  />
 
+
+            <CustomHeader header={Strings.English.buyCrypto.SellCrypto} header_style={styles.header_view} onPress={() => { props.navigation.navigate("TabNavigation") }} />
+            <SeperateLine  />
 
             <View style={styles.top_data_view}>
 
-                <CustomCrypto labelText={Strings.English.buyCrypto.Payment} dollarValue={Strings.English.buyCrypto.value} image={images.usd} middleText={Strings.English.buyCrypto.USD} image2={images.DownArrow} />
-                <CustomCrypto labelText={Strings.English.buyCrypto.Receive} dollarValue={Strings.English.buyCrypto.value2} image={images.whiteTriangle} middleText={Strings.English.buyCrypto.ETH} image2={images.DownArrow} />
 
 
+                <CustomCrypto labelText={Strings.English.buyCrypto.Receive} dollarValue={Strings.English.buyCrypto.value2} image={images.whiteTriangle} image2={images.DownArrow} middleText={Strings.English.buyCrypto.ETH} />
                 <View style={styles.balance_view}>
                     <Text style={styles.balanceText}>{Strings.English.buyCrypto.Balance}</Text>
                     <Text style={styles.balanceValue}>{Strings.English.buyCrypto.value3}</Text>
 
                 </View>
 
+                <CustomCrypto labelText={Strings.English.buyCrypto.Payment} dollarValue={Strings.English.buyCrypto.value} image={images.usd} image2={images.DownArrow} middleText={Strings.English.buyCrypto.USD} />
+
                 <View style={styles.buy_Button_view}>
-                    <Button name={Strings.English.buyCrypto.Buy} />
+                    <Button name={Strings.English.buyCrypto.Sell} onPress={() => { props.navigation.navigate("Checkout") }} />
                 </View>
 
             </View>
@@ -83,7 +86,7 @@ const BuyCrypto = (props) => {
     )
 }
 
-export default BuyCrypto
+export default SellCrypto
 
 const styles = StyleSheet.create({
     main_container: {
@@ -100,7 +103,13 @@ const styles = StyleSheet.create({
     },
     top_data_view: {
         marginHorizontal: dimen(24),
-        marginTop: dimen(24)
+        marginTop:dimen(24)
+    },
+   
+    balance_view: {
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        marginTop: dimen(12)
     },
     balanceText: {
         color: colors.greenText,
@@ -109,11 +118,6 @@ const styles = StyleSheet.create({
     balanceValue: {
         color: colors.Black,
         fontFamily: fonts.PoppinsMedium
-    },
-    balance_view: {
-        flexDirection: "row",
-        justifyContent: "flex-end",
-        marginTop: dimen(12)
     },
     buy_Button_view: {
         marginVertical: dimen(50)
