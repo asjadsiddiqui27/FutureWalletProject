@@ -38,7 +38,7 @@ import Preferences from '../Components/Settings/Preferences';
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   const appContext = useMemo(() => ({
     isDarkTheme,
     setIsDarkTheme,
