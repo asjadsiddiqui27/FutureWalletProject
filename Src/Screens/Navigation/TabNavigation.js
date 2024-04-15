@@ -87,7 +87,7 @@ function TabNavigation() {
       />
 
       </Tab.Navigator>
-    </View>
+    
   );
 }
 export default TabNavigation
