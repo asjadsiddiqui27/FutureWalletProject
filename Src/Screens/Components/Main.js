@@ -39,7 +39,7 @@ const tokenData = [{
     coinName: Strings.English.main.Tron,
     yourPrice: Strings.English.main.dollarValue4,
     profitPercantage: Strings.English.main.percentagevalue4,
-    howMuch: Strings.English.main.TRX ,
+    howMuch: Strings.English.main.TRX,
     curntPrice: Strings.English.main.dollarValueRight4,
     image_2: images.bar,
 },
@@ -155,7 +155,7 @@ const Main = (props) => {
                                         </View>
 
                                         <View style={{ alignSelf: "center" }}>
-                                            <Image style={{resizeMode:'contain',}} source={images.bar} />
+                                            <Image style={{ resizeMode: 'contain', }} source={images.bar} />
                                         </View>
                                         <View style={{ width: dimen(80), }}>
                                             <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{item.howMuch}</Text>
@@ -178,18 +178,18 @@ const Main = (props) => {
 
                         {/*............................................... 1st ROW.................................................... */}
 
-                       
+
 
                         {/*............................................... 2nd ROW.................................................... */}
 
-             
+
                         {/*............................................... 3rd ROW.................................................... */}
 
 
                         {/*............................................... 4th ROW.................................................... */}
 
 
-                 
+
                     </View>
                 </View>
 
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
     imgStyle: {
         height: dimen(44),
         width: dimen(44),
-        resizeMode:"contain"
+        resizeMode: "contain"
 
     },
     uper_text: {
