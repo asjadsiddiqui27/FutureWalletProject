@@ -308,6 +308,11 @@ export const images = {
   blueContactUs:require("../../assets/images/blueContactUs.png"),
   blueAboutUs:require("../../assets/images/blueAboutUs.png"),
   blueLogout:require("../../assets/images/blueLogout.png"),
+
+
+  // **************************dark theme****************// 
+  groupdrk:require("../../assets/images/GroupDrk.png"),
+
 };
 
 

@@ -1,4 +1,5 @@
 import colors from "../Colors";
+import { images } from "../Images";
 
 const DefaultTheme={
     dark: false,
@@ -10,10 +11,11 @@ const DefaultTheme={
         text: '#083371',
         border: '#D8D8D8',
         notification: '#FF3B30',
-        imgTextFirst:colors.subText
+        imgTextFirst:colors.Black
         // onBoarding end //
-
-
+    },
+    image:{
+        OnboardingPge:images.group
     }
 }
 export default DefaultTheme;

@@ -1,4 +1,6 @@
+import Onboarding from "../../Screens/Components/Onboarding";
 import colors from "../Colors";
+import { images } from "../Images";
 
 const DarkTheme = {
     dark: true,
@@ -12,6 +14,9 @@ const DarkTheme = {
         notification: '#FF453A',
         imgTextFirst:'#00BEF2'
         // onBoarding end //
+    },
+    image:{
+        OnboardingPge:images.groupdrk
     }
 };
 

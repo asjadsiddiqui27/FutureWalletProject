@@ -38,11 +38,12 @@ import Preferences from '../Components/Settings/Preferences';
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
-  const appContext = useMemo(() => ({
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  
+  const appContext = {
     isDarkTheme,
     setIsDarkTheme,
-  }), [isDarkTheme]);
+  };
 
   useEffect(() => {
     const loadColorScheme = async () => {
@@ -84,6 +85,7 @@ const StackNavigation = () => {
 
     saveColorScheme();
   }, [isDarkTheme]);
+  
   const navigationRef = React.useRef(null);
   return (
     <NavigationContainer ref={navigationRef} theme={isDarkTheme ? DarkTheme : DefaultTheme}>

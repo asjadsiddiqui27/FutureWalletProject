@@ -13,10 +13,10 @@ import { useTheme } from '@react-navigation/native'
 
 const Preferences = (props) => {
     // ****************************** theme**********8 //
-    const [isEnabled, setIsEnabled] = useState(true);
+    const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => { setIsEnabled(previousState => !previousState), setIsDarkTheme(current => !current) };
 
-    const { colors } = useTheme();
+    // const { colors } = useTheme();
     const { isDarkTheme, setIsDarkTheme } = React.useContext(AppContext)
 
 
