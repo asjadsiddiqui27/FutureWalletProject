@@ -157,8 +157,25 @@ const styles = StyleSheet.create({
     transitionView_container: {
         flexDirection: "row",
         justifyContent: "center",
-        marginTop: dimen(28)
-    },
+        marginTop: dimen(28)},
+    // img_background_view: {
+    //     height: dimen(60),
+    //     width: dimen(60),
+    //     borderRadius: 60,
+    //     backgroundColor: colors.White,
+    //     alignItems: "center",
+    //     justifyContent: "center"
+    // },
+    // images_style: {
+    //     height: dimen(30),
+    //     width: dimen(30)
+    // },
+    // transfer_text: {
+    //     fontSize: dimen(14),
+    //     color: colors.Black,
+    //     fontFamily: fonts.PoppinsMedium,
+    //     padding: dimen(8)
+    // },
     bottom_View: {
         backgroundColor: "#ECFBFF",
         borderTopRightRadius: 26,
@@ -181,7 +198,7 @@ const styles = StyleSheet.create({
 
     },
     token_text: {
-        fontSize: 18,
+        fontSize: dimen(18),
         fontFamily: fonts.PoppinsBold,
         color: colors.Black,
         lineHeight: dimen(22)

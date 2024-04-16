@@ -117,9 +117,9 @@ const styles = StyleSheet.create({
     marginTop: dimen(16),
   },
   text_main_heading: {
-    fontSize: 14.9,
+    fontSize: dimen(16),
     fontFamily: fonts.PoppinsMedium,
-    color: colors.topText,
+    color:colors.greenText,
     lineHeight: 24,
     textAlign: 'center',
   },

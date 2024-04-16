@@ -1,5 +1,5 @@
-import { Image, SafeAreaView, StyleSheet, Switch, Text, View } from 'react-native'
-import React, { useState, ref } from 'react'
+import { Image, Keyboard, SafeAreaView, StyleSheet, Switch, Text, View } from 'react-native'
+import React, { useState, ref, useEffect } from 'react'
 import colors from '../../Theme/Colors'
 import Button from '../Common/CustomButton'
 import { images } from '../../Theme/Images'
@@ -13,29 +13,21 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-import CustomHeader from '../Common/CustomHeader'
-import ToggleSwitch from 'toggle-switch-react-native'
+import CustomHeader from '../Common/CustomHeader';
+import ToggleSwitch from 'toggle-switch-react-native';
 
 const CELL_COUNT = 6;
 
-
 const ConfirmPasscode = ({ navigation }) => {
-
-  const [passcode, setPasscode] = useState(["", "", "", "", "", ""])
-  const passwordSet = (v, index) => {
-    const updatedPasscode = [...passcode];
-    updatedPasscode[index] = v;
-    setPasscode(updatedPasscode);
-  }
-
   const [value, setValue] = useState('');
+  const [switchToggle, setSwitchToggle] = useState(false);
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
+
   const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
-
-  const [switchToggle, setSwitchToggle] = useState(false);
 
   const toggleSwtich = () => {
     setSwitchToggle(!switchToggle);
@@ -44,63 +36,97 @@ const ConfirmPasscode = ({ navigation }) => {
   }
 }
 
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardOpen(true);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardOpen(false);
+      }
+    );
 
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
 
   return (
     <SafeAreaView style={styles.main_View}>
       <View style={styles.main_container}>
-
         <CustomHeader
           header="Confirm Passcode"
-          onPress={() => { navigation.navigate("setpasscode") }}
+          onPress={() => {
+            navigation.navigate('setpasscode');
+          }}
         />
 
         <View style={styles.body_container}>
- <Image source={images.welcomelogo} style={styles.img_style} />
-          <Text style={styles.createPassTxt}>{Strings.English.Passcode.ConfirmPasscode}</Text>
-          <View style={styles.input_container}> 
-
-    
-
-    <CodeField
+          <Image source={images.welcomelogo} style={styles.img_style} />
+          <Text style={styles.createPassTxt}>
+            {Strings.English.Passcode.ConfirmPasscode}
+          </Text>
+          <View style={styles.input_container}>
+            <CodeField
               ref={ref}
               {...props}
-              // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
               value={value}
               onChangeText={setValue}
               cellCount={CELL_COUNT}
               rootStyle={styles.codeFieldRoot}
               keyboardType="number-pad"
               textContentType="oneTimeCode"
-              autoComplete={Platform.select({ android: 'sms-otp', default: 'one-time-code' })}
+              autoComplete={
+                Platform.select({
+                  android: 'sms-otp',
+                  default: 'one-time-code',
+                })
+              }
               testID="my-code-input"
               renderCell={({ index, symbol, isFocused }) => (
                 <Text
                   key={index}
-                  style={[styles.cell, isFocused && styles.focusCell]}
+                  style={[
+                    styles.cell,
+                    isFocused && styles.focusCell,
+                  ]}
                   onLayout={getCellOnLayoutHandler(index)}>
                   {symbol || (isFocused ? <Cursor /> : null)}
                 </Text>
               )}
-            /> 
-
-          </View>
-          <Text style={styles.txt_style}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
-        </View>
-    <View style={styles.Footer_container}>
-          <Image source={images.biometric_Blue} style={styles.imgBioMetric} />
-          <View style={styles.biometricTxt_view}>
-            <Text style={styles.biometricTxt}>{Strings.English.Passcode.enableBiometric}</Text>
-            <ToggleSwitch
-              isOn={switchToggle}
-              onColor={colors.background}
-              offColor={colors.White}
-              onToggle={() => { toggleSwtich() }}
-              trackOffStyle={{borderWidth:0.2}}
-              thumbOffStyle={{backgroundColor:colors.background}}
             />
           </View>
-        </View> 
+          <Text style={styles.txt_style}>
+            {Strings.English.Passcode.passcodeAddsSecurity}
+          </Text>
+        </View>
+
+        {!keyboardOpen && (
+          <View style={styles.Footer_container}>
+            <Image
+              source={images.biometric_Blue}
+              style={styles.imgBioMetric}
+            />
+            <View style={styles.biometricTxt_view}>
+              <Text style={styles.biometricTxt}>
+                {Strings.English.Passcode.enableBiometric}
+              </Text>
+              <ToggleSwitch
+                isOn={switchToggle}
+                onColor={colors.background}
+                offColor={colors.White}
+                onToggle={() => { toggleSwtich() }}
+                trackOffStyle={{ borderWidth: 0.2 }}
+                thumbOffStyle={{ backgroundColor: colors.background }}
+              />
+            </View>
+          </View>
+        )}
       </View>
     </SafeAreaView>
   )
@@ -113,6 +139,9 @@ const ConfirmPasscode = ({ navigation }) => {
 export default ConfirmPasscode
 
 const styles = StyleSheet.create({
+  focusCell:{
+//  backgroundColor:"blue"
+  },
   main_View: {
     flex: 1,
     backgroundColor: colors.White,
@@ -155,6 +184,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border_input,
     textAlign: 'center',
     marginRight: dimen(18.5),
+  
   },
   pass_input: {
     padding: 1,
@@ -171,7 +201,8 @@ const styles = StyleSheet.create({
   Footer_container: {
     flex: 0.3,
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
+    position:"relative"
   },
   imgBioMetric: {
     height: dimen(79),
@@ -188,7 +219,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.PoppinsMedium,
     fontSize: 16,
     color: colors.Black,
-    marginRight:dimen(10)
+    marginRight: dimen(10)
   },
   switch_style: {
 

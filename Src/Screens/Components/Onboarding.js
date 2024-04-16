@@ -16,18 +16,22 @@ import Button from '../Common/CustomButton';
 import fonts from '../../Theme/Fonts';
 import { Strings } from '../../Theme/Strings';
 import { images } from '../../Theme/Images';
+import { useTheme } from '@react-navigation/native';
+
 
 const Onboarding = (props) => {
+  const {colors: themeColor} = useTheme()
+
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea,{backgroundColor:themeColor.background}]}>
         <View style={{flex:1,marginHorizontal: 14, }}>
       
-      <View style={{flex: 0.8}}>
+      <View style={{flex: 0.8,gap:dimen(10)}}>
         <View style={styles.imgContainer}>
           <Image style={styles.groupImg} source={images.group} />
         </View>
         <View style={styles.imgContainerText}>
-          <Text style={styles.imgTextFirst}>{Strings.English.onboarding.safe}</Text>
+          <Text style={[styles.imgTextFirst,{color:themeColor.imgTextFirst}]}>{Strings.English.onboarding.safe}</Text>
           <Text style={styles.imgTextSecond}>
          {Strings.English.onboarding.aboutOur}
           </Text>
@@ -36,8 +40,8 @@ const Onboarding = (props) => {
 
       <View style={styles.footer}>
       <View style={styles.insideFooter}>
-        <Button  name={'Create a new wallet'} />
-        <TouchableOpacity style={styles.alreadyAcc} onPress={()=>props.navigation.navigate("legal")}>
+        <Button  name={'Create a new wallet'} onPress={()=>props.navigation.navigate("legal")}/>
+        <TouchableOpacity style={styles.alreadyAcc} >
           <Text style={styles.alreadyAccText}>{Strings.English.onboarding.alreadyWallet}</Text>
         </TouchableOpacity>
       </View>
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     color: colors.Black,
   },
   imgTextSecond: {
-    fontSize: 15.6,
+    fontSize: dimen(16),
     fontFamily:fonts.PoppinsMedium ,
     color: colors.subText,
     // fontFamily:"Poppins-Medium"\

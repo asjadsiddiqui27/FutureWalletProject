@@ -9,11 +9,10 @@ import { images } from '../../../Theme/Images';
 import SeperateLine from '../../Common/SeperateLine';
 
 const Settings = (props) => {
-
     const data = [
-        { id: '1', image1Source: images.blueManageWallet, image2Source: images.settingGreater, text1: Strings.English.Settings.ManageWallets, text2: Strings.English.Settings.myWallet,text3:"ManageWallets" },
-        { id: '2', image1Source: images.blueSecurity, image2Source: images.settingGreater, text1: Strings.English.Settings.security },
-        { id: '3', image1Source: images.bluePreferences, image2Source: images.settingGreater, text1: Strings.English.Settings.preferences,text3:"preferences"  },
+        { id: '1', image1Source: images.blueManageWallet, image2Source: images.settingGreater, text1: Strings.English.Settings.ManageWallets, text2:Strings.English.Settings.myWallet,text3:"ManageWallets" },
+        { id: '2', image1Source: images.blueSecurity, image2Source: images.settingGreater, text1:Strings.English.Settings.security} ,
+        { id: '3', image1Source: images.bluePreferences, image2Source: images.settingGreater, text1: Strings.English.Settings.preferences ,text3:'preferences'},
         { id: '4', image1Source: images.blueRewards, image2Source: images.settingGreater, text1: Strings.English.Settings.referralRewards },
         { id: '5', image1Source: images.blueNativeCurrency, image2Source: images.settingGreater, text1: Strings.English.Settings.nativeCurrency },
         { id: '6', image1Source: images.blueAddressBook, image2Source: images.settingGreater, text1: Strings.English.Settings.addressBook },
@@ -33,7 +32,7 @@ const Settings = (props) => {
         <View style={{ marginHorizontal: dimen(24) }}>
 
             <CommonSettingRow
-                onPress={() => { props.navigation.navigate(item.text3) }}
+             onPress={() => { props.navigation.navigate(item.text3) }}
                 text1={item.text1}
                 text2={item.text2}
                 image1Source={item.image1Source}

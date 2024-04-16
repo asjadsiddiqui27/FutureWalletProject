@@ -86,11 +86,17 @@ function TabNavigation() {
         }}
       />
 
-    </Tab.Navigator>
+      </Tab.Navigator>
+    
   );
 }
 export default TabNavigation
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.blueBackground,
+    overflow: 'hidden',
+  },
   bottomTabIcon: {
     height: 19,
     width: 19

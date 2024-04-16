@@ -66,7 +66,9 @@ const SetPasscode = ({navigation}) => {
                         />
 
                     </View>
+                    <View style={{alignItems:"center"}}>
                     <Text style={styles.txt_style}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
+                    </View>
                 </View>
                 <View style={styles.Footer_container}>
                     <Button onPress={()=>{navigation.navigate("ConfirmPasscode")}}  btnView={styles.btnView} />
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.White,
         justifyContent: "center",
-        alignItems: "center",
+        // alignItems: "center",
     },
     main_container: {
         flex: 1,
@@ -131,16 +133,19 @@ const styles = StyleSheet.create({
         borderColor: colors.border_input
     },
     txt_style: {
-        fontSize: 14,
+        fontSize: dimen(14),
         fontFamily: fonts.PoppinsMedium,
-        color: colors.topText
+        color: colors.greenText,
+    
     },
     Footer_container: {
         flex: 0.3,
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
+
     },
     btnView: {
         marginBottom: dimen(66.88),
+        
 
     },
 

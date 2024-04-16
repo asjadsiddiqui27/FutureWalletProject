@@ -72,11 +72,12 @@ lightCardBg:"#F0F9FC",
 border_input:"#D0D3DA",
 parrotGreenText:"#2FC381",
 blueBackground:"#ECFBFF",
-seperateLine:"#D8E2EC"
+seperateLine:"#D8E2EC",
 
 
 
-// tabscreen
+// Darktheme//
+drkBackgroundColor:"#061220",
 
 
 };
