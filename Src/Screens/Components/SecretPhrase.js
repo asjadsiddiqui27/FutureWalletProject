@@ -16,6 +16,7 @@ import { images } from '../../Theme/Images';
 import { wordsArray } from '../../Theme/Const';
 import AfterTakingScreenshot from './AfterTakingScreenshot';
 import CustomHeader from '../Common/CustomHeader';
+import { SafeAreaView } from 'react-native';
 
 const SecretPhrase = (props) => {
   const panelRef = useRef(null);
@@ -23,7 +24,7 @@ const SecretPhrase = (props) => {
 
   console.log(wordsArray);
   return (
-    <View style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea}>
       <View style={styles.main_container}>
         <CustomHeader onPress={() => { props.navigation.navigate("walletname") }} header='Secret phrase' />
 
@@ -93,7 +94,7 @@ const SecretPhrase = (props) => {
         panelRef={panelRef}
         navigation={props.navigation}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

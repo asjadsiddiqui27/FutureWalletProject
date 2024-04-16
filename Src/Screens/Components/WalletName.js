@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import colors from '../../Theme/Colors'
 import { Strings } from '../../Theme/Strings'
@@ -14,7 +14,7 @@ const WalletName = (props) => {
     return (
       
 
-    <View style={styles.main_container}>
+    <SafeAreaView style={styles.main_container}>
       <View style={styles.container}>
       <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name'/>
       <View style={styles.heading_container}>
@@ -40,7 +40,7 @@ const WalletName = (props) => {
         />
       </View>
     </View>
-    </View>
+    </SafeAreaView>
 
   );
 };

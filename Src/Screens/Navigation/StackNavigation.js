@@ -27,6 +27,8 @@ import Send from '../Components/Send/Send';
 import Bitcoin from '../Components/Send/Bitcoin';
 import SendBtc from '../Components/Send/SendBtc';
 import Transfer from '../Components/Send/Transfer';
+import Preferences from '../Components/Preferences/Preferences';
+import Swap from '../Components/Swap/Swap';
 
 const Stack = createNativeStackNavigator();
 
@@ -180,13 +182,25 @@ const StackNavigation = () => {
           }}
         />
 
-<Stack.Screen
+        <Stack.Screen
           name='Transfer'
           component={Transfer}
           options={{
           }}
         />
 
+        <Stack.Screen
+          name='preferences'
+          component={Preferences}
+          options={{
+          }}
+        />
+        <Stack.Screen
+          name='Swap'
+          component={Swap}
+          options={{
+          }}
+        />
 
 
       </Stack.Navigator>

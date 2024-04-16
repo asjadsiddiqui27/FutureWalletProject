@@ -6,6 +6,7 @@ import CustomHeader from '../../Common/CustomHeader';
 import { images } from '../../../Theme/Images';
 import fonts from '../../../Theme/Fonts';
 import SeperateLine from '../../Common/SeperateLine';
+import CustomSearchBar from '../../Common/CustomSearchBar';
 
 const Receive = (props) => {
 
@@ -47,7 +48,11 @@ const Receive = (props) => {
 
 
             <SeperateLine />
-
+            <View style={{marginTop:dimen(20)}}>
+            <CustomSearchBar/>
+            </View>
+            
+      
             <FlatList
                 data={data}
                 ItemSeparatorComponent={() => (

@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Switch, Text, View } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, Switch, Text, View } from 'react-native'
 import React, { useState, ref } from 'react'
 import colors from '../../Theme/Colors'
 import Button from '../Common/CustomButton'
@@ -47,7 +47,7 @@ const ConfirmPasscode = ({ navigation }) => {
 
 
   return (
-    <View style={styles.main_View}>
+    <SafeAreaView style={styles.main_View}>
       <View style={styles.main_container}>
 
         <CustomHeader
@@ -102,7 +102,7 @@ const ConfirmPasscode = ({ navigation }) => {
           </View>
         </View> 
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

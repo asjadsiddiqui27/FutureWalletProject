@@ -1,13 +1,14 @@
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import colors from '../../../Theme/Colors'
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
-import CustomHeader from '../../Common/CustomHeader';
 import { Strings } from '../../../Theme/Strings';
-import fonts from '../../../Theme/Fonts';
 import { images } from '../../../Theme/Images';
-import CommonTransition from './CommonTransition';
+import LinearGradient from 'react-native-linear-gradient';
 import SeperateLine from '../../Common/SeperateLine';
+import CustomHeader from '../../Common/CustomHeader';
+import CommonTransition from './CommonTransition';
+import colors from '../../../Theme/Colors'
+import fonts from '../../../Theme/Fonts';
 
 
 const Bitcoin = (props) => {
@@ -66,7 +67,9 @@ const Bitcoin = (props) => {
             <View style={styles.mainData_conatiner}>
                 {/* ....................................topView........................................ */}
 
-                <View style={styles.istView}>
+               
+            <LinearGradient colors={['#90E6FE', '#C5F2FF', '#D8F7FF']} style={styles.istView}>
+
                     <View style={styles.heading}>
                         <Text style={styles.coin_text}>{Strings.English.Bitcoin.Coin}</Text>
                         <View style={{ flexDirection: "row" }}>
@@ -92,7 +95,8 @@ const Bitcoin = (props) => {
                     </View>
 
 
-                </View>
+                </LinearGradient>
+
                 <View>
                     <Text style={styles.Transactions_text}>{Strings.English.Bitcoin.Transactions}</Text>
                 </View>
@@ -139,7 +143,7 @@ const styles = StyleSheet.create({
         marginHorizontal: dimen(24)
     },
     istView: {
-        backgroundColor: "#90E6FE",
+     
         height: dimen(297),
         marginTop: dimen(40),
         // width:dimen(381),

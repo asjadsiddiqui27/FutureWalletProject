@@ -13,6 +13,7 @@ const CustomHeader = ({
     header_style,
     imgLeft=images.headerIcon,
     headerimg=styles.header_img,
+    headerimgRight=styles.headerimgRight,
     imgRight
 }) => {
 
@@ -28,7 +29,7 @@ const CustomHeader = ({
 
 {imgRight&&
             <TouchableOpacity onPress={onPress2}>
-                <Image source={imgRight} style={headerimg} />
+                <Image source={imgRight} style={headerimgRight} />
             </TouchableOpacity>
 }
 

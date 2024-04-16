@@ -1,4 +1,4 @@
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import Button from '../Common/CustomButton';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
@@ -24,7 +24,7 @@ const Legal = (props) => {
     }
 
     return (
-        <View style={styles.main_Container}>
+        <SafeAreaView style={styles.main_Container}>
             <View style={styles.main_view1}>
                 <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }} header='Legal' />
                 <View style={styles.top_text_View}>
@@ -81,7 +81,7 @@ const Legal = (props) => {
             </View>
 
 
-        </View>
+        </SafeAreaView>
 
     );
 };

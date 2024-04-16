@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import colors from '../../Theme/Colors'
 import Button from '../Common/CustomButton'
@@ -33,7 +33,7 @@ const VerifySecretPhrase = (props) => {
 
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
 
             <View style={styles.main_container}>
             <CustomHeader onPress={()=>{props.navigation.navigate("secretphrase")}}  header='Verify Secret Phrase'/>
@@ -66,7 +66,7 @@ const VerifySecretPhrase = (props) => {
                 </View>
 
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

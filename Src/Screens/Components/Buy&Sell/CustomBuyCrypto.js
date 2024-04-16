@@ -15,23 +15,23 @@ const CustomCrypto = (
         image2
     }
 ) => {
-  return (
-    <SafeAreaView>
-    <Text style={styles.labelText}>{labelText}</Text>
+    return (
+        <SafeAreaView>
+            <Text style={styles.labelText}>{labelText}</Text>
 
-    <View style={styles.first_row_view}>
-        <View>
-            <Text style={styles.dollarValue}>{dollarValue}</Text>
-        </View>
-        <View style={styles.multidata_view}>
-            <Image source={image} style={styles.imgStyle} />
-            <Text style={styles.middleText}>{middleText}</Text>
-            <Image source={image2} style={styles.downArrowImg} />
-        </View>
-    </View>
+            <View style={styles.first_row_view}>
+                <View>
+                    <Text style={styles.dollarValue}>{dollarValue}</Text>
+                </View>
+                <View style={styles.multidata_view}>
+                    <Image source={image} style={styles.imgStyle} />
+                    <Text style={styles.middleText}>{middleText}</Text>
+                    <Image source={image2} style={styles.downArrowImg} />
+                </View>
+            </View>
 
-</SafeAreaView>
-  )
+        </SafeAreaView>
+    )
 }
 
 export default CustomCrypto
