@@ -7,22 +7,25 @@ import InputText from '../Common/Input'
 import Button from '../Common/CustomButton'
 import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
+import { useTheme } from '@react-navigation/native';
+
 
 const WalletName = (props) => {
     const [name, setName] = useState('')
+    const {colors: themeColor, image} = useTheme()
 
     return (
       
 
-    <SafeAreaView style={styles.main_container}>
+    <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
       <View style={styles.container}>
       <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name'/>
       <View style={styles.heading_container}>
-      <Text onPress={()=>{props.navigation.navigate("secretphrase")}} style={styles.heading_text_style}>{Strings.English.walletName.youCanlable}</Text>
+      <Text onPress={()=>{props.navigation.navigate("secretphrase")}} style={[styles.heading_text_style,{color:themeColor.SubText}]}>{Strings.English.walletName.youCanlable}</Text>
       </View>
 
       <View style={styles.Input_main_container}>
-        <Text style={styles.name_label_name}>
+        <Text style={[styles.name_label_name,{color:themeColor.SubText}]}>
           {Strings.English.walletName.enterName}
         </Text>
         <InputText maximumLength={25} value={name} onChngFunction={setName} />

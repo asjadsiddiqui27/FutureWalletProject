@@ -12,6 +12,7 @@ const DefaultTheme={
         border: '#D8D8D8',
         notification: '#FF3B30',
         imgTextFirst:colors.Black,
+        SubText:"#56828E"
         // btn:"#00BEF2"
         // onBoarding end //
     },

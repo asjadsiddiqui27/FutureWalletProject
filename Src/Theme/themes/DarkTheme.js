@@ -14,6 +14,7 @@ const DarkTheme = {
         notification: '#FF453A',
         imgTextFirst:'#00BEF2',
         // btn:['#00BEF2', '#008DB4', '#005360'],
+        SubText:"#9BA0A6"
         
     },
     image:{
