@@ -13,4 +13,4 @@ import Setting from './Src/Screens/Components/Settings/Settings';
 import Preferences from './Src/Screens/Components/Settings/Preferences';
 // import SendBTC from './Src/Screens/Components/Send/SendBTC';
 
-AppRegistry.registerComponent(appName, () => SendBTC);
+AppRegistry.registerComponent(appName, () =>StackNavigation );

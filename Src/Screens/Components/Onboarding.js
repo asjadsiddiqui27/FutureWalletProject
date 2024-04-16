@@ -20,15 +20,16 @@ import { useTheme } from '@react-navigation/native';
 
 
 const Onboarding = (props) => {
-  const {colors: themeColor} = useTheme()
+  const {colors: themeColor, image} = useTheme()
 
   return (
     <SafeAreaView style={[styles.safeArea,{backgroundColor:themeColor.background}]}>
+       <StatusBar backgroundColor={themeColor.background} barStyle={themeColor.text} />
         <View style={{flex:1,marginHorizontal: 14, }}>
       
       <View style={{flex: 0.8,gap:dimen(10)}}>
         <View style={styles.imgContainer}>
-          <Image style={styles.groupImg} source={images.group} />
+          <Image style={styles.groupImg} source={image.OnboardingPge} />
         </View>
         <View style={styles.imgContainerText}>
           <Text style={[styles.imgTextFirst,{color:themeColor.imgTextFirst}]}>{Strings.English.onboarding.safe}</Text>

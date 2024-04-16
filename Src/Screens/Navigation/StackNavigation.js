@@ -42,6 +42,7 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  
   const appContext = {
     isDarkTheme,
     setIsDarkTheme,
@@ -87,6 +88,7 @@ const StackNavigation = () => {
 
     saveColorScheme();
   }, [isDarkTheme]);
+  
   const navigationRef = React.useRef(null);
   return (
     <NavigationContainer ref={navigationRef} theme={isDarkTheme ? DarkTheme : DefaultTheme}>
