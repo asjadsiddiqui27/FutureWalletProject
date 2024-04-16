@@ -8,12 +8,12 @@ import colors from '../../../Theme/Colors';
 import { AppContext } from '../../../Theme/themes/AppContext';
 
 const Preferences = (props) => {
-    // Accessing context to get theme state and setter
+    
     const { isDarkTheme, setIsDarkTheme } = useContext(AppContext);
 
-    // Toggling switch state and theme simultaneously
+  
     const toggleSwitch = () => {
-        setIsDarkTheme(previousState => !previousState); // Toggle theme
+        setIsDarkTheme(previousState => !previousState); 
     };
 
     return (
@@ -24,7 +24,7 @@ const Preferences = (props) => {
             <SeperateLine />
             <View style={styles.container}>
                 <Text style={styles.selectTheme_text}>Select theme</Text>
-                {/* Switch component controlled by theme state */}
+               
                 <Switch
                     trackColor={{ false: '#767577', true: '#81b0ff' }}
                     thumbColor={isDarkTheme ? '#f5dd4b' : '#f4f3f4'}

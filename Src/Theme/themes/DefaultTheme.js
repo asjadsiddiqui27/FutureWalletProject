@@ -8,7 +8,7 @@ const DefaultTheme={
         primary: '#007AFF',
         background: colors.White,
         card: '#ffffff',
-        text: '#083371',
+        text: "#00000",
         border: '#D8D8D8',
         notification: '#FF3B30',
         imgTextFirst:colors.Black

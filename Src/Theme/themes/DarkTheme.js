@@ -12,7 +12,8 @@ const DarkTheme = {
         text: '#ffffff',
         border: '#272729',
         notification: '#FF453A',
-        imgTextFirst:'#00BEF2'
+        imgTextFirst:'#00BEF2',
+        
         // onBoarding end //
     },
     image:{
