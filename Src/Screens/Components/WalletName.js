@@ -7,14 +7,17 @@ import InputText from '../Common/Input'
 import Button from '../Common/CustomButton'
 import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
+import { useTheme } from '@react-navigation/native';
+
 
 const WalletName = (props) => {
+  const {colors: themeColor, image} = useTheme()
     const [name, setName] = useState('')
 
     return (
       
 
-    <View style={styles.main_container}>
+    <View style={[styles.main_container,{backgroundColor:themeColor.background}]}>
       <View style={styles.container}>
       <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name'/>
       <View style={styles.heading_container}>
@@ -49,7 +52,7 @@ export default WalletName;
 
 const styles = StyleSheet.create({
   main_container: {
-    backgroundColor: colors.White,
+    backgroundColor:colors.White ,
     flex: 1,
   },
   container:{
