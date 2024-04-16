@@ -8,8 +8,10 @@ import { images } from '../../Theme/Images'
 import { Strings } from '../../Theme/Strings'
 import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader';
+import { useTheme } from '@react-navigation/native';
 
 const Legal = (props) => {
+    const {colors: themeColor, image} = useTheme()
     const [isSelected, setSelection] = useState(false);
     console.log(isSelected)
 
@@ -24,7 +26,7 @@ const Legal = (props) => {
     }
 
     return (
-        <SafeAreaView style={styles.main_Container}>
+        <SafeAreaView style={[styles.main_Container,{backgroundColor:themeColor.background}]}>
             <View style={styles.main_view1}>
                 <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }} header='Legal' />
                 <View style={styles.top_text_View}>

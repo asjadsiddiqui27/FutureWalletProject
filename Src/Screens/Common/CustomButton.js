@@ -23,30 +23,37 @@ function Button({
 }) {
     const { colors: themeColor, image } = useTheme()
 
-    const renderBackground = () => {
-        if (Array.isArray(themeColor.btn)) {
-            return (
-                <TouchableOpacity onPress={onPress}>
-                    <LinearGradient colors={themeColor.btn} style={buttonStyle} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
-                        {name_2 && <Text style={text2_style}>{name_2}</Text>}
-                        <Text style={textColor}>{name}</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
+    // const renderBackground = () => {
+    //     if (Array.isArray(themeColor.btn)) {
+    //         return (
+    //             <TouchableOpacity onPress={onPress}>
+    //                 <LinearGradient colors={themeColor.btn} style={buttonStyle} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
+    //                     {name_2 && <Text style={text2_style}>{name_2}</Text>}
+    //                     <Text style={textColor}>{name}</Text>
+    //                 </LinearGradient>
+    //             </TouchableOpacity>
 
-            );
-        } else {
-            return (
-                <TouchableOpacity onPress={onPress} style={[buttonStyle, { backgroundColor: themeColor.btn }]}>
-                    {name_2 && <Text style={text2_style}>{name_2}</Text>}
-                    <Text style={textColor}>{name}</Text>
-                </TouchableOpacity>
-            );
-        }
-    };
+    //         );
+    //     } else {
+    //         return (
+    //             <TouchableOpacity onPress={onPress} style={[buttonStyle, { backgroundColor: themeColor.btn }]}>
+    //                 {name_2 && <Text style={text2_style}>{name_2}</Text>}
+    //                 <Text style={textColor}>{name}</Text>
+    //             </TouchableOpacity>
+    //         );
+    //     }
+    // };
     return (
-        <View style={btnView}>
-            {renderBackground()}
-        </View>
+        // <View style={btnView}>
+        //     {renderBackground()}
+        // </View>
+
+<View style={btnView}>
+<TouchableOpacity onPress={onPress} style={[buttonStyle]}>
+{name_2&&<Text style={text2_style}>{name_2}</Text>}
+    <Text style={textColor}>{name}</Text>
+</TouchableOpacity>
+</View>
     )
 }
 
