@@ -6,6 +6,7 @@ import CustomHeader from '../../Common/CustomHeader';
 import { images } from '../../../Theme/Images';
 import fonts from '../../../Theme/Fonts';
 import SeperateLine from '../../Common/SeperateLine';
+import CustomSearchBar from '../../Common/CustomSearchBar';
 
 const Send = (props) => {
 
@@ -39,13 +40,15 @@ const Send = (props) => {
             <StatusBar backgroundColor="white" barStyle="dark-content" />
             <CustomHeader header="Send" header_style={styles.header} onPress={() => { props.navigation.navigate("TabNavigation") }} />
 
-          <SeperateLine/>
+            <SeperateLine />
 
-
+            <View style={{ marginTop: dimen(20) }}>
+                <CustomSearchBar />
+            </View>
             <FlatList
                 data={data}
                 ItemSeparatorComponent={() => (
-                    <View style={{ marginHorizontal: dimen(24)}}>
+                    <View style={{ marginHorizontal: dimen(24) }}>
                         <SeperateLine />
                     </View>
                 )}

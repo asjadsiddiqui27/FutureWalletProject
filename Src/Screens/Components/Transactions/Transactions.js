@@ -1,23 +1,40 @@
+import React, { useEffect } from 'react'
 import { FlatList, Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
+import { useIsFocused } from '@react-navigation/native';
+import { Strings } from '../../../Theme/Strings';
+import { images } from '../../../Theme/Images';
+import LinearGradient from 'react-native-linear-gradient';
+import CommonTransition from '../Send/CommonTransition';
 import CustomHeader from '../../Common/CustomHeader';
+import SeperateLine from '../../Common/SeperateLine';
 import colors from '../../../Theme/Colors';
 import fonts from '../../../Theme/Fonts';
-import { images } from '../../../Theme/Images';
-import CommonTransition from '../Send/CommonTransition';
-import { Strings } from '../../../Theme/Strings';
-import SeperateLine from '../../Common/SeperateLine';
+
+const data = [
+
+    { id: '1', imageSource: images.transferBitcoin, name: "Swap", key: "From: 0x1fwf...vz9jsd", date: "Mar 04 2024", amount: "+0.0127 WBNB" },
+    { id: '2', imageSource: images.transferBitcoin, name: "Swap", key: "To: 0x1gtqw...vz9jsd", date: "Mar 03 2024", amount: "-0.01 WBNB" },
+    { id: '3', imageSource: images.transferBitcoin, name: "Swap", key: "To: 0x1gtqw...vz9jsd", date: "Mar 03 2024", amount: "+0.0009 WBNB" },
+    { id: '4', imageSource: images.transferBitcoin, name: "Swap", key: "To: 0x1gtqw...vz9jsd", date: "Mar 02 2024", amount: "-0.001 WBNB" },
+    { id: '5', imageSource: images.transferBitcoin, name: "Swap", key: "From: 0x1fwf...vz9jsd", date: "Mar 01 2024", amount: "+0.0009 WBNB" },
+]
+
 const Transactions = (props) => {
 
-    const data = [
+    const isFocused = useIsFocused()
 
-        { id: '1', imageSource: images.transferBitcoin, name: "Swap", key: "From: 0x1fwf...vz9jsd", date: "Mar 04 2024", amount: "+0.0127 WBNB" },
-        { id: '2', imageSource: images.transferBitcoin, name: "Swap", key: "To: 0x1gtqw...vz9jsd", date: "Mar 03 2024", amount: "-0.01 WBNB" },
-        { id: '3', imageSource: images.transferBitcoin, name: "Swap", key: "To: 0x1gtqw...vz9jsd", date: "Mar 03 2024", amount: "+0.0009 WBNB" },
-        { id: '4', imageSource: images.transferBitcoin, name: "Swap", key: "To: 0x1gtqw...vz9jsd", date: "Mar 02 2024", amount: "-0.001 WBNB" },
-        { id: '5', imageSource: images.transferBitcoin, name: "Swap", key: "From: 0x1fwf...vz9jsd", date: "Mar 01 2024", amount: "+0.0009 WBNB" },
-    ]
+    useEffect(() => {
+
+        if (isFocused) {
+            StatusBar.setBackgroundColor('white', true)
+        }
+
+        return () => { }
+    }, [isFocused])
+
+
+
 
     const getAmountColor = (amount) => {
         if (amount.startsWith('-')) {
@@ -26,47 +43,50 @@ const Transactions = (props) => {
             return styles.amountGreen;
         }
     };
+
     const renderItem = ({ item }) => (
-       
-            <TouchableOpacity onPress={() => { props.navigation.navigate("Bitcoin") }}>
 
-                <View style={styles.row}>
-                    <View style={{ flexDirection: "row" }} >
-                        <Image source={item.imageSource} style={styles.image} />
-                        <View style={{ marginLeft: dimen(8) }}>
-                            <Text style={styles.name}>{item.name}</Text>
-                            <Text style={styles.key}>{item.key}</Text>
-                        </View>
+        <TouchableOpacity onPress={() => { props.navigation.navigate("Bitcoin") }}>
+
+            <View style={styles.row}>
+                <View style={{ flexDirection: "row" }} >
+                    <Image source={item.imageSource} style={styles.image} />
+                    <View style={{ marginLeft: dimen(8) }}>
+                        <Text style={styles.name}>{item.name}</Text>
+                        <Text style={styles.key}>{item.key}</Text>
                     </View>
+                </View>
 
-                    <View>
+                <View>
                     <Text style={[styles.amount_text, getAmountColor(item.amount)]}>{item.amount}</Text>
                     <Text style={styles.date}>{item.date}</Text>
-                    </View>
-
                 </View>
-                
-                
-            </TouchableOpacity>
+
+            </View>
+
+
+        </TouchableOpacity>
 
 
     );
 
-   
+
     return (
+
+
         <SafeAreaView style={styles.main_conatiner}>
             <StatusBar backgroundColor="white" barStyle="dark-content" />
-            <CustomHeader header={Strings.English.Transactions.WrappedBNB} header_style={styles.header} />
+            <CustomHeader header={Strings.English.Transactions.WrappedBNB} header_style={styles.header} imgRight={images.bell} headerimg={styles.headerimg_style} />
+
             <View style={styles.headerText_view}>
                 <Text style={styles.headerText}>{Strings.English.Transactions.heading}</Text>
-
             </View>
-        <SeperateLine/>
-            <View style={styles.mainData_conatiner}>
-                {/* ....................................topView........................................ */}
+            <SeperateLine />
 
-                <View style={styles.istView}>
-                
+            <View style={styles.mainData_conatiner}>
+
+                <LinearGradient colors={['#90E6FE', '#C5F2FF', '#D8F7FF']} style={styles.istView}>
+
 
                     <View style={styles.centreImg_view}>
                         <Image source={images.notification1} style={styles.centreImg} />
@@ -82,29 +102,28 @@ const Transactions = (props) => {
                         <CommonTransition image={images.send} label={Strings.English.Transactions.Send} onPress={() => { props.navigation.navigate("SendBtc") }} />
                         <CommonTransition image={images.MinimizeSquare} label={Strings.English.Transactions.Receive} />
                         <CommonTransition image={images.swapBitcoin} label={Strings.English.Transactions.Swap} />
-                        <CommonTransition image={images.swapBitcoin} label={Strings.English.Transactions.Buy} />
-                        <CommonTransition image={images.swapBitcoin} label={Strings.English.Transactions.Sell} />
+                        <CommonTransition image={images.RecieveSquare} label={Strings.English.Transactions.Buy} />
+                        <CommonTransition image={images.sell} label={Strings.English.Transactions.Sell} />
                     </View>
 
 
-                </View>
+                </LinearGradient>
                 <View>
                     <Text style={styles.Transactions_text}>{Strings.English.Bitcoin.Transactions}</Text>
                 </View>
 
-                {/*............................... flatlistData................................ */}
                 <View>
                     <FlatList
                         data={data}
                         ItemSeparatorComponent={() => (
-                            <View style={{ marginHorizontal: dimen(24),marginVertical:dimen(16)}}>
+                            <View style={{ marginHorizontal: dimen(24), marginVertical: dimen(16) }}>
                                 <SeperateLine />
                             </View>
                         )}
                         renderItem={renderItem}
                         keyExtractor={(item) => item.id}
                     />
-                   
+
                 </View>
 
 
@@ -127,16 +146,18 @@ const styles = StyleSheet.create({
         marginHorizontal: dimen(21)
     },
     headerText_view: {
-        alignItems: "center"
+        alignItems: "center",
+        marginBottom:dimen(16)
     },
     headerText: {
         fontSize: dimen(16),
         color: colors.greenText,
         fontFamily: fonts.PoppinsMedium
     },
+
     top_line: {
         borderWidth: 0.195,
-        marginTop:dimen(17),
+        marginTop: dimen(17),
         width: "100%",
         borderColor: colors.greenText,
     },
@@ -144,7 +165,7 @@ const styles = StyleSheet.create({
         marginHorizontal: dimen(24)
     },
     istView: {
-        backgroundColor: "#90E6FE",
+
         height: dimen(271),
         marginTop: dimen(23),
         // width:dimen(381),
@@ -233,17 +254,17 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: fonts.PoppinsMedium,
         color: colors.greenText,
-        textAlign:"right"
+        textAlign: "right"
     },
-    seprateLine:{
-        borderWidth:0.4,
-        borderColor:colors.borderColor,
-        marginVertical:dimen(10)
+    seprateLine: {
+        borderWidth: 0.4,
+        borderColor: colors.borderColor,
+        marginVertical: dimen(10)
     },
-    amountRed:{
-        color:colors.lossColor
+    amountRed: {
+        color: colors.lossColor
     },
-    amountGreen:{
-        color:colors.parrotGreenText
+    amountGreen: {
+        color: colors.parrotGreenText
     }
 })

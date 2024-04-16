@@ -14,6 +14,7 @@ import {
     useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import CustomHeader from '../Common/CustomHeader'
+import { SafeAreaView } from 'react-native'
 const CELL_COUNT = 6;
 
 
@@ -27,7 +28,7 @@ const SetPasscode = ({navigation}) => {
     });
 
     return (
-        <View style={styles.main_View}>
+        <SafeAreaView style={styles.main_View}>
             <View style={styles.main_container}>
 
                 <CustomHeader 
@@ -74,7 +75,7 @@ const SetPasscode = ({navigation}) => {
                 </View>
 
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

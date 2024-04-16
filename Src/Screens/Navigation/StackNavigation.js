@@ -26,12 +26,15 @@ import Receive from '../Components/Receive/Receive';
 import Send from '../Components/Send/Send';
 import Bitcoin from '../Components/Send/Bitcoin';
 import Transfer from '../Components/Send/Transfer';
+
+import Swap from '../Components/Swap/Swap';
 import DefaultTheme from '../../Theme/themes/DefaultTheme';
 import DarkTheme from '../../Theme/themes/DarkTheme';
 import { AppContext } from '../../Theme/themes/AppContext';
 import { Appearance } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Preferences from '../Components/Settings/Preferences';
+// import Preferences from '../Components/Settings/Preferences';
 
 
 
@@ -235,12 +238,7 @@ const StackNavigation = () => {
           options={{
           }}
         /> */}
-          <Stack.Screen
-            name='Preferences'
-            component={Preferences}
-            options={{
-            }}
-          />
+         
 
           <Stack.Screen
             name='Transfer'
@@ -249,6 +247,18 @@ const StackNavigation = () => {
             }}
           />
 
+        <Stack.Screen
+          name='preferences'
+          component={Preferences}
+          options={{
+          }}
+        />
+        <Stack.Screen
+          name='Swap'
+          component={Swap}
+          options={{
+          }}
+        />
 
 
         </Stack.Navigator>

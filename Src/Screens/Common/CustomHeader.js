@@ -4,6 +4,7 @@ import { images } from '../../Theme/Images'
 import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import fonts from '../../Theme/Fonts'
 import colors from '../../Theme/Colors'
+import { useTheme } from '@react-navigation/native'
 
 const CustomHeader = ({
 
@@ -11,26 +12,27 @@ const CustomHeader = ({
     onPress,
     onPress2,
     header_style,
-    imgLeft = images.headerIcon,
-    headerimg = styles.header_img,
-    imgRight
+    imgLeft=images.headerIcon,
+    headerimg=styles.header_img,
+    headerimgRight=styles.headerimgRight,
+    imgRight,
 }) => {
-
+    const {colors: themeColor, image} = useTheme()
     return (
         <View style={[styles.header_view, header_style]}>
 
             <TouchableOpacity  onPress={onPress}>
-                <Image source={imgLeft} style={headerimg} />
+                <Image source={imgLeft} style={[headerimg,{tintColor:themeColor.text}]} />
             </TouchableOpacity>
             <View style={styles.header_Text_View}>
-                <Text style={styles.header_Text}>{header}</Text>
+                <Text style={[styles.header_Text,{color:themeColor.text}]}>{header}</Text>
             </View>
 
-            {imgRight &&
-                <TouchableOpacity onPress={onPress2}>
-                    <Image source={imgRight} style={headerimg} />
-                </TouchableOpacity>
-            }
+{imgRight&&
+            <TouchableOpacity onPress={onPress2}>
+                <Image source={imgRight} style={headerimgRight} />
+            </TouchableOpacity>
+}
 
 
         </View>

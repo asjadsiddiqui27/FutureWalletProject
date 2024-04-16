@@ -13,8 +13,8 @@ const DarkTheme = {
         border: '#272729',
         notification: '#FF453A',
         imgTextFirst:'#00BEF2',
+        // btn:['#00BEF2', '#008DB4', '#005360'],
         
-        // onBoarding end //
     },
     image:{
         OnboardingPge:images.groupdrk

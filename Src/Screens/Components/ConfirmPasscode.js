@@ -1,12 +1,12 @@
-import { Image, StyleSheet, Switch, Text, View, Keyboard } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import colors from '../../Theme/Colors';
-import Button from '../Common/CustomButton';
-import { images } from '../../Theme/Images';
-import InputText from '../Common/Input';
-import { Strings } from '../../Theme/Strings';
-import { getDimensionPercentage as dimen } from '../../Utils/Utils';
-import fonts from '../../Theme/Fonts';
+import { Image, Keyboard, SafeAreaView, StyleSheet, Switch, Text, View } from 'react-native'
+import React, { useState, ref, useEffect } from 'react'
+import colors from '../../Theme/Colors'
+import Button from '../Common/CustomButton'
+import { images } from '../../Theme/Images'
+import InputText from '../Common/Input'
+import { Strings } from '../../Theme/Strings'
+import { getDimensionPercentage as dimen } from '../../Utils/Utils'
+import fonts from '../../Theme/Fonts'
 import {
   CodeField,
   Cursor,
@@ -57,7 +57,7 @@ const ConfirmPasscode = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={styles.main_View}>
+    <SafeAreaView style={styles.main_View}>
       <View style={styles.main_container}>
         <CustomHeader
           header="Confirm Passcode"
@@ -128,9 +128,15 @@ const ConfirmPasscode = ({ navigation }) => {
           </View>
         )}
       </View>
-    </View>
-  );
-};
+    </SafeAreaView>
+  )
+}
+
+
+
+
+
+export default ConfirmPasscode
 
 const styles = StyleSheet.create({
   focusCell:{
@@ -224,4 +230,3 @@ const styles = StyleSheet.create({
   },
 
 })
-export default ConfirmPasscode

@@ -8,10 +8,11 @@ const DefaultTheme={
         primary: '#007AFF',
         background: colors.White,
         card: '#ffffff',
-        text: "#00000",
+        text: colors.Black,
         border: '#D8D8D8',
         notification: '#FF3B30',
-        imgTextFirst:colors.Black
+        imgTextFirst:colors.Black,
+        // btn:"#00BEF2"
         // onBoarding end //
     },
     image:{

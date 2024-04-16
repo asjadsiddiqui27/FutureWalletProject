@@ -1,18 +1,16 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Main from '../Components/Main';
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import { Image, StatusBar, StyleSheet } from 'react-native';
 import { images } from '../../Theme/Images';
 import fonts from '../../Theme/Fonts';
 import colors from '../../Theme/Colors';
-import Legal from '../Components/Legal';
-import Notification from '../Components/Notification';
-import Onboarding from '../Components/Onboarding';
-import SecretPhrase from '../Components/SecretPhrase';
+
 import Settings from '../Components/Settings/Settings';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
 import Dapp from '../Components/Dapp/Dapp';
 import Transactions from '../Components/Transactions/Transactions';
+import Swap from '../Components/Swap/Swap';
 
 
 
@@ -21,6 +19,7 @@ const Tab = createBottomTabNavigator();
 
 function TabNavigation() {
   return (
+  
     <Tab.Navigator screenOptions={{
       headerShown: false,
       tabBarActiveTintColor: colors.lightBlue,
@@ -37,6 +36,7 @@ function TabNavigation() {
 
 
     >
+ 
       <Tab.Screen name="Dashboard" component={Main}
         options={{
           tabBarIcon: ({ color }) => (
@@ -47,7 +47,7 @@ function TabNavigation() {
           ),
         }}
       />
-      <Tab.Screen name="Swap" component={Legal}
+      <Tab.Screen name="Swap" component={Swap}
         options={{
           tabBarIcon: ({ color }) => (
             <Image

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import colors from '../../Theme/Colors'
 import { Strings } from '../../Theme/Strings'
@@ -43,7 +43,7 @@ const WalletName = (props) => {
         />
       </View>
     </View>
-    </View>
+    </SafeAreaView>
 
   );
 };

@@ -1,4 +1,4 @@
-import {  StyleSheet, Text,  View } from 'react-native'
+import {  SafeAreaView, StyleSheet, Text,  View } from 'react-native'
 import React from 'react'
 import InputText from '../Common/Input'
 import colors from '../../Theme/Colors'
@@ -11,7 +11,7 @@ import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
 const ImportWallet = (props) => {
     return (
-        <View style={styles.main_container}>
+        <SafeAreaView style={styles.main_container}>
            
             <View style={styles.main_data_container}>
             <CustomHeader onPress={()=>{props.navigation.navigate("verifysecretphrase")}}  header='Import Wallet'/>
@@ -42,7 +42,7 @@ const ImportWallet = (props) => {
 
 
 
-        </View>
+        </SafeAreaView>
     )
 }
 
