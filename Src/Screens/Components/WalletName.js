@@ -9,8 +9,11 @@ import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
 import { useTheme } from '@react-navigation/native';
 
+import { useTheme } from '@react-navigation/native';
+
 
 const WalletName = (props) => {
+  const {colors: themeColor, image} = useTheme()
     const [name, setName] = useState('')
     const {colors: themeColor, image} = useTheme()
 
@@ -52,7 +55,7 @@ export default WalletName;
 
 const styles = StyleSheet.create({
   main_container: {
-    backgroundColor: colors.White,
+    backgroundColor:colors.White ,
     flex: 1,
   },
   container:{
