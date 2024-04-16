@@ -12,8 +12,10 @@ const DefaultTheme={
         border: '#D8D8D8',
         notification: '#FF3B30',
         imgTextFirst:colors.Black,
-        // btn:"#00BEF2"
-        // onBoarding end //
+        subText:"#56828E",
+        cardBackground:"#F0F9FC",
+        btn:"#00BEF2"
+       
     },
     image:{
         OnboardingPge:images.group

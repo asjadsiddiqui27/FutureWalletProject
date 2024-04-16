@@ -7,10 +7,13 @@ import { Strings } from '../../Theme/Strings'
 import { getDimensionPercentage as dimen } from '../../Utils/Utils'
 import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
+import { useTheme } from '@react-navigation/native'
+import SmallButton from '../Common/CustomSmallButton'
+
 
 
 const VerifySecretPhrase = (props) => {
-
+    const {colors: themeColor, image} = useTheme()
     const [dataArray, setMainArray] = useState(wordsArray)
     const [newArray, setNewArray] = useState([])
 
@@ -33,7 +36,7 @@ const VerifySecretPhrase = (props) => {
 
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container,{backgroundColor:themeColor.background}]}>
 
             <View style={styles.main_container}>
             <CustomHeader onPress={()=>{props.navigation.navigate("secretphrase")}}  header='Verify Secret Phrase'/>
@@ -45,14 +48,14 @@ const VerifySecretPhrase = (props) => {
 
                     <View style={styles.body_main_container}>
                         {newArray.map((item, index) => (
-                            <Button key={index} textColor={styles.btn_txt} text2_style={[styles.btn_txt_2,{color: colors.greenText}]} buttonStyle={styles.btn_style_upper} name_2={item.index + 1 + "."} name={item.Item} onPress={() => { console.log(item), resetItem(item) }} />
+                            <SmallButton key={index} textColor={styles.btn_txt} text2_style={[styles.btn_txt_2,{color: colors.greenText}]} buttonStyle={styles.btn_style_upper} name_2={item.index + 1 + "."} name={item.Item} onPress={() => { console.log(item), resetItem(item) }} />
                         ))}
                     </View>
 
                     <View style={styles.body_items_container}>
                         {dataArray.map((item, index) => (
                                 item != "" ?
-                                     <Button key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={[styles.btn_txt_2,{ color:colors.greenText        }]} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => {console.log(item), setItem(item, index) }} />
+                                     <SmallButton key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={[styles.btn_txt_2,{ color:colors.greenText        }]} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => {console.log(item), setItem(item, index) }} />
                                   :  <View key={index} style={styles.empty_Word} />
                                 
                         ))}

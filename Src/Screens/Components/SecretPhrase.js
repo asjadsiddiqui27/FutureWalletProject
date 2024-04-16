@@ -17,14 +17,17 @@ import { wordsArray } from '../../Theme/Const';
 import AfterTakingScreenshot from './AfterTakingScreenshot';
 import CustomHeader from '../Common/CustomHeader';
 import { SafeAreaView } from 'react-native';
+import SmallButton from '../Common/CustomSmallButton';
+import { useTheme } from '@react-navigation/native';
 
 const SecretPhrase = (props) => {
+  const {colors: themeColor, image} = useTheme()
   const panelRef = useRef(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
 
   console.log(wordsArray);
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea,{backgroundColor:themeColor.background}]}>
       <View style={styles.main_container}>
         <CustomHeader onPress={() => { props.navigation.navigate("walletname") }} header='Secret phrase' />
 
@@ -37,7 +40,8 @@ const SecretPhrase = (props) => {
 
           <View style={styles.body_items_container}>
             {wordsArray.map((item, index) => (
-              <Button
+              <SmallButton
+              
                 key={index}
                 btnView={styles.btnView}
                 textColor={styles.btn_txt}
