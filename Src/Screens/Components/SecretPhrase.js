@@ -33,7 +33,7 @@ const SecretPhrase = (props) => {
 
         <View style={styles.upper_View}>
           <View style={styles.text_heading_container}>
-            <Text style={styles.text_main_heading}>
+            <Text style={[styles.text_main_heading,{color:themeColor.subText}]}>
               {Strings.English.secretPhrase.writeDown}
             </Text>
           </View>
@@ -43,9 +43,9 @@ const SecretPhrase = (props) => {
               <SmallButton
               
                 key={index}
-                btnView={styles.btnView}
-                textColor={styles.btn_txt}
-                text2_style={styles.btn_txt_2}
+                btnView={[styles.btnView,{backgroundColor:themeColor.cardBackground,borderColor:themeColor.cardBackground}]}
+                textColor={[styles.btn_txt,{color:themeColor.text}]}
+                text2_style={[styles.btn_txt_2,{color:themeColor.text}]}
                 name_2={index + 1 + '.'}
                 buttonStyle={styles.btn_style}
                 name={item}
@@ -58,7 +58,7 @@ const SecretPhrase = (props) => {
 
           <CustomBtnWIthIcon
             main_View={styles.Btn_View}
-            buttonStyle={styles.CopybtnStyle}
+            buttonStyle={[styles.CopybtnStyle,{backgroundColor:themeColor.cardBackground}]}
             ImgSrc={images.copyColored}
             LogoStyle={styles.copyLogo}
             textColor={styles.copyBtn_style}
@@ -67,11 +67,11 @@ const SecretPhrase = (props) => {
         </View>
 
         <View style={styles.Footer_Container}>
-          <View style={styles.msg_container}>
-            <Text style={styles.msg_txt}>
+          <View style={[styles.msg_container,{backgroundColor:themeColor.background,borderColor:themeColor.cardBackground}]}>
+            <Text style={[styles.msg_txt,{color:themeColor.text}]}>
               {Strings.English.secretPhrase.doNotShare}
             </Text>
-            <Text style={styles.msg_txt2}>
+            <Text style={[styles.msg_txt2,{color:themeColor.text}]}>
               {Strings.English.secretPhrase.futureWalletSupport}
             </Text>
           </View>
@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   msg_container: {
+    borderWidth:1,
     borderRadius: 12,
     paddingVertical: dimen(20),
     backgroundColor: colors.White,
