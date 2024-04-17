@@ -9,27 +9,29 @@ import { Strings } from '../../Theme/Strings'
 import CustomBtnWIthIcon from '../Common/CustomButtonWithIcon'
 import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
+import { useTheme } from '@react-navigation/native'
 const ImportWallet = (props) => {
+    const {colors: themeColor, image} = useTheme()
     return (
-        <SafeAreaView style={styles.main_container}>
+        <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
            
             <View style={styles.main_data_container}>
-            <CustomHeader onPress={()=>{props.navigation.navigate("verifysecretphrase")}}  header='Import Wallet'/>
+            <CustomHeader onPress={()=>{props.navigation.navigate("verifysecretphrase")}}  headerimg={{tintColor:themeColor.text}} header='Import Wallet'/>
                 <View style={styles.input_View}>
-                    <Text style={styles.input_label}>{Strings.English.importWallet.enteName}</Text>
+                    <Text style={[styles.input_label,{color:themeColor.subText}]}>{Strings.English.importWallet.enteName}</Text>
                     <InputText placeholderText={Strings.English.importWallet.Wallet1} />
                 </View>
 
-                <View style={styles.data_View}>
+                <View style={[styles.data_View,{backgroundColor:themeColor.cardBackground,borderColor:themeColor.cardBackground}]}>
                     <View style={styles.secretPhrase_view}>
-                        <Text style={styles.secretPhrase_text}>{Strings.English.importWallet.secretPhrase}</Text>
+                        <Text style={[styles.secretPhrase_text,{color:themeColor.subText}]}>{Strings.English.importWallet.secretPhrase}</Text>
                     </View>
                     <View style={styles.iconBtn_view}>
                         <CustomBtnWIthIcon main_View={styles.Btn_View} buttonStyle={styles.CopybtnStyle} ImgSrc={images.copyColored} LogoStyle={styles.copyLogo} textColor={styles.copyBtn_style} label={Strings.English.importWallet.Paste} />
                     </View>
                 </View>
                 <View style={styles.oneLine_text_view}>
-                    <Text style={styles.oneLine_text}>{Strings.English.importWallet.middleText}</Text>
+                    <Text style={[styles.oneLine_text,{color:themeColor.subText}]}>{Strings.English.importWallet.middleText}</Text>
                 </View>
 
             </View>

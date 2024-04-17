@@ -15,10 +15,12 @@ import {
 } from 'react-native-confirmation-code-field';
 import CustomHeader from '../Common/CustomHeader';
 import ToggleSwitch from 'toggle-switch-react-native';
+import { useTheme } from '@react-navigation/native'
 
 const CELL_COUNT = 6;
 
 const ConfirmPasscode = ({ navigation }) => {
+  const {colors: themeColor, image} = useTheme()
   const [value, setValue] = useState('');
   const [switchToggle, setSwitchToggle] = useState(false);
   const [keyboardOpen, setKeyboardOpen] = useState(false);
@@ -57,10 +59,11 @@ const ConfirmPasscode = ({ navigation }) => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.main_View}>
+    <SafeAreaView style={[styles.main_View,{backgroundColor:themeColor.background}]}>
       <View style={styles.main_container}>
         <CustomHeader
           header="Confirm Passcode"
+          headerimg={{tintColor:themeColor.text}}
           onPress={() => {
             navigation.navigate('setpasscode');
           }}
@@ -68,7 +71,7 @@ const ConfirmPasscode = ({ navigation }) => {
 
         <View style={styles.body_container}>
           <Image source={images.welcomelogo} style={styles.img_style} />
-          <Text style={styles.createPassTxt}>
+          <Text style={[styles.createPassTxt,{color:themeColor.text}]}>
             {Strings.English.Passcode.ConfirmPasscode}
           </Text>
           <View style={styles.input_container}>
@@ -101,7 +104,7 @@ const ConfirmPasscode = ({ navigation }) => {
               )}
             />
           </View>
-          <Text style={styles.txt_style}>
+          <Text style={[styles.txt_style,{color:themeColor.text}]}>
             {Strings.English.Passcode.passcodeAddsSecurity}
           </Text>
         </View>
@@ -113,7 +116,7 @@ const ConfirmPasscode = ({ navigation }) => {
               style={styles.imgBioMetric}
             />
             <View style={styles.biometricTxt_view}>
-              <Text style={styles.biometricTxt}>
+              <Text style={[styles.biometricTxt,{color:themeColor.text}]}>
                 {Strings.English.Passcode.enableBiometric}
               </Text>
               <ToggleSwitch

@@ -15,11 +15,12 @@ import {
 } from 'react-native-confirmation-code-field';
 import CustomHeader from '../Common/CustomHeader'
 import { SafeAreaView } from 'react-native'
+import { useTheme } from '@react-navigation/native'
 const CELL_COUNT = 6;
 
 
 const SetPasscode = ({navigation}) => {
-
+    const {colors: themeColor, image} = useTheme()
     const [value, setValue] = useState('');
     const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -28,17 +29,18 @@ const SetPasscode = ({navigation}) => {
     });
 
     return (
-        <SafeAreaView style={styles.main_View}>
+        <SafeAreaView style={[styles.main_View,{backgroundColor:themeColor.background}]}>
             <View style={styles.main_container}>
 
                 <CustomHeader 
                 header={Strings.English.Passcode.setpasscode} 
+                headerimg={{tintColor:themeColor.text}}
                 onPress={()=>{navigation.navigate("ImportWallet")}}
                 />
 
                 <View style={styles.body_container}>
                     <Image source={images.welcomelogo} style={styles.img_style} />
-                    <Text style={styles.createPassTxt}>{Strings.English.Passcode.CreatePasscode}</Text>
+                    <Text style={[styles.createPassTxt,{color:themeColor.text}]}>{Strings.English.Passcode.CreatePasscode}</Text>
                     <View style={styles.input_container}>
 
                        
@@ -67,7 +69,7 @@ const SetPasscode = ({navigation}) => {
 
                     </View>
                     <View style={{alignItems:"center"}}>
-                    <Text style={styles.txt_style}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
+                    <Text style={[styles.txt_style,{color:themeColor.subText}]}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
                     </View>
                 </View>
                 <View style={styles.Footer_container}>

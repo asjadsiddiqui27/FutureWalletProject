@@ -22,7 +22,7 @@ const CustomHeader = ({
         <View style={[styles.header_view, header_style]}>
 
             <TouchableOpacity  onPress={onPress}>
-                <Image source={imgLeft} style={[headerimg,{tintColor:themeColor.text}]} />
+                <Image source={imgLeft} style={[headerimg]} />
             </TouchableOpacity>
             <View style={styles.header_Text_View}>
                 <Text style={[styles.header_Text,{color:themeColor.text}]}>{header}</Text>
@@ -30,7 +30,7 @@ const CustomHeader = ({
 
 {imgRight&&
             <TouchableOpacity onPress={onPress2}>
-                <Image source={imgRight} style={headerimgRight} />
+                <Image source={imgRight} style={[headerimgRight]} />
             </TouchableOpacity>
 }
 

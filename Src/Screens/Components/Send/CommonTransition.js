@@ -3,27 +3,28 @@ import React from 'react'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
 import colors from '../../../Theme/Colors';
 import fonts from '../../../Theme/Fonts';
+import { useTheme } from '@react-navigation/native';
 const CommonTransition = (
 
     {
-        image, 
+        image,
         label,
         onPress,
     }
 ) => {
 
-
+    const {colors: themeColor} = useTheme()
     return (
 
 
         <View style={{ alignItems: "center", marginHorizontal: dimen(10) }}>
             <TouchableOpacity onPress={onPress}>
-                <View style={styles.img_background_view}>
+                <View style={[styles.img_background_view]}>
                     <Image source={image} style={styles.images_style} />
                 </View>
             </TouchableOpacity>
 
-            <Text style={styles.transfer_text}>{label}</Text>
+            <Text style={[styles.transfer_text]}>{label}</Text>
         </View>
 
     )

@@ -39,7 +39,7 @@ const VerifySecretPhrase = (props) => {
         <SafeAreaView style={[styles.container,{backgroundColor:themeColor.background}]}>
 
             <View style={styles.main_container}>
-            <CustomHeader onPress={()=>{props.navigation.navigate("secretphrase")}}  header='Verify Secret Phrase'/>
+            <CustomHeader onPress={()=>{props.navigation.navigate("secretphrase")}}  headerimg={{tintColor:themeColor.text}} header='Verify Secret Phrase'/>
                 <View style={styles.main_body_container}>
                  
                     <View style={styles.text_heading_container}>

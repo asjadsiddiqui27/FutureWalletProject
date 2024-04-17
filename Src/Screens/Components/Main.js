@@ -1,7 +1,7 @@
 import { FlatList, Image, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient';
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation, useTheme } from '@react-navigation/native';
 
 import fonts from '../../Theme/Fonts';
 import colors from '../../Theme/Colors'
@@ -23,6 +23,7 @@ const data = [
 
 
 const Main = () => {
+    const {colors: themeColor, image} = useTheme()
     const isFocused = useIsFocused()
     const navigation = useNavigation()
 
@@ -42,9 +43,9 @@ const Main = () => {
                         <Image source={item.imageSource} style={styles.imgStyle} />
                     </View>
                     <View style={{ marginLeft: 10 }}>
-                        <Text style={styles.uper_text}>{item.name}</Text>
+                        <Text style={[styles.uper_text,{color:themeColor.text}]}>{item.name}</Text>
                         <View style={{ flexDirection: "row" }}>
-                            <Text style={styles.bottom_text}>{item.dollarValue}</Text>
+                            <Text style={[styles.bottom_text,{color:themeColor.subText}]}>{item.dollarValue}</Text>
                             <Text style={[styles.bottom_text, { color: colors.parrotGreenText }]}> {item.percentageValue}</Text>
                         </View>
                     </View>
@@ -53,8 +54,8 @@ const Main = () => {
                     <Image source={images.bar} />
                 </View>
                 <View>
-                    <Text style={[styles.uper_text, { alignSelf: "flex-end" }]}>{item.rightText}</Text>
-                    <Text style={[styles.bottom_text, { alignSelf: "flex-end" }]}>{item.dollarValueRight}</Text>
+                    <Text style={[styles.uper_text, { alignSelf: "flex-end",color:themeColor.text }]}>{item.rightText}</Text>
+                    <Text style={[styles.bottom_text, { alignSelf: "flex-end",color:themeColor.subText }]}>{item.dollarValueRight}</Text>
                 </View>
             </View>
         </View>
@@ -67,11 +68,11 @@ const Main = () => {
 
         <LinearGradient colors={['#90E6FE', '#C5F2FF', '#D8F7FF']} style={styles.linearGradient}>
             <StatusBar barStyle="dark-content" />
-            <CustomHeader onPress={() => {  navigation.navigate("ConfirmPasscode") }} header={Strings.English.main.MyWallet2} header_style={styles.header} imgLeft={images.welcomelogo} imgRight={images.bell} headerimg={styles.headerimg_style} onPress2={() => { navigation.navigate("Notification") }} />
+            <CustomHeader onPress={() => {  navigation.navigate("ConfirmPasscode") }} header={Strings.English.main.MyWallet2} header_style={styles.header} imgLeft={images.welcomelogo} imgRight={images.bell} headerimg={styles.headerimg_style} headerimgRight={{tintColor:themeColor.text}} onPress2={() => { navigation.navigate("Notification") }} />
 
             <View style={styles.top_labelText_view}>
-                <Text style={styles.top_labelText}>{Strings.English.main.totalBalance}</Text>
-                <Text style={styles.top_valuetext}>{Strings.English.main.dollarValue}</Text>
+                <Text style={[styles.top_labelText,{color:themeColor.text}]}>{Strings.English.main.totalBalance}</Text>
+                <Text style={[styles.top_valuetext,{color:themeColor.text}]}>{Strings.English.main.dollarValue}</Text>
             </View>
 
 
@@ -86,10 +87,10 @@ const Main = () => {
 
             {/* .................................BOTTOM VIEW................................ */}
 
-            <View style={styles.bottom_View}>
+            <View style={[styles.bottom_View,{backgroundColor:themeColor.cardBackground}]}>
                 <View style={styles.bottom_ist_view}>
                     <View style={styles.token_textView}>
-                        <Text style={styles.token_text}>{Strings.English.main.Tokens}</Text>
+                        <Text style={[styles.token_text,{color:themeColor.text}]}>{Strings.English.main.Tokens}</Text>
                     </View>
                     <View style={styles.img_view}>
                         <Image source={images.mainTokenImg1} style={styles.mainTokenImg} />
@@ -158,35 +159,14 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         marginTop: dimen(28)},
-    // img_background_view: {
-    //     height: dimen(60),
-    //     width: dimen(60),
-    //     borderRadius: 60,
-    //     backgroundColor: colors.White,
-    //     alignItems: "center",
-    //     justifyContent: "center"
-    // },
-    // images_style: {
-    //     height: dimen(30),
-    //     width: dimen(30)
-    // },
-    // transfer_text: {
-    //     fontSize: dimen(14),
-    //     color: colors.Black,
-    //     fontFamily: fonts.PoppinsMedium,
-    //     padding: dimen(8)
-    // },
+    
     bottom_View: {
         backgroundColor: "#ECFBFF",
         borderTopRightRadius: 26,
         borderTopLeftRadius: 26,
         flex: 1,
-        // marginTop: dimen(32)
-
     },
     bottom_ist_view: {
-
-        // flex: 1,
         justifyContent: "space-between",
         flexDirection: "row",
         marginHorizontal: dimen(20),

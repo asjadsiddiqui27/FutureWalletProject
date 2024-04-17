@@ -29,7 +29,7 @@ const SecretPhrase = (props) => {
   return (
     <SafeAreaView style={[styles.safeArea,{backgroundColor:themeColor.background}]}>
       <View style={styles.main_container}>
-        <CustomHeader onPress={() => { props.navigation.navigate("walletname") }} header='Secret phrase' />
+        <CustomHeader onPress={() => { props.navigation.navigate("walletname") }}  headerimg={{tintColor:themeColor.text}} header='Secret phrase' />
 
         <View style={styles.upper_View}>
           <View style={styles.text_heading_container}>

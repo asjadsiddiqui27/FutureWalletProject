@@ -28,7 +28,7 @@ const Legal = (props) => {
     return (
         <SafeAreaView style={[styles.main_Container,{backgroundColor:themeColor.background}]}>
             <View style={styles.main_view1}>
-                <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }} header='Legal' />
+                <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }}  headerimg={{tintColor:themeColor.text}} header='Legal' />
                 <View style={styles.top_text_View}>
                     <Text style={[styles.top_text,{color:themeColor.subText}]}>{Strings.English.label.topLabel}</Text>
                 </View>

@@ -14,7 +14,8 @@ const DefaultTheme={
         imgTextFirst:colors.Black,
         subText:"#56828E",
         cardBackground:"#F0F9FC",
-        btn:"#00BEF2"
+        btn:"#00BEF2",
+        mainScreenBgColor:['#90E6FE', '#C5F2FF', '#D8F7FF'],
        
     },
     image:{

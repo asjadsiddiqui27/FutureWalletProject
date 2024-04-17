@@ -16,6 +16,7 @@ const DarkTheme = {
         subText:"#9BA0A6",
         cardBackground:"#224367",
         btn:['#00BEF2', '#008DB4', '#005360'],
+        mainScreenBgColor:colors.drkBackgroundColor
         
     },
     image:{
