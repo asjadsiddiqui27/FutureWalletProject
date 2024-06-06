@@ -11,6 +11,8 @@ import { getDimensionPercentage as dimen } from '../../Utils/Utils';
 import Dapp from '../Components/Dapp/Dapp';
 import Transactions from '../Components/Transactions/Transactions';
 import Swap from '../Components/Swap/Swap';
+import { useTheme } from '@react-navigation/native';
+import Portfolio from '../Components/Portfolio/Portfolio';
 
 
 
@@ -18,13 +20,15 @@ import Swap from '../Components/Swap/Swap';
 const Tab = createBottomTabNavigator();
 
 function TabNavigation() {
+  const {colors: themeColor, image} = useTheme()
   return (
   
     <Tab.Navigator screenOptions={{
+      
       headerShown: false,
       tabBarActiveTintColor: colors.lightBlue,
       tabBarInactiveTintColor:colors.greenText,
-      tabBarStyle: { ...styles.tabContainer },
+      tabBarStyle: [styles.tabContainer, { backgroundColor: themeColor.background }],
       tabBarLabelStyle: {
 
         fontSize: dimen(12),
@@ -39,6 +43,7 @@ function TabNavigation() {
  
       <Tab.Screen name="Dashboard" component={Main}
         options={{
+          unmountOnBlur:true,
           tabBarIcon: ({ color }) => (
             <Image
               style={styles.bottomTabIcon}
@@ -57,7 +62,7 @@ function TabNavigation() {
           ),
         }}
       />
-      <Tab.Screen name="Portfolio" component={Transactions}
+      <Tab.Screen name="Portfolio" component={Portfolio}
         options={{
           tabBarIcon: ({ color }) => (
             <Image

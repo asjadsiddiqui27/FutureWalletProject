@@ -1,11 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Legal from './Src/Screens/Components/Legal'
+
 import StackNavigation from './Src/Screens/Navigation/StackNavigation'
+import AddressBook from './Src/Screens/Components/AddressBook/AddressBook'
+
 
 const App = () => {
+  
   return (
-   <StackNavigation/>
+
+    <StackNavigation />
+
   )
 }
 

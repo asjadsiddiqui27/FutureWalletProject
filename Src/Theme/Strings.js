@@ -69,6 +69,7 @@ export const Strings = {
             secretPhrase: "Secret Phrase",
             middleText: "12 words separated by single space",
             bottomText: "What is Secret Phrase?",
+            bottomText2:"Having a Referral Code?",
             Paste: "Paste"
         },
 
@@ -169,17 +170,12 @@ export const Strings = {
             ManageWallets: "Manage Wallets",
             myWallet: "My Wallet",
             security: "Security",
-            preferences: "Preferences",
+            preferences: "Theme Mode",
             referralRewards: "Referral & Rewards",
-            nativeCurrency: "Native Currency",
+            nativeCurrency: "Currency Perference",
             addressBook: "Address Book",
-            contactUs: "Contact Us",
             aboutUs: "About Us",
             privacyPolicy: "Privacy Policy",
-            prepaidCards: "Prepaid Cards",
-            facebook: "Facebook",
-            instagram: "Instagram",
-            telegram: "Telegram",
             futurewalletcom: "Futurewallet.com",
             logout: "Logout"
 
@@ -199,7 +195,7 @@ export const Strings = {
 
         },
         Transfer: {
-            Transfer: "Transfer",
+            Transfer: "Review Transaction",
             BtcValue: "0.0003 BTC",
             amount: "$12.63",
             DateTxt: "Date",
@@ -210,6 +206,7 @@ export const Strings = {
             key: "bnb1fwfhpk...vz9jsusdgfd",
             NetworkFeeTxt: "Network Fee",
             NetworkFee: "0.11111 USD",
+            NetworkFee2: "0.000063 BNB ($0.02)"
 
         },
         Transactions: {
@@ -224,7 +221,91 @@ export const Strings = {
             Buy: "Buy",
             Sell: "Sell",
             Transactions: "Transactions"
+        },
+        Swap: {
+            label1: "You Pay",
+            value1: "12",
+            BnbValue: "8.236 BNB",
+            mainTextBnb: "BNB",
+            mainTextUsdt: "USDT",
+            label2: "You Get",
+            usdtValue: "0 USDT",
+            Quote: "Quote",
+            quoteValue: "1 UNI = 250.121561 USDT",
+            providerFees: "Provider Fees",
+            networkFees: "Network Fees",
+            providerFeesValue: "5.02365 1Inch",
+            networkFeesValue: "0.2 %",
+            reviewTransaction: "Review Transaction",
+            BnbValue2: "0.02263942 BNB",
+            ValueBUSD: "0.02263942 BUSD",
+            From: "From",
+            fromData: "My wallet (0xa6739dy54dkkd...166245)",
+            To: "To",
+            toData: "bnb1sfl.....jjkg647",
+            Provider: "Provider",
+            providerData: "Cross-Chain Swap",
+            ETH: "ETH",
+            networkFee2: "0.005 BNB ($ 1.26)",
+
+        },
+        Bottomsheet: {
+            topText: "Preview Swap",
+            From:"From",
+            MyWallet:"My Wallet",
+            Provider:"Provider",
+            MaxSlippage:"Max Slippage",
+            InchValue:"1Inch",
+            percentagevalue:"2.0%",
+            Networkfees:"Network fees",
+            BnbValue:"0.00215 BNB",
+            dollarValue:"$0.25",
+            btn:"Confirm Swap",
+            BnbTwelve:"12 BNB",
+            usdtTwelve:"12 USDT",
+            bnbTwenty:"BEP20",
+            usdtTwenty:"USDT20"
+        },
+        AddressBook:{
+            Address:"Address",
+            AddressValue:"0x82ua78rt34kdki974h49nd6",
+            Network:"Network",
+            eth:"ETH (Ethereum)",
+            bnb:"BNB (Binance)",
+            Saved:"Saved",
+            enterContactName:"Enter Contact Name",
+            Network:"Network",
+            jordan:"jordan",
+            Ethereum:"Ethereum",
+            WalletAddress:"Wallet Address",
+            WalletName:"Wallet Name",
+            ox:"Ox......",
+            ETH:"ETH 1",
+            Save:"Save",
+            AddNewContact:"Add New Contact",
+            EditAddressBook:"Edit Address Book",
+            ContactName:"Contact Name",
+            Update:"Update",
+            DeleteContact:"Delete Contact"
+        },
+        Portfolio:{
+            Protfolio:"Protfolio",
+            onWatchlist:"On-Watchlist",
+            WalletStats:"Wallet Stats",
+            btnText:"Add Asset to the Watchlist"
+        },
+        ManageBottomSheet:{
+            Wallet:"Wallet"
+        },
+        Acknowledge:{
+            text1:"This secret phrase is the master key to your wallet",
+            text2:"tap on all checkboxes to confirm you understand the importance of your secret phrase",
+            Continue:"Continue",
+            condition1:"If I lose my secret phrase, my funds will be lost forever.",
+            condition2:"If I expose or share my secret phrase to anybody, my funds can ger stolen.",
+            condition3:"Future Wallet support will NEVER reach out ot ask for it."
         }
+
 
 
 

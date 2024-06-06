@@ -33,7 +33,7 @@ const Legal = (props) => {
                     <Text style={[styles.top_text,{color:themeColor.subText}]}>{Strings.English.label.topLabel}</Text>
                 </View>
 
-                <View style={[styles.middle_main_view,{backgroundColor:themeColor.cardBackground}]}>
+                <View style={[styles.middle_main_view,{backgroundColor:themeColor.card}]}>
 
                     <View style={[styles.middle_data_view, { top: dimen(23) }]}>
                         <Text style={[styles.middle_Label_text,{color:themeColor.text}]}>{Strings.English.label.privacyPolicy}</Text>

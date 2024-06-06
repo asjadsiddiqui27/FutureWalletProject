@@ -7,25 +7,27 @@ import InputText from '../Common/Input'
 import Button from '../Common/CustomButton'
 import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
+import { useTheme } from '@react-navigation/native'
 
 const WalletName = (props) => {
+  const {colors: themeColor, image} = useTheme()
     const [name, setName] = useState('')
 
     return (
       
 
-    <SafeAreaView style={styles.main_container}>
+    <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
       <View style={styles.container}>
-      <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name'/>
+      <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name' headerimg={{tintColor:themeColor.text}}/>
       <View style={styles.heading_container}>
-      <Text onPress={()=>{props.navigation.navigate("secretphrase")}} style={styles.heading_text_style}>{Strings.English.walletName.youCanlable}</Text>
+      <Text  style={[styles.heading_text_style,{color:themeColor.subText}]}>{Strings.English.walletName.youCanlable}</Text>
       </View>
 
       <View style={styles.Input_main_container}>
-        <Text style={styles.name_label_name}>
+        <Text style={[styles.name_label_name,{color:themeColor.subText}]}>
           {Strings.English.walletName.enterName}
         </Text>
-        <InputText maximumLength={25} value={name} onChngFunction={setName} />
+        <InputText maximumLength={25} value={name} onChngFunction={setName} placeholderText='Wallet 1' />
         <Text style={styles.max_limit_txt_style}>
           {Strings.English.walletName.maxLimit + name.length + '/25'}
         </Text>

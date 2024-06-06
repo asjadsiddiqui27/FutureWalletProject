@@ -161,11 +161,10 @@ export const images = {
   cardBack: require('../../assets/images/cardBack.png'),
   cardCross: require('../../assets/images/cardCross.png'),
   recharge: require('../../assets/images/recharge.png'),
-  // rightArrowNew:require('../../assets/images/rightArrowNew.png'),
-  // dropDownNew:require('../../assets/images/dropDownNew.png'),
-  // frontIdImg:require('../../assets/images/frontIdImg.png'),
-  // selfieHoldingImg:require('../../assets/images/selfieHoldingImg.png'),
-  // cancelIconNew:require('../../assets/images/cancelIconNew.png'),
+  backuppassphrase: require('../../assets/images/backuppassphrase.png'),
+  backupkey: require('../../assets/images/backupkey.png'),
+  deletewallet: require('../../assets/images/deletewallet.png'),
+  
   dropdownnew: require('../../assets/images/drop_new.png'),
   showQr: require('../../assets/images/showQr.png'),
   rightArrowNew: require('../../assets/images/rightArrowNew.png'),
@@ -261,7 +260,7 @@ export const images = {
   MinimizeSquare:require("../../assets/images/MinimizeSquare.png"),
   RecieveSquare:require("../../assets/images/ReciveSquare.png"),
   sell:require("../../assets/images/sell.png"),
-  send:require("../../assets/images/send.png"),  
+  sendLight:require("../../assets/images/send.png"),  
   mainTokenImg1:require("../../assets/images/mainTokenImg1.png"),
   mainTokenImg2:require("../../assets/images/mainTokenImg2.png"),
   mainTokenImg3:require("../../assets/images/mainTokenImg3.png"),
@@ -272,9 +271,30 @@ export const images = {
   dapp:require("../../assets/images/dapp.png"),  
   swap:require("../../assets/images/swap.png"),  
   setting:require("../../assets/images/setting.png"),  
+  darkVector:require("../../assets/images/darkVector.png"),
+  darkCopy:require("../../assets/images/darkCopy.png"),
+  darkPasscode:require("../../assets/images/darkPasscode.png"),
+  darkEth:require("../../assets/images/darkEth.png"),
+  darkCheckout:require("../../assets/images/darkCheckout.png"),
+  darkSwap:require("../../assets/images/darkSwap.png"),
+  darkBell:require("../../assets/images/darkBell.png"),
+  darkSwapping:require("../../assets/images/darkswapping.png"),
+  darkTopTransfer:require("../../assets/images/darkTopTransfer.png"),
+  darkDownTransfer:require("../../assets/images/darkDownTransfer.png"),
+  darkSmartContact:require("../../assets/images/darkSmartContact.png"),
+  darkTransfer:require("../../assets/images/darkTransfer.png"),
+  lightTransfer:require("../../assets/images/lightTransfer.png"),
+  whiteStar:require("../../assets/images/whiteStar.png"),
+  blackStar:require("../../assets/images/blackStar.png"),
+  openWhiteStar:require("../../assets/images/openWhiteStar.png"),
+  openBlackStar:require("../../assets/images/openBlackStar.png"),
+  circleImg:require("../../assets/images/circleImg.png"),
+  btcFilled:require("../../assets/images/btcFilled.png"),
+  btcOpen:require("../../assets/images/btcOpen.png"),
+  whitePlus:require("../../assets/images/whitePlus.png"),
   //Passcode
   biometric_Blue:require("../../assets/images/bioMetric_blue.png"),
-
+  bluePencil:require("../../assets/images/bluePencil.png"),
   // buy&sell
   usd:require("../../assets/images/usd.png"),
   whiteTriangle:require("../../assets/images/whiteTriangle.png"),
@@ -286,12 +306,14 @@ export const images = {
   topTransferBitcoin:require("../../assets/images/topTransferBitcoin.png"),
   downTransferBitcoin:require("../../assets/images/downTransferBitcoin.png"),
   smartContact:require("../../assets/images/smartContact.png"),
-
+  dustbin:require("../../assets/images/dustbin.png"),
   dappLogo:require("../../assets/images/dappLogo.png"),
   compoundLogo:require("../../assets/images/compound-comp-logo.png"),
   rightBlueArrow:require("../../assets/images/rightBlueArrow.png"),
-
-
+  previewSwapHorse:require("../../assets/images/previewSwapHorse.png"),
+  usdImage:require("../../assets/images/usdImage.png"),
+  darkTheme:require("../../assets/images/darkTheme.png"),
+  lightTheme:require("../../assets/images/lightTheme.png"),
   // .......................... setting ............................//
   blueManageWallet:require("../../assets/images/blueManageWallet.png"),
   blueSecurity:require("../../assets/images/blueSecurity.png"),
@@ -308,11 +330,14 @@ export const images = {
   blueContactUs:require("../../assets/images/blueContactUs.png"),
   blueAboutUs:require("../../assets/images/blueAboutUs.png"),
   blueLogout:require("../../assets/images/blueLogout.png"),
-
-
+  darkSell:require("../../assets/images/darkSell.png"),
+  darkBuy:require("../../assets/images/darkBuy.png"),
+  darkSend:require("../../assets/images/darkSend.png"),
+  darkrecieve:require("../../assets/images/darkRecieve.png"),
+  busd:require("../../assets/images/busd.png"),
   // **************************dark theme****************// 
   groupdrk:require("../../assets/images/GroupDrk.png"),
-
+  
 };
 
 

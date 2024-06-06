@@ -3,16 +3,26 @@ import React from 'react'
 import { SearchBar } from 'react-native-elements'
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
 import colors from '../../Theme/Colors';
-const CustomSearchBar = () => {
+import { useTheme } from '@react-navigation/native';
+const CustomSearchBar = (
+    {
+        onChangeText,
+        value
+    }
+) => {
+    const { colors: themeColor, image } = useTheme()
     return (
         <View >
             <SearchBar
+            // placeholderTextColor={themeColor.text}
+        
                 placeholder="Search"
-
+                value={value}
+                onChangeText={onChangeText}
                 inputStyle={styles.searchInput}
-                inputContainerStyle={styles.searchInputContainer}
-                containerStyle={styles.searchContainer}
-            
+                inputContainerStyle={[styles.searchInputContainer, { borderColor: themeColor.blueBorder, backgroundColor: themeColor.background }]}
+                containerStyle={[styles.searchContainer, { backgroundColor: themeColor.background }]}
+
             />
         </View>
     )

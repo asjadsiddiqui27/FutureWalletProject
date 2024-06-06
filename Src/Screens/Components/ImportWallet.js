@@ -1,4 +1,4 @@
-import {  SafeAreaView, StyleSheet, Text,  View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import InputText from '../Common/Input'
 import colors from '../../Theme/Colors'
@@ -11,35 +11,35 @@ import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
 import { useTheme } from '@react-navigation/native'
 const ImportWallet = (props) => {
-    const {colors: themeColor, image} = useTheme()
+    const { colors: themeColor, image } = useTheme()
     return (
-        <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
-           
+        <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
+
             <View style={styles.main_data_container}>
-            <CustomHeader onPress={()=>{props.navigation.navigate("verifysecretphrase")}}  headerimg={{tintColor:themeColor.text}} header='Import Wallet'/>
+                <CustomHeader onPress={() => { props.navigation.navigate("verifysecretphrase") }} headerimg={{ tintColor: themeColor.text }} header='Import Wallet' />
                 <View style={styles.input_View}>
-                    <Text style={[styles.input_label,{color:themeColor.subText}]}>{Strings.English.importWallet.enteName}</Text>
+                    <Text style={[styles.input_label, { color: themeColor.subText }]}>{Strings.English.importWallet.enteName}</Text>
                     <InputText placeholderText={Strings.English.importWallet.Wallet1} />
                 </View>
 
-                <View style={[styles.data_View,{backgroundColor:themeColor.cardBackground,borderColor:themeColor.cardBackground}]}>
+                <View style={[styles.data_View, { backgroundColor: themeColor.cardBackground, borderColor: themeColor.cardBackground }]}>
                     <View style={styles.secretPhrase_view}>
-                        <Text style={[styles.secretPhrase_text,{color:themeColor.subText}]}>{Strings.English.importWallet.secretPhrase}</Text>
+                        <Text style={[styles.secretPhrase_text, { color: themeColor.subText }]}>{Strings.English.importWallet.secretPhrase}</Text>
                     </View>
                     <View style={styles.iconBtn_view}>
-                        <CustomBtnWIthIcon main_View={styles.Btn_View} buttonStyle={styles.CopybtnStyle} ImgSrc={images.copyColored} LogoStyle={styles.copyLogo} textColor={styles.copyBtn_style} label={Strings.English.importWallet.Paste} />
+                        <CustomBtnWIthIcon main_View={styles.Btn_View} buttonStyle={styles.CopybtnStyle} ImgSrc={image.copyIcon} LogoStyle={styles.copyLogo} textColor={styles.copyBtn_style} label={Strings.English.importWallet.Paste} />
                     </View>
                 </View>
                 <View style={styles.oneLine_text_view}>
-                    <Text style={[styles.oneLine_text,{color:themeColor.subText}]}>{Strings.English.importWallet.middleText}</Text>
+                    <Text style={[styles.oneLine_text, { color: themeColor.subText }]}>{Strings.English.importWallet.middleText}</Text>
                 </View>
 
             </View>
             <View style={styles.Bottom_main_continer}>
 
-                <Button name='Import'  onPress={()=>{props.navigation.navigate("setpasscode")}}/>
+                <Button name='Import' onPress={() => { props.navigation.navigate("setpasscode") }} />
                 <Text style={styles.bottom_text}>{Strings.English.importWallet.bottomText}</Text>
-
+                <Text style={styles.bottom_text}>{Strings.English.importWallet.bottomText2}</Text>
             </View>
 
 
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
     secretPhrase_text: {
         fontSize: 16,
-      fontFamily:fonts.PoppinsMedium,
+        fontFamily: fonts.PoppinsMedium,
         color: colors.greenText
     },
     iconBtn_view: {
@@ -121,14 +121,14 @@ const styles = StyleSheet.create({
         marginHorizontal: dimen(24),
         flex: 0.30,
         justifyContent: "flex-end",
-        marginBottom: dimen(66),
+        marginBottom: dimen(30),
 
     },
     bottom_text: {
         fontSize: 16,
-     fontFamily:fonts.PoppinsBold,
+        fontFamily: fonts.PoppinsBold,
         color: colors.lightBlue,
-        marginTop: dimen(32),
+        marginTop: dimen(30),
         textAlign: "center"
     }
 

@@ -16,11 +16,13 @@ import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import HorizontalLine from '../Common/HorizontalLine';
 import Button from '../Common/CustomButton';
 import { Strings } from '../../Theme/Strings';
+import { useTheme } from '@react-navigation/native';
 
 //  after taking screenshot //
 const height = Dimensions.get('window').height;
 
 export default function AfterTakingScreenshot(props) {
+  const {colors: themeColor, image} = useTheme()
   const {navigation} = props;
   return (
     <BottomSheet
@@ -30,14 +32,15 @@ export default function AfterTakingScreenshot(props) {
       sliderMaxHeight={height/1.18}
       onOpen={props.onOpen}
       onClose={props.onClose}
+      wrapperStyle={{backgroundColor:themeColor.card}}
     
       >
         <ScrollView>
       <View style={styles.main}>
         <View style={styles.mainHeader}>
           <View style={styles.main_first}>
-            <Image style={styles.img_vector} source={images.vector} />
-            <Text style={styles.text_warn}>
+            <Image style={styles.img_vector} source={image.bottomsheetIcon} />
+            <Text style={[styles.text_warn,{color:themeColor.text}]}>
             {Strings.English.afterTakingScreenshot.naverShare}
             </Text>
           </View>
@@ -50,7 +53,7 @@ export default function AfterTakingScreenshot(props) {
               </View>
 
               <View>
-                <Text style={styles.aboutPharse_text}>
+                <Text style={[styles.aboutPharse_text,{color:themeColor.text}]}>
                  {Strings.English.afterTakingScreenshot.line_1}
                 </Text>
               </View>
@@ -69,7 +72,7 @@ export default function AfterTakingScreenshot(props) {
               </View>
 
               <View>
-                <Text style={styles.aboutPharse_text}>
+              <Text style={[styles.aboutPharse_text,{color:themeColor.text}]}>
                 {Strings.English.afterTakingScreenshot.line_2}
                 </Text>
               </View>
@@ -87,7 +90,7 @@ export default function AfterTakingScreenshot(props) {
               </View>
 
               <View>
-                <Text style={styles.aboutPharse_text}>
+              <Text style={[styles.aboutPharse_text,{color:themeColor.text}]}>
                 {Strings.English.afterTakingScreenshot.line_3}
                 </Text>
               </View>
@@ -105,7 +108,7 @@ export default function AfterTakingScreenshot(props) {
               </View>
 
               <View>
-                <Text style={styles.aboutPharse_text}>
+              <Text style={[styles.aboutPharse_text,{color:themeColor.text}]}>
                 {Strings.English.afterTakingScreenshot.line_4}
                 </Text>
               </View>
@@ -151,6 +154,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: dimen(375),
     marginBottom: 33,
+    
   },
   mainHeader: {
     flex: 0.8,

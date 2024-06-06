@@ -19,12 +19,12 @@ const CommonTransition = (
 
         <View style={{ alignItems: "center", marginHorizontal: dimen(10) }}>
             <TouchableOpacity onPress={onPress}>
-                <View style={[styles.img_background_view]}>
-                    <Image source={image} style={styles.images_style} />
+                <View style={[styles.img_background_view,{backgroundColor:themeColor.card}]}>
+                    <Image source={image} style={[styles.images_style,]} />
                 </View>
             </TouchableOpacity>
 
-            <Text style={[styles.transfer_text]}>{label}</Text>
+            <Text style={[styles.transfer_text,{color:themeColor.text}]}>{label}</Text>
         </View>
 
     )

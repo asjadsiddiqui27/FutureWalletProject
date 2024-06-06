@@ -43,19 +43,20 @@ const VerifySecretPhrase = (props) => {
                 <View style={styles.main_body_container}>
                  
                     <View style={styles.text_heading_container}>
-                        <Text onPress={()=>{props.navigation.navigate("setpasscode")}} style={styles.text_main_heading}>{Strings.English.verifyPhrase.taptheWord}</Text>
+                        <Text onPress={()=>{props.navigation.navigate("setpasscode")}} style={[styles.text_main_heading,{color:themeColor.subText}]}>{Strings.English.verifyPhrase.taptheWord}</Text>
                     </View>
 
-                    <View style={styles.body_main_container}>
+                    <View style={[styles.body_main_container,{backgroundColor:themeColor.cardBackground}]}>
                         {newArray.map((item, index) => (
-                            <SmallButton key={index} textColor={styles.btn_txt} text2_style={[styles.btn_txt_2,{color: colors.greenText}]} buttonStyle={styles.btn_style_upper} name_2={item.index + 1 + "."} name={item.Item} onPress={() => { console.log(item), resetItem(item) }} />
+                            <SmallButton key={index}  textColor={[styles.btn_txt,{color:themeColor.text}]} text2_style={[styles.btn_txt_2,{color:themeColor.text}]} buttonStyle={[styles.btn_style_upper,{backgroundColor:themeColor.cardBackground}]} name_2={item.index + 1 + "."} name={item.Item} onPress={() => { console.log(item), resetItem(item) }} />
                         ))}
                     </View>
 
                     <View style={styles.body_items_container}>
                         {dataArray.map((item, index) => (
                                 item != "" ?
-                                     <SmallButton key={index} btnView={styles.btnView}  textColor={styles.btn_txt} text2_style={[styles.btn_txt_2,{ color:colors.greenText        }]} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => {console.log(item), setItem(item, index) }} />
+                                     <SmallButton key={index}                 btnView={[styles.btnView,{backgroundColor:themeColor.cardBackground,borderColor:themeColor.cardBackground}]}
+                                     textColor={[styles.btn_txt,{color:themeColor.text}]} text2_style={[styles.btn_txt_2,{ color:themeColor.text        }]} name_2={index + 1 + "."} buttonStyle={styles.btn_style} name={item} onPress={() => {console.log(item), setItem(item, index) }} />
                                   :  <View key={index} style={styles.empty_Word} />
                                 
                         ))}

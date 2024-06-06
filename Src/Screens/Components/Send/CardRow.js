@@ -1,18 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
 import fonts from '../../../Theme/Fonts';
 import colors from '../../../Theme/Colors';
+import { useTheme } from '@react-navigation/native';
 const CardRow = (
     {
         text1,
         text2,
+        imageData
     }
 ) => {
+  const {colors: themeColor, image} = useTheme()
   return (
     <View style={styles.row}>
-      <Text style={styles.text1}>{text1}</Text>
-      <Text style={styles.text2}>{text2}</Text>
+      <Text style={[styles.text1,{color:themeColor.subText}]}>{text1}</Text>
+      <View style={{flexDirection:"row",justifyContent:"center",alignItems:"center",gap:10}}>
+        {
+          imageData&& <Image source={imageData} style={{height:dimen(22),width:dimen(22)}}/>
+        }
+       
+      <Text style={[styles.text2,{color:themeColor.text}]}>{text2}</Text>
+      </View>
+      
     </View>
   )
 }
@@ -33,7 +43,7 @@ const styles = StyleSheet.create({
     },
     text2:{
         fontSize:dimen(14),
-        fontFamily:fonts.PoppinsMedium,
+        fontFamily:fonts.PoppinsBold,
         color:colors.greenText
     }
 })

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View, Image, StatusBar, SafeAreaView } from 'react-native';
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
 import { images } from '../../../Theme/Images';
@@ -7,6 +7,7 @@ import SeperateLine from '../../Common/SeperateLine';
 import CustomHeader from '../../Common/CustomHeader';
 import colors from '../../../Theme/Colors';
 import fonts from '../../../Theme/Fonts';
+import { useTheme } from '@react-navigation/native';
 
 const data = [
     { id: '1', imageSource: images.compoundLogo, name: 'Compound', about: "Compound is an algorithmic, autonomous ...", arrow: images.rightBlueArrow },
@@ -18,15 +19,33 @@ const data = [
 ];
 
 const Dapp = () => {
+    const {colors: themeColor, image} = useTheme()
+    const [search, setSearch] = useState("")
+    const [list, setList] = useState(data);
+
+
+    const filterData = (text) => {
+        const filteredData = data.filter(item => item.name.toLowerCase().includes(text.toLowerCase()));
+        setList(filteredData);
+    };
+    const handleSearch = (text) => {
+        setSearch(text);
+        if (text === "") {
+            setList(data)
+        }
+        else {
+            filterData(text)
+        }
+    }
 
     const renderItem = ({ item }) => (
-        <View style={styles.itemContainer}>
+        <View style={[styles.itemContainer,{backgroundColor:themeColor.cardBackground}]}>
             <View style={{ alignItems: "center" }}>
                 <Image source={item.imageSource} style={styles.image} />
             </View>
             <View style={styles.textContainer}>
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.about}>{item.about}</Text>
+                <Text style={[styles.name,{color:themeColor.text}]}>{item.name}</Text>
+                <Text style={[styles.about,{color:themeColor.subText}]}>{item.about}</Text>
             </View>
 
             <View style={{ alignItems: "flex-end" }}>
@@ -37,16 +56,16 @@ const Dapp = () => {
     );
 
     return (
-        <SafeAreaView style={styles.main_container}>
+        <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
 
-            <StatusBar backgroundColor="white" barStyle="dark-content" />
-            <CustomHeader header="Dapp" header_style={styles.header} />
+            <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
+            <CustomHeader header="Dapp" header_style={styles.header} headerimg={{tintColor:themeColor.text}}/>
             <SeperateLine />
             <View style={{ marginTop: dimen(20) }}>
-                <CustomSearchBar />
+                <CustomSearchBar onChangeText={handleSearch} value={search}/>
             </View>
             <FlatList
-                data={data}
+                data={list}
                 numColumns={2}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}

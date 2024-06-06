@@ -9,22 +9,27 @@ import Button from '../../Common/CustomButton';
 import { Strings } from '../../../Theme/Strings';
 import SeperateLine from '../../Common/SeperateLine';
 import CustomCrypto from './CustomBuyCrypto';
+import { useTheme } from '@react-navigation/native';
+const data = [
+    { id: '1', value: '1' },
+    { id: '2', value: '2' },
+    { id: '3', value: '3' },
+    { id: '4', value: '4' },
+    { id: '5', value: '5' },
+    { id: '6', value: '6' },
+    { id: '7', value: '7' },
+    { id: '8', value: '8' },
+    { id: '9', value: '9' },
+    { id: 'clear', value: '' },
+    { id: '0', value: '0' },
+    { id: 'delete' },
+];
 
 const SellCrypto = (props) => {
-    const data = [
-        { id: '1', value: '1' },
-        { id: '2', value: '2' },
-        { id: '3', value: '3' },
-        { id: '4', value: '4' },
-        { id: '5', value: '5' },
-        { id: '6', value: '6' },
-        { id: '7', value: '7' },
-        { id: '8', value: '8' },
-        { id: '9', value: '9' },
-        { id: 'clear', value: '' },
-        { id: '0', value: '0' },
-        { id: 'delete' },
-    ];
+
+    const {colors: themeColor, image} = useTheme()
+   
+  
 
 
     const renderItem = ({ item }) => (
@@ -35,9 +40,10 @@ const SellCrypto = (props) => {
 
                 >
                     {item.id === 'delete' ? (
-                        <Image source={images.deleteLogo} style={styles.deleteImage} />
+                        <Image source={images.deleteLogo} style={[styles.deleteImage,{tintColor:themeColor.text}]} />
+
                     ) : (
-                        <Text style={styles.text}>{item.value}</Text>
+                        <Text style={[styles.text,{color:themeColor.text}]}>{item.value}</Text>
                     )}
                 </TouchableOpacity>
             </View>
@@ -45,15 +51,15 @@ const SellCrypto = (props) => {
 
     );
     return (
-        <SafeAreaView style={styles.main_container}>
-            <StatusBar backgroundColor="white" barStyle="dark-content" />
+        <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
+            <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
 
 
             {/* ............................header..................................... */}
 
 
 
-            <CustomHeader header={Strings.English.buyCrypto.SellCrypto} header_style={styles.header_view} onPress={() => { props.navigation.navigate("TabNavigation") }} />
+            <CustomHeader header={Strings.English.buyCrypto.SellCrypto} header_style={styles.header_view} onPress={() => { props.navigation.navigate("TabNavigation") }} headerimg={{tintColor:themeColor.text}} />
             <SeperateLine  />
 
             <View style={styles.top_data_view}>
@@ -62,8 +68,8 @@ const SellCrypto = (props) => {
 
                 <CustomCrypto labelText={Strings.English.buyCrypto.Receive} dollarValue={Strings.English.buyCrypto.value2} image={images.whiteTriangle} image2={images.DownArrow} middleText={Strings.English.buyCrypto.ETH} />
                 <View style={styles.balance_view}>
-                    <Text style={styles.balanceText}>{Strings.English.buyCrypto.Balance}</Text>
-                    <Text style={styles.balanceValue}>{Strings.English.buyCrypto.value3}</Text>
+                    <Text style={[styles.balanceText,{color:themeColor.subText}]}>{Strings.English.buyCrypto.Balance}</Text>
+                    <Text style={[styles.balanceValue,{color:themeColor.text}]}>{Strings.English.buyCrypto.value3}</Text>
 
                 </View>
 

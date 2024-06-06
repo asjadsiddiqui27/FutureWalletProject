@@ -5,6 +5,7 @@ import { images } from '../../../Theme/Images'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
 import colors from '../../../Theme/Colors';
 import fonts from '../../../Theme/Fonts';
+import { useTheme } from '@react-navigation/native';
 const CustomCrypto = (
 
     {
@@ -15,18 +16,19 @@ const CustomCrypto = (
         image2
     }
 ) => {
+    const {colors: themeColor} = useTheme()
     return (
         <SafeAreaView>
-            <Text style={styles.labelText}>{labelText}</Text>
+            <Text style={[styles.labelText,{color:themeColor.subText}]}>{labelText}</Text>
 
-            <View style={styles.first_row_view}>
+            <View style={[styles.first_row_view,{backgroundColor:themeColor.cardBackground}]}>
                 <View>
-                    <Text style={styles.dollarValue}>{dollarValue}</Text>
+                    <Text style={[styles.dollarValue,{color:themeColor.text}]}>{dollarValue}</Text>
                 </View>
                 <View style={styles.multidata_view}>
                     <Image source={image} style={styles.imgStyle} />
-                    <Text style={styles.middleText}>{middleText}</Text>
-                    <Image source={image2} style={styles.downArrowImg} />
+                    <Text style={[styles.middleText,{color:themeColor.text}]}>{middleText}</Text>
+                    <Image source={image2} style={[styles.downArrowImg,{tintColor:themeColor.subText}]} />
                 </View>
             </View>
 

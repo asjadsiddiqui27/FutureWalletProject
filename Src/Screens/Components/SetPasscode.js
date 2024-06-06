@@ -1,94 +1,78 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React, { useState, ref } from 'react'
-import colors from '../../Theme/Colors'
-import Button from '../Common/CustomButton'
-import { images } from '../../Theme/Images'
-import InputText from '../Common/Input'
-import { Strings } from '../../Theme/Strings'
-import { getDimensionPercentage as dimen } from '../../Utils/Utils'
-import fonts from '../../Theme/Fonts'
-import {
-    CodeField,
-    Cursor,
-    useBlurOnFulfill,
-    useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
-import CustomHeader from '../Common/CustomHeader'
-import { SafeAreaView } from 'react-native'
-import { useTheme } from '@react-navigation/native'
+import React, { useState, useEffect, useRef } from 'react';
+import { Image, StyleSheet, Text, View ,SafeAreaView} from 'react-native';
+import { getDimensionPercentage as dimen } from '../../Utils/Utils';
+import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
+import { useTheme } from '@react-navigation/native';
+import { Strings } from '../../Theme/Strings';
+import CustomHeader from '../Common/CustomHeader';
+import colors from '../../Theme/Colors';
+import fonts from '../../Theme/Fonts';
+
 const CELL_COUNT = 6;
 
+const SetPasscode = ({ navigation }) => {
+    const { colors: themeColor, image } = useTheme();
+    const pinInput = useRef(null);
+    const [code, setCode] = useState('');
 
-const SetPasscode = ({navigation}) => {
-    const {colors: themeColor, image} = useTheme()
-    const [value, setValue] = useState('');
-    const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
-    const [props, getCellOnLayoutHandler] = useClearByFocusCell({
-        value,
-        setValue,
-    });
+    useEffect(() => {
+        if (code.length === CELL_COUNT) {
+            navigation.navigate("ConfirmPasscode");
+        }
+    }, [code]);
 
     return (
-        <SafeAreaView style={[styles.main_View,{backgroundColor:themeColor.background}]}>
+        <SafeAreaView style={[styles.main_View, { backgroundColor: themeColor.background }]}>
             <View style={styles.main_container}>
-
-                <CustomHeader 
-                header={Strings.English.Passcode.setpasscode} 
-                headerimg={{tintColor:themeColor.text}}
-                onPress={()=>{navigation.navigate("ImportWallet")}}
+                <CustomHeader
+                    header={Strings.English.Passcode.setpasscode}
+                    headerimg={{ tintColor: themeColor.text }}
+                    onPress={() => { navigation.navigate("ImportWallet") }}
                 />
-
                 <View style={styles.body_container}>
-                    <Image source={images.welcomelogo} style={styles.img_style} />
-                    <Text style={[styles.createPassTxt,{color:themeColor.text}]}>{Strings.English.Passcode.CreatePasscode}</Text>
+                    <Image source={image.setPasscode} style={styles.img_style} />
+                    <Text style={[styles.createPassTxt, { color: themeColor.text }]}>{Strings.English.Passcode.CreatePasscode}</Text>
                     <View style={styles.input_container}>
+                        <SmoothPinCodeInput
+                            ref={pinInput}
+                            value={code}
+                            codeLength={6}
+                            onTextChange={code => setCode(code)}
+                            cellStyle={{
+                                width:30,
+                                borderBottomWidth: 2,
+                                borderColor: themeColor.text,
 
-                       
+                            }}
+                            cellStyleFocused={{
+                                borderColor: themeColor.subText,
 
-                        <CodeField
-                            ref={ref}
-                            {...props}
-                            // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
-                            value={value}
-                            onChangeText={setValue}
-                            cellCount={CELL_COUNT}
-                            rootStyle={styles.codeFieldRoot}
-                            keyboardType="number-pad"
-                            textContentType="oneTimeCode"
-                            autoComplete={Platform.select({ android: 'sms-otp', default: 'one-time-code' })}
-                            testID="my-code-input"
-                            renderCell={({ index, symbol, isFocused }) => (
-                                <Text
-                                    key={index}
-                                    style={[styles.cell, isFocused && styles.focusCell]}
-                                    onLayout={getCellOnLayoutHandler(index)}>
-                                    {symbol || (isFocused ? <Cursor /> : null)}
-                                </Text>
-                            )}
+                            }}
+                            textStyle={{
+                                fontSize: 24,
+                                color: themeColor.text,
+                            }}
                         />
-
                     </View>
-                    <View style={{alignItems:"center"}}>
-                    <Text style={[styles.txt_style,{color:themeColor.subText}]}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
+                    <View style={{ alignItems: "center" }}>
+                        <Text style={[styles.txt_style, { color: themeColor.subText }]}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
                     </View>
                 </View>
                 <View style={styles.Footer_container}>
-                    <Button onPress={()=>{navigation.navigate("ConfirmPasscode")}}  btnView={styles.btnView} />
+                    {/* No need for the continue button */}
                 </View>
-
             </View>
         </SafeAreaView>
-    )
+    );
 }
 
-export default SetPasscode
+export default SetPasscode;
 
 const styles = StyleSheet.create({
     main_View: {
         flex: 1,
         backgroundColor: colors.White,
         justifyContent: "center",
-        // alignItems: "center",
     },
     main_container: {
         flex: 1,
@@ -114,41 +98,20 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        columnGap: dimen(16),
+        marginTop: dimen(20),
         marginBottom: dimen(36.25)
-    },
-    cell: {
-        width: dimen(20.5),
-        height: dimen(42.21),
-        lineHeight: 38,
-        fontSize: 16,
-        borderBottomWidth: 2,
-        borderColor: colors.border_input,
-        textAlign: 'center',
-        marginRight: dimen(18.5),
-    },
-    pass_input: {
-        padding: 1,
-        fontSize: 18,
-        borderBottomWidth: 1,
-        textAlign: "center",
-        borderColor: colors.border_input
+
     },
     txt_style: {
         fontSize: dimen(14),
         fontFamily: fonts.PoppinsMedium,
         color: colors.greenText,
-    
     },
     Footer_container: {
         flex: 0.3,
         justifyContent: "flex-end",
-
     },
     btnView: {
         marginBottom: dimen(66.88),
-        
-
     },
-
-})
+});

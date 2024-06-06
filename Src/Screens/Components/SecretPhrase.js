@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BlurView } from '@react-native-community/blur';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
 import colors from '../../Theme/Colors';
@@ -20,12 +20,33 @@ import { SafeAreaView } from 'react-native';
 import SmallButton from '../Common/CustomSmallButton';
 import { useTheme } from '@react-navigation/native';
 
+import * as bip39 from 'bip39'
+
 const SecretPhrase = (props) => {
   const {colors: themeColor, image} = useTheme()
   const panelRef = useRef(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
 
-  console.log(wordsArray);
+
+  
+  useEffect(() => {
+    
+    const mnemonic = bip39.generateMnemonic();
+    console.log('Mnemonic:', mnemonic);
+
+    // Convert mnemonic to seed
+    const seed = bip39.mnemonicToSeedSync(mnemonic).toString('hex');
+    console.log('Seed:', seed);
+    
+  
+    // return () => {
+    
+    // }
+  }, [])
+  
+
+
+  // console.log(wordsArray);
   return (
     <SafeAreaView style={[styles.safeArea,{backgroundColor:themeColor.background}]}>
       <View style={styles.main_container}>
@@ -59,7 +80,7 @@ const SecretPhrase = (props) => {
           <CustomBtnWIthIcon
             main_View={styles.Btn_View}
             buttonStyle={[styles.CopybtnStyle,{backgroundColor:themeColor.cardBackground}]}
-            ImgSrc={images.copyColored}
+            ImgSrc={image.copyIcon}
             LogoStyle={styles.copyLogo}
             textColor={styles.copyBtn_style}
             label={Strings.English.secretPhrase.copy}
@@ -82,7 +103,7 @@ const SecretPhrase = (props) => {
           />
         </View>
       </View>
-
+    {console.log("chkkk---",bottomSheetVisible)}
       {bottomSheetVisible && Platform.OS === 'android' ? (
         <BlurView
           style={StyleSheet.absoluteFill}

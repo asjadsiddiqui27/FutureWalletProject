@@ -7,12 +7,14 @@ import { images } from '../../Theme/Images';
 import fonts from '../../Theme/Fonts';
 import { Strings } from '../../Theme/Strings';
 import SeperateLine from '../Common/SeperateLine';
+import { useTheme } from '@react-navigation/native';
 
 const Notification = (props) => {
+    const {colors: themeColor, image} = useTheme()
     const data = [
         { id: '1', imageSource: images.notification1, text: Strings.English.notification.text1, time: Strings.English.notification.time1 },
         { id: '2', imageSource: images.notification2, text: Strings.English.notification.text2, time: Strings.English.notification.time2 },
-        { id: '3', imageSource: images.notification3, text: Strings.English.notification.text3, time: Strings.English.notification.time3 },
+        { id: '3', imageSource: image.ethImage, text: Strings.English.notification.text3, time: Strings.English.notification.time3 },
     ];
 
     const renderItem = ({ item }) => (
@@ -22,9 +24,9 @@ const Notification = (props) => {
                 <Image source={item.imageSource} style={styles.img} />
             </View>
             <View style={styles.text_view}>
-                <Text style={styles.data_text1}>{item.text}</Text>
-                <View style={styles.data_text2_view}>
-                    <Text style={styles.data_text2}>{item.time}</Text>
+                <Text style={[styles.data_text1,{color:themeColor.text}]}>{item.text}</Text>
+                <View style={[styles.data_text2_view,{backgroundColor:themeColor.card}]}>
+                    <Text style={[styles.data_text2,{color:themeColor.text}]}>{item.time}</Text>
                 </View>
             </View>
         </View>
@@ -33,9 +35,9 @@ const Notification = (props) => {
     );
 
     return (
-        <SafeAreaView style={styles.main_conatiner}>
-            <StatusBar backgroundColor="white" />
-            <CustomHeader header="Notification" header_style={styles.header} onPress={() => { props.navigation.navigate("TabNavigation") }} />
+        <SafeAreaView style={[styles.main_conatiner,{backgroundColor:themeColor.background}]}>
+            <StatusBar backgroundColor={themeColor.background}/>
+            <CustomHeader header="Notification" header_style={styles.header} onPress={() => { props.navigation.navigate("TabNavigation") }} headerimg={{tintColor:themeColor.text}}/>
             <SeperateLine top_line={styles.top_line}/>
             <View style={styles.main_data_container}>
                 <FlatList

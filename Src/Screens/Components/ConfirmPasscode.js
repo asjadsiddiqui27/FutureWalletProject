@@ -1,69 +1,36 @@
-import { Image, Keyboard, SafeAreaView, StyleSheet, Switch, Text, View } from 'react-native'
-import React, { useState, ref, useEffect } from 'react'
-import colors from '../../Theme/Colors'
-import Button from '../Common/CustomButton'
-import { images } from '../../Theme/Images'
-import InputText from '../Common/Input'
-import { Strings } from '../../Theme/Strings'
-import { getDimensionPercentage as dimen } from '../../Utils/Utils'
-import fonts from '../../Theme/Fonts'
-import {
-  CodeField,
-  Cursor,
-  useBlurOnFulfill,
-  useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
-import CustomHeader from '../Common/CustomHeader';
+import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { getDimensionPercentage as dimen } from '../../Utils/Utils';
+import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 import ToggleSwitch from 'toggle-switch-react-native';
-import { useTheme } from '@react-navigation/native'
+import { useTheme } from '@react-navigation/native';
+import CustomHeader from '../Common/CustomHeader';
+import { Strings } from '../../Theme/Strings';
+import { images } from '../../Theme/Images';
+import colors from '../../Theme/Colors';
+import fonts from '../../Theme/Fonts';
 
 const CELL_COUNT = 6;
-
 const ConfirmPasscode = ({ navigation }) => {
-  const {colors: themeColor, image} = useTheme()
-  const [value, setValue] = useState('');
+  const { colors: themeColor, image } = useTheme();
+  const pinInput = useRef(null);
+  const [code, setCode] = useState('');
+
   const [switchToggle, setSwitchToggle] = useState(false);
-  const [keyboardOpen, setKeyboardOpen] = useState(false);
 
-  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
-  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
-    value,
-    setValue,
-  });
-
-  const toggleSwtich = () => {
-    setSwitchToggle(!switchToggle);
-    if(!switchToggle){
-    navigation.navigate("TabNavigation")
-  }
-}
 
   useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
-      () => {
-        setKeyboardOpen(true);
-      }
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      () => {
-        setKeyboardOpen(false);
-      }
-    );
-
-    return () => {
-      keyboardDidShowListener.remove();
-      keyboardDidHideListener.remove();
-    };
-  }, []);
+    if (code.length === CELL_COUNT) {
+      navigation.navigate("TabNavigation");
+    }
+  }, [code]);
 
   return (
-    <SafeAreaView style={[styles.main_View,{backgroundColor:themeColor.background}]}>
+    <SafeAreaView style={[styles.main_View, { backgroundColor: themeColor.background }]}>
       <View style={styles.main_container}>
         <CustomHeader
           header="Confirm Passcode"
-          headerimg={{tintColor:themeColor.text}}
+          headerimg={{ tintColor: themeColor.text }}
           onPress={() => {
             navigation.navigate('setpasscode');
           }}
@@ -71,80 +38,64 @@ const ConfirmPasscode = ({ navigation }) => {
 
         <View style={styles.body_container}>
           <Image source={images.welcomelogo} style={styles.img_style} />
-          <Text style={[styles.createPassTxt,{color:themeColor.text}]}>
+          <Text style={[styles.createPassTxt, { color: themeColor.text }]}>
             {Strings.English.Passcode.ConfirmPasscode}
           </Text>
           <View style={styles.input_container}>
-            <CodeField
-              ref={ref}
-              {...props}
-              value={value}
-              onChangeText={setValue}
-              cellCount={CELL_COUNT}
-              rootStyle={styles.codeFieldRoot}
-              keyboardType="number-pad"
-              textContentType="oneTimeCode"
-              autoComplete={
-                Platform.select({
-                  android: 'sms-otp',
-                  default: 'one-time-code',
-                })
-              }
-              testID="my-code-input"
-              renderCell={({ index, symbol, isFocused }) => (
-                <Text
-                  key={index}
-                  style={[
-                    styles.cell,
-                    isFocused && styles.focusCell,
-                  ]}
-                  onLayout={getCellOnLayoutHandler(index)}>
-                  {symbol || (isFocused ? <Cursor /> : null)}
-                </Text>
-              )}
+            <SmoothPinCodeInput
+              ref={pinInput}
+              value={code}
+              codeLength={6}
+              onTextChange={code => setCode(code)}
+              cellStyle={{
+                width: 30,
+                borderBottomWidth: 2,
+                borderColor: themeColor.text,
+              }}
+              cellStyleFocused={{
+                borderColor: themeColor.subText,
+              }}
+              textStyle={{
+                fontSize: 24,
+                color: themeColor.text,
+              }}
+
             />
           </View>
-          <Text style={[styles.txt_style,{color:themeColor.text}]}>
+          <Text style={[styles.txt_style, { color: themeColor.text }]}>
             {Strings.English.Passcode.passcodeAddsSecurity}
           </Text>
         </View>
 
-        {!keyboardOpen && (
-          <View style={styles.Footer_container}>
-            <Image
-              source={images.biometric_Blue}
-              style={styles.imgBioMetric}
+
+        <View style={styles.Footer_container}>
+          <Image
+            source={images.biometric_Blue}
+            style={styles.imgBioMetric}
+          />
+          <View style={styles.biometricTxt_view}>
+            <Text style={[styles.biometricTxt, { color: themeColor.text }]}>
+              {Strings.English.Passcode.enableBiometric}
+            </Text>
+            <ToggleSwitch
+              isOn={switchToggle}
+              onColor={colors.background}
+              offColor={colors.White}
+              // onToggle={() => { toggleSwtich() }}
+              trackOffStyle={{ borderWidth: 0.2 }}
+              thumbOffStyle={{ backgroundColor: colors.background }}
             />
-            <View style={styles.biometricTxt_view}>
-              <Text style={[styles.biometricTxt,{color:themeColor.text}]}>
-                {Strings.English.Passcode.enableBiometric}
-              </Text>
-              <ToggleSwitch
-                isOn={switchToggle}
-                onColor={colors.background}
-                offColor={colors.White}
-                onToggle={() => { toggleSwtich() }}
-                trackOffStyle={{ borderWidth: 0.2 }}
-                thumbOffStyle={{ backgroundColor: colors.background }}
-              />
-            </View>
           </View>
-        )}
+        </View>
+
       </View>
     </SafeAreaView>
   )
 }
 
-
-
-
-
-export default ConfirmPasscode
+export default ConfirmPasscode;
 
 const styles = StyleSheet.create({
-  focusCell:{
-//  backgroundColor:"blue"
-  },
   main_View: {
     flex: 1,
     backgroundColor: colors.White,
@@ -178,24 +129,6 @@ const styles = StyleSheet.create({
     columnGap: dimen(16),
     marginBottom: dimen(36.25)
   },
-  cell: {
-    width: dimen(20.5),
-    height: dimen(42.21),
-    lineHeight: 38,
-    fontSize: 16,
-    borderBottomWidth: 2,
-    borderColor: colors.border_input,
-    textAlign: 'center',
-    marginRight: dimen(18.5),
-  
-  },
-  pass_input: {
-    padding: 1,
-    fontSize: 18,
-    borderBottomWidth: 1,
-    textAlign: "center",
-    borderColor: colors.border_input
-  },
   txt_style: {
     fontSize: 14,
     fontFamily: fonts.PoppinsMedium,
@@ -205,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 0.3,
     justifyContent: "flex-end",
     alignItems: "center",
-    position:"relative"
+    position: "relative"
   },
   imgBioMetric: {
     height: dimen(79),
@@ -229,7 +162,5 @@ const styles = StyleSheet.create({
   },
   btnView: {
     marginBottom: dimen(66.88),
-
   },
-
-})
+});

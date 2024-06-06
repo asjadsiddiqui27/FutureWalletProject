@@ -5,10 +5,12 @@ import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
 import SeperateLine from '../../Common/SeperateLine';
 import CustomHeader from '../../Common/CustomHeader';
 import colors from '../../../Theme/Colors';
+
+import { useTheme } from '@react-navigation/native';
 import { AppContext } from '../../../Theme/themes/AppContext';
 
 const Preferences = (props) => {
-    
+    const {colors: themeColor, image} = useTheme()
     const { isDarkTheme, setIsDarkTheme } = useContext(AppContext);
 
   
@@ -19,11 +21,11 @@ const Preferences = (props) => {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={{ marginHorizontal: dimen(24) }}>
-                <CustomHeader header="Preferences" onPress={() => { props.navigation.navigate("Settings") }} />
+                <CustomHeader header="Preferences" onPress={() => { props.navigation.navigate("Settings") }} headerimg={{tintColor:themeColor.text}}/>
             </View>
             <SeperateLine />
             <View style={styles.container}>
-                <Text style={styles.selectTheme_text}>Select theme</Text>
+                <Text style={[styles.selectTheme_text,{color:themeColor.text}]}>Select theme</Text>
                
                 <Switch
                     trackColor={{ false: '#767577', true: '#81b0ff' }}
