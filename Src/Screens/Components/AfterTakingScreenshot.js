@@ -139,7 +139,7 @@ export default function AfterTakingScreenshot(props) {
       <View style={styles.mainfooter}>
         <Button
           name="Continue"
-          onPress={() => navigation.navigate('verifysecretphrase')}
+          onPress={props.onNavigate}
           buttonStyl={styles.btn}
           textColor={styles.btnText}
         />

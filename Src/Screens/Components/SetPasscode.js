@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Image, StyleSheet, Text, View ,SafeAreaView} from 'react-native';
+import { Image, StyleSheet, Text, View ,SafeAreaView, Alert} from 'react-native';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 import { useTheme } from '@react-navigation/native';
@@ -14,20 +14,23 @@ const SetPasscode = ({ navigation }) => {
     const { colors: themeColor, image } = useTheme();
     const pinInput = useRef(null);
     const [code, setCode] = useState('');
-
     useEffect(() => {
         if (code.length === CELL_COUNT) {
-            navigation.navigate("ConfirmPasscode");
+            navigation.navigate("ConfirmPasscode", { name:code});
         }
     }, [code]);
-
+    const handleTextChange = (newCode) => {
+        const numericCode = newCode.replace(/[^0-9]/g, ''); 
+        setCode(numericCode);
+      };
+    
     return (
         <SafeAreaView style={[styles.main_View, { backgroundColor: themeColor.background }]}>
             <View style={styles.main_container}>
                 <CustomHeader
                     header={Strings.English.Passcode.setpasscode}
                     headerimg={{ tintColor: themeColor.text }}
-                    onPress={() => { navigation.navigate("ImportWallet") }}
+                    onPress={() => { navigation.navigate("verifysecretphrase") }}
                 />
                 <View style={styles.body_container}>
                     <Image source={image.setPasscode} style={styles.img_style} />
@@ -37,7 +40,7 @@ const SetPasscode = ({ navigation }) => {
                             ref={pinInput}
                             value={code}
                             codeLength={6}
-                            onTextChange={code => setCode(code)}
+                            onTextChange={handleTextChange}
                             cellStyle={{
                                 width:30,
                                 borderBottomWidth: 2,

@@ -1,5 +1,5 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Clipboard, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
+import React, { useState } from 'react'
 import InputText from '../Common/Input'
 import colors from '../../Theme/Colors'
 import { getDimensionPercentage as dimen } from '../../Utils/Utils'
@@ -11,23 +11,35 @@ import fonts from '../../Theme/Fonts'
 import CustomHeader from '../Common/CustomHeader'
 import { useTheme } from '@react-navigation/native'
 const ImportWallet = (props) => {
+    const [value, setValue] = useState("")
     const { colors: themeColor, image } = useTheme()
+    const handlePaste = async () => {
+        const text = await Clipboard.getString(); 
+        setValue(text);
+      };
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
             <View style={styles.main_data_container}>
-                <CustomHeader onPress={() => { props.navigation.navigate("verifysecretphrase") }} headerimg={{ tintColor: themeColor.text }} header='Import Wallet' />
+                <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }} headerimg={{ tintColor: themeColor.text }} header='Import Wallet' />
                 <View style={styles.input_View}>
                     <Text style={[styles.input_label, { color: themeColor.subText }]}>{Strings.English.importWallet.enteName}</Text>
                     <InputText placeholderText={Strings.English.importWallet.Wallet1} />
                 </View>
 
                 <View style={[styles.data_View, { backgroundColor: themeColor.cardBackground, borderColor: themeColor.cardBackground }]}>
+
                     <View style={styles.secretPhrase_view}>
                         <Text style={[styles.secretPhrase_text, { color: themeColor.subText }]}>{Strings.English.importWallet.secretPhrase}</Text>
                     </View>
+
+                    <TextInput value={value} style={{color:themeColor.text}}/>
                     <View style={styles.iconBtn_view}>
-                        <CustomBtnWIthIcon main_View={styles.Btn_View} buttonStyle={styles.CopybtnStyle} ImgSrc={image.copyIcon} LogoStyle={styles.copyLogo} textColor={styles.copyBtn_style} label={Strings.English.importWallet.Paste} />
+                        <CustomBtnWIthIcon
+                            onPressFun={handlePaste}
+                            main_View={styles.Btn_View}
+                            buttonStyle={styles.CopybtnStyle}
+                            ImgSrc={image.copyIcon} LogoStyle={styles.copyLogo} textColor={styles.copyBtn_style} label={Strings.English.importWallet.Paste} />
                     </View>
                 </View>
                 <View style={styles.oneLine_text_view}>

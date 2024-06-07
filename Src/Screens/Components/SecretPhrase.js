@@ -1,4 +1,5 @@
 import {
+  Clipboard,
   Platform,
   StyleSheet,
   Text,
@@ -19,54 +20,58 @@ import CustomHeader from '../Common/CustomHeader';
 import { SafeAreaView } from 'react-native';
 import SmallButton from '../Common/CustomSmallButton';
 import { useTheme } from '@react-navigation/native';
-
+import { Buffer } from "buffer";
 import * as bip39 from 'bip39'
-
+import 'react-native-get-random-values'
 const SecretPhrase = (props) => {
-  const {colors: themeColor, image} = useTheme()
+  const { colors: themeColor, image } = useTheme()
   const panelRef = useRef(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
+  const [mnemonic, setMnemonic] = useState([]);
 
+  global.Buffer = Buffer
 
-  
   useEffect(() => {
-    
-    const mnemonic = bip39.generateMnemonic();
-    console.log('Mnemonic:', mnemonic);
+    const generateData = () => {
+      const mnemonicResult = bip39.generateMnemonic();
+      console.log('Mnemonic::::::', mnemonicResult);
+      const arrNemonics = mnemonicResult?.trim().split(" ")
+      setMnemonic(arrNemonics)
+     const seed= bip39.mnemonicToSeedSync().toString('hex')
+     console.log(seed);
+    }
 
-    // Convert mnemonic to seed
-    const seed = bip39.mnemonicToSeedSync(mnemonic).toString('hex');
-    console.log('Seed:', seed);
-    
-  
-    // return () => {
-    
-    // }
+    generateData()
+
   }, [])
-  
+  const handleCopy = () => {
+    const mnemonicResult = mnemonic.join(' ');
+    Clipboard.setString(mnemonicResult);
 
-
+  };
   // console.log(wordsArray);
+
   return (
-    <SafeAreaView style={[styles.safeArea,{backgroundColor:themeColor.background}]}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: themeColor.background }]}>
       <View style={styles.main_container}>
-        <CustomHeader onPress={() => { props.navigation.navigate("walletname") }}  headerimg={{tintColor:themeColor.text}} header='Secret phrase' />
+        <CustomHeader onPress={() => { props.navigation.navigate("walletname") }} headerimg={{ tintColor: themeColor.text }} header='Secret phrase' />
 
         <View style={styles.upper_View}>
           <View style={styles.text_heading_container}>
-            <Text style={[styles.text_main_heading,{color:themeColor.subText}]}>
+            <Text style={[styles.text_main_heading, { color: themeColor.subText }]}>
               {Strings.English.secretPhrase.writeDown}
             </Text>
           </View>
 
           <View style={styles.body_items_container}>
-            {wordsArray.map((item, index) => (
+
+            {mnemonic.map((item, index) => (
               <SmallButton
-              
+
                 key={index}
-                btnView={[styles.btnView,{backgroundColor:themeColor.cardBackground,borderColor:themeColor.cardBackground}]}
-                textColor={[styles.btn_txt,{color:themeColor.text}]}
-                text2_style={[styles.btn_txt_2,{color:themeColor.text}]}
+                btnView={[styles.btnView, { backgroundColor: themeColor.cardBackground, borderColor: themeColor.cardBackground }]}
+                textColor={[styles.btn_txt, { color: themeColor.text }]}
+                text2_style={[styles.btn_txt_2, { color: themeColor.text }]}
                 name_2={index + 1 + '.'}
                 buttonStyle={styles.btn_style}
                 name={item}
@@ -78,8 +83,9 @@ const SecretPhrase = (props) => {
           </View>
 
           <CustomBtnWIthIcon
+            onPressFun={handleCopy}
             main_View={styles.Btn_View}
-            buttonStyle={[styles.CopybtnStyle,{backgroundColor:themeColor.cardBackground}]}
+            buttonStyle={[styles.CopybtnStyle, { backgroundColor: themeColor.cardBackground }]}
             ImgSrc={image.copyIcon}
             LogoStyle={styles.copyLogo}
             textColor={styles.copyBtn_style}
@@ -88,11 +94,11 @@ const SecretPhrase = (props) => {
         </View>
 
         <View style={styles.Footer_Container}>
-          <View style={[styles.msg_container,{backgroundColor:themeColor.background,borderColor:themeColor.cardBackground}]}>
-            <Text style={[styles.msg_txt,{color:themeColor.text}]}>
+          <View style={[styles.msg_container, { backgroundColor: themeColor.background, borderColor: themeColor.cardBackground }]}>
+            <Text style={[styles.msg_txt, { color: themeColor.text }]}>
               {Strings.English.secretPhrase.doNotShare}
             </Text>
-            <Text style={[styles.msg_txt2,{color:themeColor.text}]}>
+            <Text style={[styles.msg_txt2, { color: themeColor.text }]}>
               {Strings.English.secretPhrase.futureWalletSupport}
             </Text>
           </View>
@@ -103,7 +109,7 @@ const SecretPhrase = (props) => {
           />
         </View>
       </View>
-    {console.log("chkkk---",bottomSheetVisible)}
+      {console.log("chkkk---", bottomSheetVisible)}
       {bottomSheetVisible && Platform.OS === 'android' ? (
         <BlurView
           style={StyleSheet.absoluteFill}
@@ -117,7 +123,12 @@ const SecretPhrase = (props) => {
         onOpen={() => setBottomSheetVisible(true)}
         onClose={() => setBottomSheetVisible(false)}
         panelRef={panelRef}
+        array={mnemonic}
         navigation={props.navigation}
+        onNavigate={() => {
+          setBottomSheetVisible(false)
+          props.navigation.navigate('verifysecretphrase', { name: mnemonic })
+        }}
       />
     </SafeAreaView>
   );
@@ -144,7 +155,7 @@ const styles = StyleSheet.create({
   text_main_heading: {
     fontSize: dimen(16),
     fontFamily: fonts.PoppinsMedium,
-    color:colors.greenText,
+    color: colors.greenText,
     lineHeight: 24,
     textAlign: 'center',
   },
@@ -206,7 +217,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   msg_container: {
-    borderWidth:1,
+    borderWidth: 1,
     borderRadius: 12,
     paddingVertical: dimen(20),
     backgroundColor: colors.White,

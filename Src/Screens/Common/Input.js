@@ -27,7 +27,7 @@ function InputText({
             style={[Inputstyle,{borderColor:themeColor.blueBorder}]}
             maxLength={maximumLength}
             keyboardType={KybrdTyp}
-            placeholderTextColor={[placeholderTextColor,{color:themeColor.text}]}
+            placeholderTextColor={themeColor.text}
             value={value}
             secureTextEntry={psswrdVisible}
 

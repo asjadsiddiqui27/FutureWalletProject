@@ -42,7 +42,7 @@ const Onboarding = (props) => {
       <View style={styles.footer}>
       <View style={styles.insideFooter}>
         <Button  name={'Create a new wallet'} onPress={()=>props.navigation.navigate("legal")}/>
-        <TouchableOpacity style={styles.alreadyAcc} >
+        <TouchableOpacity style={styles.alreadyAcc} onPress={()=>props.navigation.navigate("ImportWallet")}>
           <Text style={styles.alreadyAccText}>{Strings.English.onboarding.alreadyWallet}</Text>
         </TouchableOpacity>
       </View>

@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Alert, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import colors from '../../Theme/Colors'
 import { Strings } from '../../Theme/Strings'
@@ -34,12 +34,12 @@ const WalletName = (props) => {
       </View>
 
       <View style={styles.footer_container}>
-        <Button
-          name={'Continue'}
-          
-         onPress={()=>props.navigation.navigate("secretphrase")}
-          buttonStyle={styles.btn}
-        />
+        {
+          (name.length==0)?
+          <Button name={'Continue'}onPress={()=>Alert.alert("Please Enter Name ")}buttonStyle={styles.btn}/>:
+          <Button name={'Continue'}onPress={()=>props.navigation.navigate("secretphrase")}buttonStyle={styles.btn}/>
+        }
+        
       </View>
     </View>
     </SafeAreaView>

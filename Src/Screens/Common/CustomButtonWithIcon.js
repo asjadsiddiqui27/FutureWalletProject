@@ -7,7 +7,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 
 function CustomBtnWIthIcon({
 
-    onPressFun = () => { onPressFunc() },
+    onPressFun = () => {},
     label = 'Click me',
     main_View,
     buttonStyle ,

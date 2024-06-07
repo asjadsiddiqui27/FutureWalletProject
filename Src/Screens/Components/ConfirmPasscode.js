@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 import ToggleSwitch from 'toggle-switch-react-native';
-import { useTheme } from '@react-navigation/native';
+import { useRoute, useTheme } from '@react-navigation/native';
 import CustomHeader from '../Common/CustomHeader';
 import { Strings } from '../../Theme/Strings';
 import { images } from '../../Theme/Images';
@@ -11,7 +11,10 @@ import colors from '../../Theme/Colors';
 import fonts from '../../Theme/Fonts';
 
 const CELL_COUNT = 6;
+
 const ConfirmPasscode = ({ navigation }) => {
+  const route = useRoute();
+  const originalCode = route.params?.name;
   const { colors: themeColor, image } = useTheme();
   const pinInput = useRef(null);
   const [code, setCode] = useState('');
@@ -20,10 +23,14 @@ const ConfirmPasscode = ({ navigation }) => {
 
 
   useEffect(() => {
-    if (code.length === CELL_COUNT) {
+    if (code.length === CELL_COUNT&&code===originalCode) {
       navigation.navigate("TabNavigation");
     }
   }, [code]);
+  const handleTextChange = (newCode) => {
+    const numericCode = newCode.replace(/[^0-9]/g, ''); 
+    setCode(numericCode);
+  };
 
   return (
     <SafeAreaView style={[styles.main_View, { backgroundColor: themeColor.background }]}>
@@ -46,7 +53,7 @@ const ConfirmPasscode = ({ navigation }) => {
               ref={pinInput}
               value={code}
               codeLength={6}
-              onTextChange={code => setCode(code)}
+              onTextChange={handleTextChange}
               cellStyle={{
                 width: 30,
                 borderBottomWidth: 2,
