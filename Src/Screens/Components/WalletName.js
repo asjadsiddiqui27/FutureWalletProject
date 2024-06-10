@@ -10,38 +10,44 @@ import CustomHeader from '../Common/CustomHeader'
 import { useTheme } from '@react-navigation/native'
 
 const WalletName = (props) => {
-  const {colors: themeColor, image} = useTheme()
-    const [name, setName] = useState('')
+  const { colors: themeColor, image } = useTheme()
+  const [name, setName] = useState('');
 
-    return (
-      
+  const handleSetValue = (text) => {
+    const regex = /^[a-zA-Z0-9]*$/;
+    if (regex.test(text)) {
+      setName(text);
+    }
+  };
+  return (
 
-    <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
+
+    <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
       <View style={styles.container}>
-      <CustomHeader onPress={()=>{props.navigation.navigate("legal")}}  header='Wallet Name' headerimg={{tintColor:themeColor.text}}/>
-      <View style={styles.heading_container}>
-      <Text  style={[styles.heading_text_style,{color:themeColor.subText}]}>{Strings.English.walletName.youCanlable}</Text>
-      </View>
+        <CustomHeader onPress={() => { props.navigation.navigate("legal") }} header='Wallet Name' headerimg={{ tintColor: themeColor.text }} />
+        <View style={styles.heading_container}>
+          <Text style={[styles.heading_text_style, { color: themeColor.subText }]}>{Strings.English.walletName.youCanlable}</Text>
+        </View>
 
-      <View style={styles.Input_main_container}>
-        <Text style={[styles.name_label_name,{color:themeColor.subText}]}>
-          {Strings.English.walletName.enterName}
-        </Text>
-        <InputText maximumLength={25} value={name} onChngFunction={setName} placeholderText='Wallet 1' />
-        <Text style={styles.max_limit_txt_style}>
-          {Strings.English.walletName.maxLimit + name.length + '/25'}
-        </Text>
-      </View>
+        <View style={styles.Input_main_container}>
+          <Text style={[styles.name_label_name, { color: themeColor.subText }]}>
+            {Strings.English.walletName.enterName}
+          </Text>
+          <InputText maximumLength={25} value={name} onChngFunction={handleSetValue} placeholderText='Wallet 1' />
+          <Text style={styles.max_limit_txt_style}>
+            {Strings.English.walletName.maxLimit + name.length + '/25'}
+          </Text>
+        </View>
 
-      <View style={styles.footer_container}>
-        {
-          (name.length==0)?
-          <Button name={'Continue'}onPress={()=>Alert.alert("Please Enter Name ")}buttonStyle={styles.btn}/>:
-          <Button name={'Continue'}onPress={()=>props.navigation.navigate("secretphrase")}buttonStyle={styles.btn}/>
-        }
-        
+        <View style={styles.footer_container}>
+          {
+            (name.length == 0) ?
+              <Button name={'Continue'} onPress={() => Alert.alert("Please Enter Name ")} buttonStyle={styles.btn} /> :
+              <Button name={'Continue'} onPress={() => props.navigation.navigate("secretphrase")} buttonStyle={styles.btn} />
+          }
+
+        </View>
       </View>
-    </View>
     </SafeAreaView>
 
   );
@@ -54,9 +60,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.White,
     flex: 1,
   },
-  container:{
-    flex:1,
-    marginHorizontal:dimen(24)
+  container: {
+    flex: 1,
+    marginHorizontal: dimen(24)
   },
   heading_container: {
     marginHorizontal: dimen(27.5),
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: dimen(16),
     lineHeight: dimen(24),
     textAlign: 'center',
-    color:colors.greenText
+    color: colors.greenText
   },
   Input_main_container: {
     flex: 0.8,

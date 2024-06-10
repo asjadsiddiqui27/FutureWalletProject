@@ -23,24 +23,36 @@ import { useTheme } from '@react-navigation/native';
 import { Buffer } from "buffer";
 import * as bip39 from 'bip39'
 import 'react-native-get-random-values'
+import { Wallet, ethers } from "ethers"
+import Web3, { providers } from 'web3';
+
 const SecretPhrase = (props) => {
   const { colors: themeColor, image } = useTheme()
   const panelRef = useRef(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
   const [mnemonic, setMnemonic] = useState([]);
 
+
   global.Buffer = Buffer
 
   useEffect(() => {
-    const generateData = () => {
+    const generateData = async () => {
       const mnemonicResult = bip39.generateMnemonic();
       console.log('Mnemonic::::::', mnemonicResult);
       const arrNemonics = mnemonicResult?.trim().split(" ")
       setMnemonic(arrNemonics)
-     const seed= bip39.mnemonicToSeedSync().toString('hex')
-     console.log(seed);
-    }
+      const seed = bip39.mnemonicToSeedSync().toString('hex')
+      console.log("seed::::::::::", seed);
 
+      const wallet = Wallet.fromPhrase(mnemonicResult);
+      console.log("Address:::::::::::", wallet);
+      console.log("waletAddress:::::::::", wallet.address)
+
+      const web3 = new Web3('wss://ethereum-sepolia-rpc.publicnode.com');
+      const balance = await web3.eth.getBalance("0xd2E35de8031cf6d54508AA1188Bc5459494290E6");
+      console.log("Balance:::::::::", balance);
+      // console.log("Balance:::::::::", (balance)*10^18);
+    }
     generateData()
 
   }, [])
