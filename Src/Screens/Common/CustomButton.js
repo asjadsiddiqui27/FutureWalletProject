@@ -12,7 +12,7 @@ import LinearGradient from "react-native-linear-gradient";
 
 function Button({
 
-    onPress = () => { console.log("Btn pressed") },
+    onPress = () => { console.log("") },
     btnView,
     name = 'Continue',
     buttonStyle = styles.btn,

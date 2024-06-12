@@ -5,62 +5,125 @@ import {
   Text,
   View,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getDimensionPercentage as dimen } from '../../Utils/Utils';
+import CustomBtnWIthIcon from '../Common/CustomButtonWithIcon';
+import AfterTakingScreenshot from './AfterTakingScreenshot';
 import React, { useState, useRef, useEffect } from 'react';
 import { BlurView } from '@react-native-community/blur';
-import { getDimensionPercentage as dimen } from '../../Utils/Utils';
-import colors from '../../Theme/Colors';
-import { Strings } from '../../Theme/Strings';
-import fonts from '../../Theme/Fonts';
-import Button from '../Common/CustomButton';
-import CustomBtnWIthIcon from '../Common/CustomButtonWithIcon';
-import { images } from '../../Theme/Images';
-import { wordsArray } from '../../Theme/Const';
-import AfterTakingScreenshot from './AfterTakingScreenshot';
-import CustomHeader from '../Common/CustomHeader';
-import { SafeAreaView } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import SmallButton from '../Common/CustomSmallButton';
 import { useTheme } from '@react-navigation/native';
+import CustomHeader from '../Common/CustomHeader';
+import { Strings } from '../../Theme/Strings';
+import { SafeAreaView } from 'react-native';
+import Button from '../Common/CustomButton';
+import colors from '../../Theme/Colors';
+import fonts from '../../Theme/Fonts';
 import { Buffer } from "buffer";
 import * as bip39 from 'bip39'
 import 'react-native-get-random-values'
 import { Wallet, ethers } from "ethers"
-import Web3, { providers } from 'web3';
+import Web3 from 'web3';
+
 
 const SecretPhrase = (props) => {
-  const { colors: themeColor, image } = useTheme()
   const panelRef = useRef(null);
+  const { colors: themeColor, image } = useTheme()
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
+  const [loading, setLoading] = useState(true)
   const [mnemonic, setMnemonic] = useState([]);
+  const [balance, setBalance] = useState("")
 
+  const fromPrivateKey = "0x3eca96d4f6fb83f72407dc2d851bce12c650a4711cfd112ebd8edc4589cacce3"
 
-  global.Buffer = Buffer
+  global.Buffer = Buffer;
 
   useEffect(() => {
-    const generateData = async () => {
-      const mnemonicResult = bip39.generateMnemonic();
-      console.log('Mnemonic::::::', mnemonicResult);
-      const arrNemonics = mnemonicResult?.trim().split(" ")
-      setMnemonic(arrNemonics)
-      const seed = bip39.mnemonicToSeedSync().toString('hex')
-      console.log("seed::::::::::", seed);
 
-      const wallet = Wallet.fromPhrase(mnemonicResult);
-      console.log("Address:::::::::::", wallet);
-      console.log("waletAddress:::::::::", wallet.address)
 
-      const web3 = new Web3('wss://ethereum-sepolia-rpc.publicnode.com');
-      const balance = await web3.eth.getBalance("0xd2E35de8031cf6d54508AA1188Bc5459494290E6");
-      console.log("Balance:::::::::", balance);
-      // console.log("Balance:::::::::", (balance)*10^18);
-    }
     generateData()
-
+    
   }, [])
+
+  const generateData = async () => {
+
+    const mnemonicResult = bip39.generateMnemonic();
+    console.log('Mnemonic::::::', mnemonicResult);
+    const arrNemonics = mnemonicResult?.trim().split(" ")
+    setMnemonic(arrNemonics)
+    setLoading(false)
+    const seed = bip39.mnemonicToSeedSync().toString('hex')
+    console.log("seed::::::::::", seed);
+
+    // ::::::::::::::::::::::::::::::Generate Address :::::::::::::::::::::::::::::::::::::://
+
+    const wallet = Wallet.fromPhrase(mnemonicResult);
+    console.log("PrivateKey:::::::::::", wallet.privateKey);
+    console.log("waletAddress:::::::::", wallet.address)
+    console.log({ wallet })
+
+    //::::::::::::::::::::::::::::::::::: Get Balance ::::::::::::::::::::::::::::::::::://
+
+    const web3 = new Web3('https://ethereum-sepolia-rpc.publicnode.com');
+    const balance = await web3.eth.getBalance("0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64");
+    const etherBalance = ethers.formatEther(balance)
+    console.log("Balance:::::::::", etherBalance);
+    setBalance(etherBalance)
+
+    // ::::::::::::::::::::::::::::::::;Gas Price ::::::::::::::::::::::::::::::::::::::::://
+
+    const gasPrice = await web3.eth.getGasPrice("0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64");
+    const gasPriceValue = parseInt(gasPrice, 16);
+    console.log("GasPrice:::::::::", gasPriceValue)
+
+    const nonce = await web3.eth.getTransactionCount("0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64")
+    console.log("nonce:::::::::::::", nonce, web3.utils.toWei(0.0001, 'ether'))
+
+  //:::::::::::::::::::::::::::::::::: signTransaction::::::::::::::::::::::::::::::::::: //
+  
+    const tx ={
+      nonce: nonce,
+      gasLimit: 100000,
+      from: "0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64",
+      to: "0xD28F085D324A0e15A2Ac929435a0598f95efc517",
+      value: web3.utils.toWei(0.0001, 'ether'),
+      gasPrice: gasPriceValue,
+      chainId: 11155111
+    };
+   
+    web3.eth.accounts.signTransaction(tx, fromPrivateKey).then(res => {
+      console.log("res:::::::", res);
+       web3.eth.sendSignedTransaction(res.rawTransaction).then(res1 => {
+        console.log("res:::::::", res1);
+      }).catch(err => {
+        console.log("err::::", err);
+      })
+    }).catch(err => {
+      console.log("err::::", err);
+    })
+   
+    const newBalanceWei = await web3.eth.getBalance("0xD28F085D324A0e15A2Ac929435a0598f95efc517");
+    const ethernewBalance = ethers.formatEther(newBalanceWei)
+    console.log("New Balance:::::::::", ethernewBalance);
+
+    // :::::::::::::::::::::::::::::::: SET  ::::::::::::::::::::::::::::::::::::::::://
+
+    try {
+      await AsyncStorage.setItem('filteredData', JSON.stringify(etherBalance));
+      console.log("Stored Balance:", etherBalance);
+    } catch (e) {
+      console.error('Error storing data:', e);
+    }
+    
+  };
+
   const handleCopy = () => {
     const mnemonicResult = mnemonic.join(' ');
     Clipboard.setString(mnemonicResult);
 
   };
+
   // console.log(wordsArray);
 
   return (
@@ -75,25 +138,26 @@ const SecretPhrase = (props) => {
             </Text>
           </View>
 
-          <View style={styles.body_items_container}>
 
-            {mnemonic.map((item, index) => (
-              <SmallButton
+          {loading ? <ActivityIndicator size="large" color={colors.lightBlue} /> :
+            <View style={styles.body_items_container}>
+              {mnemonic.map((item, index) => (
+                <SmallButton
 
-                key={index}
-                btnView={[styles.btnView, { backgroundColor: themeColor.cardBackground, borderColor: themeColor.cardBackground }]}
-                textColor={[styles.btn_txt, { color: themeColor.text }]}
-                text2_style={[styles.btn_txt_2, { color: themeColor.text }]}
-                name_2={index + 1 + '.'}
-                buttonStyle={styles.btn_style}
-                name={item}
-                onPress={() => {
-                  console.log(item);
-                }}
-              />
-            ))}
-          </View>
-
+                  key={index}
+                  btnView={[styles.btnView, { backgroundColor: themeColor.cardBackground, borderColor: themeColor.cardBackground }]}
+                  textColor={[styles.btn_txt, { color: themeColor.text }]}
+                  text2_style={[styles.btn_txt_2, { color: themeColor.text }]}
+                  name_2={index + 1 + '.'}
+                  buttonStyle={styles.btn_style}
+                  name={item}
+                  onPress={() => {
+                    console.log(item);
+                  }}
+                />
+              ))}
+            </View>
+          }
           <CustomBtnWIthIcon
             onPressFun={handleCopy}
             main_View={styles.Btn_View}

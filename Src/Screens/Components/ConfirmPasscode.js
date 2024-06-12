@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
@@ -26,7 +26,11 @@ const ConfirmPasscode = ({ navigation }) => {
     if (code.length === CELL_COUNT&&code===originalCode) {
       navigation.navigate("TabNavigation");
     }
+    if (code.length === CELL_COUNT&&code!==originalCode) {
+      Alert.alert("Incorrect Password")
+    }
   }, [code]);
+
   const handleTextChange = (newCode) => {
     const numericCode = newCode.replace(/[^0-9]/g, ''); 
     setCode(numericCode);

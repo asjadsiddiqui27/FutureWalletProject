@@ -1,18 +1,34 @@
 import { Image, Platform, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomHeader from '../../Common/CustomHeader'
 import SeperateLine from '../../Common/SeperateLine'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Button from '../../Common/CustomButton'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils'
 import colors from '../../../Theme/Colors'
-import { useTheme } from '@react-navigation/native'
+import { useRoute, useTheme } from '@react-navigation/native'
 import { images } from '../../../Theme/Images'
 import CommonViewSndBtc from './CommonViewSndBtc'
 import fonts from '../../../Theme/Fonts'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const SendBTC = (props) => {
-    const { colors: themeColor, image } = useTheme()
+    const { colors: themeColor, image } = useTheme();
+    const [data, setData] = useState("");
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const getBalance = JSON.parse(await AsyncStorage.getItem("filteredData"));
+                console.log("get data:::::::::::::",getBalance);
+                setData(getBalance);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getUser();
+    }, []);
+
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
@@ -28,15 +44,15 @@ const SendBTC = (props) => {
                         <TextInput
                             style={[styles.input, { borderColor: themeColor.blueBorder }]}
                             placeholder="Enter"
-                            keyboardType="numeric"
                             placeholderTextColor={themeColor.subText}
+                            
                         />
                     </View>
                     <View style={{ marginTop: dimen(20), gap: dimen(12.33) }}>
                         <Text style={[styles.Address, { color: themeColor.subText }]}>Amount</Text>
                         <TextInput
                             style={[styles.input, { borderColor: themeColor.blueBorder }]}
-                            placeholder="BTC Amount"
+                            placeholder="ETH Amount"
                             keyboardType="numeric"
                             placeholderTextColor={themeColor.subText}
                         />
@@ -45,7 +61,7 @@ const SendBTC = (props) => {
                         <Text style={{color:themeColor.subText,fontSize:14,fontFamily:fonts.PoppinsMedium}}>$50,000</Text>
                         <View style={{flexDirection:'row'}}>
                             <Text style={{color:themeColor.subText,fontSize:14,fontFamily:fonts.PoppinsMedium}}>Balance:</Text>
-                            <Text style={{color:themeColor.text,fontSize:14,fontFamily:fonts.PoppinsMedium}}> 1.97</Text>
+                            <Text style={{color:themeColor.text,fontSize:14,fontFamily:fonts.PoppinsMedium}}>{data}</Text>
                         </View>
 
                     </View>
@@ -89,7 +105,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderColor: colors.borderLineColor,
         fontSize: dimen(16),
-        paddingLeft: dimen(16.34)
+        paddingLeft: dimen(16.34),
+        color:"white"
 
     },
     Address: {
