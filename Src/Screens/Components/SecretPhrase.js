@@ -37,6 +37,8 @@ const SecretPhrase = (props) => {
 
   const fromPrivateKey = "0x3eca96d4f6fb83f72407dc2d851bce12c650a4711cfd112ebd8edc4589cacce3"
   const fromAddress="0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64"
+  const ethTestnetSpolia="https://ethereum-sepolia-rpc.publicnode.com"
+  const bnbTestnetSpolia="https://bsc-testnet-rpc.publicnode.com"
   global.Buffer = Buffer;
 
   useEffect(() => {
