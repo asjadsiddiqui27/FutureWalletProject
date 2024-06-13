@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useIsFocused, useNavigation, useTheme } from '@react-navigation/native';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
@@ -10,12 +10,29 @@ import { Strings } from '../../Theme/Strings';
 import { images } from '../../Theme/Images';
 import colors from '../../Theme/Colors'
 import fonts from '../../Theme/Fonts';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Main = () => {
     const { colors: themeColor, image } = useTheme()
     const isFocused = useIsFocused()
     const navigation = useNavigation()
-
+    const [ethbalance, setEthBalance] = useState(0);
+    const [bnbbalance, setBnbBalance] = useState(0);
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const getEthBalance = JSON.parse(await AsyncStorage.getItem("ethBalance"));
+                const getBnbBalance = JSON.parse(await AsyncStorage.getItem("bnbBalance"));
+                console.log("get data:::::::::::::", getEthBalance,getBnbBalance);
+                setEthBalance(Number(getEthBalance)||0);
+                setBnbBalance(Number(getBnbBalance)||0)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getUser();
+    }, []);
+    const totalBalance = ethbalance+bnbbalance
     useEffect(() => {
         //   if(isFocused)
         //     StatusBar.setBackgroundColor(themeColor.mainScreenBgColor,true)
@@ -23,10 +40,10 @@ const Main = () => {
         return () => { }
     }, [isFocused])
     const data = [
-        { id: '1', imageSource: images.notification2, name: Strings.English.main.BNBBeaconChain, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: Strings.English.main.BNB, dollarValueRight: Strings.English.main.dollarValueRight1 },
-        { id: '2', imageSource: images.notification1, name: Strings.English.main.Bitcoin, dollarValue: Strings.English.main.dollarValue2, percentageValue: Strings.English.main.percentagevalue2, rightText: Strings.English.main.BTC, dollarValueRight: Strings.English.main.dollarValueRight2 },
-        { id: '3', imageSource: image.ethImage, name: Strings.English.main.Ethereum, dollarValue: Strings.English.main.dollarValue3, percentageValue: Strings.English.main.percentagevalue3, rightText: Strings.English.main.ETH, dollarValueRight: Strings.English.main.dollarValueRight3 },
-        { id: '4', imageSource: images.tron, name: Strings.English.main.Tron, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: Strings.English.main.TRX, dollarValueRight: Strings.English.main.dollarValueRight4 },
+        { id: '1', imageSource: images.notification2, name: Strings.English.main.BNBBeaconChain, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: bnbbalance, dollarValueRight: Strings.English.main.dollarValueRight1 },
+        // { id: '2', imageSource: images.notification1, name: Strings.English.main.Bitcoin, dollarValue: Strings.English.main.dollarValue2, percentageValue: Strings.English.main.percentagevalue2, rightText: Strings.English.main.BTC, dollarValueRight: Strings.English.main.dollarValueRight2 },
+        { id: '3', imageSource: image.ethImage, name: Strings.English.main.Ethereum, dollarValue: Strings.English.main.dollarValue3, percentageValue: Strings.English.main.percentagevalue3, rightText: ethbalance, dollarValueRight: Strings.English.main.dollarValueRight3 },
+        // { id: '4', imageSource: images.tron, name: Strings.English.main.Tron, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: Strings.English.main.TRX, dollarValueRight: Strings.English.main.dollarValueRight4 },
     ];
 
     <StatusBar backgroundColor={themeColor.mainScreenBgColor[0]} barStyle={"dark-content"} />
@@ -58,7 +75,7 @@ const Main = () => {
     );
 
 
-
+  
     return (
 
 
@@ -70,7 +87,7 @@ const Main = () => {
 
             <View style={styles.top_labelText_view}>
                 <Text style={[styles.top_labelText, { color: themeColor.text }]}>{Strings.English.main.totalBalance}</Text>
-                <Text style={[styles.top_valuetext, { color: themeColor.text }]}>{Strings.English.main.dollarValue}</Text>
+                <Text style={[styles.top_valuetext, { color: themeColor.text }]}>{totalBalance}</Text>
             </View>
 
 

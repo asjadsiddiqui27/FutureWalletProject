@@ -48,6 +48,7 @@ import Acknowledge from '../Components/Buy&Sell/Acknowledge';
 import PrivateKeyBackup from '../Components/Buy&Sell/PrivateKeyBackup';
 import SecretPhrase2 from '../Components/Buy&Sell/SecretPharse';
 import ManageBottomSheet from '../Components/Buy&Sell/ManageBottomSheet';
+import SendBnb from '../Components/Send/SendBnb';
 
 
 
@@ -246,7 +247,12 @@ const StackNavigation = () => {
             options={{
             }}
           />
-
+          <Stack.Screen
+            name='SendBnb'
+            component={SendBnb}
+            options={{
+            }}
+          />
 
           <Stack.Screen
             name='Transfer'
@@ -364,20 +370,20 @@ const StackNavigation = () => {
             options={{
             }}
           />
-         
+
           <Stack.Screen
             name='Acknowledge'
             component={Acknowledge}
             options={{
             }}
           />
-           <Stack.Screen
+          <Stack.Screen
             name='PrivateKeyBackup'
             component={PrivateKeyBackup}
             options={{
             }}
           />
-           <Stack.Screen
+          <Stack.Screen
             name='SecretPhrase2'
             component={SecretPhrase2}
             options={{

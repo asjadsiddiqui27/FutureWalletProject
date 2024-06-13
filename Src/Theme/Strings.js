@@ -304,6 +304,14 @@ export const Strings = {
             condition1:"If I lose my secret phrase, my funds will be lost forever.",
             condition2:"If I expose or share my secret phrase to anybody, my funds can ger stolen.",
             condition3:"Future Wallet support will NEVER reach out ot ask for it."
+        },
+        sendBtc:{
+            Address:"Address",
+            Amount:"Amount",
+            Balance:"Balance:",
+            TransactionFee:"Transaction Fee",
+            ETHAmount:"ETH Amount",
+            Next:"Next"
         }
 
 

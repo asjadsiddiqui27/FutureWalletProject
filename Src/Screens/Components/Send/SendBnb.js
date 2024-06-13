@@ -8,68 +8,69 @@ import { getDimensionPercentage as dimen } from '../../../Utils/Utils'
 import colors from '../../../Theme/Colors'
 import { useRoute, useTheme } from '@react-navigation/native'
 import { images } from '../../../Theme/Images'
-import CommonViewSndBtc from './CommonViewSndBtc'
 import fonts from '../../../Theme/Fonts'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Strings } from '../../../Theme/Strings'
 import Web3 from 'web3'
 
-const SendBTC = (props) => {
+
+
+const SendBnb= (props) => {
     const { colors: themeColor, image } = useTheme();
-    const [ethbalance, setEthBalance] = useState("");
+    const [bnbbalance, setBnbBalance] = useState("");
     const [privateKey, setPrivateKey] = useState("")
     const [fromAddress, setFromAddress] = useState("")
-    const [address, setAddress] = useState("")
+    const [address,setAddress]=useState("")
     const [selectedItem, setSelectedItem] = useState("1");
-    const [amount, setAmount] = useState("")
-    const Fees = [
+    const [amount,setAmount]=useState("")
+    const Fees=[
         { id: '1', name: "Slow", value: "(0.00112BTC) $0.1111" },
         { id: '2', name: "Medium", value: "(0.00112BTC) $0.1111" },
         { id: '3', name: "Fast", value: "(0.00112BTC) $0.1111" },
     ];
-
+   
     const handlePress = (itemId) => {
         setSelectedItem(itemId);
-
+       
     };
     const generateData = async () => {
-
-        const web3 = new Web3('https://ethereum-sepolia-rpc.publicnode.com');
-
-
+    
+        const web3 = new Web3('https://bsc-testnet-rpc.publicnode.com');
+       
+    
         // ::::::::::::::::::::::::::::::::;Gas Price ::::::::::::::::::::::::::::::::::::::::://
-
+    
         const gasPrice = await web3.eth.getGasPrice(fromAddress);
         const gasPriceValue = parseInt(gasPrice, 16);
         console.log("GasPrice:::::::::", gasPriceValue)
-
+    
         const nonce = await web3.eth.getTransactionCount(fromAddress)
         console.log("nonce:::::::::::::", nonce, web3.utils.toWei(0.0001, 'ether'))
-
-        //:::::::::::::::::::::::::::::::::: signTransaction::::::::::::::::::::::::::::::::::: //
-
-        const tx = {
-            nonce: nonce,
-            gasLimit: 45000,
-            from: fromAddress,
-            to: address,
-            value: web3.utils.toWei(amount, 'ether'),
-            gasPrice: gasPriceValue,
-            chainId: 11155111
+    
+      //:::::::::::::::::::::::::::::::::: signTransaction::::::::::::::::::::::::::::::::::: //
+      
+        const tx ={
+          nonce:nonce,
+          gasLimit: 45000,
+          from: fromAddress,
+          to: address,
+          value: web3.utils.toWei(amount, 'ether'),
+          gasPrice: gasPriceValue,
+          chainId: 97
         };
-        console.log("tx::::::::", tx);
+       console.log("tx::::::::",tx);
         web3.eth.accounts.signTransaction(tx, privateKey).then(res => {
-            console.log("res:::::::", res);
-            web3.eth.sendSignedTransaction(res.rawTransaction).then(res1 => {
-                console.log("response Transaction :::::::", res1);
-            }).catch(err => {
-                console.log("err::::", err);
-            })
-        }).catch(err => {
+          console.log("res:::::::", res);
+           web3.eth.sendSignedTransaction(res.rawTransaction).then(res1 => {
+            console.log("response Transaction :::::::", res1);
+          }).catch(err => {
             console.log("err::::", err);
+          })
+        }).catch(err => {
+          console.log("err::::", err);
         })
-
-    };
+      
+      };
     const renderItem = ({ item }) => (
         <TouchableOpacity onPress={() => handlePress(item.id)}>
             <View style={[styles.mainView, { backgroundColor: item.id === selectedItem ? "transparent" : themeColor.cardBackground, borderColor: themeColor.blueBorder }]}>
@@ -85,11 +86,11 @@ const SendBTC = (props) => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const getEthBalance = JSON.parse(await AsyncStorage.getItem("ethBalance"));
+                const getbnbBalance = JSON.parse(await AsyncStorage.getItem("bnbBalance"));
                 const getPrivateKey = JSON.parse(await AsyncStorage.getItem("PrivateKey"));
                 const getFromAddress = JSON.parse(await AsyncStorage.getItem("fromAddress"));
-                console.log("get data:::::::::::::", getEthBalance);
-                setEthBalance(getEthBalance);
+                console.log("get data:::::::::::::", getbnbBalance);
+                setBnbBalance(getbnbBalance);
                 setPrivateKey(getPrivateKey)
                 setFromAddress(getFromAddress)
             } catch (error) {
@@ -103,7 +104,7 @@ const SendBTC = (props) => {
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
-            <CustomHeader header="Send ETH" header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Send") }} />
+            <CustomHeader header="Send BNB" header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Send") }} />
             <SeperateLine />
             <View style={{ flex: 1, margin: dimen(24) }}>
                 <View style={{ flex: 0.9 }}>
@@ -115,7 +116,7 @@ const SendBTC = (props) => {
                             style={[styles.input, { borderColor: themeColor.blueBorder }]}
                             placeholder="Enter"
                             placeholderTextColor={themeColor.subText}
-                            onChangeText={(text) => { setAddress(text) }}
+                            onChangeText={(text)=>{setAddress(text)}}
                         />
                     </View>
                     <View style={{ marginTop: dimen(20), gap: dimen(12.33) }}>
@@ -125,14 +126,14 @@ const SendBTC = (props) => {
                             placeholder={Strings.English.sendBtc.ETHAmount}
                             keyboardType="numeric"
                             placeholderTextColor={themeColor.subText}
-                            onChangeText={(text) => { setAmount(text) }}
+                            onChangeText={(text)=>{setAmount(text)}}
                         />
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: "space-between", marginTop: dimen(12), marginBottom: dimen(36) }}>
                         <Text style={{ color: themeColor.subText, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>$50,000</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Text style={{ color: themeColor.subText, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{Strings.English.sendBtc.Balance}</Text>
-                            <Text style={{ color: themeColor.text, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{ethbalance}</Text>
+                            <Text style={{ color: themeColor.text, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{bnbbalance}</Text>
                         </View>
 
                     </View>
@@ -150,7 +151,7 @@ const SendBTC = (props) => {
                     </View>
                 </View>
                 <View style={styles.footer}>
-                    <Button name={Strings.English.sendBtc.Next} onPress={() => { props.navigation.navigate("Transfer"), generateData() }} />
+                    <Button name={Strings.English.sendBtc.Next} onPress={() => { props.navigation.navigate("Transfer"), generateData()}} />
                 </View>
             </View>
 
@@ -158,7 +159,7 @@ const SendBTC = (props) => {
     )
 }
 
-export default SendBTC
+export default SendBnb
 
 const styles = StyleSheet.create({
     main_container: {

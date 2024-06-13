@@ -12,6 +12,7 @@ const CommonViewSndBtc = ({ name, value }) => {
 
     const handlePress = () => {
         setClicked(!clicked);
+        
     };
 
     return (

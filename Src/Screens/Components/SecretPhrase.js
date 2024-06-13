@@ -36,14 +36,14 @@ const SecretPhrase = (props) => {
   const [balance, setBalance] = useState("")
 
   const fromPrivateKey = "0x3eca96d4f6fb83f72407dc2d851bce12c650a4711cfd112ebd8edc4589cacce3"
-
+  const fromAddress="0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64"
   global.Buffer = Buffer;
 
   useEffect(() => {
 
 
     generateData()
-    
+
   }, [])
 
   const generateData = async () => {
@@ -65,44 +65,35 @@ const SecretPhrase = (props) => {
 
     //::::::::::::::::::::::::::::::::::: Get Balance ::::::::::::::::::::::::::::::::::://
 
+    // ;:::::::::::Eth balance::::::::::::: //
     const web3 = new Web3('https://ethereum-sepolia-rpc.publicnode.com');
-    const balance = await web3.eth.getBalance("0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64");
+    const balance = await web3.eth.getBalance(fromAddress);
     const etherBalance = ethers.formatEther(balance)
-    console.log("Balance:::::::::", etherBalance);
+    const formattedBalance = parseFloat(etherBalance).toFixed(5);
+    console.log("eth Balance:::::::::", formattedBalance);
     setBalance(etherBalance)
+    // ;:::::::::::Bnb balance::::::::::::: //
+    const Bnbweb3 = new Web3('https://bsc-testnet-rpc.publicnode.com');
+    const bnbBalance = await Bnbweb3.eth.getBalance(fromAddress);
+    const formtBalance = ethers.formatEther(bnbBalance)
+    const formattedBnbBalance = parseFloat(formtBalance).toFixed(5);
+    console.log("Bnb Balance:::::::::", formattedBnbBalance);
+    setBalance(formattedBnbBalance)
+
+
+
+
 
     // ::::::::::::::::::::::::::::::::;Gas Price ::::::::::::::::::::::::::::::::::::::::://
 
-    const gasPrice = await web3.eth.getGasPrice("0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64");
+    const gasPrice = await web3.eth.getGasPrice(fromAddress);
     const gasPriceValue = parseInt(gasPrice, 16);
     console.log("GasPrice:::::::::", gasPriceValue)
 
-    const nonce = await web3.eth.getTransactionCount("0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64")
+    const nonce = await web3.eth.getTransactionCount(fromAddress)
     console.log("nonce:::::::::::::", nonce, web3.utils.toWei(0.0001, 'ether'))
 
-  //:::::::::::::::::::::::::::::::::: signTransaction::::::::::::::::::::::::::::::::::: //
-  
-    const tx ={
-      nonce: nonce,
-      gasLimit: 100000,
-      from: "0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64",
-      to: "0xD28F085D324A0e15A2Ac929435a0598f95efc517",
-      value: web3.utils.toWei(0.0001, 'ether'),
-      gasPrice: gasPriceValue,
-      chainId: 11155111
-    };
-   
-    web3.eth.accounts.signTransaction(tx, fromPrivateKey).then(res => {
-      console.log("res:::::::", res);
-       web3.eth.sendSignedTransaction(res.rawTransaction).then(res1 => {
-        console.log("res:::::::", res1);
-      }).catch(err => {
-        console.log("err::::", err);
-      })
-    }).catch(err => {
-      console.log("err::::", err);
-    })
-   
+
     const newBalanceWei = await web3.eth.getBalance("0xD28F085D324A0e15A2Ac929435a0598f95efc517");
     const ethernewBalance = ethers.formatEther(newBalanceWei)
     console.log("New Balance:::::::::", ethernewBalance);
@@ -110,12 +101,15 @@ const SecretPhrase = (props) => {
     // :::::::::::::::::::::::::::::::: SET  ::::::::::::::::::::::::::::::::::::::::://
 
     try {
-      await AsyncStorage.setItem('filteredData', JSON.stringify(etherBalance));
-      console.log("Stored Balance:", etherBalance);
+      await AsyncStorage.setItem('ethBalance', JSON.stringify(formattedBalance));
+      await AsyncStorage.setItem('bnbBalance', JSON.stringify(formattedBnbBalance));
+      await AsyncStorage.setItem('PrivateKey', JSON.stringify(fromPrivateKey));
+      await AsyncStorage.setItem('fromAddress', JSON.stringify(fromAddress));
+      console.log("Stored Balance:", formattedBalance, formattedBnbBalance);
     } catch (e) {
       console.error('Error storing data:', e);
     }
-    
+
   };
 
   const handleCopy = () => {

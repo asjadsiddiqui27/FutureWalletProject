@@ -26,10 +26,10 @@ const ManageWallets = (props) => {
 
 
     ];
-    const [selectedId, setSelectedId] = useState([])
+    const [selectedId, setSelectedId] = useState("1")
     const handlePress = (itemId) => {
         setSelectedId(itemId)
-     
+
     };
 
     const renderItem = ({ item }) => (
@@ -41,7 +41,7 @@ const ManageWallets = (props) => {
                         <Text style={[styles.label_text, { color: themeColor.text }]}>{item.name}</Text>
                         <Text style={[styles.wallet_type, { color: item.id == selectedId ? "green" : themeColor.subText }]}>
 
-                            {item.id===selectedId?Strings.English.ManageWallets.walletType1:Strings.English.ManageWallets.walletType2}
+                            {item.id === selectedId ? Strings.English.ManageWallets.walletType1 : Strings.English.ManageWallets.walletType2}
                         </Text>
                     </View>
                 </View>
