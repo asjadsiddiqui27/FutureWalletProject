@@ -25,7 +25,11 @@ import * as bip39 from 'bip39'
 import 'react-native-get-random-values'
 import { Wallet, ethers } from "ethers"
 import Web3 from 'web3';
+import axios from 'axios';
+const BIP84 = require('bip84');
 
+
+global.Buffer = Buffer;
 
 const SecretPhrase = (props) => {
   const panelRef = useRef(null);
@@ -36,10 +40,9 @@ const SecretPhrase = (props) => {
   const [balance, setBalance] = useState("")
 
   const fromPrivateKey = "0x3eca96d4f6fb83f72407dc2d851bce12c650a4711cfd112ebd8edc4589cacce3"
-  const fromAddress="0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64"
-  const ethTestnetSpolia="https://ethereum-sepolia-rpc.publicnode.com"
-  const bnbTestnetSpolia="https://bsc-testnet-rpc.publicnode.com"
-  global.Buffer = Buffer;
+  const fromAddress = "0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64"
+  const ethTestnetSpolia = "https://ethereum-sepolia-rpc.publicnode.com"
+  const bnbTestnetSpolia = "https://bsc-testnet-rpc.publicnode.com"
 
   useEffect(() => {
 
@@ -57,6 +60,19 @@ const SecretPhrase = (props) => {
     setLoading(false)
     const seed = bip39.mnemonicToSeedSync().toString('hex')
     console.log("seed::::::::::", seed);
+
+    const root = new BIP84.fromMnemonic(mnemonicResult);
+    const child0 = root.deriveAccount(0);
+    const account0 = new BIP84.fromZPrv(child0);
+    console.log("accountData>>>>>>>>>>>>>>>>>>>>>>>>>", account0);
+    // ::::::::::::::::::::::::::::::Generate Bitcoin  Address :::::::::::::::::::::::::::::::::::::://
+
+
+    const bitcoinAddress = account0.getAddress(0);
+    console.log("bitcoinAddress:::::::::::::::::::::::::", bitcoinAddress);
+
+    const bitcoinPrivateKey = account0.getAccountPrivateKey();
+    console.log("bitcoinPrivateKey:::::::::::::::::::", bitcoinPrivateKey);
 
     // ::::::::::::::::::::::::::::::Generate Address :::::::::::::::::::::::::::::::::::::://
 
@@ -82,10 +98,31 @@ const SecretPhrase = (props) => {
     console.log("Bnb Balance:::::::::", formattedBnbBalance);
     setBalance(formattedBnbBalance)
 
+    // ;:::::::::::Btc balance::::::::::::: /
+
+    const fetchBitcoinBalance = async (address) => {
+      try {
+        const url = `https://api.blockcypher.com/v1/btc/main/addrs/bc1qwyhgyxhp2fumqdkqav92lxahpear79pzgntky4/balance`;
+        console.log("Request URL:", url);
+        const response = await axios.get(url);
+        const data = response.data;
+        console.log("API Response Data***********************************", data); 
+        const btcBalance = data.final_balance;
+        return btcBalance / 100000000; 
+      } catch (error) {
+        if (error.response) {
+          console.error('Error response data:', error.response.data);
+        } else {
+          console.error('Error message:', error.message);
+        }
+        return 0;
+      }
+    };
 
 
-
-
+    const bitcoinBalance = await fetchBitcoinBalance(bitcoinAddress);
+    console.log("Bitcoin Balance:::::::::", bitcoinBalance);
+    setBalance(bitcoinBalance);
     // ::::::::::::::::::::::::::::::::;Gas Price ::::::::::::::::::::::::::::::::::::::::://
 
     const gasPrice = await web3.eth.getGasPrice(fromAddress);
@@ -105,9 +142,10 @@ const SecretPhrase = (props) => {
     try {
       await AsyncStorage.setItem('ethBalance', JSON.stringify(formattedBalance));
       await AsyncStorage.setItem('bnbBalance', JSON.stringify(formattedBnbBalance));
+      await AsyncStorage.setItem('btcBalance', JSON.stringify(bitcoinBalance));
       await AsyncStorage.setItem('PrivateKey', JSON.stringify(fromPrivateKey));
       await AsyncStorage.setItem('fromAddress', JSON.stringify(fromAddress));
-      console.log("Stored Balance:", formattedBalance, formattedBnbBalance);
+      console.log("Stored Balance:", formattedBalance, formattedBnbBalance,bitcoinBalance);
     } catch (e) {
       console.error('Error storing data:', e);
     }

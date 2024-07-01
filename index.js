@@ -2,10 +2,9 @@
  * @format
  */
 import {AppRegistry, Settings} from 'react-native';
-
 import {name as appName} from './app.json';
 import App from './App';
-import './Src/Screens/Common/Shim';
+import './Src/Screens/Common/Shim'
 
 const TextEncodingPolyfill = require('text-encoding');
 

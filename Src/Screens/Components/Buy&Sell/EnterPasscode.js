@@ -11,6 +11,7 @@ import { Strings } from '../../../Theme/Strings';
 const CELL_COUNT = 6;
 
 const EnterPasscode = ({ navigation }) => {
+    
     const { colors: themeColor, image } = useTheme();
     const pinInput = useRef(null);
     const [code, setCode] = useState('');

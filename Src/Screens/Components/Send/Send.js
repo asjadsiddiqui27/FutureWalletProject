@@ -17,14 +17,17 @@ const Send = (props) => {
 
     const [ethbalance, setEthBalance] = useState("");
     const [bnbbalance, setBnbBalance] = useState("");
+    const [btcbalance, setBtcBalance] = useState("");
     useEffect(() => {
         const getUser = async () => {
             try {
                 const getEthBalance = JSON.parse(await AsyncStorage.getItem("ethBalance"));
                 const getBnbBalance = JSON.parse(await AsyncStorage.getItem("bnbBalance"));
-                console.log("get data:::::::::::::", getEthBalance,getBnbBalance);
+                const getBtcBalance = JSON.parse(await AsyncStorage.getItem("btcBalance"));
+                console.log("get data:::::::::::::", getEthBalance, getBnbBalance, getBtcBalance);
                 setEthBalance(getEthBalance);
-                setBnbBalance(getBnbBalance)
+                setBnbBalance(getBnbBalance);
+                setBtcBalance(getBtcBalance)
             } catch (error) {
                 console.log(error);
             }
@@ -32,10 +35,10 @@ const Send = (props) => {
         getUser();
     }, []);
     const data = [
-        { id: '1', imageSource: images.notification2, name: 'Binance', amount: bnbbalance ,text3:"SendBnb"},
+        { id: '1', imageSource: images.notification2, name: 'Binance', amount: bnbbalance, text3: "SendBnb" },
 
-        { id: '2', imageSource: images.notification3, name: 'Ethereum', amount: ethbalance ,text3:"SendBtc"},
-
+        { id: '2', imageSource: images.notification3, name: 'Ethereum', amount: ethbalance, text3: "SendBtc" },
+        { id: '3', imageSource: images.notification1, name: 'Bitcoin', amount: btcbalance, text3: "SendBtc" },
 
     ];
     const [list, setList] = useState(data);
@@ -73,7 +76,7 @@ const Send = (props) => {
 
     return (
         <SafeAreaView style={[styles.main_conatiner, { backgroundColor: themeColor.background }]}>
-            {/* <StatusBar backgroundColor={themeColor.background}  barStyle="dark-content" /> */}
+            <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
             <CustomHeader header="Send" header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("TabNavigation") }} />
 
             <SeperateLine />
