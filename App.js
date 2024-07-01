@@ -8,7 +8,6 @@ const App = () => {
    <StackNavigation/>
   )
 }
-
 export default App
 
 const styles = StyleSheet.create({})

@@ -15,126 +15,124 @@ import fonts from '../../Theme/Fonts';
 import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import HorizontalLine from '../Common/HorizontalLine';
 import Button from '../Common/CustomButton';
-import { Strings } from '../../Theme/Strings';
-
+import {Strings} from '../../Theme/Strings';
 
 const height = Dimensions.get('window').height;
 
 export default function AfterTakingScreenshot(props) {
-  const {navigation} = props;
+  const {navigation, wordData} = props;
   return (
     <BottomSheet
       ref={props.panelRef}
       isOpen={false}
       sliderMinHeight={0}
-      sliderMaxHeight={height/1.18}
+      sliderMaxHeight={height / 1.18}
       onOpen={props.onOpen}
-      onClose={props.onClose}
-    
-      >
-        <ScrollView>
-      <View style={styles.main}>
-        <View style={styles.mainHeader}>
-          <View style={styles.main_first}>
-            <Image style={styles.img_vector} source={images.vector} />
-            <Text style={styles.text_warn}>
-            {Strings.English.afterTakingScreenshot.naverShare}
-            </Text>
-          </View>
-
-          <View style={styles.pharse}>
-            <View style={styles.aboutPharse_1}>
-              <View style={styles.inside_aboutPharse}>
-                <View style={styles.ellipse} />
-              </View>
-
-              <View>
-                <Text style={styles.aboutPharse_text}>
-                 {Strings.English.afterTakingScreenshot.line_1}
-                </Text>
-              </View>
+      onClose={props.onClose}>
+      <ScrollView>
+        <View style={styles.main}>
+          <View style={styles.mainHeader}>
+            <View style={styles.main_first}>
+              <Image style={styles.img_vector} source={images.vector} />
+              <Text style={styles.text_warn}>
+                {Strings.English.afterTakingScreenshot.naverShare}
+              </Text>
             </View>
-            <HorizontalLine
-              color={colors.Black}
-              width={0.5}
-              widthHr={'100%'}
-              marginVertical={15}
-            />
 
-            <View style={styles.aboutPharse_2}>
-              <View style={styles.inside_aboutPharse}>
-                <View style={styles.ellipse} />
+            <View style={styles.pharse}>
+              <View style={styles.aboutPharse_1}>
+                <View style={styles.inside_aboutPharse}>
+                  <View style={styles.ellipse} />
+                </View>
+
+                <View>
+                  <Text style={styles.aboutPharse_text}>
+                    {Strings.English.afterTakingScreenshot.line_1}
+                  </Text>
+                </View>
               </View>
+              <HorizontalLine
+                color={colors.Black}
+                width={0.5}
+                widthHr={'100%'}
+                marginVertical={15}
+              />
 
-              <View>
-                <Text style={styles.aboutPharse_text}>
-                {Strings.English.afterTakingScreenshot.line_2}
-                </Text>
+              <View style={styles.aboutPharse_2}>
+                <View style={styles.inside_aboutPharse}>
+                  <View style={styles.ellipse} />
+                </View>
+
+                <View>
+                  <Text style={styles.aboutPharse_text}>
+                    {Strings.English.afterTakingScreenshot.line_2}
+                  </Text>
+                </View>
               </View>
-            </View>
-            <HorizontalLine
-              color={colors.Black}
-              width={0.5}
-              widthHr={'100%'}
-              marginVertical={15}
-            />
+              <HorizontalLine
+                color={colors.Black}
+                width={0.5}
+                widthHr={'100%'}
+                marginVertical={15}
+              />
 
-            <View style={styles.aboutPharse}>
-              <View style={styles.inside_aboutPharse}>
-                <View style={styles.ellipse} />
+              <View style={styles.aboutPharse}>
+                <View style={styles.inside_aboutPharse}>
+                  <View style={styles.ellipse} />
+                </View>
+
+                <View>
+                  <Text style={styles.aboutPharse_text}>
+                    {Strings.English.afterTakingScreenshot.line_3}
+                  </Text>
+                </View>
               </View>
+              <HorizontalLine
+                color={colors.Black}
+                width={0.5}
+                widthHr={'100%'}
+                marginVertical={15}
+              />
 
-              <View>
-                <Text style={styles.aboutPharse_text}>
-                {Strings.English.afterTakingScreenshot.line_3}
-                </Text>
+              <View style={styles.aboutPharse_4}>
+                <View style={styles.inside_aboutPharse}>
+                  <View style={styles.ellipse} />
+                </View>
+
+                <View>
+                  <Text style={styles.aboutPharse_text}>
+                    {Strings.English.afterTakingScreenshot.line_4}
+                  </Text>
+                </View>
               </View>
-            </View>
-            <HorizontalLine
-              color={colors.Black}
-              width={0.5}
-              widthHr={'100%'}
-              marginVertical={15}
-            />
+              <HorizontalLine
+                color={colors.Black}
+                width={0.5}
+                widthHr={'100%'}
+                marginVertical={15}
+              />
 
-            <View style={styles.aboutPharse_4}>
-              <View style={styles.inside_aboutPharse}>
-                <View style={styles.ellipse} />
-              </View>
+              <View style={styles.aboutPharsesec}>
+                <View style={styles.inside_aboutPharse2}>
+                  <Image style={styles.img_vectorSec} source={images.vector} />
+                </View>
 
-              <View>
-                <Text style={styles.aboutPharse_text}>
-                {Strings.English.afterTakingScreenshot.line_4}
-                </Text>
-              </View>
-            </View>
-            <HorizontalLine
-              color={colors.Black}
-              width={0.5}
-              widthHr={'100%'}
-              marginVertical={15}
-            />
-
-            <View style={styles.aboutPharsesec}>
-              <View style={styles.inside_aboutPharse2}>
-                <Image style={styles.img_vectorSec} source={images.vector} />
-              </View>
-
-              <View>
-                <Text style={styles.aboutPharse_text2}>
-                {Strings.English.afterTakingScreenshot.line_5}
-                </Text>
+                <View>
+                  <Text style={styles.aboutPharse_text2}>
+                    {Strings.English.afterTakingScreenshot.line_5}
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
-      
       </ScrollView>
       <View style={styles.mainfooter}>
         <Button
           name="Continue"
-          onPress={() => navigation.navigate('verifysecretphrase')}
+          onPress={() =>
+            navigation.navigate('verifysecretphrase', {wordd: wordData})
+          }
           buttonStyl={styles.btn}
           textColor={styles.btnText}
         />
@@ -180,7 +178,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.PoppinsBold,
     width: dimen(267),
     // height:37,
-    flexWrap:"wrap",
+    flexWrap: 'wrap',
     textAlign: 'center',
     lineHeight: 22,
   },
@@ -197,22 +195,22 @@ const styles = StyleSheet.create({
   aboutPharse: {
     flexDirection: 'row',
     gap: 9,
-    width:dimen(375.42),
+    width: dimen(375.42),
     // height:76
   },
-  aboutPharse_1:{
+  aboutPharse_1: {
     flexDirection: 'row',
     gap: 9,
     // width:dimen(375.42),
     // height:76
   },
-  aboutPharse_2:{
+  aboutPharse_2: {
     flexDirection: 'row',
     gap: 9,
     // width:dimen(375.42),
     // height:76
   },
-  aboutPharse_4:{
+  aboutPharse_4: {
     flexDirection: 'row',
     gap: 9,
     // width:dimen(375.42),
@@ -220,7 +218,7 @@ const styles = StyleSheet.create({
   },
   aboutPharsesec: {
     flexDirection: 'row',
-    gap:4
+    gap: 4,
   },
   inside_aboutPharse: {
     width: dimen(7),

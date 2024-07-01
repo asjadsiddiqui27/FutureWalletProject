@@ -1,31 +1,53 @@
 import {
+  ActivityIndicator,
+  Alert,
   Platform,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import React, { useState, useRef } from 'react';
-import { BlurView } from '@react-native-community/blur';
-import { getDimensionPercentage as dimen } from '../../Utils/Utils';
+import React, {useState, useRef, useEffect} from 'react';
+import {BlurView} from '@react-native-community/blur';
+import {getDimensionPercentage as dimen} from '../../Utils/Utils';
 import colors from '../../Theme/Colors';
-import { Strings } from '../../Theme/Strings';
+import {Strings} from '../../Theme/Strings';
 import fonts from '../../Theme/Fonts';
 import Button from '../Common/CustomButton';
 import CustomBtnWIthIcon from '../Common/CustomButtonWithIcon';
-import { images } from '../../Theme/Images';
-import { wordsArray } from '../../Theme/Const';
+import {images} from '../../Theme/Images';
+import {wordsArray} from '../../Theme/Const';
 import AfterTakingScreenshot from './AfterTakingScreenshot';
 import CustomHeader from '../Common/CustomHeader';
+import Clipboard from '@react-native-clipboard/clipboard';
 
-const SecretPhrase = (props) => {
+const SecretPhrase = props => {
+  const [wordData, setWord] = useState([]);
+  const a = wordData.toString();
+  const {word, name} = props.route.params;
+  console.log('name-----------', name);
+  console.log('checkkkkkkkk', props.route.word);
+
+  useEffect(() => {
+    setWord(word);
+  }, []);
+
   const panelRef = useRef(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
 
-  console.log(wordsArray);
+  const handleCopy = () => {
+    Clipboard.setString(a);
+  };
+
+  // console.log(wordsArray);
   return (
     <View style={styles.safeArea}>
       <View style={styles.main_container}>
-        <CustomHeader onPress={() => { props.navigation.navigate("walletname") }} header='Secret phrase' />
+        <CustomHeader
+          onPress={() => {
+            props.navigation.goBack();
+          }}
+          header="Secret phrase"
+        />
 
         <View style={styles.upper_View}>
           <View style={styles.text_heading_container}>
@@ -35,24 +57,26 @@ const SecretPhrase = (props) => {
           </View>
 
           <View style={styles.body_items_container}>
-            {wordsArray.map((item, index) => (
-              <Button
-                key={index}
-                btnView={styles.btnView}
-                textColor={styles.btn_txt}
-                text2_style={styles.btn_txt_2}
-                name_2={index + 1 + '.'}
-                buttonStyle={styles.btn_style}
-                name={item}
-                onPress={() => {
-                  console.log(item);
-                }}
-              />
-            ))}
+            {wordData &&
+              wordData.map((item, index) => (
+                <Button
+                  key={index}
+                  btnView={styles.btnView}
+                  textColor={styles.btn_txt}
+                  text2_style={styles.btn_txt_2}
+                  name_2={index + 1 + '.'}
+                  buttonStyle={styles.btn_style}
+                  name={item}
+                  onPress={() => {
+                    console.log(item);
+                  }}
+                />
+              ))}
           </View>
 
           <CustomBtnWIthIcon
             main_View={styles.Btn_View}
+            onPressFun={handleCopy}
             buttonStyle={styles.CopybtnStyle}
             ImgSrc={images.copyColored}
             LogoStyle={styles.copyLogo}
@@ -90,6 +114,7 @@ const SecretPhrase = (props) => {
       <AfterTakingScreenshot
         onOpen={() => setBottomSheetVisible(true)}
         onClose={() => setBottomSheetVisible(false)}
+        wordData={wordData}
         panelRef={panelRef}
         navigation={props.navigation}
       />

@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
 import WalletName from '../Components/WalletName';
 import Onboarding from '../Components/Onboarding';
 import colors from '../../Theme/Colors';
@@ -9,7 +9,7 @@ import fonts from '../../Theme/Fonts';
 import Legal from '../Components/Legal';
 import SecretPhrase from '../Components/SecretPhrase';
 import VerifySecretPhrase from '../Components/VerifySecretPhrase';
-import { Strings } from '../../Theme/Strings';
+import {Strings} from '../../Theme/Strings';
 import SetPasscode from '../Components/SetPasscode';
 import ImportWallet from '../Components/ImportWallet';
 import ConfirmPasscode from '../Components/ConfirmPasscode';
@@ -38,7 +38,6 @@ const StackNavigation = () => {
           headerShown: false,
           // }
         }}>
-
         <Stack.Screen
           name="onboarding"
           component={Onboarding}
@@ -51,7 +50,7 @@ const StackNavigation = () => {
           name="legal"
           component={Legal}
           options={{
-            headerShown: false
+            headerShown: false,
           }}
         />
 
@@ -59,10 +58,9 @@ const StackNavigation = () => {
           name="walletname"
           component={WalletName}
           options={{
-            headerShown: false
+            headerShown: false,
           }}
         />
-
 
         <Stack.Screen
           name="secretphrase"
@@ -76,47 +74,41 @@ const StackNavigation = () => {
           name="verifysecretphrase"
           component={VerifySecretPhrase}
           options={{
-
-            headerShown: false
+            headerShown: false,
           }}
         />
 
         <Stack.Screen
-          name='ImportWallet'
+          name="ImportWallet"
           component={ImportWallet}
           options={{
-
-            headerShown: false
+            headerShown: false,
           }}
         />
 
         <Stack.Screen
-          name='setpasscode'
+          name="setpasscode"
           component={SetPasscode}
           options={{
-            title: "Set Passcode"
+            title: 'Set Passcode',
           }}
         />
 
         <Stack.Screen
-          name='ConfirmPasscode'
+          name="ConfirmPasscode"
           component={ConfirmPasscode}
-          options={{
-          }}
+          options={{}}
         />
         <Stack.Screen
-          name='TabNavigation'
+          name="TabNavigation"
           component={TabNavigation}
-          options={{
-          }}
+          options={{}}
         />
-         <Stack.Screen
-          name='Notification'
+        <Stack.Screen
+          name="Notification"
           component={Notification}
-          options={{
-          }}
+          options={{}}
         />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
