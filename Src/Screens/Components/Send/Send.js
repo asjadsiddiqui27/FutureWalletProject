@@ -37,7 +37,7 @@ const Send = (props) => {
     const data = [
         { id: '1', imageSource: images.notification2, name: 'Binance', amount: bnbbalance, text3: "SendBnb" },
 
-        { id: '2', imageSource: images.notification3, name: 'Ethereum', amount: ethbalance, text3: "SendBtc" },
+        { id: '2', imageSource: images.notification3, name: 'Ethereum', amount: ethbalance, text3: "SendEth" },
         { id: '3', imageSource: images.notification1, name: 'Bitcoin', amount: btcbalance, text3: "SendBtc" },
 
     ];

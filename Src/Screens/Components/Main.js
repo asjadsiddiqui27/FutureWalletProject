@@ -35,7 +35,7 @@ const Main = () => {
         };
         getUser();
     }, []);
-    const totalBalance = ethbalance+bnbbalance+btcbalance
+    const totalBalance = (ethbalance+bnbbalance+btcbalance).toFixed(5)
     useEffect(() => {
         //   if(isFocused)
         //     StatusBar.setBackgroundColor(themeColor.mainScreenBgColor,true)

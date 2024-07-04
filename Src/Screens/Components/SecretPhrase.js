@@ -44,6 +44,8 @@ const SecretPhrase = (props) => {
   const fromAddress = "0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64"
   const ethTestnetSpolia = "https://ethereum-sepolia-rpc.publicnode.com"
   const bnbTestnetSpolia = "https://bsc-testnet-rpc.publicnode.com"
+  const bitcoinTestnetAddress="tb1q7dewlwrlwr5qsq06pst4jdv4r6h29l97chxeye"
+  const privateKeyBtcWIF = 'cRz8xdZQdJ7oWEuE5dB2tKTH6vAw2FjDn8hnj1k4E1gkrCtgYr4j'; 
 
   useEffect(() => {
     generateData()
@@ -145,6 +147,9 @@ const SecretPhrase = (props) => {
       await AsyncStorage.setItem('bnbBalance', JSON.stringify(formattedBnbBalance));
       await AsyncStorage.setItem('btcBalance', JSON.stringify(bitcoinBalance));
       await AsyncStorage.setItem('PrivateKey', JSON.stringify(fromPrivateKey));
+      await AsyncStorage.setItem('bitcoinTestnetAddress', JSON.stringify(bitcoinTestnetAddress));
+      await AsyncStorage.setItem('bitcoinTestnetAddress', JSON.stringify(privateKeyBtcWIF));
+
       await AsyncStorage.setItem('fromAddress', JSON.stringify(fromAddress));
       console.log("Stored Balance:::::::::::::::::::::",formattedBalance, formattedBnbBalance,bitcoinBalance);
     } catch (e) {

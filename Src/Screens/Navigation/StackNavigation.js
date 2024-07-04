@@ -49,6 +49,7 @@ import PrivateKeyBackup from '../Components/Buy&Sell/PrivateKeyBackup';
 import SecretPhrase2 from '../Components/Buy&Sell/SecretPharse';
 import ManageBottomSheet from '../Components/Buy&Sell/ManageBottomSheet';
 import SendBnb from '../Components/Send/SendBnb';
+import SendEth from '../Components/Send/SendEth';
 
 
 
@@ -244,6 +245,12 @@ const StackNavigation = () => {
           <Stack.Screen
             name='SendBtc'
             component={SendBTC}
+            options={{
+            }}
+          />
+          <Stack.Screen
+            name='SendEth'
+            component={SendEth}
             options={{
             }}
           />
