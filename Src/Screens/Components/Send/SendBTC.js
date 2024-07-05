@@ -6,13 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../../Common/CustomButton';
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
 import colors from '../../../Theme/Colors';
-import { useTheme } from '@react-navigation/native';
+import { useRoute, useTheme } from '@react-navigation/native';
 import { images } from '../../../Theme/Images';
 import fonts from '../../../Theme/Fonts';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Strings } from '../../../Theme/Strings';
-import * as bitcoin from 'bitcoinjs-lib';
-import axios from 'axios';
+const bitcore = require('bitcore-lib');
+const Insight = require('bitcore-insight').Insight;
 
 const SendBTC = (props) => {
   const { colors: themeColor, image } = useTheme();
@@ -32,57 +32,56 @@ const SendBTC = (props) => {
     setSelectedItem(itemId);
   };
 
-  const generateData = async () => {
-    try {
-      const myAddress = fromAddress;
-      const privateKeyWIF = privateKey; 
-      const addressTo = address;
-      const sendAmount = Math.round(parseFloat(amount) * 1e8); // Convert BTC to satoshis
-      const fee = 1000; // Fee in satoshis
+  const generateData = () => {
+    console.log("get data after set in state:::::::::::::", fromAddress, btcBalance, privateKey);
 
-      const keyPair = bitcoin.ECPair.fromWIF(privateKeyWIF, bitcoin.networks.testnet);
+    const myAddress = fromAddress;
+    const privateKeyBtcWIF = privateKey;
+    const addressTo = address;
+    const sendAmount = Math.round(parseFloat(amount) * 1e8); // Convert BTC to satoshis
+    const fee = 1000; // Fee in satoshis
 
-      // Fetch UTXOs
-      const utxosResponse = await axios.get(`https://testnet.blockchain.info/unspent?active=${myAddress}`);
-      const utxos = utxosResponse.data.unspent_outputs;
+    console.log("data:::::::::::::", myAddress, privateKeyBtcWIF, addressTo, fee, sendAmount);
+    props.navigation.navigate("Transfer")
+    const insight = new Insight('testnet');
 
-      if (!utxos || utxos.length === 0) {
-        console.error('No UTXOs found for address:', myAddress);
+    // const insight = new Insight('testnet');
+    console.log("myAddress:>>>>>>>>>>>>>>>", myAddress);
+    insight.getUtxos(myAddress, (err, utxos) => {
+      console.log("utxos:::::::::::::", utxos);
+      if (err) {
+        console.error('Error fetching UTXOs:', err);
         return;
       }
+      else {
 
-      const psbt = new bitcoin.Psbt({ network: bitcoin.networks.testnet });
-      
-      utxos.forEach(utxo => {
-        psbt.addInput({
-          hash: utxo.tx_hash_big_endian,
-          index: utxo.tx_output_n,
-          nonWitnessUtxo: Buffer.from(utxo.script, 'hex'),
+       
+        let tx = new bitcore.Transaction()
+
+          .from(utxos)
+          .to(addressTo, sendAmount)
+          .change(myAddress)
+          .fee(fee)
+          .sign(privateKeyBtcWIF);
+          console.log("utxos>>>>>>>", tx)
+        console.log("Transaction created: ", tx.toString());
+
+        insight.broadcast(tx.serialize(), (error, txid) => {
+          if (error) {
+            console.error('Error broadcasting transaction:', error);
+          } else {
+            console.log('Transaction broadcasted successfully, txid:', txid);
+            
+          }
         });
-      });
-
-      psbt.addOutput({
-        address: addressTo,
-        value: sendAmount,
-      });
-
-      psbt.addOutput({
-        address: myAddress,
-        value: utxos.reduce((acc, utxo) => acc + utxo.value, 0) - sendAmount - fee,
-      });
-
-      psbt.signAllInputs(keyPair);
-      psbt.finalizeAllInputs();
-
-      const tx = psbt.extractTransaction().toHex();
-      console.log("Transaction created: ", tx);
-
-      // Broadcast the transaction
-      const broadcastResponse = await axios.post('https://testnet.blockchain.info/pushtx', `tx=${tx}`);
-      console.log('Transaction broadcasted successfully, txid:', broadcastResponse.data);
-    } catch (error) {
-      console.error('Error in createAndBroadcastTransaction:', error);
-    }
+      }
+      // catch (transactionError) {
+      //   console.error('Error creating or signing transaction:', transactionError);
+      // }
+    });
+    // } catch (error) {
+    //   console.error('Error in createAndBroadcastTransaction:', error);
+    // }
   };
 
   const renderItem = ({ item }) => (
@@ -103,7 +102,8 @@ const SendBTC = (props) => {
         const getBtcBalance = JSON.parse(await AsyncStorage.getItem("btcBalance"));
         const getPrivateKey = JSON.parse(await AsyncStorage.getItem("privateKeyBtcWIF"));
         const getFromAddress = JSON.parse(await AsyncStorage.getItem("bitcoinTestnetAddress"));
-        console.log("get data:::::::::::::", getBtcBalance);
+        console.log("get data:::::::::::::", getBtcBalance, getFromAddress, getPrivateKey);
+
         setBtcBalance(getBtcBalance);
         setPrivateKey(getPrivateKey);
         setFromAddress(getFromAddress);
@@ -159,7 +159,7 @@ const SendBTC = (props) => {
           </View>
         </View>
         <View style={styles.footer}>
-          <Button name={Strings.English.sendBtc.Next} onPress={() => { props.navigation.navigate("Transfer"), generateData() }} />
+          <Button name={Strings.English.sendBtc.Next} onPress={generateData} />
         </View>
       </View>
     </SafeAreaView>

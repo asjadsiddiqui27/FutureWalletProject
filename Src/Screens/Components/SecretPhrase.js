@@ -29,7 +29,7 @@ import axios from 'axios';
 const BIP84 = require('bip84');
 const bitcore = require('bitcore-lib');
 const Insight = require('bitcore-insight').Insight;
-import { createWallet, } from 'react-native-web3-wallet-bitcoin';
+
 global.Buffer = Buffer;
 
 const SecretPhrase = (props) => {
@@ -73,10 +73,11 @@ const SecretPhrase = (props) => {
 
     const bitcoinAddress = account0.getAddress(0);
     console.log("bitcoinAddress:::::::::::::::::::::::::", bitcoinAddress);
-
+    // const bitcoinPrivateKey = account0.getPrivateKey(0);
+    // console.log("bitcoinPrivateKey:::::::::::::::::::::::::", bitcoinPrivateKey);
     const bitcoinPrivateKey = account0.getAccountPrivateKey();
     console.log("bitcoinPrivateKey:::::::::::::::::::", bitcoinPrivateKey);
-
+  
     // ::::::::::::::::::::::::::::::Generate Address :::::::::::::::::::::::::::::::::::::://
 
     const wallet = Wallet.fromPhrase(mnemonicResult);
@@ -147,8 +148,8 @@ const SecretPhrase = (props) => {
       await AsyncStorage.setItem('bnbBalance', JSON.stringify(formattedBnbBalance));
       await AsyncStorage.setItem('btcBalance', JSON.stringify(bitcoinBalance));
       await AsyncStorage.setItem('PrivateKey', JSON.stringify(fromPrivateKey));
-      await AsyncStorage.setItem('bitcoinTestnetAddress', JSON.stringify(bitcoinTestnetAddress));
-      await AsyncStorage.setItem('bitcoinTestnetAddress', JSON.stringify(privateKeyBtcWIF));
+      await AsyncStorage.setItem('bitcoinTestnetAddress', JSON.stringify(bitcoinAddress));
+      await AsyncStorage.setItem('privateKeyBtcWIF', JSON.stringify(privateKeyBtcWIF));
 
       await AsyncStorage.setItem('fromAddress', JSON.stringify(fromAddress));
       console.log("Stored Balance:::::::::::::::::::::",formattedBalance, formattedBnbBalance,bitcoinBalance);
@@ -161,53 +162,53 @@ const SecretPhrase = (props) => {
   }
 
 
-  const createAndBroadcastTransaction = async () => {
-    try {
-      const myAddress = 'tb1q7dewlwrlwr5qsq06pst4jdv4r6h29l97chxeye';
-      const privateKeyBtcWIF = 'cRz8xdZQdJ7oWEuE5dB2tKTH6vAw2FjDn8hnj1k4E1gkrCtgYr4j'; 
-      const addressTo = 'tb1qmxdaksy8utdkvgdpcrz29ueqx9ut8rnshhugj9';
-      const amount = 1000; // Amount in satoshis
-      const fee = 1000; // Fee in satoshis
+  // const createAndBroadcastTransaction = async () => {
+  //   try {
+  //     const myAddress = 'tb1q7dewlwrlwr5qsq06pst4jdv4r6h29l97chxeye';
+  //     const privateKeyBtcWIF = 'cRz8xdZQdJ7oWEuE5dB2tKTH6vAw2FjDn8hnj1k4E1gkrCtgYr4j'; 
+  //     const addressTo = 'tb1qmxdaksy8utdkvgdpcrz29ueqx9ut8rnshhugj9';
+  //     const amount = 1000; // Amount in satoshis
+  //     const fee = 1000; // Fee in satoshis
   
-      const privateKeyBtc = bitcore.PrivateKey.fromWIF(privateKeyBtcWIF);
-      const insight = new Insight('testnet');
+  //     const privateKeyBtc = bitcore.PrivateKey.fromWIF(privateKeyBtcWIF);
+  //     const insight = new Insight('testnet');
   
-      insight.getUtxos(myAddress, (err, utxos) => {
-        if (err) {
-          console.error('Error fetching UTXOs:', err);
-          return;
-        }
+  //     insight.getUtxos(myAddress, (err, utxos) => {
+  //       if (err) {
+  //         console.error('Error fetching UTXOs:', err);
+  //         return;
+  //       }
   
-        if (!utxos || utxos.length === 0) {
-          console.error('No UTXOs found for address:', myAddress);
-          return;
-        }
+  //       if (!utxos || utxos.length === 0) {
+  //         console.error('No UTXOs found for address:', myAddress);
+  //         return;
+  //       }
   
-        try {
-          let tx = new bitcore.Transaction()
-            .from(utxos)
-            .to(addressTo, amount)
-            .change(myAddress)
-            .fee(fee)
-            .sign(privateKeyBtc);
+  //       try {
+  //         let tx = new bitcore.Transaction()
+  //           .from(utxos)
+  //           .to(addressTo, amount)
+  //           .change(myAddress)
+  //           .fee(fee)
+  //           .sign(privateKeyBtc);
   
-          console.log("Transaction created: ", tx.toString());
+  //         console.log("Transaction created: ", tx.toString());
   
-          insight.broadcast(tx.serialize(), (error, txid) => {
-            if (error) {
-              console.error('Error broadcasting transaction:', error);
-            } else {
-              console.log('Transaction broadcasted successfully, txid:', txid);
-            }
-          });
-        } catch (transactionError) {
-          console.error('Error creating or signing transaction:', transactionError);
-        }
-      });
-    } catch (error) {
-      console.error('Error in createAndBroadcastTransaction:', error);
-    }
-  };
+  //         insight.broadcast(tx.serialize(), (error, txid) => {
+  //           if (error) {
+  //             console.error('Error broadcasting transaction:', error);
+  //           } else {
+  //             console.log('Transaction broadcasted successfully, txid:', txid);
+  //           }
+  //         });
+  //       } catch (transactionError) {
+  //         console.error('Error creating or signing transaction:', transactionError);
+  //       }
+  //     });
+  //   } catch (error) {
+  //     console.error('Error in createAndBroadcastTransaction:', error);
+  //   }
+  // };
   
   const handleCopy = () => {
     const mnemonicResult = mnemonic.join(' ');
@@ -215,12 +216,12 @@ const SecretPhrase = (props) => {
 
   };
 
-  useEffect(() => {
+  // useEffect(() => {
 
 
-    createAndBroadcastTransaction()
+  //   createAndBroadcastTransaction()
 
-  }, [])
+  // }, [])
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: themeColor.background }]}>
