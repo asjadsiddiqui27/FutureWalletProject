@@ -36,7 +36,7 @@ const BtcAddress = () => {
       const sochain_network = 'BTCTEST';
       const privateKey =
         'zprvAWgYBBk7JR8GjhgmRuaQXsUGiESdgnx6bnMmevfAuSg6yUyk8BCfnw1ar3hrhvEJ65N31tbezo3PnQaEauwKC7eBhymPkwTD7etC6hAy5xy'; // Your private key
-      const sourceAddress = 'bc1qg3dy7uhunamjjfhje2jnga85j565l5a8dsqsex'; // Your Bitcoin address
+      const sourceAddress = 'bc1qg3dy7uhunamjjfhje2jnga85j565l5a8dsqsex';
       const satoshiToSend = amountToSend * 100000000;
       let fee = 0;
       let inputCount = 0;
