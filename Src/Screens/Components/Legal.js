@@ -23,6 +23,7 @@ const Legal = (props) => {
         else {
             Alert.alert("Accept the terms and conditions")
         }
+        
     }
 
     return (

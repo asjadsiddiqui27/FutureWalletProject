@@ -1,27 +1,39 @@
-import { Alert, SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import colors from '../../Theme/Colors'
-import { Strings } from '../../Theme/Strings'
-import { getDimensionPercentage as dimen } from '../../Utils/Utils'
-import InputText from '../Common/Input'
-import Button from '../Common/CustomButton'
-import fonts from '../../Theme/Fonts'
-import CustomHeader from '../Common/CustomHeader'
-import { useTheme } from '@react-navigation/native'
+import React, { useState } from 'react';
+import { Alert, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { useTheme } from '@react-navigation/native';
+import InputText from '../Common/Input';
+import Button from '../Common/CustomButton';
+import CustomHeader from '../Common/CustomHeader';
+import { Strings } from '../../Theme/Strings';
+import colors from '../../Theme/Colors';
+import fonts from '../../Theme/Fonts';
+import { getDimensionPercentage as dimen } from '../../Utils/Utils';
+import { useDispatch } from 'react-redux';
+import { setWalletName } from '../../Redux/Actions/DataAction';
 
 const WalletName = (props) => {
-  const { colors: themeColor, image } = useTheme()
+  const { colors: themeColor } = useTheme();
   const [name, setName] = useState('');
-
+  const dispatch = useDispatch();
   const handleSetValue = (text) => {
     const regex = /^[a-zA-Z0-9]*$/;
     if (regex.test(text)) {
       setName(text);
     }
   };
+
+  const handlePress = async () => {
+    if (name.length === 0) {
+      Alert.alert("Please Enter Name");
+      return;
+    }
+    dispatch(setWalletName(name));
+    console.log("Set Wallet Name:::::::::::::::::::", name);
+  
+    props.navigation.navigate("secretphrase");
+  };
+
   return (
-
-
     <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
       <View style={styles.container}>
         <CustomHeader onPress={() => { props.navigation.navigate("legal") }} header='Wallet Name' headerimg={{ tintColor: themeColor.text }} />
@@ -33,23 +45,21 @@ const WalletName = (props) => {
           <Text style={[styles.name_label_name, { color: themeColor.subText }]}>
             {Strings.English.walletName.enterName}
           </Text>
-          <InputText maximumLength={25} value={name} onChngFunction={handleSetValue} placeholderText='Wallet 1' />
+          <InputText maximumLength={25} value={name} onChngFunction={handleSetValue} placeholderText='Enter here' />
           <Text style={styles.max_limit_txt_style}>
             {Strings.English.walletName.maxLimit + name.length + '/25'}
           </Text>
         </View>
 
         <View style={styles.footer_container}>
-          {
-            (name.length == 0) ?
-              <Button name={'Continue'} onPress={() => Alert.alert("Please Enter Name ")} buttonStyle={styles.btn} /> :
-              <Button name={'Continue'} onPress={() => props.navigation.navigate("secretphrase")} buttonStyle={styles.btn} />
-          }
-
+          <Button
+            name={'Continue'}
+            onPress={handlePress}
+            buttonStyle={styles.btn}
+          />
         </View>
       </View>
     </SafeAreaView>
-
   );
 };
 
@@ -94,7 +104,6 @@ const styles = StyleSheet.create({
   btn: {
     height: 50,
     width: 'auto',
-    // marginHorizontal: 24,
     backgroundColor: colors.background,
     borderRadius: 12,
     marginBottom: dimen(66.88),

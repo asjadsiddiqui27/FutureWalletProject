@@ -11,14 +11,13 @@ import { images } from '../../../Theme/Images';
 import fonts from '../../../Theme/Fonts';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Strings } from '../../../Theme/Strings';
+import { useSelector } from 'react-redux';
 const bitcore = require('bitcore-lib');
 const Insight = require('bitcore-insight').Insight;
 
 const SendBTC = (props) => {
   const { colors: themeColor, image } = useTheme();
-  const [btcBalance, setBtcBalance] = useState("");
-  const [privateKey, setPrivateKey] = useState("");
-  const [fromAddress, setFromAddress] = useState("");
+ 
   const [address, setAddress] = useState("");
   const [selectedItem, setSelectedItem] = useState("1");
   const [amount, setAmount] = useState("");
@@ -27,7 +26,9 @@ const SendBTC = (props) => {
     { id: '2', name: "Medium", value: "(0.00112BTC) $0.1111" },
     { id: '3', name: "Fast", value: "(0.00112BTC) $0.1111" },
   ];
-
+  const btcBalance = Number(useSelector((state) => state.app.btcBalance)) || 0;
+  const fromAddress = useSelector((state) => state.app.bitcoinTestnetAddress) || "";
+  const privateKey = useSelector((state) => state.app.privateKey) || "";
   const handlePress = (itemId) => {
     setSelectedItem(itemId);
   };
@@ -95,24 +96,6 @@ const SendBTC = (props) => {
       </View>
     </TouchableOpacity>
   );
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const getBtcBalance = JSON.parse(await AsyncStorage.getItem("btcBalance"));
-        const getPrivateKey = JSON.parse(await AsyncStorage.getItem("privateKeyBtcWIF"));
-        const getFromAddress = JSON.parse(await AsyncStorage.getItem("bitcoinTestnetAddress"));
-        console.log("get data:::::::::::::", getBtcBalance, getFromAddress, getPrivateKey);
-
-        setBtcBalance(getBtcBalance);
-        setPrivateKey(getPrivateKey);
-        setFromAddress(getFromAddress);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getUser();
-  }, []);
 
   return (
     <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>

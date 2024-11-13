@@ -231,6 +231,7 @@ export const images = {
   bnb: require("../../assets/images/BNB.png"),
   btc: require("../../assets/images/BTC.png"),
   tron: require("../../assets/images/Tron.png"),
+  polygon: require("../../assets/images/polygon.png"),
   copyNewblack: require("../../assets/images/CopyNewblack.png"),
   manageWallet: require("../../assets/images/manageWallets.png"),
   preferences: require("../../assets/images/preferences.png"),
@@ -337,7 +338,13 @@ export const images = {
   busd:require("../../assets/images/busd.png"),
   // **************************dark theme****************// 
   groupdrk:require("../../assets/images/GroupDrk.png"),
-  
+  reorderIcon:require("../../assets/images/reorderIcon.png"),
+  futureBackgroundImg:require("../../assets/images/futureBackgroundImg.png"),
+
+  lightSplash:require("../../assets/images/splash.json"),
+  darkSplash:require("../../assets/images/darkSplash.json"),
+  alertSecretAnim:require("../../assets/images/alertSecretAnim.json"),
+  ProcessingAnimations:require("../../assets/images/ProcessingAnimations.json"),
 };
 
 

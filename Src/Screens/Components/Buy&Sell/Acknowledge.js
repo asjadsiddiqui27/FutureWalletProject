@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Alert, Dimensions, FlatList, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Alert, Dimensions, FlatList, ImageBackground, StatusBar, StyleSheet, Text, View } from 'react-native'
 import BottomSheet from "react-native-simple-bottom-sheet"
 import CheckBox from '@react-native-community/checkbox';
 import Button from '../../Common/CustomButton';
 import SeperateLine from '../../Common/SeperateLine';
 import { useTheme } from '@react-navigation/native';
 import { Strings } from '../../../Theme/Strings';
+import { BlurView } from '@react-native-community/blur';
+import { images } from '../../../Theme/Images';
 
 const height = Dimensions.get('window').height;
 
@@ -15,12 +17,12 @@ const data = [
     { id: '3', text: Strings.English.Acknowledge.condition3 },
 ];
 
-const Acknowledge= (props) => {
+const Acknowledge = (props) => {
     const { colors: themeColor, image } = useTheme();
     const panelRef = useRef(null);
     const [selectedId, setSelectedId] = useState([]);
     const [selectedCount, setSelectedCount] = useState(0);
-
+    const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
     const handleCheckboxChange = (itemId) => {
         const updatedSelectedId = selectedId.includes(itemId) ? selectedId.filter(id => id !== itemId) : [...selectedId, itemId];
         setSelectedId(updatedSelectedId);
@@ -39,7 +41,7 @@ const Acknowledge= (props) => {
             </View>
 
             <View style={styles.dataView}>
-                <Text style={[styles.text,{color:themeColor.text}]}>{item.text}</Text>
+                <Text style={[styles.text, { color: themeColor.text }]}>{item.text}</Text>
             </View>
         </View>
     );
@@ -48,44 +50,65 @@ const Acknowledge= (props) => {
     }, [selectedId]);
 
 
-    
+
     return (
         <View style={styles.main_container}>
-            <StatusBar backgroundColor="black" />
-            <BottomSheet
-                sliderMaxHeight={height}
-                isOpen
-                ref={panelRef}
-                wrapperStyle={{
-                    backgroundColor: themeColor.background2
+            <ImageBackground
+                source={images.futureBackgroundImg}
+                style={{
+                    height: "100%", width: "100%", alignItems: "center",
+                    justifyContent: "center"
                 }}
+                blurRadius={5}
             >
-                <View style={styles.topText}>
-                    <Text style={[styles.text1,{color:themeColor.text}]}>{Strings.English.Acknowledge.text1}</Text>
-                    <Text style={[styles.text2,{color:themeColor.subText}]}>{Strings.English.Acknowledge.text2}</Text>
-                    <View style={{ marginVertical: 32 }}>
-                        <FlatList
-                            ItemSeparatorComponent={() => (
-                                <SeperateLine />
-                            )}
-                            data={data}
-                            renderItem={renderItem}
-                            keyExtractor={item => item.id}
-                        />
+
+
+                <StatusBar backgroundColor="black" />
+                {/* {bottomSheetVisible && Platform.OS === 'android' ? (
+                    <BlurView
+                        style={StyleSheet.absoluteFill}
+                        blurType="light"
+                        blurAmount={3}
+                        reducedTransparencyFallbackColor="white"
+                    />
+                ) : null} */}
+
+                <BottomSheet
+                    sliderMaxHeight={height}
+                    onOpen={() => setBottomSheetVisible(true)}
+                    onClose={() => setBottomSheetVisible(false)}
+                    ref={panelRef}
+                    wrapperStyle={{
+                        backgroundColor: themeColor.background2
+                    }}
+                >
+                    <View style={styles.topText}>
+                        <Text style={[styles.text1, { color: themeColor.text }]}>{Strings.English.Acknowledge.text1}</Text>
+                        <Text style={[styles.text2, { color: themeColor.subText }]}>{Strings.English.Acknowledge.text2}</Text>
+                        <View style={{ marginVertical: 32 }}>
+                            <FlatList
+                                ItemSeparatorComponent={() => (
+                                    <SeperateLine />
+                                )}
+                                data={data}
+                                renderItem={renderItem}
+                                keyExtractor={item => item.id}
+                            />
+                        </View>
+
                     </View>
 
-                </View>
+                    {
+                        (selectedCount !== data.length) ?
+                            <View style={styles.button_view}>
+                                <Text style={styles.button_text}>{Strings.English.Acknowledge.Continue}</Text>
+                            </View> :
+                            <Button disabled={selectedCount !== data.length} onPress={() => { props.navigation.navigate("SecretPhrase2") }} />
 
-                {
-                    (selectedCount !== data.length) ?
-                        <View style={styles.button_view}>
-                            <Text style={styles.button_text}>{Strings.English.Acknowledge.Continue}</Text>
-                        </View> :
-                        <Button disabled={selectedCount !== data.length} onPress={() => { props.navigation.navigate("SecretPhrase2")} }/>
+                    }
 
-                }
-
-            </BottomSheet>
+                </BottomSheet>
+            </ImageBackground>
         </View>
     )
 }
@@ -108,7 +131,7 @@ const styles = StyleSheet.create({
     },
     text2: {
         color: "grey",
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: "500",
         textAlign: "center",
         lineHeight: 20

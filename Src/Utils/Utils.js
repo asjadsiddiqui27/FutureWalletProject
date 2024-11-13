@@ -104,3 +104,10 @@ export const dynamicFont = text => {
                             ? 20
                             : 50;
 };
+const TronWeb = require('tronweb');
+
+export   const tronWeb = new TronWeb({
+    fullHost: 'https://nile.trongrid.io',
+    headers: { 'TRON-PRO-API-KEY': 'd24d5c05-d20e-4dec-9804-fbe8c8c1ee3e' },
+
+  });

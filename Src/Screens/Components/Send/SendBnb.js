@@ -12,14 +12,12 @@ import fonts from '../../../Theme/Fonts'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Strings } from '../../../Theme/Strings'
 import Web3 from 'web3'
+import { useSelector } from 'react-redux'
 
 
 
 const SendBnb= (props) => {
     const { colors: themeColor, image } = useTheme();
-    const [bnbbalance, setBnbBalance] = useState("");
-    const [privateKey, setPrivateKey] = useState("")
-    const [fromAddress, setFromAddress] = useState("")
     const [address,setAddress]=useState("")
     const [selectedItem, setSelectedItem] = useState("1");
     const [amount,setAmount]=useState("")
@@ -33,6 +31,9 @@ const SendBnb= (props) => {
         setSelectedItem(itemId);
        
     };
+    const bnbBalance = Number(useSelector((state) => state.app.bnbBalance)) || 0;
+    const fromAddress = useSelector((state) => state.app.fromAddress) || "";
+    const privateKey = useSelector((state) => state.app.privateKey) || "";
     const generateData = async () => {
     
         const web3 = new Web3('https://bsc-testnet-rpc.publicnode.com');
@@ -83,23 +84,6 @@ const SendBnb= (props) => {
         </TouchableOpacity>
     );
 
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const getbnbBalance = JSON.parse(await AsyncStorage.getItem("bnbBalance"));
-                const getPrivateKey = JSON.parse(await AsyncStorage.getItem("PrivateKey"));
-                const getFromAddress = JSON.parse(await AsyncStorage.getItem("fromAddress"));
-                console.log("get data:::::::::::::", getbnbBalance);
-                setBnbBalance(getbnbBalance);
-                setPrivateKey(getPrivateKey)
-                setFromAddress(getFromAddress)
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getUser();
-    }, []);
-
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
@@ -133,7 +117,7 @@ const SendBnb= (props) => {
                         <Text style={{ color: themeColor.subText, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>$50,000</Text>
                         <View style={{ flexDirection: 'row' }}>
                             <Text style={{ color: themeColor.subText, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{Strings.English.sendBtc.Balance}</Text>
-                            <Text style={{ color: themeColor.text, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{bnbbalance}</Text>
+                            <Text style={{ color: themeColor.text, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{bnbBalance}</Text>
                         </View>
 
                     </View>

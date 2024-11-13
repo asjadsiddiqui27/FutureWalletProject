@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginBottom: 16,
         borderRadius: 12,
-        borderWidth: 1
+        // borderWidth: 1
 
     },
     view_toData: {

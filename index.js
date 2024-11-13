@@ -15,4 +15,6 @@ Object.assign(global, {
     TextDecoder: TextEncodingPolyfill.TextDecoder,
    
 });
+
+
 AppRegistry.registerComponent(appName, () =>App);

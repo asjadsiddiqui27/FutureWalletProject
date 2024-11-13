@@ -1,24 +1,20 @@
-import { FlatList, Image, Platform, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { FlatList, Image,  StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 import CustomHeader from '../../Common/CustomHeader'
 import SeperateLine from '../../Common/SeperateLine'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Button from '../../Common/CustomButton'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils'
 import colors from '../../../Theme/Colors'
-import { useRoute, useTheme } from '@react-navigation/native'
+import { useTheme } from '@react-navigation/native'
 import { images } from '../../../Theme/Images'
-import CommonViewSndBtc from './CommonViewSndBtc'
 import fonts from '../../../Theme/Fonts'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Strings } from '../../../Theme/Strings'
 import Web3 from 'web3'
+import { useSelector } from 'react-redux'
 
 const SendEth = (props) => {
     const { colors: themeColor, image } = useTheme();
-    const [ethbalance, setEthBalance] = useState("");
-    const [privateKey, setPrivateKey] = useState("")
-    const [fromAddress, setFromAddress] = useState("")
     const [address, setAddress] = useState("")
     const [selectedItem, setSelectedItem] = useState("1");
     const [amount, setAmount] = useState("")
@@ -27,7 +23,9 @@ const SendEth = (props) => {
         { id: '2', name: "Medium", value: "(0.00112BTC) $0.1111" },
         { id: '3', name: "Fast", value: "(0.00112BTC) $0.1111" },
     ];
-
+    const ethbalance = Number(useSelector((state) => state.app.ethBalance)) || 0;
+    const fromAddress = useSelector((state) => state.app.fromAddress) || "";
+    const privateKey = useSelector((state) => state.app.privateKey) || "";
     const handlePress = (itemId) => {
         setSelectedItem(itemId);
 
@@ -81,23 +79,6 @@ const SendEth = (props) => {
             </View>
         </TouchableOpacity>
     );
-
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const getEthBalance = JSON.parse(await AsyncStorage.getItem("ethBalance"));
-                const getPrivateKey = JSON.parse(await AsyncStorage.getItem("PrivateKey"));
-                const getFromAddress = JSON.parse(await AsyncStorage.getItem("fromAddress"));
-                console.log("get data:::::::::::::", getEthBalance);
-                setEthBalance(getEthBalance);
-                setPrivateKey(getPrivateKey)
-                setFromAddress(getFromAddress)
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getUser();
-    }, []);
 
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>

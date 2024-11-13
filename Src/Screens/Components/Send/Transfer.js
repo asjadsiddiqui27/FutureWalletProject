@@ -38,7 +38,7 @@ const Transfer = (props) => {
             </View>
 
             <View style={{marginHorizontal:dimen(24)}}>
-                <Button name='Send' onPress={() => { props.navigation.navigate("Bitcoin") }}/>
+                <Button name='Send' onPress={() => { props.navigation.navigate("Send") }}/>
             </View>
 
 

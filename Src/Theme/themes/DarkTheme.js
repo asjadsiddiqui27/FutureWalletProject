@@ -7,7 +7,7 @@ const DarkTheme = {
     colors: {
         // onboarding  start//
         primary: '#0A84FF',
-     
+
         background: colors.drkBackgroundColor,
         background2: colors.drkBackgroundColor,
         card: '#202934',
@@ -25,7 +25,7 @@ const DarkTheme = {
         seperarteLineColor: "#374A5E",
         commonBtn: ['#00BEF2', '#008DB4', '#005360'],
         cardBackground2: "#0F2237",
-        alertBtnColor:"#2B4058"
+        alertBtnColor: "#2B4058"
     },
     image: {
         OnboardingPge: images.groupdrk,
@@ -46,8 +46,9 @@ const DarkTheme = {
         smartContact: images.darkSmartContact,
         transfer: images.darkTransfer,
         closeStar: images.whiteStar,
-        openStar:images.openWhiteStar,
-        theme:images.darkTheme
+        openStar: images.openWhiteStar,
+        theme: images.darkTheme,
+        splash: images.darkSplash
     }
 };
 

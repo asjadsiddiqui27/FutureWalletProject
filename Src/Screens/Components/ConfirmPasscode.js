@@ -24,7 +24,7 @@ const ConfirmPasscode = ({ navigation }) => {
 
   useEffect(() => {
     if (code.length === CELL_COUNT&&code===originalCode) {
-      navigation.navigate("TabNavigation");
+      navigation.navigate("Processing");
     }
     if (code.length === CELL_COUNT&&code!==originalCode) {
       Alert.alert("Incorrect Password")

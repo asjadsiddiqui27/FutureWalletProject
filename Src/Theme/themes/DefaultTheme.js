@@ -46,7 +46,8 @@ const DefaultTheme = {
         transfer:images.lightTransfer,
         closeStar: images.blackStar,
         openStar:images.openBlackStar,
-        theme:images.lightTheme
+        theme:images.lightTheme,
+        splash: images.lightSplash
     }
 }
 export default DefaultTheme;

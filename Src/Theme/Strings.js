@@ -312,6 +312,29 @@ export const Strings = {
             TransactionFee:"Transaction Fee",
             ETHAmount:"ETH Amount",
             Next:"Next"
+        },
+        reorderToken:{
+            Binance:"Binance",
+            Bitcoin:"Bitcoin",
+            Ethereum:"Ethereum",
+            Tron:"Tron",
+            BNB:"BNB",
+            BTC:"BTC",
+            ETH:"ETH",
+            TRX:"TRX",
+            headerName:"Reorder Tokens"
+        },
+        manageToken:{
+            Binance:"Binance",
+            Bitcoin:"Bitcoin",
+            Ethereum:"Ethereum",
+            Tron:"Tron",
+            BNB:"BNB",
+            BTC:"BTC",
+            ETH:"ETH",
+            TRX:"TRX",
+            headerName:"Manage Tokens" ,
+            buttonText:"Add Custom Token" 
         }
 
 

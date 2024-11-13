@@ -55,13 +55,13 @@ const handleDelete=()=>{
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
             <CustomHeader header={Strings.English.AddressBook.EditAddressBook} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Settings") }} onPress2={() => { props.navigation.navigate("AddNewContact") }} />
             <SeperateLine />
-            <View style={{ flex: 0.9 }}>
+            <View style={{ flex: 0.9 ,marginHorizontal: dimen(24)}}>
                 <View style={styles.inputView}>
                     <TextOrInput label={Strings.English.AddressBook.ContactName} placeholder={Strings.English.AddressBook.jordan} label2={Strings.English.AddressBook.DeleteContact} onPress={() => handleDelete()}/>
                     <CustomModal isVisible={isCustomModalVisible} setModalVisible={setCustomModalVisible} navigation={props.navigation} />
 
                 </View>
-                <View style={{ marginHorizontal: dimen(24) }}>
+                <View>
                     <Text style={[styles.WalletName, { color: themeColor.text }]}>{Strings.English.AddressBook.WalletName}</Text>
                     <View style={{ marginTop: dimen(25) }}>
 

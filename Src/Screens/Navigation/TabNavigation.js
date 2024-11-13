@@ -20,43 +20,46 @@ import Portfolio from '../Components/Portfolio/Portfolio';
 const Tab = createBottomTabNavigator();
 
 function TabNavigation() {
-  const {colors: themeColor, image} = useTheme()
+  const { colors: themeColor, image } = useTheme()
   return (
-  
+
     <Tab.Navigator screenOptions={{
-      
+
       headerShown: false,
       tabBarActiveTintColor: colors.lightBlue,
-      tabBarInactiveTintColor:colors.greenText,
-      tabBarStyle: [styles.tabContainer, { backgroundColor: themeColor.background }],
+      tabBarInactiveTintColor: colors.greenText,
+     
+      tabBarStyle: [styles.tabContainer, { backgroundColor: themeColor.background,}],
+      
       tabBarLabelStyle: {
 
         fontSize: dimen(12),
         fontFamily: fonts.PoppinsMedium,
         marginBottom: dimen(20),
       },
-     
+
     }}
 
 
     >
- 
+
       <Tab.Screen name="Dashboard" component={Main}
         options={{
-          unmountOnBlur:true,
+          unmountOnBlur: true,
           tabBarIcon: ({ color }) => (
             <Image
-              style={styles.bottomTabIcon}
+            style={[styles.bottomTabIcon , { tintColor: color }]}
               source={images.dashboard
               } />
           ),
+          
         }}
       />
       <Tab.Screen name="Swap" component={Swap}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
-              style={styles.bottomTabIcon}
+              style={[styles.bottomTabIcon , { tintColor: color }]}
               source={images.swap
               } />
           ),
@@ -66,7 +69,7 @@ function TabNavigation() {
         options={{
           tabBarIcon: ({ color }) => (
             <Image
-              style={styles.bottomTabIcon}
+            style={[styles.bottomTabIcon , { tintColor: color }]}
               source={images.portfolioTab
               } />
           ),
@@ -75,7 +78,9 @@ function TabNavigation() {
       <Tab.Screen name="Dapp" component={Dapp}
         options={{
           tabBarIcon: ({ color }) => (
-            <Image style={styles.bottomTabIcon} source={images.dapp} />
+            <Image 
+            style={[styles.bottomTabIcon , { tintColor: color }]}
+            source={images.dapp} />
           ),
         }}
       />
@@ -83,16 +88,16 @@ function TabNavigation() {
         options={{
           tabBarIcon: ({ color }) => (
             <Image
-              style={styles.bottomTabIcon}
+            style={[styles.bottomTabIcon , { tintColor: color }]}
               source={images.setting
               } />
           ),
-          
+
         }}
       />
 
-      </Tab.Navigator>
-    
+    </Tab.Navigator>
+
   );
 }
 export default TabNavigation
@@ -112,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FCFDFF',
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
-    
+
 
 
   },

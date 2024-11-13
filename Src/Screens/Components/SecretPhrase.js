@@ -22,14 +22,16 @@ import colors from '../../Theme/Colors';
 import fonts from '../../Theme/Fonts';
 import { Buffer } from "buffer";
 import * as bip39 from 'bip39'
+import FlashMessage, { showMessage } from "react-native-flash-message";
 import 'react-native-get-random-values'
 import { Wallet, ethers } from "ethers"
 import Web3 from 'web3';
 import axios from 'axios';
 const BIP84 = require('bip84');
-const bitcore = require('bitcore-lib');
-const Insight = require('bitcore-insight').Insight;
-
+import { setMnemonicResult, setEthBalance, setBnbBalance, setMaticBalance, setBtcBalance, setPrivateKey, setBitcoinTestnetAddress, setPrivateKeyBtcWIF, setTronBalance, setTronKey, setFromAddress } from '../../Redux/Actions/DataAction';
+import { tronWeb } from '../../Utils/Utils';
+import { useDispatch } from 'react-redux';
+var crypto = require('react-native-crypto');
 global.Buffer = Buffer;
 
 const SecretPhrase = (props) => {
@@ -39,23 +41,26 @@ const SecretPhrase = (props) => {
   const [loading, setLoading] = useState(true)
   const [mnemonic, setMnemonic] = useState([]);
   const [balance, setBalance] = useState("")
-
+  const dispatch = useDispatch();
   const fromPrivateKey = "0x3eca96d4f6fb83f72407dc2d851bce12c650a4711cfd112ebd8edc4589cacce3"
   const fromAddress = "0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64"
   const ethTestnetSpolia = "https://ethereum-sepolia-rpc.publicnode.com"
   const bnbTestnetSpolia = "https://bsc-testnet-rpc.publicnode.com"
-  const bitcoinTestnetAddress="tb1q7dewlwrlwr5qsq06pst4jdv4r6h29l97chxeye"
-  const privateKeyBtcWIF = 'cRz8xdZQdJ7oWEuE5dB2tKTH6vAw2FjDn8hnj1k4E1gkrCtgYr4j'; 
+  const bitcoinTestnetAddress = "tb1q7dewlwrlwr5qsq06pst4jdv4r6h29l97chxeye"
+  const privateKeyBtcWIF = 'cRz8xdZQdJ7oWEuE5dB2tKTH6vAw2FjDn8hnj1k4E1gkrCtgYr4j';
+  const fromPrivateKeyTron = "8A4B3F5A33D5D4DBDF0403C3791DC00AFCA26CC43A5A0F13A277256ED5D32D3B"
 
   useEffect(() => {
     generateData()
+
   }, [])
 
   const generateData = async () => {
-   
+
     const mnemonicResult =
       "goat random canoe wide build share please health normal sphere pattern equip"
     // bip39.generateMnemonic();
+
     console.log('Mnemonic::::::', mnemonicResult);
     const arrNemonics = mnemonicResult?.trim().split(" ")
     setMnemonic(arrNemonics)
@@ -68,17 +73,33 @@ const SecretPhrase = (props) => {
     const child0 = root.deriveAccount(0);
     const account0 = new BIP84.fromZPrv(child0);
     console.log("accountData>>>>>>>>>>>>>>>>>>>>>>>>>", account0);
+    dispatch(setMnemonicResult(mnemonicResult));
+
+
+    // ::::::::::::::::::::::::::::::Generate Tron  Address :::::::::::::::::::::::::::::::::::::://
+    const tronwallet = tronWeb.fromMnemonic(mnemonicResult)
+    console.log("tronWeb data ::::::::::", tronwallet);
+    // console.log("tronWeb data ::::::::::", tronWeb.createAccount());
+    const tronBalnce = await tronWeb.trx.getBalance("TGPwRY1H8wLigVQ65AyMiW3b1nUFo7pZLd");
+    const formatTronBalance = tronBalnce / 10 ** 6
+    console.log("tronBalnce:::::", formatTronBalance)
+    setBalance(formatTronBalance);
+    dispatch(setTronBalance(formatTronBalance));
+    console.log("TronPrivateKey:::::::::::", tronwallet.privateKey);
+
+    const tronKey = tronwallet.privateKey
+    setTronKey
+    dispatch(setTronKey(tronKey));
     // ::::::::::::::::::::::::::::::Generate Bitcoin  Address :::::::::::::::::::::::::::::::::::::://
 
 
     const bitcoinAddress = account0.getAddress(0);
     console.log("bitcoinAddress:::::::::::::::::::::::::", bitcoinAddress);
-    // const bitcoinPrivateKey = account0.getPrivateKey(0);
-    // console.log("bitcoinPrivateKey:::::::::::::::::::::::::", bitcoinPrivateKey);
+
     const bitcoinPrivateKey = account0.getAccountPrivateKey();
     console.log("bitcoinPrivateKey:::::::::::::::::::", bitcoinPrivateKey);
-  
-    // ::::::::::::::::::::::::::::::Generate Address :::::::::::::::::::::::::::::::::::::://
+
+    // ::::::::::::::::::::::::::::::Generate Eth Bnb Matic Address :::::::::::::::::::::::::::::::::::::://
 
     const wallet = Wallet.fromPhrase(mnemonicResult);
     console.log("PrivateKey:::::::::::", wallet.privateKey);
@@ -86,14 +107,16 @@ const SecretPhrase = (props) => {
     console.log({ wallet })
 
     //::::::::::::::::::::::::::::::::::: Get Balance ::::::::::::::::::::::::::::::::::://
-
+   
     // ;:::::::::::Eth balance::::::::::::: //
     const web3 = new Web3('https://ethereum-sepolia-rpc.publicnode.com');
     const balance = await web3.eth.getBalance(fromAddress);
     const etherBalance = ethers.formatEther(balance)
     const formattedBalance = parseFloat(etherBalance).toFixed(5);
     console.log("eth Balance:::::::::", formattedBalance);
-    setBalance(etherBalance)
+    // setBalance(etherBalance)
+    dispatch(setEthBalance(formattedBalance));
+
     // ;:::::::::::Bnb balance::::::::::::: //
     const Bnbweb3 = new Web3('https://bsc-testnet-rpc.publicnode.com');
     const bnbBalance = await Bnbweb3.eth.getBalance(fromAddress);
@@ -101,6 +124,21 @@ const SecretPhrase = (props) => {
     const formattedBnbBalance = parseFloat(formtBalance).toFixed(5);
     console.log("Bnb Balance:::::::::", formattedBnbBalance);
     setBalance(formattedBnbBalance)
+    dispatch(setBnbBalance(formattedBnbBalance));
+
+    // ;:::::::::: Matic balance::::::::::::: //
+    const Maticweb3 = new Web3('https://rpc-amoy.polygon.technology/');
+    const maticBalance = await Maticweb3.eth.getBalance("0xD28F085D324A0e15A2Ac929435a0598f95efc517");
+    const formtmaticBalance = ethers.formatEther(maticBalance)
+    const afterformattedBnbBalance = parseFloat(formtmaticBalance).toFixed(5);
+    console.log("matic  Balance:::::::::", afterformattedBnbBalance);
+    setBalance(afterformattedBnbBalance)
+    dispatch(setMaticBalance(afterformattedBnbBalance));
+    
+    const maticBalance2 = await Maticweb3.eth.getBalance("0x7e8592c8feb55394D26bd7653588C4Ecf8C7DB64");
+    const formtmaticBalance2 = ethers.formatEther(maticBalance2)
+    const afterformattedBnbBalance2 = parseFloat(formtmaticBalance2).toFixed(5);
+    console.log("matic  Balance22222222:::::::::", afterformattedBnbBalance2);
 
     // ;:::::::::::Btc balance::::::::::::: /
 
@@ -121,107 +159,52 @@ const SecretPhrase = (props) => {
         }
         return 0;
       }
+
     };
 
 
     const bitcoinBalance = await fetchBitcoinBalance("tb1q7dewlwrlwr5qsq06pst4jdv4r6h29l97chxeye");
     console.log("Bitcoin Balance:::::::::", bitcoinBalance);
     setBalance(bitcoinBalance);
+    dispatch(setBtcBalance(bitcoinBalance));
     // ::::::::::::::::::::::::::::::::;Gas Price ::::::::::::::::::::::::::::::::::::::::://
 
     const gasPrice = await web3.eth.getGasPrice(fromAddress);
+    console.log("GasPrice:::::::::", gasPrice)
+
     const gasPriceValue = parseInt(gasPrice, 16);
     console.log("GasPrice:::::::::", gasPriceValue)
 
     const nonce = await web3.eth.getTransactionCount(fromAddress)
     console.log("nonce:::::::::::::", nonce, web3.utils.toWei(0.0001, 'ether'))
 
-
-    // const newBalanceWei = await web3.eth.getBalance("0xD28F085D324A0e15A2Ac929435a0598f95efc517");
-    // const ethernewBalance = ethers.formatEther(newBalanceWei)
-    // console.log("New Balance:::::::::", ethernewBalance);
-
     // :::::::::::::::::::::::::::::::: SET  ::::::::::::::::::::::::::::::::::::::::://
 
-    try {
-      await AsyncStorage.setItem('ethBalance', JSON.stringify(formattedBalance));
-      await AsyncStorage.setItem('bnbBalance', JSON.stringify(formattedBnbBalance));
-      await AsyncStorage.setItem('btcBalance', JSON.stringify(bitcoinBalance));
-      await AsyncStorage.setItem('PrivateKey', JSON.stringify(fromPrivateKey));
-      await AsyncStorage.setItem('bitcoinTestnetAddress', JSON.stringify(bitcoinAddress));
-      await AsyncStorage.setItem('privateKeyBtcWIF', JSON.stringify(privateKeyBtcWIF));
-
-      await AsyncStorage.setItem('fromAddress', JSON.stringify(fromAddress));
-      console.log("Stored Balance:::::::::::::::::::::",formattedBalance, formattedBnbBalance,bitcoinBalance);
-    } catch (e) {
-      console.error('Error storing data:', e);
-    }
-
-
-
+    
+    dispatch(setFromAddress(fromAddress));
+    dispatch(setPrivateKey(fromPrivateKey));
+    dispatch(setBitcoinTestnetAddress(bitcoinTestnetAddress));
+    dispatch(setPrivateKeyBtcWIF(privateKeyBtcWIF));
   }
 
-
-  // const createAndBroadcastTransaction = async () => {
-  //   try {
-  //     const myAddress = 'tb1q7dewlwrlwr5qsq06pst4jdv4r6h29l97chxeye';
-  //     const privateKeyBtcWIF = 'cRz8xdZQdJ7oWEuE5dB2tKTH6vAw2FjDn8hnj1k4E1gkrCtgYr4j'; 
-  //     const addressTo = 'tb1qmxdaksy8utdkvgdpcrz29ueqx9ut8rnshhugj9';
-  //     const amount = 1000; // Amount in satoshis
-  //     const fee = 1000; // Fee in satoshis
-  
-  //     const privateKeyBtc = bitcore.PrivateKey.fromWIF(privateKeyBtcWIF);
-  //     const insight = new Insight('testnet');
-  
-  //     insight.getUtxos(myAddress, (err, utxos) => {
-  //       if (err) {
-  //         console.error('Error fetching UTXOs:', err);
-  //         return;
-  //       }
-  
-  //       if (!utxos || utxos.length === 0) {
-  //         console.error('No UTXOs found for address:', myAddress);
-  //         return;
-  //       }
-  
-  //       try {
-  //         let tx = new bitcore.Transaction()
-  //           .from(utxos)
-  //           .to(addressTo, amount)
-  //           .change(myAddress)
-  //           .fee(fee)
-  //           .sign(privateKeyBtc);
-  
-  //         console.log("Transaction created: ", tx.toString());
-  
-  //         insight.broadcast(tx.serialize(), (error, txid) => {
-  //           if (error) {
-  //             console.error('Error broadcasting transaction:', error);
-  //           } else {
-  //             console.log('Transaction broadcasted successfully, txid:', txid);
-  //           }
-  //         });
-  //       } catch (transactionError) {
-  //         console.error('Error creating or signing transaction:', transactionError);
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.error('Error in createAndBroadcastTransaction:', error);
-  //   }
-  // };
-  
   const handleCopy = () => {
     const mnemonicResult = mnemonic.join(' ');
     Clipboard.setString(mnemonicResult);
+    // <FlashMessage position="top"/>
+    showMessage({
+      message: 'Data copied',
+      backgroundColor: "#00BEF2",
+      autoHide: true,
+      duration: 2000,
+      type: 'success',
+      position: 'top',
+    });
 
   };
 
-  // useEffect(() => {
 
 
-  //   createAndBroadcastTransaction()
 
-  // }, [])
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: themeColor.background }]}>
@@ -282,7 +265,9 @@ const SecretPhrase = (props) => {
           />
         </View>
       </View>
-      {console.log("chkkk---", bottomSheetVisible)}
+      {/* {
+      console.log("chkkk---",
+       bottomSheetVisible)} */}
       {bottomSheetVisible && Platform.OS === 'android' ? (
         <BlurView
           style={StyleSheet.absoluteFill}
@@ -303,6 +288,7 @@ const SecretPhrase = (props) => {
           props.navigation.navigate('verifysecretphrase', { name: mnemonic })
         }}
       />
+      <FlashMessage position="top" />
     </SafeAreaView>
   );
 };

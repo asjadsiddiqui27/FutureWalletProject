@@ -50,6 +50,16 @@ import SecretPhrase2 from '../Components/Buy&Sell/SecretPharse';
 import ManageBottomSheet from '../Components/Buy&Sell/ManageBottomSheet';
 import SendBnb from '../Components/Send/SendBnb';
 import SendEth from '../Components/Send/SendEth';
+import SendTrx from '../Components/Send/SendTrx';
+import Transactions from '../Components/Transactions/Transactions';
+import ReorderTokens from '../Components/Manage tokens/ReorderTokens';
+import ManageTokens from '../Components/Manage tokens/ManageTokens';
+import Transactions1 from '../Components/Manage tokens/Transactions1';
+import Splash from '../Components/Onboarding/Splash';
+import AddCustomToken from '../Components/Manage tokens/AddCustomToken';
+import Processing from '../Components/Onboarding/Processing';
+import CommonModal from '../Common/CommonModal';
+import SendMatic from '../Components/Send/SendMatic';
 
 
 
@@ -117,7 +127,13 @@ const StackNavigation = () => {
             headerShown: false,
             // }
           }}>
-
+          <Stack.Screen
+            name="Splash"
+            component={Splash}
+            options={{
+              headerShown: false,
+            }}
+          />
           <Stack.Screen
             name="onboarding"
             component={Onboarding}
@@ -184,11 +200,49 @@ const StackNavigation = () => {
             }}
           />
           <Stack.Screen
+            name='Processing'
+            component={Processing}
+            options={{
+            }}
+          />
+          <Stack.Screen
             name='TabNavigation'
             component={TabNavigation}
             options={{
             }}
           />
+          <Stack.Screen
+            name='ReorderTokens'
+            component={ReorderTokens}
+            options={{
+            }}
+          />
+          <Stack.Screen
+            name='ManageTokens'
+            component={ManageTokens}
+            options={{
+            }}
+          />
+          <Stack.Screen
+            name='AddCustomToken'
+            component={AddCustomToken}
+            options={{
+            }}
+          />
+          <Stack.Screen
+            name='Transactions1'
+            component={Transactions1}
+            options={{
+            }}
+          />
+           <Stack.Screen
+            name='CommonModal'
+            component={CommonModal}
+            options={{
+              title: "Set Passcode"
+            }}
+          />
+
           <Stack.Screen
             name='Notification'
             component={Notification}
@@ -255,8 +309,20 @@ const StackNavigation = () => {
             }}
           />
           <Stack.Screen
+            name='SendTrx'
+            component={SendTrx}
+            options={{
+            }}
+          />
+          <Stack.Screen
             name='SendBnb'
             component={SendBnb}
+            options={{
+            }}
+          />
+          <Stack.Screen
+            name='SendMatic'
+            component={SendMatic}
             options={{
             }}
           />

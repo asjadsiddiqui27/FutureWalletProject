@@ -44,11 +44,12 @@ const VerifySecretPhrase = (props) => {
     };
 
     const matchArray = () => {
-        if (JSON.stringify(originalArray) !== JSON.stringify(newArray)) {
-            Alert.alert("Wrong", "The sequence does not match the original");
-        } else {
-            props.navigation.navigate("setpasscode");
-        }
+        // if (JSON.stringify(originalArray) !== JSON.stringify(newArray)) {
+        //     Alert.alert("Wrong", "The sequence does not match the original");
+        // } else {
+        //     props.navigation.navigate("setpasscode");
+        // }
+        props.navigation.navigate("setpasscode");
     };
 
     return (

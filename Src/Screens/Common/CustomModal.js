@@ -1,16 +1,23 @@
 import { useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
-import { StyleSheet, Text, View, Modal, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Modal, TouchableOpacity, ImageBackground } from 'react-native';
 import Button from './CustomButton';
 import colors from '../../Theme/Colors';
 import fonts from '../../Theme/Fonts';
+import { images } from '../../Theme/Images';
 
 const CustomModal = (props) => {
     const { colors: themeColor, image } = useTheme();
 
     return (
         <View style={styles.container}>
+             <ImageBackground source={images.futureBackgroundImg}
+            style={{height:"100%",width:"100%",alignItems:"center",
+                justifyContent:"center"
+            }}
+                blurRadius={9}
+                >
              <Modal
                 animationType="slide"
                 transparent={true}
@@ -32,6 +39,7 @@ const CustomModal = (props) => {
                     </View>
                 </View>
             </Modal>
+            </ImageBackground>
         </View>
     );
 }
@@ -74,5 +82,6 @@ const styles = StyleSheet.create({
         width: 158,
         backgroundColor: colors.background,
         borderRadius: 25,
+        color:"white"
     }
 });

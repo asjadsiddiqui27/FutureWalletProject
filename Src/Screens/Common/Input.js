@@ -24,10 +24,10 @@ function InputText({
         <TextInput
             onChangeText={onChngFunction}
             placeholder={placeholderText}
-            style={[Inputstyle,{borderColor:themeColor.blueBorder}]}
+            style={[Inputstyle,{borderColor:themeColor.blueBorder,color:themeColor.text}]}
             maxLength={maximumLength}
             keyboardType={KybrdTyp}
-            placeholderTextColor={themeColor.text}
+            placeholderTextColor={themeColor.subText}
             value={value}
             secureTextEntry={psswrdVisible}
 

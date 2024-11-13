@@ -10,50 +10,36 @@ import { Strings } from '../../Theme/Strings';
 import { images } from '../../Theme/Images';
 import colors from '../../Theme/Colors'
 import fonts from '../../Theme/Fonts';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSelector } from 'react-redux';
 
 const Main = () => {
     const { colors: themeColor, image } = useTheme()
     const isFocused = useIsFocused()
     const navigation = useNavigation()
-    const [ethbalance, setEthBalance] = useState(0);
-    const [bnbbalance, setBnbBalance] = useState(0);
-    const [btcbalance, setBtcBalance] = useState(0);
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const getEthBalance = JSON.parse(await AsyncStorage.getItem("ethBalance"));
-                const getBnbBalance = JSON.parse(await AsyncStorage.getItem("bnbBalance"));
-                const getBtcBalance = JSON.parse(await AsyncStorage.getItem("btcBalance"));
-                console.log("get data:::::::::::::", getEthBalance,getBnbBalance);
-                setEthBalance(Number(getEthBalance)||0);
-                setBnbBalance(Number(getBnbBalance)||0)
-                setBtcBalance(Number(getBtcBalance)||0)
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getUser();
-    }, []);
-    const totalBalance = (ethbalance+bnbbalance+btcbalance).toFixed(5)
-    useEffect(() => {
-        //   if(isFocused)
-        //     StatusBar.setBackgroundColor(themeColor.mainScreenBgColor,true)
+   
+    const ethBalance = Number(useSelector((state) => state.app.ethBalance)) || 0;
+    const bnbBalance = Number(useSelector((state) => state.app.bnbBalance)) || 0;
+    const btcBalance = Number(useSelector((state) => state.app.btcBalance)) || 0;
+    const tronBalance = Number(useSelector((state) => state.app.tronBalance)) || 0;
+    const maticBalance = Number(useSelector((state) => state.app.maticBalance)) || 0;
+    const walletName = useSelector((state) => state.app.name) || "";
+    // Calculate total balance
+    const totalBalance = (ethBalance + bnbBalance + btcBalance + tronBalance + maticBalance).toFixed(2);
 
+    useEffect(() => {
         return () => { }
-    }, [isFocused])
+    }, [isFocused]);
+
     const data = [
-        { id: '1', imageSource: images.notification2, name: Strings.English.main.BNBBeaconChain, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: bnbbalance, dollarValueRight: Strings.English.main.dollarValueRight1 },
-        // { id: '2', imageSource: images.notification1, name: Strings.English.main.Bitcoin, dollarValue: Strings.English.main.dollarValue2, percentageValue: Strings.English.main.percentagevalue2, rightText: Strings.English.main.BTC, dollarValueRight: Strings.English.main.dollarValueRight2 },
-        { id: '2', imageSource: image.ethImage, name: Strings.English.main.Ethereum, dollarValue: Strings.English.main.dollarValue3, percentageValue: Strings.English.main.percentagevalue3, rightText: ethbalance, dollarValueRight: Strings.English.main.dollarValueRight3 },
-        // { id: '4', imageSource: images.tron, name: Strings.English.main.Tron, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: Strings.English.main.TRX, dollarValueRight: Strings.English.main.dollarValueRight4 },
-        { id: '3', imageSource: images.notification1, name: Strings.English.main.Bitcoin, dollarValue: Strings.English.main.dollarValue2, percentageValue: Strings.English.main.percentagevalue2, rightText: btcbalance, dollarValueRight: Strings.English.main.dollarValueRight2 },
+        { id: '1', imageSource: images.notification2, name: Strings.English.main.BNBBeaconChain, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: bnbBalance, dollarValueRight: Strings.English.main.dollarValueRight1 },
+        { id: '2', imageSource: image.ethImage, name: Strings.English.main.Ethereum, dollarValue: Strings.English.main.dollarValue3, percentageValue: Strings.English.main.percentagevalue3, rightText: ethBalance, dollarValueRight: Strings.English.main.dollarValueRight3 },
+        { id: '3', imageSource: images.notification1, name: Strings.English.main.Bitcoin, dollarValue: Strings.English.main.dollarValue2, percentageValue: Strings.English.main.percentagevalue2, rightText: btcBalance, dollarValueRight: Strings.English.main.dollarValueRight2 },
+        { id: '4', imageSource: images.tron, name: Strings.English.main.Tron, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: tronBalance, dollarValueRight: Strings.English.main.dollarValueRight4 },
+        { id: '5', imageSource: images.polygon, name: "Polygon", dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: maticBalance, dollarValueRight: Strings.English.main.dollarValueRight4 },
     ];
 
-    <StatusBar backgroundColor={themeColor.mainScreenBgColor[0]} barStyle={"dark-content"} />
-
     const renderItem = ({ item }) => (
-        <View>
+        <TouchableOpacity>
             <View style={styles.itemContainer}>
                 <View style={{ flexDirection: "row", width: dimen(200) }}>
                     <View>
@@ -75,19 +61,19 @@ const Main = () => {
                     <Text style={[styles.bottom_text, { alignSelf: "flex-end", color: themeColor.subText }]}>{item.dollarValueRight}</Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 
 
-  
+
     return (
 
 
         <LinearGradient colors={themeColor.mainScreenBgColor} style={styles.linearGradient}>
             {/* <StatusBar barStyle="dark-content" /> */}
-            {/* <StatusBar backgroundColor={themeColor.mainScreenBgColor[0]}  barStyle={"dark-content"} /> */}
+            {/* <StatusBar backgroundColor={themeColor.mainScreenBgColor}  barStyle={"dark-content"} /> */}
 
-            <CustomHeader onPress={() => { navigation.navigate("ConfirmPasscode") }} header={Strings.English.main.MyWallet2} header_style={styles.header} imgLeft={images.welcomelogo} imgRight={image.bell} headerimg={styles.headerimg_style} onPress2={() => { navigation.navigate("Notification") }} />
+            <CustomHeader onPress={() => { navigation.navigate("ConfirmPasscode") }} header={walletName} header_style={styles.header} imgLeft={images.welcomelogo} imgRight={image.bell} headerimg={styles.headerimg_style} onPress2={() => { navigation.navigate("Notification") }} />
 
             <View style={styles.top_labelText_view}>
                 <Text style={[styles.top_labelText, { color: themeColor.text }]}>{Strings.English.main.totalBalance}</Text>
@@ -113,18 +99,18 @@ const Main = () => {
                     </View>
 
                     <View style={styles.img_view}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate("ReorderTokens") }}>
                             <Image source={images.mainTokenImg1} style={styles.mainTokenImg} />
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate("Transactions1") }} >
                             <Image source={images.mainTokenImg2} style={styles.mainTokenImg} />
 
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        {/* <TouchableOpacity>
                             <Image source={images.mainTokenImg3} style={styles.mainTokenImg} />
 
-                        </TouchableOpacity>
-                        <TouchableOpacity>
+                        </TouchableOpacity> */}
+                        <TouchableOpacity onPress={() => { navigation.navigate("ManageTokens") }}>
                             <Image source={images.mainTokenImg4} style={styles.mainTokenImg} />
 
                         </TouchableOpacity>

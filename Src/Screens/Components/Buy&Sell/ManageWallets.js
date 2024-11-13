@@ -1,5 +1,5 @@
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useRef, useState } from 'react'
+import { FlatList, Image, ImageBackground, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
 import colors from '../../../Theme/Colors'
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
 import CustomHeader from '../../Common/CustomHeader';
@@ -11,27 +11,41 @@ import { BlurView } from '@react-native-community/blur';
 import ManageBottomSheet from './ManageBottomSheet';
 import { images } from '../../../Theme/Images';
 import fonts from '../../../Theme/Fonts';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const ManageWallets = (props) => {
     const { colors: themeColor, image } = useTheme()
     const panelRef = useRef(null);
     const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
-
+    const [selectedId, setSelectedId] = useState("1")
+    const [walletName, setWalletName] = useState("");
     const data = [
-        { id: '1', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Basic, walletType: Strings.English.ManageWallets.walletType1, imageSource2: images.bluePencil, },
-        { id: '2', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
-        { id: '3', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Basic, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
-        { id: '4', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
-        { id: '5', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Basic, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
-        { id: '6', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        { id: '1', imageSource: images.welcomelogo, name: walletName, walletType: Strings.English.ManageWallets.walletType1, imageSource2: images.bluePencil, },
+        // { id: '2', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        // { id: '3', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Basic, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        // { id: '4', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        // { id: '5', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Basic, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        // { id: '6', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
 
 
     ];
-    const [selectedId, setSelectedId] = useState("1")
     const handlePress = (itemId) => {
         setSelectedId(itemId)
 
     };
+    useEffect(() => {
+        const getUser = async () => {
+            try {  
+                await AsyncStorage.setItem('walletName', JSON.stringify(walletName));
 
+                console.log("walletName*************",walletName);
+                const getWalletName = JSON.parse(await AsyncStorage.getItem('name'));
+                    setWalletName(getWalletName)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getUser();
+    }, []);
     const renderItem = ({ item }) => (
         <TouchableOpacity onPress={() => handlePress(item.id)}>
             <View style={styles.row_View}>
@@ -60,7 +74,7 @@ const ManageWallets = (props) => {
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
-            <CustomHeader header={Strings.English.ManageWallets.manageWallets} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Checkout") }} />
+            <CustomHeader header={Strings.English.ManageWallets.manageWallets} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Settings") }} />
 
             <SeperateLine />
 
@@ -82,19 +96,32 @@ const ManageWallets = (props) => {
                 <Button name={Strings.English.ManageWallets.button_text} onPress={() => { props.navigation.navigate("onboarding") }} />
             </View>
             {/* {bottomSheetVisible && Platform.OS === 'android' ? (
-                <BlurView
-                    style={StyleSheet.absoluteFill}
-                    blurType="light"
-                    blurAmount={3}
-                    reducedTransparencyFallbackColor="black"
-                />
+                <ImageBackground
+                source={images.futureBackgroundImg}
+                // style={{
+                //     height: "100%", width: "100%", 
+                    
+                // }}
+                blurRadius={9}
+            ></ImageBackground>
             ) : null} */}
+            {/* <ImageBackground
+                source={images.futureBackgroundImg}
+                style={{
+                    height: "100%", width: "100%",
+                    justifyContent:"center"
+                    
+                }}
+                blurRadius={9}
+            > */}
             <ManageBottomSheet
+         
                 onOpen={() => setBottomSheetVisible(true)}
                 onClose={() => setBottomSheetVisible(false)}
                 panelRef={panelRef}
                 navigation={props.navigation}
             />
+            {/* </ImageBackground> */}
         </SafeAreaView>
     )
 }

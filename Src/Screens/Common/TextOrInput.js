@@ -9,9 +9,11 @@ const TextOrInput = (
     {
         label,
         placeholder,
+        value,
         label2,
         onPress,
-        labelStyle=styles.labelStyle
+        labelStyle=styles.labelStyle,
+        keyboardType
     }
 ) => {
     const { colors: themeColor, image } = useTheme()
@@ -28,10 +30,11 @@ const TextOrInput = (
             </View>
 
             <TextInput
-                style={[styles.input, { borderColor: themeColor.blueBorder }]}
+                style={[styles.input, { borderColor: themeColor.blueBorder,color:themeColor.text}]}
                 placeholder={placeholder}
-                keyboardType="numeric"
+                keyboardType={keyboardType}
                 placeholderTextColor={themeColor.subText}
+                value={value}
             />
         </View>
     )
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderColor: colors.borderLineColor,
         fontSize: dimen(16),
-        paddingLeft: dimen(16.34)
+        paddingLeft: dimen(16.34),
 
     },
 })

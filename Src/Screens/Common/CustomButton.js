@@ -6,10 +6,6 @@ import fonts from "../../Theme/Fonts";
 import { useTheme } from "@react-navigation/native";
 import LinearGradient from "react-native-linear-gradient";
 
-
-
-
-
 function Button({
 
     onPress = () => { console.log("") },
@@ -46,16 +42,12 @@ function Button({
     )
 }
 
-
-
-
 const styles = StyleSheet.create({
 
     button: {
         fontSize: 16,
-        // fontWeight: "700",
-        textAlign: "center",
-        margin: dimen(15),
+     alignSelf:"center",
+     paddingTop:10,
         color: colors.White,
         fontFamily: fonts.PoppinsBold,
 
@@ -70,7 +62,4 @@ const styles = StyleSheet.create({
 
     },
 })
-
-
-
 export default Button;

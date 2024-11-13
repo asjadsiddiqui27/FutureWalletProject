@@ -1,7 +1,7 @@
-import { Dimensions, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import BottomSheet from 'react-native-simple-bottom-sheet';
 import { getDimensionPercentage as dimen } from '../../../Utils/Utils';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTheme } from '@react-navigation/native';
 import { Strings } from '../../../Theme/Strings';
 import fonts from '../../../Theme/Fonts'
@@ -11,79 +11,112 @@ import colors from '../../../Theme/Colors';
 import Button from '../../Common/CustomButton';
 import TextOrInput from '../../Common/TextOrInput';
 import CustomModal from '../../Common/CustomModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const height = Dimensions.get('window').height;
 
 
 
-const ManageBottomSheet = (props) => {
+const ManageBottomSheet = (props, { value }) => {
     const { navigation } = props;
     const { colors: themeColor, image } = useTheme()
     const [modalVisible, setModalVisible] = useState(false);
+    const [walletName, setWalletName] = useState("");
     const data = [
-        { id: '1', imageSource: images.backuppassphrase, name: 'Backup Passphrase', imageSource2: images.settingGreater ,text3:"EnterPasscode"},
-        { id: '2', imageSource: images.backupkey, name: 'Backup Private key', imageSource2: images.settingGreater ,text3:"PrivateKeyBackup"},
-        { id: '3', imageSource: images.deletewallet, name: "Delete Wallet", imageSource2: images.settingGreater },
+        { id: '1', imageSource: images.backuppassphrase, name: 'Backup Passphrase', imageSource2: images.settingGreater, text3: "EnterPasscode" },
+        { id: '2', imageSource: images.backupkey, name: 'Backup Private key', imageSource2: images.settingGreater, text3: "PrivateKeyBackup" },
+        { id: '3', imageSource: images.deletewallet, name: "Delete Wallet", imageSource2: images.settingGreater,text3:"CommonModal" },
 
     ];
+
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+
+                const getWalletName = JSON.parse(await AsyncStorage.getItem('name'));
+                setWalletName(getWalletName)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getUser();
+    }, []);
     const renderItem = ({ item }) => (
-                <TouchableOpacity onPress={() => { 
-                    if (item.id === '3') {
-                        setModalVisible(true);
-                    } else {
-                        props.panelRef.current.togglePanel();
-                        props.navigation.navigate(item.text3);
-                    }
-                }}>
-                    <View style={styles.row}>
-                        <View style={{ flexDirection: "row", alignItems: "center" }}>
-                            <Image source={item.imageSource} style={styles.image} />
-                            <Text style={[styles.name, { color: themeColor.text }]}>{item.name}</Text>
-                        </View>
-                        <View>
-                            <Image source={item.imageSource2} style={styles.image2} />
-                        </View>
-                    </View>
-                </TouchableOpacity>
-            );
-        
+        <TouchableOpacity onPress={() => {
+            // if (item.id === '3') {
+            //     setModalVisible(true);
+            // } else {
+                props.panelRef.current.togglePanel();
+                props.navigation.navigate(item.text3);
+            // }
+        }}>
+            <View style={styles.row}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <Image source={item.imageSource} style={styles.image} />
+                    <Text style={[styles.name, { color: themeColor.text }]}>{item.name}</Text>
+                </View>
+                <View>
+                    <Image source={item.imageSource2} style={styles.image2} />
+                </View>
+            </View>
+        </TouchableOpacity>
+    );
+
 
     return (
-<View>
+        <View>
+
+            {/* <ImageBackground
+                source={images.futureBackgroundImg}
+                style={{
+                    height: "100%", width: "100%", 
+                    
+                }}
+                blurRadius={9}
+            > */}
 
 
-        <BottomSheet
-            sliderMaxHeight={height / 1}
-            sliderMinHeight={height / height}
-            isOpen={false}
-            onOpen={props.onOpen}
-            onClose={props.onClose}
-            ref={props.panelRef}
-            wrapperStyle={{
-                backgroundColor: themeColor.cardBackground2
-            }}
-        >
+                <BottomSheet
+                    sliderMaxHeight={height / 1}
+                    sliderMinHeight={height / height}
+                    isOpen={false}
+                    onOpen={props.onOpen}
+                    onClose={props.onClose}
+                    ref={props.panelRef}
+                    wrapperStyle={{
+                        backgroundColor: themeColor.cardBackground2
+                    }}
+                >
 
-            <Text style={[styles.topText, { color: themeColor.text }]}>{Strings.English.ManageBottomSheet.Wallet}</Text>
-            <TextOrInput label="Name" placeholder="Wallet 01" label2="Make Default" labelStyle={{color:colors.lightBlue}}/>
-            <View style={{marginVertical:dimen(34)}}>
-            <FlatList
-                data={data}
-                ItemSeparatorComponent={() => (
-                    <View style={{ marginHorizontal: dimen(24) }}>
-                        <SeperateLine />
+                    <Text style={[styles.topText, { color: themeColor.text }]}>{Strings.English.ManageBottomSheet.Wallet}</Text>
+                    <TextOrInput
+                        label="Name" placeholder="Wallet 01"
+                        value={walletName}
+                        label2="Make Default"
+                        labelStyle={{ color: colors.lightBlue }}
+
+                    />
+                    <View style={{ marginVertical: dimen(34) }}>
+                        <FlatList
+                            data={data}
+                            ItemSeparatorComponent={() => (
+                                <View style={{ marginHorizontal: dimen(24) }}>
+                                    <SeperateLine />
+                                </View>
+                            )}
+                            renderItem={renderItem}
+                            keyExtractor={(item) => item.id}
+                        />
                     </View>
-                )}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-            />
-            </View>
-           
-             <Button name="Update"/>
-        </BottomSheet>
- <CustomModal isVisible={modalVisible} setModalVisible={setModalVisible} navigation={navigation}/>
- </View>
-  )
+
+                    <Button name="Update" />
+                </BottomSheet>
+                
+                <CustomModal isVisible={modalVisible} setModalVisible={setModalVisible} navigation={navigation} />
+            {/* </ImageBackground> */}
+        </View>
+    )
 }
 
 export default ManageBottomSheet
