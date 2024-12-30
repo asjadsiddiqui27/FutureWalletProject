@@ -6,6 +6,8 @@ import {name as appName} from './app.json';
 import App from './App';
 import './Src/Screens/Common/Shim'
 import 'react-native-get-random-values';  
+import Testing from './Src/Testing';
+
 
 const TextEncodingPolyfill = require('text-encoding');
 
@@ -17,4 +19,4 @@ Object.assign(global, {
 });
 
 
-AppRegistry.registerComponent(appName, () =>App);
+AppRegistry.registerComponent(appName, () =>Testing);

@@ -27,25 +27,25 @@ const Portfolio = (props) => {
                             source={{ uri: item.coin.coin_image }}
                             style={styles.img}
                         />
-                        <Text style={[styles.coin_symbol,{color:themeColor.text}]}>{item.coin_symbol}</Text>
+                        <Text style={[styles.coin_symbol, { color: themeColor.text }]}>{item.coin_symbol}</Text>
                     </View>
 
                     <View style={{ flex: 0.6 }}>
-                        <Text style={[styles.amount_text, { color:themeColor.subText }]}>Amount</Text>
-                        <Text style={[styles.amount_value,{color:themeColor.text}]}>${item.fiatBal.toFixed(2)}</Text>
+                        <Text style={[styles.amount_text, { color: themeColor.subText }]}>Amount</Text>
+                        <Text style={[styles.amount_value, { color: themeColor.text }]}>${item.fiatBal.toFixed(2)}</Text>
                     </View>
 
                     <View style={{ flex: 0.6 }}>
-                        <Text style={[styles.amount_text, { color:themeColor.subText }]}>Percentage</Text>
-                        <Text style={[styles.amount_value,{color:themeColor.text}]}>{percentage.toFixed(2)}%</Text>
+                        <Text style={[styles.amount_text, { color: themeColor.subText }]}>Percentage</Text>
+                        <Text style={[styles.amount_value, { color: themeColor.text }]}>{percentage.toFixed(2)}%</Text>
                     </View>
                 </View>
             </View>
         );
     };
-    const ItemSeparatorComponent =()=>{
-        return <View 
-        style={styles.separator}
+    const ItemSeparatorComponent = () => {
+        return <View
+            style={styles.separator}
         />
     }
     return (
@@ -61,26 +61,26 @@ const Portfolio = (props) => {
             </View>
 
             <View style={{ alignItems: "center", justifyContent: "center" }}>
-                
-                <View 
-                style={[styles.outer_view,{backgroundColor:themeColor.background2}]}>
-                 <PieChart
-                    widthAndHeight={widthAndHeight}
-                    series={series}
-                    sliceColor={sliceColor}
-                    coverRadius={0.8}
-                    coverFill={'#434447'}
-                    
-                    />  
-                    </View>
-                <View style={{position:"absolute",bottom:100 }}>
 
-                    <Text style={[styles.amount_text, { color:themeColor.subText }]}>Assets</Text>
+                <View
+                    style={[styles.outer_view, { backgroundColor: themeColor.background2 }]}>
+                    <PieChart
+                        widthAndHeight={widthAndHeight}
+                        series={series}
+                        sliceColor={sliceColor}
+                        coverRadius={0.8}
+                        coverFill={'#434447'}
+
+                    />
+                </View>
+                <View style={{ position: "absolute", bottom: 100 }}>
+
+                    <Text style={[styles.amount_text, { color: themeColor.subText }]}>Assets</Text>
                     <Text style={styles.pai_symbol}>Allocation</Text>
                 </View>
             </View>
             <View>
-                <Text style={[styles.totalText,{color:themeColor.subText}]}>Total Invested Amount: ${totalInvestedAmount.toFixed(2)}</Text>
+                <Text style={[styles.totalText, { color: themeColor.subText }]}>Total Invested Amount: ${totalInvestedAmount.toFixed(2)}</Text>
             </View>
             <View>
                 <FlatList
@@ -136,65 +136,65 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 22,
         marginLeft: 10,
-        fontFamily:fonts.PoppinsBold,
+        fontFamily: fonts.PoppinsBold,
     },
     coin_symbol: {
         color: "white",
         fontSize: 18,
         marginLeft: 10,
         fontWeight: "bold",
-        textTransform:"uppercase"
+        textTransform: "uppercase"
 
     },
     totalText: {
         color: "grey",
         fontSize: 14,
-        fontFamily:fonts.PoppinsMedium,
+        fontFamily: fonts.PoppinsMedium,
         textAlign: "center",
-       marginTop:dimen(20)
+        marginTop: dimen(20)
     },
     amount_text: {
         color: "grey",
         fontSize: 16,
-        fontWeight:'500',
-        textAlign:"center"
+        fontWeight: '500',
+        textAlign: "center"
     },
-    outer_view :{
-        backgroundColor:'#424244',
-            marginTop:30,
-            shadowColor: "white",
-            shadowOffset: {
-                width: 3,
-                height: 3,
-            },
-            shadowOpacity: 0,
-            shadowRadius: 8,
-            elevation: 15,
-            
-        height:dimen(244),
-        width:dimen(244),
-        borderRadius:dimen(244),
-        justifyContent:"center",
-        alignItems:"center",
-},
-color_view: {
-    height: 0,
-    width: 0,
-    borderLeftWidth: 12,
-    borderTopWidth: 12,
-    borderBottomWidth: 12,
-    borderLeftColor: "transparent",
-    marginRight:10
+    outer_view: {
+        backgroundColor: '#424244',
+        marginTop: 30,
+        shadowColor: "white",
+        shadowOffset: {
+            width: 3,
+            height: 3,
+        },
+        shadowOpacity: 0,
+        shadowRadius: 8,
+        elevation: 15,
+
+        height: dimen(244),
+        width: dimen(244),
+        borderRadius: dimen(244),
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    color_view: {
+        height: 0,
+        width: 0,
+        borderLeftWidth: 12,
+        borderTopWidth: 12,
+        borderBottomWidth: 12,
+        borderLeftColor: "transparent",
+        marginRight: 10
 
 
 
-},
+    },
 
-amount_value: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign:"center"
+    amount_value: {
+        color: "white",
+        fontSize: 16,
+        fontWeight: "bold",
+        textAlign: "center"
 
-},
+    },
 })
