@@ -55,7 +55,7 @@ const WalletName = (props) => {
           <Button
             name={'Continue'}
             onPress={handlePress}
-            buttonStyle={styles.btn}
+            // buttonStyle={styles.btn}
           />
         </View>
       </View>
@@ -100,12 +100,13 @@ const styles = StyleSheet.create({
   footer_container: {
     flex: 0.2,
     justifyContent: 'flex-end',
+    marginBottom: dimen(66.88),
   },
   btn: {
-    height: 50,
-    width: 'auto',
-    backgroundColor: colors.background,
-    borderRadius: 12,
-    marginBottom: dimen(66.88),
+    // height: 50,
+    // width: 'auto',
+    // backgroundColor: colors.background,
+    // borderRadius: 12,
+    // marginBottom: dimen(66.88),
   },
 });

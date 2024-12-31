@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "993566954555",
+    "project_id": "testing-18e73",
+    "storage_bucket": "testing-18e73.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993566954555:android:27be419e8741b9d615781e",
+        "android_client_info": {
+          "package_name": "com.futurewallet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXLzyB-_MDmO3gyTQ0B2moWqug13EEk5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

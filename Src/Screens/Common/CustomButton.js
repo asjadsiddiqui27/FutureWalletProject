@@ -21,17 +21,17 @@ function Button({
     const { colors: themeColor, image } = useTheme()
 
     const renderBackground = () => {
-      
-            return (
-                <TouchableOpacity style={{}} onPress={onPress}>
-                    <LinearGradient colors={customColor ? customColor : themeColor.commonBtn} style={buttonStyle} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
-                        {name_2 && <Text style={text2_style}>{name_2}</Text>}
-                        <Text style={[textColor,{color: customColor? themeColor.text : colors.White}]}>{name}</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
 
-            )
-            
+        return (
+            <TouchableOpacity style={{}} onPress={onPress}>
+                <LinearGradient colors={customColor ? customColor : themeColor.commonBtn} style={buttonStyle} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
+                    {name_2 && <Text style={text2_style}>{name_2}</Text>}
+                    <Text style={[textColor, { color: customColor ? themeColor.text : colors.White }]}>{name}</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+
+        )
+
     };
     return (
         <View style={btnView}>
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
 
     button: {
         fontSize: 16,
-     alignSelf:"center",
-     paddingTop:10,
+        alignSelf: "center",
+        // paddingTop: 10,
         color: colors.White,
         fontFamily: fonts.PoppinsBold,
 
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     btn: {
         height: 50,
         width: "auto",
+        justifyContent:"center",
         // marginHorizontal: 24,
         backgroundColor: colors.background,
         borderRadius: 12,

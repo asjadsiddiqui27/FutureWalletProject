@@ -13,15 +13,17 @@ export default class Testing extends Component {
     return (
       <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={styles.container}>
+        <Text style={styles.title}>Testing 1</Text>
+        <PieChart widthAndHeight={widthAndHeight} series={series}     sliceColor={sliceColor}/>
 
-
-          <Text style={styles.title}>Testing</Text>
+          <Text style={styles.title}>Testing 2</Text>
           <PieChart
             widthAndHeight={widthAndHeight}
             series={series}
             sliceColor={sliceColor}
             coverRadius={0.45} // For a doughnut effect
           />
+          
         </View>
       </ScrollView>
     );

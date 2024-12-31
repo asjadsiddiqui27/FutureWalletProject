@@ -35,7 +35,7 @@ const Swap = (props) => {
 
             <View style={styles.main_content_container}>
                 <View style={[styles.Ist_contentView, { backgroundColor: themeColor.cardBackground }]}>
-                    <Image source={image.transfer} style={{ position: "absolute", top: 95, right: 30 }} />
+                    <Image source={image.transfer} style={{ position: "absolute", top: 72, right: 30 }} />
                     <CommonSwapRow image1={images.notification2} image2={images.settingGreater} label={Strings.English.Swap.label1} value={Strings.English.Swap.value1} balanceValue={Strings.English.Swap.BnbValue} tokenName={Strings.English.Swap.mainTextBnb} onPress={() => { props.navigation.navigate("Chain") }} longOnPress={() => { props.navigation.navigate("SwapTo") }}/>
                     <SeperateLine top_line={{ marginTop: dimen(26) }} />
                     <CommonSwapRow image1={images.teher} image2={images.settingGreater} label={Strings.English.Swap.label2} value={Strings.English.Swap.value1} balanceValue={Strings.English.Swap.usdtValue} tokenName={Strings.English.Swap.mainTextUsdt} longOnPress={() => { props.navigation.navigate("SwapFrom") }} />
@@ -97,9 +97,10 @@ const styles = StyleSheet.create({
         marginHorizontal: dimen(21)
     },
     buttonStyle: {
-        height: dimen(49),
+        height: dimen(50),
         width: dimen(188),
         borderRadius: 12,
+        justifyContent:"center"
 
     },
     main_content_container: {
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
         marginRight: dimen(5),
         marginTop: 10,
         borderRadius: 10,
-        width: 88,
+        width: 75,
         height: 45,
         // borderColor: colors.textColor,
         // borderWidth: 1,
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
 
     },
     btn_text: {
-        fontSize: 12,
+        fontSize: 16,
         textAlign: "center",
         margin: dimen(15),
         color: colors.White,

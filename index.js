@@ -19,4 +19,4 @@ Object.assign(global, {
 });
 
 
-AppRegistry.registerComponent(appName, () =>Testing);
+AppRegistry.registerComponent(appName, () =>App);

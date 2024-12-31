@@ -12,10 +12,19 @@ import CustomHeader from '../Common/CustomHeader'
 import { useTheme } from '@react-navigation/native'
 const ImportWallet = (props) => {
     const [value, setValue] = useState("")
+
+    const [name, setName] = useState('');
     const { colors: themeColor, image } = useTheme()
     const handlePaste = async () => {
         const text = await Clipboard.getString(); 
         setValue(text);
+      };
+
+      const handleSetValue = (text) => {
+        const regex = /^[a-zA-Z0-9]*$/;
+        if (regex.test(text)) {
+          setName(text);
+        }
       };
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
@@ -24,7 +33,7 @@ const ImportWallet = (props) => {
                 <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }} headerimg={{ tintColor: themeColor.text }} header='Import Wallet' />
                 <View style={styles.input_View}>
                     <Text style={[styles.input_label, { color: themeColor.subText }]}>{Strings.English.importWallet.enteName}</Text>
-                    <InputText placeholderText={Strings.English.importWallet.Wallet1} />
+                    <InputText placeholderText={Strings.English.importWallet.Wallet1} maximumLength={25} value={name} onChngFunction={handleSetValue}/>
                 </View>
 
                 <View style={[styles.data_View, { backgroundColor: themeColor.cardBackground, borderColor: themeColor.cardBackground }]}>
@@ -33,7 +42,7 @@ const ImportWallet = (props) => {
                         <Text style={[styles.secretPhrase_text, { color: themeColor.subText }]}>{Strings.English.importWallet.secretPhrase}</Text>
                     </View>
 
-                    <TextInput value={value} style={{color:themeColor.text}}/>
+                    <TextInput numberOfLines={2} value={value} style={{color:themeColor.text,paddingHorizontal:20}}/>
                     <View style={styles.iconBtn_view}>
                         <CustomBtnWIthIcon
                             onPressFun={handlePaste}

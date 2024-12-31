@@ -73,7 +73,7 @@ const Portfolio = (props) => {
 
                     />
                 </View>
-                <View style={{ position: "absolute", bottom: 100 }}>
+                <View style={{ position: "absolute", bottom: 85 }}>
 
                     <Text style={[styles.amount_text, { color: themeColor.subText }]}>Assets</Text>
                     <Text style={styles.pai_symbol}>Allocation</Text>
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
         height: dimen(49),
         width: dimen(188),
         borderRadius: 12,
+        justifyContent:"center"
 
     },
     chart: {
