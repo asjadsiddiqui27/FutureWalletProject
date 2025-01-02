@@ -15,19 +15,19 @@ const Checkout = (props) => {
     return (
         <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
-            <CustomHeader header={Strings.English.checkout.checkout} header_style={styles.header} onPress={() => { props.navigation.navigate("SellCrypto") }} headerimg={{tintColor:themeColor.text}} />
+            <CustomHeader header={Strings.checkout.checkout} header_style={styles.header} onPress={() => { props.navigation.navigate("SellCrypto") }} headerimg={{tintColor:themeColor.text}} />
             {/* ................................................................. */}
             <SeperateLine />
 
             <View style={styles.top_container}>
                 <View style={[styles.top_view,{backgroundColor:themeColor.cardBackground}]}>
                     <Image source={image.chcekoutEth} style={styles.centre_imgStyle} />
-                    <Text style={[styles.ethereum_text,{color:themeColor.text}]}>{Strings.English.checkout.Ethereum_text}</Text>
-                    <Text style={[styles.top_value_text,{color:themeColor.text}]}>{Strings.English.checkout.Ethereum_value}</Text>
+                    <Text style={[styles.ethereum_text,{color:themeColor.text}]}>{Strings.checkout.Ethereum_text}</Text>
+                    <Text style={[styles.top_value_text,{color:themeColor.text}]}>{Strings.checkout.Ethereum_value}</Text>
                 </View>
                 <View style={styles.IIndText_view}>
-                    <Text style={[styles.dollarValueETH,{color:themeColor.text}]}>{Strings.English.checkout.dollarValueETH}</Text>
-                    <Text style={[styles.longText,{color:themeColor.subText}]}>{Strings.English.checkout.longText}</Text>
+                    <Text style={[styles.dollarValueETH,{color:themeColor.text}]}>{Strings.checkout.dollarValueETH}</Text>
+                    <Text style={[styles.longText,{color:themeColor.subText}]}>{Strings.checkout.longText}</Text>
                 </View>
 
 
@@ -39,26 +39,26 @@ const Checkout = (props) => {
                 <View style={styles.first_caredRow_view}>
                     <View style={styles.text_img_view}>
                         <Image source={images.whiteTriangle} style={styles.IInd_img} />
-                        <Text style={[styles.alchemy_text,{color:themeColor.text}]}>{Strings.English.checkout.alchemy}</Text>
+                        <Text style={[styles.alchemy_text,{color:themeColor.text}]}>{Strings.checkout.alchemy}</Text>
                     </View>
                     <View>
-                        <Text style={[styles.Payment_Gateway_text,{color:themeColor.subText}]}>{Strings.English.checkout.payment_Gateway}</Text>
+                        <Text style={[styles.Payment_Gateway_text,{color:themeColor.subText}]}>{Strings.checkout.payment_Gateway}</Text>
                     </View>
                 </View>
 
                 <View style={styles.CardRow_view}>
-                    <CardRow text1={Strings.English.checkout.NetworkFee} text2={Strings.English.checkout.dollarValue1} />
-                    <CardRow text1={Strings.English.checkout.PlatformFee} text2={Strings.English.checkout.dollarValue2} />
+                    <CardRow text1={Strings.checkout.NetworkFee} text2={Strings.checkout.dollarValue1} />
+                    <CardRow text1={Strings.checkout.PlatformFee} text2={Strings.checkout.dollarValue2} />
                     <SeperateLine top_line={styles.Seperate_line2} />
-                    <CardRow text1={Strings.English.checkout.TotalAmount} text2={Strings.English.checkout.TotalValue} />
+                    <CardRow text1={Strings.checkout.TotalAmount} text2={Strings.checkout.TotalValue} />
                 </View>
 
 
             </View>
 
             <View style={styles.bottom_view}>
-                <Text style={[styles.bottom_text,{color:themeColor.subText}]}>{Strings.English.checkout.bottom_text}</Text>
-                <Button name={Strings.English.checkout.button_text} onPress={() => { props.navigation.navigate("ManageWallets") }} />
+                <Text style={[styles.bottom_text,{color:themeColor.subText}]}>{Strings.checkout.bottom_text}</Text>
+                <Button name={Strings.checkout.button_text} onPress={() => { props.navigation.navigate("ManageWallets") }} />
             </View>
 
         </SafeAreaView>

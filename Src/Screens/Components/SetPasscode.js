@@ -28,13 +28,13 @@ const SetPasscode = ({ navigation }) => {
         <SafeAreaView style={[styles.main_View, { backgroundColor: themeColor.background }]}>
             <View style={styles.main_container}>
                 <CustomHeader
-                    header={Strings.English.Passcode.setpasscode}
+                    header={Strings.Passcode.setpasscode}
                     headerimg={{ tintColor: themeColor.text }}
                     onPress={() => { navigation.navigate("verifysecretphrase") }}
                 />
                 <View style={styles.body_container}>
                     <Image source={image.setPasscode} style={styles.img_style} />
-                    <Text style={[styles.createPassTxt, { color: themeColor.text }]}>{Strings.English.Passcode.CreatePasscode}</Text>
+                    <Text style={[styles.createPassTxt, { color: themeColor.text }]}>{Strings.Passcode.CreatePasscode}</Text>
                     <View style={styles.input_container}>
                         <SmoothPinCodeInput
                             ref={pinInput}
@@ -58,7 +58,7 @@ const SetPasscode = ({ navigation }) => {
                         />
                     </View>
                     <View style={{ alignItems: "center" }}>
-                        <Text style={[styles.txt_style, { color: themeColor.subText }]}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
+                        <Text style={[styles.txt_style, { color: themeColor.subText }]}>{Strings.Passcode.passcodeAddsSecurity}</Text>
                     </View>
                 </View>
                 <View style={styles.Footer_container}>

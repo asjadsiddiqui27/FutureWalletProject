@@ -24,7 +24,7 @@ const CommonSettingRow = ({
                 </View>
                 <View style={styles.row}>
                     <Text style={[styles.text, { color: themeColor.text }]}>{text2}</Text>
-                    {text1 === Strings.English.Settings.preferences ? (
+                    {text1 === Strings.Settings.preferences ? (
                         <Image source={image2Source} />
                     ) : (
                         <Image source={image2Source} style={[styles.image, { tintColor: themeColor.subText }]} />

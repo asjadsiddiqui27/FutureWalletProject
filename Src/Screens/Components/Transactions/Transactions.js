@@ -74,10 +74,10 @@ const Transactions = (props) => {
 
         <SafeAreaView style={[styles.main_conatiner, { backgroundColor: themeColor.background }]}>
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
-            <CustomHeader header={Strings.English.Transactions.WrappedBNB} header_style={styles.header} imgRight={image.bell} headerimg={[styles.headerimg_style, { tintColor: themeColor.text }]} />
+            <CustomHeader header={Strings.Transactions.WrappedBNB} header_style={styles.header} imgRight={image.bell} headerimg={[styles.headerimg_style, { tintColor: themeColor.text }]} />
 
             <View style={styles.headerText_view}>
-                <Text style={[styles.headerText, { color: themeColor.subText }]}>{Strings.English.Transactions.heading}</Text>
+                <Text style={[styles.headerText, { color: themeColor.subText }]}>{Strings.Transactions.heading}</Text>
             </View>
             <SeperateLine />
 
@@ -91,22 +91,22 @@ const Transactions = (props) => {
                     </View>
 
                     <View>
-                        <Text style={[styles.ValueBTC_text, { color: themeColor.text }]}>{Strings.English.Transactions.WBNB}</Text>
-                        <Text style={[styles.amount_text, { color: themeColor.text }]}>{Strings.English.Transactions.dollarValue}</Text>
+                        <Text style={[styles.ValueBTC_text, { color: themeColor.text }]}>{Strings.Transactions.WBNB}</Text>
+                        <Text style={[styles.amount_text, { color: themeColor.text }]}>{Strings.Transactions.dollarValue}</Text>
                     </View>
 
                     <View style={styles.transition_data_view}>
 
-                        <CommonTransition image={image.send} label={Strings.English.Transactions.Send} onPress={() => { props.navigation.navigate("SendBtc") }} />
-                        <CommonTransition image={image.recieve} label={Strings.English.Transactions.Receive} />
-                        <CommonTransition image={image.swap} label={Strings.English.Transactions.Swap} />
-                        <CommonTransition image={image.buy} label={Strings.English.Transactions.Buy} />
-                        <CommonTransition image={image.sell} label={Strings.English.Transactions.Sell} />
+                        <CommonTransition image={image.send} label={Strings.Transactions.Send} onPress={() => { props.navigation.navigate("SendBtc") }} />
+                        <CommonTransition image={image.recieve} label={Strings.Transactions.Receive} />
+                        <CommonTransition image={image.swap} label={Strings.Transactions.Swap} />
+                        <CommonTransition image={image.buy} label={Strings.Transactions.Buy} />
+                        <CommonTransition image={image.sell} label={Strings.Transactions.Sell} />
                     </View>
 
 
                 </LinearGradient>
-                    <Text style={[styles.Transactions_text, { color: themeColor.text }]}>{Strings.English.Bitcoin.Transactions}</Text>
+                    <Text style={[styles.Transactions_text, { color: themeColor.text }]}>{Strings.Bitcoin.Transactions}</Text>
                 
 
 

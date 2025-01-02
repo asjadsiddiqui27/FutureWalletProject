@@ -59,7 +59,7 @@ const Bitcoin = (props) => {
 
     return (
         <SafeAreaView style={[styles.main_container,{backgroundColor:themeColor.background}]}>
-            <CustomHeader header={Strings.English.Bitcoin.Bitcoin} header_style={styles.header} onPress={() => { props.navigation.navigate("Send") }} headerimg={{tintColor:themeColor.text}}/>
+            <CustomHeader header={Strings.Bitcoin.Bitcoin} header_style={styles.header} onPress={() => { props.navigation.navigate("Send") }} headerimg={{tintColor:themeColor.text}}/>
 
           <SeperateLine/>
 
@@ -70,10 +70,10 @@ const Bitcoin = (props) => {
             <LinearGradient colors={themeColor.linearCard} style={styles.istView}>
 
                     <View style={styles.heading}>
-                        <Text style={[styles.coin_text,{color:themeColor.text}]}>{Strings.English.Bitcoin.Coin}</Text>
+                        <Text style={[styles.coin_text,{color:themeColor.text}]}>{Strings.Bitcoin.Coin}</Text>
                         <View style={{ flexDirection: "row" }}>
-                            <Text style={[styles.dollarValue_text,{color:themeColor.text}]}>{Strings.English.Bitcoin.dollarValue}</Text>
-                            <Text style={[styles.percentagevalue_text]}>{Strings.English.Bitcoin.percentagevalue}</Text>
+                            <Text style={[styles.dollarValue_text,{color:themeColor.text}]}>{Strings.Bitcoin.dollarValue}</Text>
+                            <Text style={[styles.percentagevalue_text]}>{Strings.Bitcoin.percentagevalue}</Text>
                         </View>
                     </View>
 
@@ -82,22 +82,22 @@ const Bitcoin = (props) => {
                     </View>
 
                     <View>
-                        <Text style={[styles.ValueBTC_text,{color:themeColor.text}]}>{Strings.English.Bitcoin.ValueBTC}</Text>
-                        <Text style={[styles.amount_text,{color:themeColor.subText}]}>{Strings.English.Bitcoin.amount}</Text>
+                        <Text style={[styles.ValueBTC_text,{color:themeColor.text}]}>{Strings.Bitcoin.ValueBTC}</Text>
+                        <Text style={[styles.amount_text,{color:themeColor.subText}]}>{Strings.Bitcoin.amount}</Text>
                     </View>
 
                     <View style={styles.transition_data_view}>
 
-                        <CommonTransition image={image.send} label={Strings.English.Bitcoin.Send} onPress={() => { props.navigation.navigate("SendBtc") }} />
-                        <CommonTransition image={image.recieve} label={Strings.English.Bitcoin.Receive} />
-                        <CommonTransition image={image.swap} label={Strings.English.Bitcoin.Swap} />
+                        <CommonTransition image={image.send} label={Strings.Bitcoin.Send} onPress={() => { props.navigation.navigate("SendBtc") }} />
+                        <CommonTransition image={image.recieve} label={Strings.Bitcoin.Receive} />
+                        <CommonTransition image={image.swap} label={Strings.Bitcoin.Swap} />
                     </View>
 
 
                 </LinearGradient>
 
                 <View>
-                    <Text style={[styles.Transactions_text,{color:themeColor.text}]}>{Strings.English.Bitcoin.Transactions}</Text>
+                    <Text style={[styles.Transactions_text,{color:themeColor.text}]}>{Strings.Bitcoin.Transactions}</Text>
                 </View>
 
                 {/*............................... flatlistData................................ */}

@@ -32,14 +32,14 @@ const ImportWallet = (props) => {
             <View style={styles.main_data_container}>
                 <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }} headerimg={{ tintColor: themeColor.text }} header='Import Wallet' />
                 <View style={styles.input_View}>
-                    <Text style={[styles.input_label, { color: themeColor.subText }]}>{Strings.English.importWallet.enteName}</Text>
-                    <InputText placeholderText={Strings.English.importWallet.Wallet1} maximumLength={25} value={name} onChngFunction={handleSetValue}/>
+                    <Text style={[styles.input_label, { color: themeColor.subText }]}>{Strings.importWallet.enteName}</Text>
+                    <InputText placeholderText={Strings.importWallet.Wallet1} maximumLength={25} value={name} onChngFunction={handleSetValue}/>
                 </View>
 
                 <View style={[styles.data_View, { backgroundColor: themeColor.cardBackground, borderColor: themeColor.cardBackground }]}>
 
                     <View style={styles.secretPhrase_view}>
-                        <Text style={[styles.secretPhrase_text, { color: themeColor.subText }]}>{Strings.English.importWallet.secretPhrase}</Text>
+                        <Text style={[styles.secretPhrase_text, { color: themeColor.subText }]}>{Strings.importWallet.secretPhrase}</Text>
                     </View>
 
                     <TextInput numberOfLines={2} value={value} style={{color:themeColor.text,paddingHorizontal:20}}/>
@@ -48,19 +48,19 @@ const ImportWallet = (props) => {
                             onPressFun={handlePaste}
                             main_View={styles.Btn_View}
                             buttonStyle={styles.CopybtnStyle}
-                            ImgSrc={image.copyIcon} LogoStyle={styles.copyLogo} textColor={styles.copyBtn_style} label={Strings.English.importWallet.Paste} />
+                            ImgSrc={image.copyIcon} LogoStyle={styles.copyLogo} textColor={styles.copyBtn_style} label={Strings.importWallet.Paste} />
                     </View>
                 </View>
                 <View style={styles.oneLine_text_view}>
-                    <Text style={[styles.oneLine_text, { color: themeColor.subText }]}>{Strings.English.importWallet.middleText}</Text>
+                    <Text style={[styles.oneLine_text, { color: themeColor.subText }]}>{Strings.importWallet.middleText}</Text>
                 </View>
 
             </View>
             <View style={styles.Bottom_main_continer}>
 
                 <Button name='Import' onPress={() => { props.navigation.navigate("setpasscode") }} />
-                <Text style={styles.bottom_text}>{Strings.English.importWallet.bottomText}</Text>
-                <Text style={styles.bottom_text}>{Strings.English.importWallet.bottomText2}</Text>
+                <Text style={styles.bottom_text}>{Strings.importWallet.bottomText}</Text>
+                <Text style={styles.bottom_text}>{Strings.importWallet.bottomText2}</Text>
             </View>
 
 

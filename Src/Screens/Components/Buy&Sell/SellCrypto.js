@@ -59,24 +59,24 @@ const SellCrypto = (props) => {
 
 
 
-            <CustomHeader header={Strings.English.buyCrypto.SellCrypto} header_style={styles.header_view} onPress={() => { props.navigation.navigate("TabNavigation") }} headerimg={{tintColor:themeColor.text}} />
+            <CustomHeader header={Strings.buyCrypto.SellCrypto} header_style={styles.header_view} onPress={() => { props.navigation.navigate("TabNavigation") }} headerimg={{tintColor:themeColor.text}} />
             <SeperateLine  />
 
             <View style={styles.top_data_view}>
 
 
 
-                <CustomCrypto labelText={Strings.English.buyCrypto.Receive} dollarValue={Strings.English.buyCrypto.value2} image={images.whiteTriangle} image2={images.DownArrow} middleText={Strings.English.buyCrypto.ETH} />
+                <CustomCrypto labelText={Strings.buyCrypto.Receive} dollarValue={Strings.buyCrypto.value2} image={images.whiteTriangle} image2={images.DownArrow} middleText={Strings.buyCrypto.ETH} />
                 <View style={styles.balance_view}>
-                    <Text style={[styles.balanceText,{color:themeColor.subText}]}>{Strings.English.buyCrypto.Balance}</Text>
-                    <Text style={[styles.balanceValue,{color:themeColor.text}]}>{Strings.English.buyCrypto.value3}</Text>
+                    <Text style={[styles.balanceText,{color:themeColor.subText}]}>{Strings.buyCrypto.Balance}</Text>
+                    <Text style={[styles.balanceValue,{color:themeColor.text}]}>{Strings.buyCrypto.value3}</Text>
 
                 </View>
 
-                <CustomCrypto labelText={Strings.English.buyCrypto.Payment} dollarValue={Strings.English.buyCrypto.value} image={images.usd} image2={images.DownArrow} middleText={Strings.English.buyCrypto.USD} />
+                <CustomCrypto labelText={Strings.buyCrypto.Payment} dollarValue={Strings.buyCrypto.value} image={images.usd} image2={images.DownArrow} middleText={Strings.buyCrypto.USD} />
 
                 <View style={styles.buy_Button_view}>
-                    <Button name={Strings.English.buyCrypto.Sell} onPress={() => { props.navigation.navigate("Checkout") }} />
+                    <Button name={Strings.buyCrypto.Sell} onPress={() => { props.navigation.navigate("Checkout") }} />
                 </View>
 
             </View>

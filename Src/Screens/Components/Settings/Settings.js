@@ -16,16 +16,16 @@ const Settings = (props) => {
     const { isDarkTheme, setIsDarkTheme } = useContext(AppContext);
     const [walletName, setWalletName] = useState("");
     const data = [
-        { id: '1', image1Source: images.blueManageWallet, image2Source: images.settingGreater, text1: Strings.English.Settings.ManageWallets, text2: walletName, text3: "ManageWallets" },
-        { id: '2', image1Source: images.blueSecurity, image2Source: images.settingGreater, text1: Strings.English.Settings.security ,text3:"Security"},
-        { id: '3', image1Source: images.bluePreferences, image2Source: image.theme, text1: Strings.English.Settings.preferences, text3: 'preferences' },
-        { id: '4', image1Source: images.blueRewards, image2Source: images.settingGreater, text1: Strings.English.Settings.referralRewards },
-        { id: '5', image1Source: images.blueNativeCurrency, image2Source: images.settingGreater, text1: Strings.English.Settings.nativeCurrency, text3: 'NativeCurrency' },
-        { id: '6', image1Source: images.blueAddressBook, image2Source: images.settingGreater, text1: Strings.English.Settings.addressBook, text3: 'AddressBook' },
-        { id: '7', image1Source: images.blueAboutUs, image2Source: images.settingGreater, text1: Strings.English.Settings.aboutUs },
-        { id: '8', image1Source: images.bluePrivacyPolicy, image2Source: images.settingGreater, text1: Strings.English.Settings.privacyPolicy },
-        { id: '9', image1Source: images.blueFutureWallet, image2Source: images.settingGreater, text1: Strings.English.Settings.futurewalletcom },
-        { id: '10', image1Source: images.blueLogout, image2Source: images.settingGreater, text1: Strings.English.Settings.logout, text3: "onboarding" },
+        { id: '1', image1Source: images.blueManageWallet, image2Source: images.settingGreater, text1: Strings.Settings.ManageWallets, text2: walletName, text3: "ManageWallets" },
+        { id: '2', image1Source: images.blueSecurity, image2Source: images.settingGreater, text1: Strings.Settings.security ,text3:"Security"},
+        { id: '3', image1Source: images.bluePreferences, image2Source: image.theme, text1: Strings.Settings.preferences, text3: 'preferences' },
+        { id: '4', image1Source: images.blueRewards, image2Source: images.settingGreater, text1: Strings.Settings.referralRewards },
+        { id: '5', image1Source: images.blueNativeCurrency, image2Source: images.settingGreater, text1: Strings.Settings.nativeCurrency, text3: 'NativeCurrency' },
+        { id: '6', image1Source: images.blueAddressBook, image2Source: images.settingGreater, text1: Strings.Settings.addressBook, text3: 'AddressBook' },
+        { id: '7', image1Source: images.blueAboutUs, image2Source: images.settingGreater, text1: Strings.Settings.aboutUs },
+        { id: '8', image1Source: images.bluePrivacyPolicy, image2Source: images.settingGreater, text1: Strings.Settings.privacyPolicy },
+        { id: '9', image1Source: images.blueFutureWallet, image2Source: images.settingGreater, text1: Strings.Settings.futurewalletcom },
+        { id: '10', image1Source: images.blueLogout, image2Source: images.settingGreater, text1: Strings.Settings.logout, text3: "onboarding" },
     ];
 
     const toggleTheme = () => {
@@ -68,7 +68,7 @@ const Settings = (props) => {
         <View style={[styles.main_container, { backgroundColor: themeColor.background }]}>
             {/* <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" /> */}
             <View style={styles.header_view}>
-                <CustomHeader header={Strings.English.Settings.settings} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("TabNavigation") }} />
+                <CustomHeader header={Strings.Settings.settings} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("TabNavigation") }} />
             </View>
             <SeperateLine />
             <FlatList

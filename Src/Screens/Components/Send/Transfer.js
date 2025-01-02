@@ -15,25 +15,25 @@ const Transfer = (props) => {
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
-            <CustomHeader header={Strings.English.Transfer.Transfer} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("SendBtc") }} />
+            <CustomHeader header={Strings.Transfer.Transfer} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("SendBtc") }} />
             <SeperateLine />
 
 
             <View style={styles.main_content_view}>
 
                 <View style={styles.top_view}>
-                    <Text style={[styles.ValueBTC_text,{color:themeColor.text}]}>{Strings.English.Transfer.BtcValue}</Text>
-                    <Text style={[styles.amount_text,{color:themeColor.subText}]}>{Strings.English.Transfer.amount}</Text>
+                    <Text style={[styles.ValueBTC_text,{color:themeColor.text}]}>{Strings.Transfer.BtcValue}</Text>
+                    <Text style={[styles.amount_text,{color:themeColor.subText}]}>{Strings.Transfer.amount}</Text>
                 </View>
 
                 <View style={[styles.data_View,{backgroundColor:themeColor.cardBackground}]}>
-                    <CardRow text1={Strings.English.Transfer.DateTxt} text2={Strings.English.Transfer.dateOrTime}/>
-                    <CardRow text1={Strings.English.Transfer.Status} text2={Strings.English.Transfer.StatusData}/>
-                    <CardRow text1={Strings.English.Transfer.Recipient} text2={Strings.English.Transfer.key}/>
+                    <CardRow text1={Strings.Transfer.DateTxt} text2={Strings.Transfer.dateOrTime}/>
+                    <CardRow text1={Strings.Transfer.Status} text2={Strings.Transfer.StatusData}/>
+                    <CardRow text1={Strings.Transfer.Recipient} text2={Strings.Transfer.key}/>
                 </View>
 
                 <View style={[styles.data_View2,{backgroundColor:themeColor.cardBackground}]}>
-                    <CardRow text1={Strings.English.Transfer.NetworkFeeTxt} text2={Strings.English.Transfer.NetworkFee}/>
+                    <CardRow text1={Strings.Transfer.NetworkFeeTxt} text2={Strings.Transfer.NetworkFee}/>
                 </View>
             </View>
 

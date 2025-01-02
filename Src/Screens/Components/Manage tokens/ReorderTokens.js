@@ -15,10 +15,10 @@ import { Strings } from '../../../Theme/Strings';
 const ReorderTokens = (props) => {
     const { colors: themeColor, image } = useTheme()
     const [data, setData] = useState([
-        { id: '1', imageSource: images.notification2, name:Strings.English.reorderToken.Binance, name2: Strings.English.reorderToken.BNB, imageSource2: images.reorderIcon },
-        { id: '2', imageSource: images.notification1, name: Strings.English.reorderToken.Bitcoin, name2: Strings.English.reorderToken.BTC, imageSource2: images.reorderIcon },
-        { id: '3', imageSource: image.ethImage, name: Strings.English.reorderToken.Ethereum, name2: Strings.English.reorderToken.ETH, imageSource2: images.reorderIcon },
-        { id: '4', imageSource: images.tron, name: Strings.English.reorderToken.Tron, name2: Strings.English.reorderToken.TRX, imageSource2: images.reorderIcon },
+        { id: '1', imageSource: images.notification2, name:Strings.reorderToken.Binance, name2: Strings.reorderToken.BNB, imageSource2: images.reorderIcon },
+        { id: '2', imageSource: images.notification1, name: Strings.reorderToken.Bitcoin, name2: Strings.reorderToken.BTC, imageSource2: images.reorderIcon },
+        { id: '3', imageSource: image.ethImage, name: Strings.reorderToken.Ethereum, name2: Strings.reorderToken.ETH, imageSource2: images.reorderIcon },
+        { id: '4', imageSource: images.tron, name: Strings.reorderToken.Tron, name2: Strings.reorderToken.TRX, imageSource2: images.reorderIcon },
     ]);
 
     const renderItem = ({ item , drag, isActive}) => (
@@ -50,7 +50,7 @@ const ReorderTokens = (props) => {
             <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
                 <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
-                <CustomHeader header={Strings.English.reorderToken.headerName} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Dashboard") }} />
+                <CustomHeader header={Strings.reorderToken.headerName} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Dashboard") }} />
                 <SeperateLine />
                 <DraggableFlatList
                     data={data}

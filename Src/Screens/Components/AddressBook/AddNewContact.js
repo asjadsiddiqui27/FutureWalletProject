@@ -14,18 +14,18 @@ const AddNewContact = (props) => {
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
-            <CustomHeader header={Strings.English.AddressBook.AddNewContact} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Settings") }} />
+            <CustomHeader header={Strings.AddressBook.AddNewContact} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Settings") }} />
             <SeperateLine />
             <View style={{ flex: 0.9 }}>
                 <View style={styles.inputView}>
-                <TextOrInput label={Strings.English.AddressBook.enterContactName} placeholder={Strings.English.AddressBook.jordan}/>
-                <TextOrInput label={Strings.English.AddressBook.Network} placeholder={Strings.English.AddressBook.Ethereum}/>
-                <TextOrInput label={Strings.English.AddressBook.WalletAddress} placeholder={Strings.English.AddressBook.ox}/>
-                <TextOrInput label={Strings.English.AddressBook.WalletName} placeholder={Strings.English.AddressBook.ETH}/>
+                <TextOrInput label={Strings.AddressBook.enterContactName} placeholder={Strings.AddressBook.jordan}/>
+                <TextOrInput label={Strings.AddressBook.Network} placeholder={Strings.AddressBook.Ethereum}/>
+                <TextOrInput label={Strings.AddressBook.WalletAddress} placeholder={Strings.AddressBook.ox}/>
+                <TextOrInput label={Strings.AddressBook.WalletName} placeholder={Strings.AddressBook.ETH}/>
                 </View>
             </View>
             <View style={{ flex: 0.15, marginHorizontal: dimen(24) }}>
-                <Button name={Strings.English.AddressBook.Save} onPress={()=>{props.navigation.navigate("AddressBook")}}/>
+                <Button name={Strings.AddressBook.Save} onPress={()=>{props.navigation.navigate("AddressBook")}}/>
             </View>
         </SafeAreaView>
     )

@@ -89,7 +89,7 @@ const ManageBottomSheet = (props, { value }) => {
                     }}
                 >
 
-                    <Text style={[styles.topText, { color: themeColor.text }]}>{Strings.English.ManageBottomSheet.Wallet}</Text>
+                    <Text style={[styles.topText, { color: themeColor.text }]}>{Strings.ManageBottomSheet.Wallet}</Text>
                     <TextOrInput
                         label="Name" placeholder="Wallet 01"
                         value={walletName}

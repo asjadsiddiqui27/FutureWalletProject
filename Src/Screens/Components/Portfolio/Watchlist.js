@@ -83,14 +83,14 @@ const Watchlist = (props) => {
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
-            <CustomHeader header={Strings.English.Portfolio.Protfolio} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Swap") }} />
+            <CustomHeader header={Strings.Portfolio.Protfolio} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Swap") }} />
             <SeperateLine />
             <View style={styles.topMain_view}>
 
 
                 <View style={styles.top_twoBtn_view}>
-                    <Button customColor={[themeColor.cardBackground, themeColor.cardBackground, themeColor.cardBackground]} name={Strings.English.Portfolio.WalletStats} buttonStyle={[styles.buttonStyle]} onPress={() => { props.navigation.navigate("Portfolio") }} />
-                    <Button name={Strings.English.Portfolio.onWatchlist} buttonStyle={styles.buttonStyle} />
+                    <Button customColor={[themeColor.cardBackground, themeColor.cardBackground, themeColor.cardBackground]} name={Strings.Portfolio.WalletStats} buttonStyle={[styles.buttonStyle]} onPress={() => { props.navigation.navigate("Portfolio") }} />
+                    <Button name={Strings.Portfolio.onWatchlist} buttonStyle={styles.buttonStyle} />
                 </View>
                 <View style={styles.searchbar_view}>
                     <CustomSearchBar onChangeText={handleSearch} value={search} />
@@ -110,7 +110,7 @@ const Watchlist = (props) => {
                 </View>
             </View>
             <View style={styles.btn_view}>
-                <Button name={Strings.English.Portfolio.btnText} onPress={() => { props.navigation.navigate("AddToWatchlist") }}/>
+                <Button name={Strings.Portfolio.btnText} onPress={() => { props.navigation.navigate("AddToWatchlist") }}/>
             </View>
 
 

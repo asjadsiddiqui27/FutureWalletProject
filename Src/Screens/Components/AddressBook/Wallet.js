@@ -53,16 +53,16 @@ const handleDelete=()=>{
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
-            <CustomHeader header={Strings.English.AddressBook.EditAddressBook} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Settings") }} onPress2={() => { props.navigation.navigate("AddNewContact") }} />
+            <CustomHeader header={Strings.AddressBook.EditAddressBook} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Settings") }} onPress2={() => { props.navigation.navigate("AddNewContact") }} />
             <SeperateLine />
             <View style={{ flex: 0.9 ,marginHorizontal: dimen(24)}}>
                 <View style={styles.inputView}>
-                    <TextOrInput label={Strings.English.AddressBook.ContactName} placeholder={Strings.English.AddressBook.jordan} label2={Strings.English.AddressBook.DeleteContact} onPress={() => handleDelete()}/>
+                    <TextOrInput label={Strings.AddressBook.ContactName} placeholder={Strings.AddressBook.jordan} label2={Strings.AddressBook.DeleteContact} onPress={() => handleDelete()}/>
                     <CustomModal isVisible={isCustomModalVisible} setModalVisible={setCustomModalVisible} navigation={props.navigation} />
 
                 </View>
                 <View>
-                    <Text style={[styles.WalletName, { color: themeColor.text }]}>{Strings.English.AddressBook.WalletName}</Text>
+                    <Text style={[styles.WalletName, { color: themeColor.text }]}>{Strings.AddressBook.WalletName}</Text>
                     <View style={{ marginTop: dimen(25) }}>
 
 
@@ -80,7 +80,7 @@ const handleDelete=()=>{
                 </View>
             </View>
             <View style={{ flex: 0.15, marginHorizontal: dimen(24) }}>
-                <Button name={Strings.English.AddressBook.Update} onPress={() => { props.navigation.navigate("AddressBook") }} />
+                <Button name={Strings.AddressBook.Update} onPress={() => { props.navigation.navigate("AddressBook") }} />
             </View>
         </SafeAreaView>
     )

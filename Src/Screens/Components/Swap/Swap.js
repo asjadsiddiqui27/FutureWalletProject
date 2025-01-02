@@ -36,9 +36,9 @@ const Swap = (props) => {
             <View style={styles.main_content_container}>
                 <View style={[styles.Ist_contentView, { backgroundColor: themeColor.cardBackground }]}>
                     <Image source={image.transfer} style={{ position: "absolute", top: 72, right: 30 }} />
-                    <CommonSwapRow image1={images.notification2} image2={images.settingGreater} label={Strings.English.Swap.label1} value={Strings.English.Swap.value1} balanceValue={Strings.English.Swap.BnbValue} tokenName={Strings.English.Swap.mainTextBnb} onPress={() => { props.navigation.navigate("Chain") }} longOnPress={() => { props.navigation.navigate("SwapTo") }}/>
+                    <CommonSwapRow image1={images.notification2} image2={images.settingGreater} label={Strings.Swap.label1} value={Strings.Swap.value1} balanceValue={Strings.Swap.BnbValue} tokenName={Strings.Swap.mainTextBnb} onPress={() => { props.navigation.navigate("Chain") }} longOnPress={() => { props.navigation.navigate("SwapTo") }}/>
                     <SeperateLine top_line={{ marginTop: dimen(26) }} />
-                    <CommonSwapRow image1={images.teher} image2={images.settingGreater} label={Strings.English.Swap.label2} value={Strings.English.Swap.value1} balanceValue={Strings.English.Swap.usdtValue} tokenName={Strings.English.Swap.mainTextUsdt} longOnPress={() => { props.navigation.navigate("SwapFrom") }} />
+                    <CommonSwapRow image1={images.teher} image2={images.settingGreater} label={Strings.Swap.label2} value={Strings.Swap.value1} balanceValue={Strings.Swap.usdtValue} tokenName={Strings.Swap.mainTextUsdt} longOnPress={() => { props.navigation.navigate("SwapFrom") }} />
 
                 </View>
                 <View style={styles.transactionValue_view}>
@@ -55,9 +55,9 @@ const Swap = (props) => {
 
             <View style={styles.bottom_mainView}>
                 <View>
-                    <CardRow text1={Strings.English.Swap.Quote} text2={Strings.English.Swap.quoteValue} />
-                    <CardRow text1={Strings.English.Swap.providerFees} text2={Strings.English.Swap.providerFeesValue} />
-                    <CardRow text1={Strings.English.Swap.networkFees} text2={Strings.English.Swap.networkFeesValue} />
+                    <CardRow text1={Strings.Swap.Quote} text2={Strings.Swap.quoteValue} />
+                    <CardRow text1={Strings.Swap.providerFees} text2={Strings.Swap.providerFeesValue} />
+                    <CardRow text1={Strings.Swap.networkFees} text2={Strings.Swap.networkFeesValue} />
                 </View>
                 <View style={{ marginTop: dimen(24), flexDirection: "row" }}>
                     <Button name='Approve BNB' customColor={[themeColor.cardBackground, themeColor.cardBackground, themeColor.cardBackground]} buttonStyle={[styles.buttonStyle]} onPress={() => { props.navigation.navigate("PreviewSwap") }} />

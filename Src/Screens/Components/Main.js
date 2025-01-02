@@ -31,11 +31,11 @@ const Main = () => {
     }, [isFocused]);
 
     const data = [
-        { id: '1', imageSource: images.notification2, name: Strings.English.main.BNBBeaconChain, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: bnbBalance, dollarValueRight: Strings.English.main.dollarValueRight1 },
-        { id: '2', imageSource: image.ethImage, name: Strings.English.main.Ethereum, dollarValue: Strings.English.main.dollarValue3, percentageValue: Strings.English.main.percentagevalue3, rightText: ethBalance, dollarValueRight: Strings.English.main.dollarValueRight3 },
-        { id: '3', imageSource: images.notification1, name: Strings.English.main.Bitcoin, dollarValue: Strings.English.main.dollarValue2, percentageValue: Strings.English.main.percentagevalue2, rightText: btcBalance, dollarValueRight: Strings.English.main.dollarValueRight2 },
-        { id: '4', imageSource: images.tron, name: Strings.English.main.Tron, dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: tronBalance, dollarValueRight: Strings.English.main.dollarValueRight4 },
-        { id: '5', imageSource: images.polygon, name: "Polygon", dollarValue: Strings.English.main.dollarValue1, percentageValue: Strings.English.main.percentagevalue1, rightText: maticBalance, dollarValueRight: Strings.English.main.dollarValueRight4 },
+        { id: '1', imageSource: images.notification2, name: Strings.main.BNBBeaconChain, dollarValue: Strings.main.dollarValue1, percentageValue: Strings.main.percentagevalue1, rightText: bnbBalance, dollarValueRight: Strings.main.dollarValueRight1 },
+        { id: '2', imageSource: image.ethImage, name: Strings.main.Ethereum, dollarValue: Strings.main.dollarValue3, percentageValue: Strings.main.percentagevalue3, rightText: ethBalance, dollarValueRight: Strings.main.dollarValueRight3 },
+        { id: '3', imageSource: images.notification1, name: Strings.main.Bitcoin, dollarValue: Strings.main.dollarValue2, percentageValue: Strings.main.percentagevalue2, rightText: btcBalance, dollarValueRight: Strings.main.dollarValueRight2 },
+        { id: '4', imageSource: images.tron, name: Strings.main.Tron, dollarValue: Strings.main.dollarValue1, percentageValue: Strings.main.percentagevalue1, rightText: tronBalance, dollarValueRight: Strings.main.dollarValueRight4 },
+        { id: '5', imageSource: images.polygon, name: "Polygon", dollarValue: Strings.main.dollarValue1, percentageValue: Strings.main.percentagevalue1, rightText: maticBalance, dollarValueRight: Strings.main.dollarValueRight4 },
     ];
 
     const renderItem = ({ item }) => (
@@ -76,17 +76,17 @@ const Main = () => {
             <CustomHeader onPress={() => { navigation.navigate("ConfirmPasscode") }} header={walletName} header_style={styles.header} imgLeft={images.welcomelogo} imgRight={image.bell} headerimg={styles.headerimg_style} onPress2={() => { navigation.navigate("Notification") }} />
 
             <View style={styles.top_labelText_view}>
-                <Text style={[styles.top_labelText, { color: themeColor.text }]}>{Strings.English.main.totalBalance}</Text>
+                <Text style={[styles.top_labelText, { color: themeColor.text }]}>{Strings.main.totalBalance}</Text>
                 <Text style={[styles.top_valuetext, { color: themeColor.text }]}>{totalBalance}</Text>
             </View>
 
 
             <View style={styles.transitionView_container}>
 
-                <CommonTransition image={image.send} label={Strings.English.Transactions.Send} onPress={() => { navigation.navigate("Send") }} />
-                <CommonTransition image={image.recieve} label={Strings.English.Transactions.Receive} onPress={() => { navigation.navigate("Receive") }} />
-                <CommonTransition image={image.buy} label={Strings.English.Transactions.Buy} onPress={() => { navigation.navigate("BuyCrypto") }} />
-                <CommonTransition image={image.sell} label={Strings.English.Transactions.Sell} onPress={() => { navigation.navigate("SellCrypto") }} />
+                <CommonTransition image={image.send} label={Strings.Transactions.Send} onPress={() => { navigation.navigate("Send") }} />
+                <CommonTransition image={image.recieve} label={Strings.Transactions.Receive} onPress={() => { navigation.navigate("Receive") }} />
+                <CommonTransition image={image.buy} label={Strings.Transactions.Buy} onPress={() => { navigation.navigate("BuyCrypto") }} />
+                <CommonTransition image={image.sell} label={Strings.Transactions.Sell} onPress={() => { navigation.navigate("SellCrypto") }} />
 
             </View>
 
@@ -95,7 +95,7 @@ const Main = () => {
             <View style={[styles.bottom_View, { backgroundColor: themeColor.cardBackground }]}>
                 <View style={styles.bottom_ist_view}>
                     <View style={styles.token_textView}>
-                        <Text style={[styles.token_text, { color: themeColor.text }]}>{Strings.English.main.Tokens}</Text>
+                        <Text style={[styles.token_text, { color: themeColor.text }]}>{Strings.main.Tokens}</Text>
                     </View>
 
                     <View style={styles.img_view}>

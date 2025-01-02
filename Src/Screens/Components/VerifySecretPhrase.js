@@ -58,7 +58,7 @@ const VerifySecretPhrase = (props) => {
                 <CustomHeader onPress={() => { props.navigation.navigate("secretphrase") }} headerimg={{ tintColor: themeColor.text }} header='Verify Secret Phrase' />
                 <View style={styles.main_body_container}>
                     <View style={styles.text_heading_container}>
-                        <Text style={[styles.text_main_heading, { color: themeColor.subText }]}>{Strings.English.verifyPhrase.taptheWord}</Text>
+                        <Text style={[styles.text_main_heading, { color: themeColor.subText }]}>{Strings.verifyPhrase.taptheWord}</Text>
                     </View>
 
                     <View style={[styles.body_main_container, { backgroundColor: themeColor.cardBackground }]}>

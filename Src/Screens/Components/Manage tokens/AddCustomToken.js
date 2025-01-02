@@ -43,7 +43,7 @@ const AddCustomToken = (props) => {
                 </View>
             </View>
             <View style={{ flex: 0.15, marginHorizontal: dimen(24), }}>
-                <Button name={Strings.English.AddressBook.Save} onPress={() => { props.navigation.navigate("ManageTokens") }} />
+                <Button name={Strings.AddressBook.Save} onPress={() => { props.navigation.navigate("ManageTokens") }} />
             </View>
         </SafeAreaView>
     )

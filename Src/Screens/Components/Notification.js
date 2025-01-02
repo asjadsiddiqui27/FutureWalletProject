@@ -12,9 +12,9 @@ import { useTheme } from '@react-navigation/native';
 const Notification = (props) => {
     const {colors: themeColor, image} = useTheme()
     const data = [
-        { id: '1', imageSource: images.notification1, text: Strings.English.notification.text1, time: Strings.English.notification.time1 },
-        { id: '2', imageSource: images.notification2, text: Strings.English.notification.text2, time: Strings.English.notification.time2 },
-        { id: '3', imageSource: image.ethImage, text: Strings.English.notification.text3, time: Strings.English.notification.time3 },
+        { id: '1', imageSource: images.notification1, text: Strings.notification.text1, time: Strings.notification.time1 },
+        { id: '2', imageSource: images.notification2, text: Strings.notification.text2, time: Strings.notification.time2 },
+        { id: '3', imageSource: image.ethImage, text: Strings.notification.text3, time: Strings.notification.time3 },
     ];
 
     const renderItem = ({ item }) => (

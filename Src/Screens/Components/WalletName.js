@@ -38,16 +38,16 @@ const WalletName = (props) => {
       <View style={styles.container}>
         <CustomHeader onPress={() => { props.navigation.navigate("legal") }} header='Wallet Name' headerimg={{ tintColor: themeColor.text }} />
         <View style={styles.heading_container}>
-          <Text style={[styles.heading_text_style, { color: themeColor.subText }]}>{Strings.English.walletName.youCanlable}</Text>
+          <Text style={[styles.heading_text_style, { color: themeColor.subText }]}>{Strings.walletName.youCanlable}</Text>
         </View>
 
         <View style={styles.Input_main_container}>
           <Text style={[styles.name_label_name, { color: themeColor.subText }]}>
-            {Strings.English.walletName.enterName}
+            {Strings.walletName.enterName}
           </Text>
           <InputText maximumLength={25} value={name} onChngFunction={handleSetValue} placeholderText='Enter here' />
           <Text style={styles.max_limit_txt_style}>
-            {Strings.English.walletName.maxLimit + name.length + '/25'}
+            {Strings.walletName.maxLimit + name.length + '/25'}
           </Text>
         </View>
 

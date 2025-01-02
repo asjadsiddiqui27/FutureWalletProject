@@ -28,9 +28,9 @@ const SwapOnChain = (props) => {
             <View style={styles.main_content_container}>
                 <View style={[styles.Ist_contentView, { backgroundColor: themeColor.cardBackground }]}>
                     <Image source={image.transfer} style={{ position: "absolute", top: 73, right: 30 }} />
-                    <CommonSwapRow image1={images.notification2} image2={images.settingGreater} label={Strings.English.Swap.label1} value={Strings.English.Swap.value1} balanceValue={Strings.English.Swap.BnbValue} tokenName={Strings.English.Swap.mainTextBnb} onPress={()=>{props.navigation.navigate("Chain")}}/>
+                    <CommonSwapRow image1={images.notification2} image2={images.settingGreater} label={Strings.Swap.label1} value={Strings.Swap.value1} balanceValue={Strings.Swap.BnbValue} tokenName={Strings.Swap.mainTextBnb} onPress={()=>{props.navigation.navigate("Chain")}}/>
                     <SeperateLine top_line={{ marginTop: dimen(26) }} />
-                    <CommonSwapRow image1={image.ethImage} image2={images.settingGreater} label={Strings.English.Swap.label2} value={Strings.English.Swap.value1} balanceValue={Strings.English.Swap.usdtValue} tokenName={Strings.English.Swap.ETH} />
+                    <CommonSwapRow image1={image.ethImage} image2={images.settingGreater} label={Strings.Swap.label2} value={Strings.Swap.value1} balanceValue={Strings.Swap.usdtValue} tokenName={Strings.Swap.ETH} />
 
                 </View>
                 <View style={styles.transactionValue_view}>

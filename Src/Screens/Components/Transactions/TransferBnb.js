@@ -26,12 +26,12 @@ const TransferBnb = (props) => {
                 </View>
 
                 <View style={[styles.content_view, { backgroundColor: themeColor.cardBackground }]}>
-                    <CardRow text1={Strings.English.Transfer.DateTxt} text2={Strings.English.Transfer.dateOrTime} />
-                    <CardRow text1={Strings.English.Transfer.Status} text2={Strings.English.Transfer.StatusData} />
-                    <CardRow text1={Strings.English.Transfer.Recipient} text2={Strings.English.Transfer.key} />
+                    <CardRow text1={Strings.Transfer.DateTxt} text2={Strings.Transfer.dateOrTime} />
+                    <CardRow text1={Strings.Transfer.Status} text2={Strings.Transfer.StatusData} />
+                    <CardRow text1={Strings.Transfer.Recipient} text2={Strings.Transfer.key} />
                 </View>
                 <View style={[styles.data_View2, { backgroundColor: themeColor.cardBackground }]}>
-                    <CardRow text1={Strings.English.Transfer.NetworkFeeTxt} text2={Strings.English.Transfer.NetworkFee2} />
+                    <CardRow text1={Strings.Transfer.NetworkFeeTxt} text2={Strings.Transfer.NetworkFee2} />
                 </View>
             </View>
             <View style={styles.btn_view}>

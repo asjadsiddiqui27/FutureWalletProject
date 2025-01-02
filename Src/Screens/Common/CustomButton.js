@@ -19,6 +19,7 @@ function Button({
 
 }) {
     const { colors: themeColor, image } = useTheme()
+    console.log("themeColor",themeColor)
 
     const renderBackground = () => {
 

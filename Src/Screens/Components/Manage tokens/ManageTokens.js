@@ -12,10 +12,10 @@ import Button from '../../Common/CustomButton';
 import { Strings } from '../../../Theme/Strings';
 
 const data = [
-    { id: '1', imageSource: images.notification2, name: Strings.English.manageToken.Binance, name2: Strings.English.manageToken.BNB, toggled: true },
-    { id: '2', imageSource: images.notification1, name: Strings.English.manageToken.Bitcoin, name2: Strings.English.manageToken.BTC, toggled: false },
-    { id: '3', imageSource: images.notification3, name: Strings.English.manageToken.Ethereum, name2: Strings.English.manageToken.ETH, toggled: true },
-    { id: '4', imageSource: images.tron, name: Strings.English.manageToken.Tron, name2: Strings.English.manageToken.TRX, toggled: false },
+    { id: '1', imageSource: images.notification2, name: Strings.manageToken.Binance, name2: Strings.manageToken.BNB, toggled: true },
+    { id: '2', imageSource: images.notification1, name: Strings.manageToken.Bitcoin, name2: Strings.manageToken.BTC, toggled: false },
+    { id: '3', imageSource: images.notification3, name: Strings.manageToken.Ethereum, name2: Strings.manageToken.ETH, toggled: true },
+    { id: '4', imageSource: images.tron, name: Strings.manageToken.Tron, name2: Strings.manageToken.TRX, toggled: false },
 ];
 
 const ManageTokens = (props) => {
@@ -65,7 +65,7 @@ const ManageTokens = (props) => {
         <SafeAreaView style={[styles.mainContainer, { backgroundColor: themeColor.background }]}>
             <StatusBar backgroundColor={themeColor.background} barStyle="dark-content" />
             <CustomHeader
-                header={Strings.English.manageToken.headerName}
+                header={Strings.manageToken.headerName}
                 header_style={styles.header}
                 headerimg={{ tintColor: themeColor.text }}
                 onPress={() => { props.navigation.navigate("Dashboard") }}
@@ -85,7 +85,7 @@ const ManageTokens = (props) => {
                 keyExtractor={(item) => item.id}
             />
              <View style={styles.footer_container}>
-                    <Button name={Strings.English.manageToken.buttonText} onPress={()=>{props.navigation.navigate("AddCustomToken")}}/>
+                    <Button name={Strings.manageToken.buttonText} onPress={()=>{props.navigation.navigate("AddCustomToken")}}/>
                 </View>
         </SafeAreaView>
     );

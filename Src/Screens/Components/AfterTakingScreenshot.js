@@ -29,11 +29,11 @@ export default function AfterTakingScreenshot(props) {
   const { navigation } = props;
 
   const data = [
-    { id: '1', text: Strings.English.afterTakingScreenshot.line_1 },
-    { id: '2', text: Strings.English.afterTakingScreenshot.line_2 },
-    { id: '3', text: Strings.English.afterTakingScreenshot.line_3 },
-    { id: '4', text: Strings.English.afterTakingScreenshot.line_4 },
-    { id: '5', text: Strings.English.afterTakingScreenshot.line_5, imageSource: images.vector },
+    { id: '1', text: Strings.afterTakingScreenshot.line_1 },
+    { id: '2', text: Strings.afterTakingScreenshot.line_2 },
+    { id: '3', text: Strings.afterTakingScreenshot.line_3 },
+    { id: '4', text: Strings.afterTakingScreenshot.line_4 },
+    { id: '5', text: Strings.afterTakingScreenshot.line_5, imageSource: images.vector },
 
   ];
 
@@ -79,7 +79,7 @@ export default function AfterTakingScreenshot(props) {
             />
             {/* <Image style={styles.img_vector} source={image.bottomsheetIcon} /> */}
             <Text style={[styles.text_warn, { color: themeColor.text }]}>
-              {Strings.English.afterTakingScreenshot.naverShare}
+              {Strings.afterTakingScreenshot.naverShare}
             </Text>
           </View>
           <FlatList

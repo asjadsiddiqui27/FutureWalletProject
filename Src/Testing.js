@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Text, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, View, TouchableOpacity } from 'react-native';
 import PieChart from 'react-native-pie-chart';
+import { Strings } from './Theme/Strings';
+import Button from './Screens/Common/CustomButton';
 
 export default class Testing extends Component {
   render() {
@@ -13,18 +15,23 @@ export default class Testing extends Component {
     return (
       <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={styles.container}>
-        <Text style={styles.title}>Testing 1</Text>
+        <Text style={styles.title}>{Strings.Portfolio.onWatchlist}</Text>
         <PieChart widthAndHeight={widthAndHeight} series={series}     sliceColor={sliceColor}/>
 
-          <Text style={styles.title}>Testing 2</Text>
+          {/* <Text style={styles.title}>Testing 2</Text>
           <PieChart
             widthAndHeight={widthAndHeight}
             series={series}
             sliceColor={sliceColor}
             coverRadius={0.45} // For a doughnut effect
           />
-          
+           */}
+           
         </View>
+        <View style={{flex:0.2,flexDirection:"row"}}>
+          <Button />
+          <Button />
+           </View>
       </ScrollView>
     );
   }
@@ -38,5 +45,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     margin: 10,
+    color:"black"
   },
 });

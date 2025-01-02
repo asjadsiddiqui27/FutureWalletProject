@@ -23,26 +23,26 @@ const PreviewSwap = (props) => {
       <SeperateLine />
 
       <View style={{flex:0.8}}>
-        <Text style={[styles.top_text, { color: themeColor.text }]}>{Strings.English.Swap.reviewTransaction}</Text>
+        <Text style={[styles.top_text, { color: themeColor.text }]}>{Strings.Swap.reviewTransaction}</Text>
         <View style={{ marginHorizontal: dimen(24) }}>
           <View style={styles.mainContent_view}>
             <Image source={image.downTransfer} style={styles.image_style} />
-            <CommonImgTxtRow imagedata={images.notification2} label={Strings.English.Swap.BnbValue2} />
-            <CommonImgTxtRow imagedata={images.busd} label={Strings.English.Swap.ValueBUSD} />
+            <CommonImgTxtRow imagedata={images.notification2} label={Strings.Swap.BnbValue2} />
+            <CommonImgTxtRow imagedata={images.busd} label={Strings.Swap.ValueBUSD} />
 
           </View>
 
           <View style={[styles.row_data_view, { backgroundColor: themeColor.cardBackground }]}>
-            <CardRow text1={Strings.English.Swap.From} text2={Strings.English.Swap.fromData} />
+            <CardRow text1={Strings.Swap.From} text2={Strings.Swap.fromData} />
             <SeperateLine top_line={styles.top_line} />
-            <CardRow text1={Strings.English.Swap.To} text2={Strings.English.Swap.toData} />
+            <CardRow text1={Strings.Swap.To} text2={Strings.Swap.toData} />
 
           </View>
 
           <View style={[styles.row_data_view, { backgroundColor: themeColor.cardBackground }]}>
-            <CardRow text1={Strings.English.Swap.Provider} text2={Strings.English.Swap.providerData} />
+            <CardRow text1={Strings.Swap.Provider} text2={Strings.Swap.providerData} />
             <SeperateLine top_line={styles.top_line} />
-            <CardRow text1={Strings.English.Swap.networkFees} text2={Strings.English.Swap.networkFee2} />
+            <CardRow text1={Strings.Swap.networkFees} text2={Strings.Swap.networkFee2} />
 
           </View>
         </View>

@@ -60,6 +60,7 @@ import AddCustomToken from '../Components/Manage tokens/AddCustomToken';
 import Processing from '../Components/Onboarding/Processing';
 import CommonModal from '../Common/CommonModal';
 import SendMatic from '../Components/Send/SendMatic';
+import Testing from '../../Testing';
 
 
 
@@ -127,7 +128,7 @@ const StackNavigation = () => {
             headerShown: false,
             // }
           }}>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Splash"
             component={Splash}
             options={{
@@ -163,7 +164,7 @@ const StackNavigation = () => {
             name="secretphrase"
             component={SecretPhrase}
             options={{
-              title: Strings.English.secretPhrase.secretPhrase,
+              title: Strings.secretPhrase.secretPhrase,
             }}
           />
 
@@ -461,8 +462,13 @@ const StackNavigation = () => {
             component={SecretPhrase2}
             options={{
             }}
+          /> */}
+ <Stack.Screen
+            name='Testing'
+            component={Testing}
+            options={{
+            }}
           />
-
         </Stack.Navigator>
       </AppContext.Provider>
     </NavigationContainer>

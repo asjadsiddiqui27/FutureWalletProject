@@ -180,7 +180,7 @@ const AddressBook = (props) => {
                 <CustomSearchBar value={searchData} onChangeText={setSearchData} />
             </View>
             <View style={styles.mainTopView}>
-                <Text style={[styles.SavedText, { color: themeColor.text }]}>{Strings.English.AddressBook.Saved}</Text>
+                <Text style={[styles.SavedText, { color: themeColor.text }]}>{Strings.AddressBook.Saved}</Text>
                 <View style={{ marginTop: dimen(18) }}>
                     <FlatList
                         data={filteredData}

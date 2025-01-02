@@ -55,24 +55,24 @@ const BuyCrypto = (props) => {
 
             {/* ............................header..................................... */}
 
-            <CustomHeader header={Strings.English.buyCrypto.BuyCrypto} header_style={styles.header_view} onPress={() => { props.navigation.navigate("TabNavigation") }} headerimg={{tintColor:themeColor.text}}/>
+            <CustomHeader header={Strings.buyCrypto.BuyCrypto} header_style={styles.header_view} onPress={() => { props.navigation.navigate("TabNavigation") }} headerimg={{tintColor:themeColor.text}}/>
             <SeperateLine  />
 
 
             <View style={styles.top_data_view}>
 
-                <CustomCrypto labelText={Strings.English.buyCrypto.Payment} dollarValue={Strings.English.buyCrypto.value} image={images.usd} middleText={Strings.English.buyCrypto.USD} image2={images.DownArrow} />
-                <CustomCrypto labelText={Strings.English.buyCrypto.Receive} dollarValue={Strings.English.buyCrypto.value2} image={images.whiteTriangle} middleText={Strings.English.buyCrypto.ETH} image2={images.DownArrow} />
+                <CustomCrypto labelText={Strings.buyCrypto.Payment} dollarValue={Strings.buyCrypto.value} image={images.usd} middleText={Strings.buyCrypto.USD} image2={images.DownArrow} />
+                <CustomCrypto labelText={Strings.buyCrypto.Receive} dollarValue={Strings.buyCrypto.value2} image={images.whiteTriangle} middleText={Strings.buyCrypto.ETH} image2={images.DownArrow} />
 
 
                 <View style={styles.balance_view}>
-                    <Text style={[styles.balanceText,{color:themeColor.subText}]}>{Strings.English.buyCrypto.Balance}</Text>
-                    <Text style={[styles.balanceValue,{color:themeColor.text}]}>{Strings.English.buyCrypto.value3}</Text>
+                    <Text style={[styles.balanceText,{color:themeColor.subText}]}>{Strings.buyCrypto.Balance}</Text>
+                    <Text style={[styles.balanceValue,{color:themeColor.text}]}>{Strings.buyCrypto.value3}</Text>
 
                 </View>
 
                 <View style={styles.buy_Button_view}>
-                    <Button name={Strings.English.buyCrypto.Buy} />
+                    <Button name={Strings.buyCrypto.Buy} />
                 </View>
 
             </View>

@@ -56,7 +56,7 @@ const EnterPasscode = ({ navigation }) => {
                         />
                     </View>
                     <View style={{ alignItems: "center" }}>
-                        <Text style={[styles.txt_style, { color: themeColor.subText }]}>{Strings.English.Passcode.passcodeAddsSecurity}</Text>
+                        <Text style={[styles.txt_style, { color: themeColor.subText }]}>{Strings.Passcode.passcodeAddsSecurity}</Text>
                     </View>
                 </View>
                 <View style={styles.Footer_container}>

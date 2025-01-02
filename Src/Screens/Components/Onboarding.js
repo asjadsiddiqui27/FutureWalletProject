@@ -32,9 +32,9 @@ const Onboarding = (props) => {
           <Image style={styles.groupImg} source={image.OnboardingPge} />
         </View>
         <View style={styles.imgContainerText}>
-          <Text style={[styles.imgTextFirst,{color:themeColor.imgTextFirst}]}>{Strings.English.onboarding.safe}</Text>
+          <Text style={[styles.imgTextFirst,{color:themeColor.imgTextFirst}]}>{Strings.onboarding.safe}</Text>
           <Text style={styles.imgTextSecond}>
-         {Strings.English.onboarding.aboutOur}
+         {Strings.onboarding.aboutOur}
           </Text>
         </View>
       </View>
@@ -43,7 +43,7 @@ const Onboarding = (props) => {
       <View style={styles.insideFooter}>
         <Button  name={'Create a new wallet'} onPress={()=>props.navigation.navigate("legal")}/>
         <TouchableOpacity style={styles.alreadyAcc} onPress={()=>props.navigation.navigate("ImportWallet")}>
-          <Text style={styles.alreadyAccText}>{Strings.English.onboarding.alreadyWallet}</Text>
+          <Text style={styles.alreadyAccText}>{Strings.onboarding.alreadyWallet}</Text>
         </TouchableOpacity>
       </View>
       </View>

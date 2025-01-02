@@ -19,12 +19,12 @@ const ManageWallets = (props) => {
     const [selectedId, setSelectedId] = useState("1")
     const [walletName, setWalletName] = useState("");
     const data = [
-        { id: '1', imageSource: images.welcomelogo, name: walletName, walletType: Strings.English.ManageWallets.walletType1, imageSource2: images.bluePencil, },
-        // { id: '2', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
-        // { id: '3', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Basic, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
-        // { id: '4', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
-        // { id: '5', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Basic, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
-        // { id: '6', imageSource: images.welcomelogo, name: Strings.English.ManageWallets.Wallet02, walletType: Strings.English.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        { id: '1', imageSource: images.welcomelogo, name: walletName, walletType: Strings.ManageWallets.walletType1, imageSource2: images.bluePencil, },
+        // { id: '2', imageSource: images.welcomelogo, name: Strings.ManageWallets.Wallet02, walletType: Strings.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        // { id: '3', imageSource: images.welcomelogo, name: Strings.ManageWallets.Basic, walletType: Strings.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        // { id: '4', imageSource: images.welcomelogo, name: Strings.ManageWallets.Wallet02, walletType: Strings.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        // { id: '5', imageSource: images.welcomelogo, name: Strings.ManageWallets.Basic, walletType: Strings.ManageWallets.walletType2, imageSource2: images.bluePencil, },
+        // { id: '6', imageSource: images.welcomelogo, name: Strings.ManageWallets.Wallet02, walletType: Strings.ManageWallets.walletType2, imageSource2: images.bluePencil, },
 
 
     ];
@@ -55,7 +55,7 @@ const ManageWallets = (props) => {
                         <Text style={[styles.label_text, { color: themeColor.text }]}>{item.name}</Text>
                         <Text style={[styles.wallet_type, { color: item.id == selectedId ? "green" : themeColor.subText }]}>
 
-                            {item.id === selectedId ? Strings.English.ManageWallets.walletType1 : Strings.English.ManageWallets.walletType2}
+                            {item.id === selectedId ? Strings.ManageWallets.walletType1 : Strings.ManageWallets.walletType2}
                         </Text>
                     </View>
                 </View>
@@ -74,7 +74,7 @@ const ManageWallets = (props) => {
     return (
         <SafeAreaView style={[styles.main_container, { backgroundColor: themeColor.background }]}>
 
-            <CustomHeader header={Strings.English.ManageWallets.manageWallets} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Settings") }} />
+            <CustomHeader header={Strings.ManageWallets.manageWallets} header_style={styles.header} headerimg={{ tintColor: themeColor.text }} onPress={() => { props.navigation.navigate("Settings") }} />
 
             <SeperateLine />
 
@@ -93,7 +93,7 @@ const ManageWallets = (props) => {
 
             </View>
             <View style={styles.Button_view}>
-                <Button name={Strings.English.ManageWallets.button_text} onPress={() => { props.navigation.navigate("onboarding") }} />
+                <Button name={Strings.ManageWallets.button_text} onPress={() => { props.navigation.navigate("onboarding") }} />
             </View>
             {/* {bottomSheetVisible && Platform.OS === 'android' ? (
                 <ImageBackground

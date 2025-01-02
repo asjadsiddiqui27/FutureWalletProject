@@ -214,7 +214,7 @@ const SecretPhrase = (props) => {
         <View style={styles.upper_View}>
           <View style={styles.text_heading_container}>
             <Text style={[styles.text_main_heading, { color: themeColor.subText }]}>
-              {Strings.English.secretPhrase.writeDown}
+              {Strings.secretPhrase.writeDown}
             </Text>
           </View>
 
@@ -245,17 +245,17 @@ const SecretPhrase = (props) => {
             ImgSrc={image.copyIcon}
             LogoStyle={styles.copyLogo}
             textColor={styles.copyBtn_style}
-            label={Strings.English.secretPhrase.copy}
+            label={Strings.secretPhrase.copy}
           />
         </View>
 
         <View style={styles.Footer_Container}>
           <View style={[styles.msg_container, { backgroundColor: themeColor.background, borderColor: themeColor.cardBackground }]}>
             <Text style={[styles.msg_txt, { color: themeColor.text }]}>
-              {Strings.English.secretPhrase.doNotShare}
+              {Strings.secretPhrase.doNotShare}
             </Text>
             <Text style={[styles.msg_txt2, { color: themeColor.text }]}>
-              {Strings.English.secretPhrase.futureWalletSupport}
+              {Strings.secretPhrase.futureWalletSupport}
             </Text>
           </View>
 

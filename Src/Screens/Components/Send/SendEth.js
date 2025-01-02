@@ -91,7 +91,7 @@ const SendEth = (props) => {
 
 
                     <View style={{ gap: dimen(12.33) }}>
-                        <Text style={[styles.Address, { color: themeColor.subText }]}>{Strings.English.sendBtc.Address}</Text>
+                        <Text style={[styles.Address, { color: themeColor.subText }]}>{Strings.sendBtc.Address}</Text>
                         <TextInput
                             style={[styles.input, { borderColor: themeColor.blueBorder }]}
                             placeholder="Enter"
@@ -100,10 +100,10 @@ const SendEth = (props) => {
                         />
                     </View>
                     <View style={{ marginTop: dimen(20), gap: dimen(12.33) }}>
-                        <Text style={[styles.Address, { color: themeColor.subText }]}>{Strings.English.sendBtc.Amount}</Text>
+                        <Text style={[styles.Address, { color: themeColor.subText }]}>{Strings.sendBtc.Amount}</Text>
                         <TextInput
                             style={[styles.input, { borderColor: themeColor.blueBorder }]}
-                            placeholder={Strings.English.sendBtc.ETHAmount}
+                            placeholder={Strings.sendBtc.ETHAmount}
                             keyboardType="numeric"
                             placeholderTextColor={themeColor.subText}
                             onChangeText={(text) => { setAmount(text) }}
@@ -112,13 +112,13 @@ const SendEth = (props) => {
                     <View style={{ flexDirection: 'row', justifyContent: "space-between", marginTop: dimen(12), marginBottom: dimen(36) }}>
                         <Text style={{ color: themeColor.subText, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>$50,000</Text>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={{ color: themeColor.subText, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{Strings.English.sendBtc.Balance}</Text>
+                            <Text style={{ color: themeColor.subText, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{Strings.sendBtc.Balance}</Text>
                             <Text style={{ color: themeColor.text, fontSize: 14, fontFamily: fonts.PoppinsMedium }}>{ethbalance}</Text>
                         </View>
 
                     </View>
                     <View>
-                        <Text style={[styles.Transaction, { color: themeColor.text }]}>{Strings.English.sendBtc.TransactionFee}</Text>
+                        <Text style={[styles.Transaction, { color: themeColor.text }]}>{Strings.sendBtc.TransactionFee}</Text>
                         <View style={{ gap: 12, marginTop: dimen(14) }}>
 
                             <FlatList
@@ -131,7 +131,7 @@ const SendEth = (props) => {
                     </View>
                 </View>
                 <View style={styles.footer}>
-                    <Button name={Strings.English.sendBtc.Next} onPress={() => { props.navigation.navigate("Transfer"), generateData() }} />
+                    <Button name={Strings.sendBtc.Next} onPress={() => { props.navigation.navigate("Transfer"), generateData() }} />
                 </View>
             </View>
 

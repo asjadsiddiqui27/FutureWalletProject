@@ -31,13 +31,13 @@ const Legal = (props) => {
             <View style={styles.main_view1}>
                 <CustomHeader onPress={() => { props.navigation.navigate("onboarding") }}  headerimg={{tintColor:themeColor.text}} header='Legal' />
                 <View style={styles.top_text_View}>
-                    <Text style={[styles.top_text,{color:themeColor.subText}]}>{Strings.English.label.topLabel}</Text>
+                    <Text style={[styles.top_text,{color:themeColor.subText}]}>{Strings.label.topLabel}</Text>
                 </View>
 
                 <View style={[styles.middle_main_view,{backgroundColor:themeColor.card}]}>
 
                     <View style={[styles.middle_data_view, { top: dimen(23) }]}>
-                        <Text style={[styles.middle_Label_text,{color:themeColor.text}]}>{Strings.English.label.privacyPolicy}</Text>
+                        <Text style={[styles.middle_Label_text,{color:themeColor.text}]}>{Strings.label.privacyPolicy}</Text>
                         <TouchableOpacity>
                             <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greenText }]} />
 
@@ -47,7 +47,7 @@ const Legal = (props) => {
                     <View style={styles.Line} />
 
                     <View style={styles.middle_data_view}>
-                        <Text style={[styles.middle_Label_text,{color:themeColor.text}]}>{Strings.English.label.termsOfService}</Text>
+                        <Text style={[styles.middle_Label_text,{color:themeColor.text}]}>{Strings.label.termsOfService}</Text>
                         <TouchableOpacity>
                             <Image source={images.greaterthan} style={[styles.img, { tintColor: colors.greenText }]} />
 
@@ -71,7 +71,7 @@ const Legal = (props) => {
                             tintColors={{ true: '#00BEF2', false: '#00BEF2' }}
                         />
                         <View>
-                            <Text style={[styles.bottom_text,{color:themeColor.text}]}>{Strings.English.label.bottomText} </Text>
+                            <Text style={[styles.bottom_text,{color:themeColor.text}]}>{Strings.label.bottomText} </Text>
 
                         </View>
 

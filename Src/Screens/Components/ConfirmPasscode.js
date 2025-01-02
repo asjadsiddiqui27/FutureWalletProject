@@ -50,7 +50,7 @@ const ConfirmPasscode = ({ navigation }) => {
         <View style={styles.body_container}>
           <Image source={images.welcomelogo} style={styles.img_style} />
           <Text style={[styles.createPassTxt, { color: themeColor.text }]}>
-            {Strings.English.Passcode.ConfirmPasscode}
+            {Strings.Passcode.ConfirmPasscode}
           </Text>
           <View style={styles.input_container}>
             <SmoothPinCodeInput
@@ -74,7 +74,7 @@ const ConfirmPasscode = ({ navigation }) => {
             />
           </View>
           <Text style={[styles.txt_style, { color: themeColor.text }]}>
-            {Strings.English.Passcode.passcodeAddsSecurity}
+            {Strings.Passcode.passcodeAddsSecurity}
           </Text>
         </View>
 
@@ -86,7 +86,7 @@ const ConfirmPasscode = ({ navigation }) => {
           />
           <View style={styles.biometricTxt_view}>
             <Text style={[styles.biometricTxt, { color: themeColor.text }]}>
-              {Strings.English.Passcode.enableBiometric}
+              {Strings.Passcode.enableBiometric}
             </Text>
             <ToggleSwitch
               isOn={switchToggle}

@@ -22,7 +22,7 @@ const DefaultTheme = {
         linearCard: ['#90E6FE', '#C5F2FF', '#D8F7FF'],
         transactionImgView:"#ffffff",
         seperarteLineColor:"#D8E2EC",
-        commonBtn:[ "#00BEF2", "#00BEF2"],
+        commonBtn:[ "#00BEF2", "#00BEF2",'#00BEF2'],
         cardBackground2:"#ffffff",
         alertBtnColor:"#2B4058"
     },

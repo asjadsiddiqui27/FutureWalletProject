@@ -15,9 +15,9 @@ import colors from '../../../Theme/Colors';
 
 const height = Dimensions.get('window').height;
 const data = [
-    { id: '1', label: Strings.English.Bottomsheet.Provider, value: Strings.English.Bottomsheet.InchValue, imageSource: images.previewSwapHorse, },
-    { id: '2', label: Strings.English.Bottomsheet.MaxSlippage, value: Strings.English.Bottomsheet.percentagevalue },
-    { id: '3', label: Strings.English.Bottomsheet.Networkfees, value: Strings.English.Bottomsheet.BnbValue, dollar: Strings.English.Bottomsheet.dollarValue },
+    { id: '1', label: Strings.Bottomsheet.Provider, value: Strings.Bottomsheet.InchValue, imageSource: images.previewSwapHorse, },
+    { id: '2', label: Strings.Bottomsheet.MaxSlippage, value: Strings.Bottomsheet.percentagevalue },
+    { id: '3', label: Strings.Bottomsheet.Networkfees, value: Strings.Bottomsheet.BnbValue, dollar: Strings.Bottomsheet.dollarValue },
 
 ];
 
@@ -59,21 +59,21 @@ const Bottomsheet = (props) => {
             }}
         >
 
-            <Text style={[styles.topText, { color: themeColor.text }]}>{Strings.English.Bottomsheet.topText}</Text>
+            <Text style={[styles.topText, { color: themeColor.text }]}>{Strings.Bottomsheet.topText}</Text>
             <View style={styles.data_withImg}>
                 <Image source={image.transfer} style={{
                     position: "absolute", left: 100,
                     zIndex: 1
                 }} />
-                <CommonPreviewSwap imageData={images.notification2} text1={Strings.English.Bottomsheet.BnbTwelve} text2={Strings.English.Bottomsheet.bnbTwenty} />
+                <CommonPreviewSwap imageData={images.notification2} text1={Strings.Bottomsheet.BnbTwelve} text2={Strings.Bottomsheet.bnbTwenty} />
                 <View style={[styles.between_line, { borderColor: themeColor.blueBorder }]} />
-                <CommonPreviewSwap imageData={images.teher} text1={Strings.English.Bottomsheet.usdtTwelve} text2={Strings.English.Bottomsheet.usdtTwenty} />
+                <CommonPreviewSwap imageData={images.teher} text1={Strings.Bottomsheet.usdtTwelve} text2={Strings.Bottomsheet.usdtTwenty} />
 
             </View>
 
 
             <View style={[styles.first_cardRow, { borderColor: themeColor.blueBorder ,backgroundColor:themeColor.cardBackground}]}>
-                <CardRow text1={Strings.English.Bottomsheet.From} text2={Strings.English.Bottomsheet.MyWallet} />
+                <CardRow text1={Strings.Bottomsheet.From} text2={Strings.Bottomsheet.MyWallet} />
             </View>
             <View style={[styles.FlatList_view, { backgroundColor: themeColor.background2, flex: 1 }]}>
                 <FlatList
@@ -89,7 +89,7 @@ const Bottomsheet = (props) => {
             </View>
 
 
-            <Button name={Strings.English.Bottomsheet.btn} />
+            <Button name={Strings.Bottomsheet.btn} />
         </BottomSheet>
 
     )

@@ -12,9 +12,9 @@ import { images } from '../../../Theme/Images';
 const height = Dimensions.get('window').height;
 
 const data = [
-    { id: '1', text: Strings.English.Acknowledge.condition1 },
-    { id: '2', text: Strings.English.Acknowledge.condition2 },
-    { id: '3', text: Strings.English.Acknowledge.condition3 },
+    { id: '1', text: Strings.Acknowledge.condition1 },
+    { id: '2', text: Strings.Acknowledge.condition2 },
+    { id: '3', text: Strings.Acknowledge.condition3 },
 ];
 
 const Acknowledge = (props) => {
@@ -83,8 +83,8 @@ const Acknowledge = (props) => {
                     }}
                 >
                     <View style={styles.topText}>
-                        <Text style={[styles.text1, { color: themeColor.text }]}>{Strings.English.Acknowledge.text1}</Text>
-                        <Text style={[styles.text2, { color: themeColor.subText }]}>{Strings.English.Acknowledge.text2}</Text>
+                        <Text style={[styles.text1, { color: themeColor.text }]}>{Strings.Acknowledge.text1}</Text>
+                        <Text style={[styles.text2, { color: themeColor.subText }]}>{Strings.Acknowledge.text2}</Text>
                         <View style={{ marginVertical: 32 }}>
                             <FlatList
                                 ItemSeparatorComponent={() => (
@@ -101,7 +101,7 @@ const Acknowledge = (props) => {
                     {
                         (selectedCount !== data.length) ?
                             <View style={styles.button_view}>
-                                <Text style={styles.button_text}>{Strings.English.Acknowledge.Continue}</Text>
+                                <Text style={styles.button_text}>{Strings.Acknowledge.Continue}</Text>
                             </View> :
                             <Button disabled={selectedCount !== data.length} onPress={() => { props.navigation.navigate("SecretPhrase2") }} />
 
