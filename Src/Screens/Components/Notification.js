@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, Image, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import colors from '../../Theme/Colors';
 import { getDimensionPercentage as dimen } from '../../Utils/Utils';
@@ -8,14 +8,27 @@ import fonts from '../../Theme/Fonts';
 import { Strings } from '../../Theme/Strings';
 import SeperateLine from '../Common/SeperateLine';
 import { useTheme } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setNotificationData } from '../../Redux/Actions/DataAction';
 
-const Notification = (props) => {
+const Notification = ({props,route}) => {
+    const [notiData,setNotiData]=useState("")
+    const dispatch = useDispatch();
+    const { notificationData } = route.params || {};
+     setNotiData(notificationData)
     const {colors: themeColor, image} = useTheme()
     const data = [
         { id: '1', imageSource: images.notification1, text: Strings.notification.text1, time: Strings.notification.time1 },
         { id: '2', imageSource: images.notification2, text: Strings.notification.text2, time: Strings.notification.time2 },
         { id: '3', imageSource: image.ethImage, text: Strings.notification.text3, time: Strings.notification.time3 },
     ];
+    useEffect(() => {
+      console.log(notificationData,"notificationData*************")
+      dispatch(setNotificationData(notiData));
+      console.log("Set notiData:::::::::::::::::::", notiData);
+    
+    }, [])
+    
 
     const renderItem = ({ item }) => (
         <View>

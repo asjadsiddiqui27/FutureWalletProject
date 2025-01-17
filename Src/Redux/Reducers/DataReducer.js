@@ -42,6 +42,8 @@ const appReducer = (state = initialState, action) => {
       return { ...state, fromAddress: action.payload };
       case types.SET_WALLET_NAME:
         return { ...state, name: action.payload };
+        case types.SET_NOTIFICATION_DATA:
+          return { ...state, notiData: action.payload };
     default:
       return state;
   }

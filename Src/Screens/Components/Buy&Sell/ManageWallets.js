@@ -12,12 +12,14 @@ import ManageBottomSheet from './ManageBottomSheet';
 import { images } from '../../../Theme/Images';
 import fonts from '../../../Theme/Fonts';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useSelector } from 'react-redux';
 const ManageWallets = (props) => {
     const { colors: themeColor, image } = useTheme()
     const panelRef = useRef(null);
     const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
     const [selectedId, setSelectedId] = useState("1")
-    const [walletName, setWalletName] = useState("");
+    // const [walletName, setWalletName] = useState("");
+    const walletName = useSelector((state) => state.app.name) || "";
     const data = [
         { id: '1', imageSource: images.welcomelogo, name: walletName, walletType: Strings.ManageWallets.walletType1, imageSource2: images.bluePencil, },
         // { id: '2', imageSource: images.welcomelogo, name: Strings.ManageWallets.Wallet02, walletType: Strings.ManageWallets.walletType2, imageSource2: images.bluePencil, },

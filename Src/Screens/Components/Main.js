@@ -12,7 +12,7 @@ import colors from '../../Theme/Colors'
 import fonts from '../../Theme/Fonts';
 import { useSelector } from 'react-redux';
 
-const Main = () => {
+const Main = (props) => {
     const { colors: themeColor, image } = useTheme()
     const isFocused = useIsFocused()
     const navigation = useNavigation()
@@ -73,7 +73,7 @@ const Main = () => {
             {/* <StatusBar barStyle="dark-content" /> */}
             {/* <StatusBar backgroundColor={themeColor.mainScreenBgColor}  barStyle={"dark-content"} /> */}
 
-            <CustomHeader onPress={() => { navigation.navigate("ConfirmPasscode") }} header={walletName} header_style={styles.header} imgLeft={images.welcomelogo} imgRight={image.bell} headerimg={styles.headerimg_style} onPress2={() => { navigation.navigate("Notification") }} />
+            <CustomHeader onPress={() => { navigation.navigate("ConfirmPasscode") }} header={walletName} header_style={styles.header} imgLeft={images.welcomelogo} imgRight={image.bell} headerimg={styles.headerimg_style} onPress2={() => { props.navigation.navigate("Notification") }} />
 
             <View style={styles.top_labelText_view}>
                 <Text style={[styles.top_labelText, { color: themeColor.text }]}>{Strings.main.totalBalance}</Text>
@@ -120,6 +120,7 @@ const Main = () => {
 
                 <View style={styles.bottom_2nt_view}>
                     <FlatList
+                    showsVerticalScrollIndicator={false}
                         data={data}
                         ItemSeparatorComponent={() => (
                             <View style={styles.SeperateLine_view}>

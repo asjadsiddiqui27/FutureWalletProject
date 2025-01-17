@@ -57,3 +57,8 @@ export const setMnemonicResult = (mnemonicResult) => ({
     type: types.SET_WALLET_NAME,
     payload: name,
   });
+
+  export const setNotificationData = (notiData) => ({
+    type: types.SET_NOTIFICATION_DATA,
+    payload: notiData,
+  });

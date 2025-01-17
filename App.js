@@ -4,19 +4,20 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import messaging from '@react-native-firebase/messaging';
 import { firebase } from '@react-native-firebase/messaging';
-import StackNavigation from './Src/Screens/Navigation/StackNavigation';
+import StackNavigation, { navigationRef } from './Src/Screens/Navigation/StackNavigation';
 import { persistor, store } from './Src/Redux/Store';
-import Testing from './Src/Testing';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
 import { Strings } from './Src/Theme/Strings';
 
-const App = () => {
+
+const App = (props) => {
+  const [notiData,setNotiData]=useState("")
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
 
   useEffect(() => {
 
-   const language= Strings.setLanguage("Spanish")
+   const language= Strings.setLanguage("English")
    console.log("language",language)
     const subscription = AppState.addEventListener('change', nextAppState => {
       if (
@@ -79,7 +80,8 @@ const App = () => {
     //work when app is in forground mode
     messaging().onMessage(async remoteMessage => {
       console.log('remoteMessage 0 ', remoteMessage)
-
+      console.log('remoteMessage.notification ', remoteMessage.notification)
+      setNotiData(remoteMessage.notification)
       showMessage({
         position: 'top',
         description: remoteMessage?.data?.type == "ANNOUNCEMENT" ? remoteMessage?.notification.title : "",
@@ -99,8 +101,16 @@ const App = () => {
           borderBottomStartRadius: 5,
          
         },
-        // hideOnPress: true,
-
+        hideOnPress: true,
+        onPress: () => {
+          
+          try {
+            navigationRef.navigate("Notification", { notificationData: remoteMessage.notification });
+            console.log(notiData,"notiData")
+          } catch (error) {
+            console.error("Navigation error: ", error);
+          }
+        },
       });
 
 
@@ -114,7 +124,6 @@ const App = () => {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <StackNavigation />
-          {/* <Testing /> */}
         </PersistGate>
       </Provider>
       <FlashMessage position="top" />

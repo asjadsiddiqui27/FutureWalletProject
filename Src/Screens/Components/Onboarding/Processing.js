@@ -39,7 +39,7 @@ const Processing = (props) => {
 
                     <Button
                         onPress={() => { props.navigation.navigate("TabNavigation") }}
-                        buttonStyle={{ width: dimen(250), borderRadius: 12, marginBottom: dimen(22),height:dimen(50) }}
+                        buttonStyle={{ width: dimen(250), borderRadius: 12, marginBottom: dimen(22),height:dimen(50),justifyContent:"center" }}
                     />
                 </View>
             </ImageBackground>

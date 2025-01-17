@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         height: dimen(49),
         width: dimen(188),
         borderRadius: 12,
-
+justifyContent:"center"
     },
     searchbar_view: {
         marginTop: dimen(24)

@@ -1,7 +1,7 @@
 import { StyleSheet, } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
 import WalletName from '../Components/WalletName';
 import Onboarding from '../Components/Onboarding';
 import Legal from '../Components/Legal';
@@ -60,8 +60,8 @@ import AddCustomToken from '../Components/Manage tokens/AddCustomToken';
 import Processing from '../Components/Onboarding/Processing';
 import CommonModal from '../Common/CommonModal';
 import SendMatic from '../Components/Send/SendMatic';
-import Testing from '../../Testing';
 
+export const navigationRef = createNavigationContainerRef();
 
 
 const Stack = createNativeStackNavigator();
@@ -114,8 +114,8 @@ const StackNavigation = () => {
 
     saveColorScheme();
   }, [isDarkTheme]);
-
-  const navigationRef = React.useRef(null);
+  
+  // const navigationRef = React.useRef(null);
   return (
     <NavigationContainer ref={navigationRef} theme={isDarkTheme ? DarkTheme : DefaultTheme}>
       <AppContext.Provider value={appContext}>
@@ -128,7 +128,7 @@ const StackNavigation = () => {
             headerShown: false,
             // }
           }}>
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Splash"
             component={Splash}
             options={{
@@ -164,7 +164,7 @@ const StackNavigation = () => {
             name="secretphrase"
             component={SecretPhrase}
             options={{
-              title: Strings.secretPhrase.secretPhrase,
+              headerShown: false
             }}
           />
 
@@ -462,13 +462,8 @@ const StackNavigation = () => {
             component={SecretPhrase2}
             options={{
             }}
-          /> */}
- <Stack.Screen
-            name='Testing'
-            component={Testing}
-            options={{
-            }}
           />
+
         </Stack.Navigator>
       </AppContext.Provider>
     </NavigationContainer>

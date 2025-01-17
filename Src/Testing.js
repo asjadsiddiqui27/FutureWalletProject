@@ -15,8 +15,8 @@ export default class Testing extends Component {
     return (
       <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={styles.container}>
-        <Text style={styles.title}>{Strings.Portfolio.onWatchlist}</Text>
-        <PieChart widthAndHeight={widthAndHeight} series={series}     sliceColor={sliceColor}/>
+        {/* <Text style={styles.title}>{Strings.Portfolio.onWatchlist}</Text>
+        <PieChart widthAndHeight={widthAndHeight} series={series}     sliceColor={sliceColor}/> */}
 
           {/* <Text style={styles.title}>Testing 2</Text>
           <PieChart
@@ -28,10 +28,10 @@ export default class Testing extends Component {
            */}
            
         </View>
-        <View style={{flex:0.2,flexDirection:"row"}}>
+        {/* <View style={{flex:0.2,flexDirection:"row"}}>
           <Button />
           <Button />
-           </View>
+           </View> */}
       </ScrollView>
     );
   }
@@ -48,3 +48,5 @@ const styles = StyleSheet.create({
     color:"black"
   },
 });
+
+
